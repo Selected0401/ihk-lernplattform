@@ -1,30 +1,24 @@
 {
-    "name": "Emilia's IHK Lernplattform",
-    "short_name": "IHK Lernen",
-    "description": "Deine persönliche Lernplattform für die IHK Zwischenprüfung Kaufmann für Büromanagement - Teil 1: Informationstechnisches Büromanagement",
+    "name": "Emilia's IHK Lern-App",
+    "short_name": "IHK App",
+    "description": "Deine persönliche iPhone Lern-App für IHK Zwischenprüfung Kaufmann für Büromanagement - Optimiert für iOS",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#0f172a",
     "theme_color": "#6366f1",
-    "orientation": "portrait-primary",
+    "orientation": "portrait",
     "scope": "/",
     "lang": "de",
     "categories": ["education", "productivity"],
     "icons": [
         {
-            "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐰</text></svg>",
-            "sizes": "any",
+            "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%236366f1'/><text x='50' y='70' font-size='60' text-anchor='middle' fill='white'>🐰</text></svg>",
+            "sizes": "192x192",
             "type": "image/svg+xml",
             "purpose": "any maskable"
         },
         {
-            "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><text y='.9em' font-size='180'>🐰</text></svg>",
-            "sizes": "192x192",
-            "type": "image/svg+xml",
-            "purpose": "any"
-        },
-        {
-            "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><text y='.9em' font-size='480'>🐰</text></svg>",
+            "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%236366f1'/><text x='50' y='70' font-size='60' text-anchor='middle' fill='white'>🐰</text></svg>",
             "sizes": "512x512",
             "type": "image/svg+xml",
             "purpose": "any"
@@ -33,27 +27,25 @@
     "screenshots": [],
     "shortcuts": [
         {
-            "name": "☕ Morning Check-in",
-            "short_name": "Morgen",
-            "description": "Starte deinen Lern-Tag mit dem Morning Command Center",
-            "url": "/?tab=dashboard&action=morning",
-            "icons": [{ "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>", "sizes": "96x96" }]
+            "name": "☕ Lernen",
+            "short_name": "Lernen",
+            "description": "Sofort lernen",
+            "url": "/?tab=dashboard&action=learn",
+            "icons": [{"src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>", "sizes": "96x96"}]
         },
         {
-            "name": "📊 Excel Üben",
+            "name": "📊 Excel",
             "short_name": "Excel",
-            "description": "SVERWEIS, Pivot, WENN-Funktionen trainieren",
+            "description": "Excel Übungen",
             "url": "/?tab=excel",
-            "icons": [{ "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>", "sizes": "96x96" }]
+            "icons": [{"src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>", "sizes": "96x96"}]
         },
         {
-            "name": "🎯 Prüfungssimulation",
-            "short_name": "Simulation",
-            "description": "120 Minuten echte Prüfungssimulation",
+            "name": "🎯 Simulation",
+            "short_name": "Test",
+            "description": "Prüfungssimulation",
             "url": "/?tab=simulation",
-            "icons": [{ "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>", "sizes": "96x96" }]
+            "icons": [{"src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>", "sizes": "96x96"}]
         }
-    ],
-    "related_applications": [],
-    "prefer_related_applications": false
+    ]
 }
