@@ -2,200 +2,418 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="IHK Lern-App">
-    <meta name="theme-color" content="#6366f1">
-    <title>Emilia's IHK Lern-App</title>
-    <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="iphone.css">
-    <script src="chart.local.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emilia's IHK Lernplattform - Öffentlich</title>
+    <meta name="description" content="Kostenlose Lernplattform für IHK Zwischenprüfung Büromanagement - Excel, Word, PowerPoint, Outlook">
+    <meta name="keywords" content="IHK, Büromanagement, Lernplattform, Excel, Word, PowerPoint, Outlook, Prüfungsvorbereitung">
+    <meta name="author" content="Emilia's IHK Lernplattform">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Emilia's IHK Lernplattform">
+    <meta property="og:description" content="Kostenlose Lernplattform für IHK Zwischenprüfung Büromanagement">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐰</text></svg>">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            color: white;
+        }
+        
+        .logo {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .feature-card {
+            background: rgba(255,255,255,0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        
+        .feature-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+        
+        .feature-title {
+            font-size: 1.5em;
+            color: #4a5568;
+            margin-bottom: 10px;
+        }
+        
+        .feature-description {
+            color: #718096;
+            margin-bottom: 20px;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            padding: 5px 0;
+            color: #4a5568;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .feature-list li:before {
+            content: "✓ ";
+            color: #48bb78;
+            font-weight: bold;
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 40px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .cta-title {
+            font-size: 2em;
+            color: #4a5568;
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1em;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102,126,234,0.4);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .stat-card {
+            background: rgba(255,255,255,0.95);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            color: #718096;
+            font-weight: 500;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            color: white;
+        }
+        
+        .share-buttons {
+            margin: 20px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .feature-card {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="app">
-        <!-- Header -->
-        <header class="header">
-            <div class="header-content">
-                <div class="logo">
-                    <span class="emilia-icon">🐰</span>
-                    <h1>IHK Lern-App</h1>
-                </div>
-                <div class="user-info">
-                    <span id="countdown" class="countdown">Lade...</span>
-                </div>
+    <div class="container">
+        <header>
+            <div class="logo">🐰</div>
+            <h1>Emilia's IHK Lernplattform</h1>
+            <p class="subtitle">Kostenlose Lernplattform für IHK Zwischenprüfung Büromanagement</p>
+            <div class="share-buttons">
+                <button class="btn" onclick="shareApp()">📱 Teilen</button>
+                <button class="btn btn-secondary" onclick="installApp()">📱 Installieren</button>
             </div>
-            <nav class="tabs" id="tabs">
-                <button class="tab active" data-tab="dashboard">🏠</button>
-                <button class="tab" data-tab="excel">📊</button>
-                <button class="tab" data-tab="word">📝</button>
-                <button class="tab" data-tab="powerpoint">🎨</button>
-                <button class="tab" data-tab="outlook">📧</button>
-                <button class="tab" data-tab="simulation">🎯</button>
-            </nav>
         </header>
-
-        <!-- Main Content -->
-        <main class="main">
-            <!-- Dashboard Tab -->
-            <section id="dashboard-tab" class="tab-content active">
-                <div class="welcome-card">
-                    <h2>🌅 Hallo, mein зайчик!</h2>
-                    <p class="daily-quote" id="daily-quote">Lade Tagesmotivation...</p>
-                    <button class="btn btn-primary" onclick="app.startLearning()">
-                        🚀 Jetzt lernen
-                    </button>
-                </div>
-
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <span class="stat-number" id="total-exercises">0</span>
-                        <span class="stat-label">Übungen</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number" id="study-hours">0h</span>
-                        <span class="stat-label">Lernzeit</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number" id="streak">0</span>
-                        <span class="stat-label">Serie</span>
-                    </div>
-                </div>
-
-                <div class="quick-actions">
-                    <h3>⚡ Schnellzugriff</h3>
-                    <div class="action-buttons">
-                        <button class="btn btn-secondary" onclick="app.switchTab('excel')">📊 Excel</button>
-                        <button class="btn btn-secondary" onclick="app.switchTab('word')">📝 Word</button>
-                        <button class="btn btn-secondary" onclick="app.switchTab('simulation')">🎯 Test</button>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Excel Tab -->
-            <section id="excel-tab" class="tab-content">
-                <div class="module-header">
-                    <h2>📊 Excel</h2>
-                    <p>SVERWEIS, WENN, Pivot</p>
-                </div>
-                <div class="exercise-categories">
-                    <div class="category-card">
-                        <h3>🔥 SVERWEIS</h3>
-                        <div id="excel-sverweis-exercises" class="exercise-list"></div>
-                    </div>
-                    <div class="category-card">
-                        <h3>🔥 WENN-Funktionen</h3>
-                        <div id="excel-wenn-exercises" class="exercise-list"></div>
-                    </div>
-                    <div class="category-card">
-                        <h3>📊 Pivot-Tabellen</h3>
-                        <div id="excel-pivot-exercises" class="exercise-list"></div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Word Tab -->
-            <section id="word-tab" class="tab-content">
-                <div class="module-header">
-                    <h2>📝 Word</h2>
-                    <p>DIN 5008, Serienbriefe</p>
-                </div>
-                <div class="exercise-categories">
-                    <div class="category-card">
-                        <h3>📐 DIN 5008</h3>
-                        <div id="word-din-exercises" class="exercise-list"></div>
-                    </div>
-                    <div class="category-card">
-                        <h3>📨 Serienbriefe</h3>
-                        <div id="word-serienbrief-exercises" class="exercise-list"></div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- PowerPoint Tab -->
-            <section id="powerpoint-tab" class="tab-content">
-                <div class="module-header">
-                    <h2>🎨 PowerPoint</h2>
-                    <p>Folienmaster, Animationen</p>
-                </div>
-                <div class="exercise-categories">
-                    <div class="category-card">
-                        <h3>🎭 Folienmaster</h3>
-                        <div id="powerpoint-master-exercises" class="exercise-list"></div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Outlook Tab -->
-            <section id="outlook-tab" class="tab-content">
-                <div class="module-header">
-                    <h2>📧 Outlook</h2>
-                    <p>Regeln, Kalender, Aufgaben</p>
-                </div>
-                <div class="exercise-categories">
-                    <div class="category-card">
-                        <h3>⚙️ Regeln</h3>
-                        <div id="outlook-rules-exercises" class="exercise-list"></div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Simulation Tab -->
-            <section id="simulation-tab" class="tab-content">
-                <div class="module-header">
-                    <h2>🎯 Simulation</h2>
-                    <p>120 Minuten Prüfung</p>
-                </div>
-                <div class="simulation-setup">
-                    <div class="sim-card">
-                        <h3>📋 Prüfung starten</h3>
-                        <p>AKA Simulation unter echten Bedingungen</p>
-                        <button class="btn btn-primary" onclick="app.startSimulation()">
-                            🚀 120 Minuten starten
-                        </button>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <!-- Exercise Modal -->
-        <div id="exercise-modal" class="modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 id="modal-title">Übung</h3>
-                    <button class="close-btn" onclick="app.closeModal()">&times;</button>
-                </div>
-                <div class="modal-body" id="modal-body">
-                    <!-- Exercise content -->
-                </div>
+        
+        <section class="stats">
+            <div class="stat-card">
+                <div class="stat-number">40+</div>
+                <div class="stat-label">Interaktive Übungen</div>
             </div>
-        </div>
-
-        <!-- Emilia Coach Chat -->
-        <div id="coach-chat" class="coach-chat">
-            <div class="chat-header" onclick="app.toggleChat()">
-                <span class="emilia-avatar">🐰</span>
-                <span>Emilia Coach</span>
-                <span class="chat-toggle">▼</span>
+            <div class="stat-card">
+                <div class="stat-number">4</div>
+                <div class="stat-label">Office-Anwendungen</div>
             </div>
-            <div class="chat-body" id="chat-body">
-                <div class="message coach">
-                    <div class="message-avatar">🐰</div>
-                    <div class="message-content">
-                        <p>Hallo mein зайчик! 💪 Wie kann ich helfen?</p>
-                        <div class="quick-replies">
-                            <button onclick="app.coachReply('lernplan')">📅 Lernplan</button>
-                            <button onclick="app.coachReply('motivation')">💪 Motivation</button>
-                            <button onclick="app.coachReply('übung')">📝 Übung</button>
-                        </div>
-                    </div>
-                </div>
+            <div class="stat-card">
+                <div class="stat-number">3</div>
+                <div class="stat-label">Prüfungssimulationen</div>
             </div>
-        </div>
+            <div class="stat-card">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Kostenlos</div>
+            </div>
+        </section>
+        
+        <section class="features">
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3 class="feature-title">Excel</h3>
+                <p class="feature-description">Meistere alle Excel-Funktionen für die Prüfung</p>
+                <ul class="feature-list">
+                    <li>SVERWEIS & XVERWEIS</li>
+                    <li>WENN-Funktionen (verschachtelt)</li>
+                    <li>Pivot-Tabellen & Gruppierung</li>
+                    <li>SUMMEWENN & ZÄHLENWENN</li>
+                    <li>Bedingte Formatierung</li>
+                    <li>Datentools & Bezüge</li>
+                </ul>
+                <button class="btn" onclick="startModule('excel')">Excel üben</button>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📝</div>
+                <h3 class="feature-title">Word</h3>
+                <p class="feature-description">Perfekte DIN 5008 Geschäftsbriefe</p>
+                <ul class="feature-list">
+                    <li>DIN 5008 Briefaufbau</li>
+                    <li>Serienbriefe erstellen</li>
+                    <li>Formulare & Vorlagen</li>
+                    <li>Formatvorlagen</li>
+                    <li>Inhaltsverzeichnisse</li>
+                    <li>Tabellen & Grafiken</li>
+                </ul>
+                <button class="btn" onclick="startModule('word')">Word üben</button>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3 class="feature-title">PowerPoint</h3>
+                <p class="feature-description">Professionelle Präsentationen erstellen</p>
+                <ul class="feature-list">
+                    <li>Folienmaster gestalten</li>
+                    <li>Animationen & Übergänge</li>
+                    <li>Diagramme & SmartArt</li>
+                    <li>Bilder & Medien</li>
+                    <li>Hyperlinks & Aktionen</li>
+                    <li>Präsentationstools</li>
+                </ul>
+                <button class="btn" onclick="startModule('powerpoint')">PowerPoint üben</button>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📧</div>
+                <h3 class="feature-title">Outlook</h3>
+                <p class="feature-description">Effiziente E-Mail & Zeitverwaltung</p>
+                <ul class="feature-list">
+                    <li>E-Mail Regeln erstellen</li>
+                    <li>Kalender & Termine</li>
+                    <li>Aufgaben & To-Do</li>
+                    <li>Kontakte & Verteiler</li>
+                    <li>QuickSteps</li>
+                    <li>Zeitzonen & Besprechungen</li>
+                </ul>
+                <button class="btn" onclick="startModule('outlook')">Outlook üben</button>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3 class="feature-title">Prüfungssimulation</h3>
+                <p class="feature-description">Echte Prüfung unter Originalbedingungen</p>
+                <ul class="feature-list">
+                    <li>120 Minuten Zeit</li>
+                    <li>AKA Musteraufgaben</li>
+                    <li>Alle Office-Programme</li>
+                    <li>Realistische Bewertung</li>
+                    <li>Zeitmanagement-Training</li>
+                    <li>Prüfungs-Nervosität überwinden</li>
+                </ul>
+                <button class="btn" onclick="startSimulation()">Simulation starten</button>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🐰</div>
+                <h3 class="feature-title">Emilia Coach</h3>
+                <p class="feature-description">Deine persönliche Lern-Coachin</p>
+                <ul class="feature-list">
+                    <li>Tägliche Motivation</li>
+                    <li>Lernpläne erstellen</li>
+                    <li>Schwachstellen analysieren</li>
+                    <li>Fortschritt verfolgen</li>
+                    <li>Tipps & Tricks</li>
+                    <li>24/7 Unterstützung</li>
+                </ul>
+                <button class="btn" onclick="openCoach()">Coach starten</button>
+            </div>
+        </section>
+        
+        <section class="cta-section">
+            <h2 class="cta-title">🚀 Bereit für deine Prüfung?</h2>
+            <p style="font-size: 1.2em; color: #718096; margin-bottom: 30px;">
+                Starte jetzt kostenlos und bestehe deine IHK Zwischenprüfung mit Bravur!
+            </p>
+            <div>
+                <button class="btn" onclick="startLearning()">🎯 Jetzt starten</button>
+                <button class="btn btn-secondary" onclick="showInfo()">ℹ️ Mehr Infos</button>
+            </div>
+        </section>
+        
+        <footer>
+            <p>🐰 Emilia's IHK Lernplattform - 100% Kostenlos</p>
+            <p style="opacity: 0.8; font-size: 0.9em; margin-top: 10px;">
+                Gebaut mit ❤️ für alle angehenden Kaufleute für Büromanagement
+            </p>
+        </footer>
     </div>
-
-    <script src="data.js"></script>
-    <script src="app.js"></script>
+    
+    <script>
+        // App Funktionen
+        function startLearning() {
+            alert('🚀 Lern-App wird gestartet! Hier kommt die vollständige Lernplattform...');
+            // Später zur Haupt-App weiterleiten
+        }
+        
+        function startModule(module) {
+            alert(`📚 ${module.charAt(0).toUpperCase() + module.slice(1)} Modul wird geladen...`);
+        }
+        
+        function startSimulation() {
+            alert('🎯 Prüfungssimulation wird vorbereitet...');
+        }
+        
+        function openCoach() {
+            alert('🐰 Emilia Coach wird gestartet...');
+        }
+        
+        function shareApp() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Emilia\'s IHK Lernplattform',
+                    text: 'Kostenlose Lernplattform für IHK Zwischenprüfung Büromanagement',
+                    url: window.location.href
+                });
+            } else {
+                alert('📱 Teilen wird vorbereitet...');
+            }
+        }
+        
+        function installApp() {
+            if ('serviceWorker' in navigator && 'BeforeInstallPromptEvent' in window) {
+                alert('📱 App wird installiert...');
+            } else {
+                alert('📱 Auf dem Home-Bildschirm hinzufügen für schnellen Zugriff!');
+            }
+        }
+        
+        function showInfo() {
+            alert('ℹ️ Emilia\'s IHK Lernplattform ist eine kostenlose, werbefreie Lernplattform speziell für die IHK Zwischenprüfung Kaufmann für Büromanagement.');
+        }
+        
+        // Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+                .then(registration => console.log('Service Worker registered'))
+                .catch(error => console.log('Service Worker registration failed'));
+        }
+        
+        // PWA Install Prompt
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+        });
+    </script>
 </body>
 </html>

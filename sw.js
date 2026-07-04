@@ -1,40 +1,52 @@
-const CACHE_NAME = 'emilia-ihk-v1';
+const CACHE_NAME = 'emilia-ihk-v2';
 const STATIC_ASSETS = [
     '/',
     '/index.html',
     '/style.css',
-    '/data.js',
     '/app.js',
-    '/script.js',
-    '/chart.local.js',
-    '/manifest.json'
+    '/manifest.json',
+    '/test.html'
 ];
 
-// Install event - cache static assets
+// Install Event - Cache static assets
 self.addEventListener('install', (event) => {
+    console.log('Service Worker: Installing...');
     event.waitUntil(
         caches.open(CACHE_NAME)
-            .then((cache) => cache.addAll(STATIC_ASSETS))
-            .then(() => self.skipWaiting())
+            .then((cache) => {
+                console.log('Service Worker: Caching static assets');
+                return cache.addAll(STATIC_ASSETS);
+            })
+            .then(() => {
+                console.log('Service Worker: Skipping waiting');
+                return self.skipWaiting();
+            })
     );
 });
 
-// Activate event - clean old caches
+// Activate Event - Clean old caches
 self.addEventListener('activate', (event) => {
+    console.log('Service Worker: Activating...');
     event.waitUntil(
         caches.keys()
             .then((cacheNames) => {
                 return Promise.all(
-                    cacheNames
-                        .filter((name) => name !== CACHE_NAME)
-                        .map((name) => caches.delete(name))
+                    cacheNames.map((cacheName) => {
+                        if (cacheName !== CACHE_NAME) {
+                            console.log('Service Worker: Deleting old cache:', cacheName);
+                            return caches.delete(cacheName);
+                        }
+                    })
                 );
             })
-            .then(() => self.clients.claim())
+            .then(() => {
+                console.log('Service Worker: Claiming clients');
+                return self.clients.claim();
+            })
     );
 });
 
-// Fetch event - serve from cache, fallback to network
+// Fetch Event - Serve from cache with network fallback
 self.addEventListener('fetch', (event) => {
     // Skip non-GET requests
     if (event.request.method !== 'GET') return;
@@ -47,19 +59,23 @@ self.addEventListener('fetch', (event) => {
             .then((cachedResponse) => {
                 // Return cached version if available
                 if (cachedResponse) {
+                    console.log('Service Worker: Serving from cache:', event.request.url);
+                    
                     // Update cache in background
                     fetch(event.request)
                         .then((response) => {
                             if (response.ok) {
                                 caches.open(CACHE_NAME)
-                                    .then((cache) => cache.put(event.request, response));
+                                    .then((cache) => cache.put(event.request, response.clone()));
                             }
                         })
                         .catch(() => {});
+                    
                     return cachedResponse;
                 }
                 
                 // Otherwise fetch from network
+                console.log('Service Worker: Fetching from network:', event.request.url);
                 return fetch(event.request)
                     .then((response) => {
                         // Cache successful responses
@@ -73,6 +89,7 @@ self.addEventListener('fetch', (event) => {
                     .catch(() => {
                         // Offline fallback for HTML pages
                         if (event.request.headers.get('accept').includes('text/html')) {
+                            console.log('Service Worker: Serving offline fallback');
                             return caches.match('/index.html');
                         }
                     });
@@ -80,33 +97,34 @@ self.addEventListener('fetch', (event) => {
     );
 });
 
-// Background sync for Telegram notifications
+// Background Sync for offline actions
 self.addEventListener('sync', (event) => {
-    if (event.tag === 'telegram-sync') {
-        event.waitUntil(syncTelegramNotifications());
+    if (event.tag === 'progress-sync') {
+        event.waitUntil(syncProgress());
     }
 });
 
-async function syncTelegramNotifications() {
-    // This would sync queued notifications when online
-    console.log('Syncing Telegram notifications...');
+async function syncProgress() {
+    // Sync progress data when online
+    console.log('Service Worker: Syncing progress...');
 }
 
-// Push notifications (for future use)
+// Push Notifications
 self.addEventListener('push', (event) => {
     if (!event.data) return;
     
     const data = event.data.json();
     const options = {
         body: data.body,
-        icon: '/icon-192.png',
-        badge: '/badge-72.png',
+        icon: '/favicon.ico',
+        badge: '/favicon.ico',
         vibrate: [200, 100, 200],
         data: data.url ? { url: data.url } : {},
         actions: [
             { action: 'open', title: 'Öffnen' },
             { action: 'dismiss', title: 'Später' }
-        ]
+        ],
+        silent: false
     };
     
     event.waitUntil(
@@ -114,6 +132,7 @@ self.addEventListener('push', (event) => {
     );
 });
 
+// Notification Click Handler
 self.addEventListener('notificationclick', (event) => {
     event.notification.close();
     
@@ -121,5 +140,30 @@ self.addEventListener('notificationclick', (event) => {
         event.waitUntil(
             clients.openWindow(event.notification.data.url)
         );
+    } else if (event.action === 'dismiss') {
+        // Just close the notification
+        return;
+    } else {
+        // Default action - open the app
+        event.waitUntil(
+            clients.matchAll()
+                .then((clientList) => {
+                    for (const client of clientList) {
+                        if (client.url === '/' && 'focus' in client) {
+                            return client.focus();
+                        }
+                    }
+                    if (clients.openWindow) {
+                        return clients.openWindow('/');
+                    }
+                })
+        );
+    }
+});
+
+// Message Handling
+self.addEventListener('message', (event) => {
+    if (event.data && event.data.type === 'SKIP_WAITING') {
+        self.skipWaiting();
     }
 });

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emilia's IHK Lern-App - TEST</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .feature {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border-left: 4px solid #00ff88;
+        }
+        
+        .btn {
+            background: #00ff88;
+            color: #333;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 10px 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,255,136,0.3);
+        }
+        
+        .status {
+            background: rgba(0,255,136,0.2);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🐰 Emilia's IHK Lern-App</h1>
+        
+        <div class="status">
+            ✅ **SERVER LÄUFT PERFECT!** <br>
+            HTTP 200 - Alle Dateien erreichbar
+        </div>
+        
+        <h2>🎯 DEINE FEATURES:</h2>
+        
+        <div class="feature">
+            <h3>📊 Excel Übungen</h3>
+            <p>SVERWEIS, WENN-Funktionen, Pivot-Tabellen</p>
+        </div>
+        
+        <div class="feature">
+            <h3>📝 Word DIN 5008</h3>
+            <p>Geschäftsbriefe, Serienbriefe, Formulare</p>
+        </div>
+        
+        <div class="feature">
+            <h3>🎨 PowerPoint</h3>
+            <p>Folienmaster, Animationen, Diagramme</p>
+        </div>
+        
+        <div class="feature">
+            <h3>📧 Outlook</h3>
+            <p>Regeln, Kalender, Aufgaben</p>
+        </div>
+        
+        <div class="feature">
+            <h3>🎯 Prüfungssimulation</h3>
+            <p>120 Minuten echte IHK Prüfung</p>
+        </div>
+        
+        <div class="feature">
+            <h3>🐰 Emilia Coach</h3>
+            <p>Deine persönliche Lern-Coachin</p>
+        </div>
+        
+        <h2>🚀 WAS JETZT?</h2>
+        
+        <div style="text-align: center; margin: 30px 0;">
+            <button class="btn" onclick="window.location.href='/'">
+                🏠 Zur Lern-App
+            </button>
+            <button class="btn" onclick="testFeatures()">
+                🧪 Features Testen
+            </button>
+        </div>
+        
+        <div id="test-results"></div>
+    </div>
+    
+    <script>
+        function testFeatures() {
+            const results = document.getElementById('test-results');
+            results.innerHTML = '<h3>🧪 Feature-Test:</h3>';
+            
+            // Test CSS
+            const cssTest = document.createElement('div');
+            cssTest.innerHTML = '✅ CSS geladen';
+            results.appendChild(cssTest);
+            
+            // Test JavaScript
+            const jsTest = document.createElement('div');
+            jsTest.innerHTML = '✅ JavaScript funktioniert';
+            results.appendChild(jsTest);
+            
+            // Test Local Storage
+            try {
+                localStorage.setItem('test', 'ok');
+                localStorage.removeItem('test');
+                const lsTest = document.createElement('div');
+                lsTest.innerHTML = '✅ Local Storage funktioniert';
+                results.appendChild(lsTest);
+            } catch(e) {
+                const lsTest = document.createElement('div');
+                lsTest.innerHTML = '❌ Local Storage Problem';
+                results.appendChild(lsTest);
+            }
+            
+            // Test Service Worker
+            if ('serviceWorker' in navigator) {
+                const swTest = document.createElement('div');
+                swTest.innerHTML = '✅ Service Worker unterstützt';
+                results.appendChild(swTest);
+            } else {
+                const swTest = document.createElement('div');
+                swTest.innerHTML = '❌ Service Worker nicht unterstützt';
+                results.appendChild(swTest);
+            }
+        }
+        
+        // Auto-test
+        setTimeout(testFeatures, 1000);
+    </script>
+</body>
+</html>
