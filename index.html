@@ -3,20 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emilia's IHK Lernplattform - Öffentlich</title>
-    <meta name="description" content="Kostenlose Lernplattform für IHK Zwischenprüfung Büromanagement - Excel, Word, PowerPoint, Outlook">
-    <meta name="keywords" content="IHK, Büromanagement, Lernplattform, Excel, Word, PowerPoint, Outlook, Prüfungsvorbereitung">
-    <meta name="author" content="Emilia's IHK Lernplattform">
-    
-    <!-- Open Graph / Social Media -->
-    <meta property="og:title" content="Emilia's IHK Lernplattform">
-    <meta property="og:description" content="Kostenlose Lernplattform für IHK Zwischenprüfung Büromanagement">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="">
-    
-    <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐰</text></svg>">
-    
+    <title>Emilia's Lernplattform - Alex' Prüfungsvorbereitung</title>
     <style>
         * {
             margin: 0;
@@ -25,395 +12,493 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Arial', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #333;
-            line-height: 1.6;
             min-height: 100vh;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
+            color: #2d3436;
+            line-height: 1.6;
             padding: 20px;
         }
         
-        header {
-            text-align: center;
-            padding: 40px 20px;
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
             border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header {
+            text-align: center;
             margin-bottom: 30px;
-            color: white;
         }
         
         .logo {
-            font-size: 4em;
-            margin-bottom: 20px;
-        }
-        
-        h1 {
-            font-size: 2.5em;
+            font-size: 2rem;
+            color: #ff6b9d;
             margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
         
-        .subtitle {
-            font-size: 1.2em;
-            opacity: 0.9;
-            margin-bottom: 30px;
+        .welcome {
+            font-size: 1.2rem;
+            color: #636e72;
         }
         
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-        
-        .feature-card {
-            background: rgba(255,255,255,0.95);
-            padding: 30px;
+        .countdown {
+            background: linear-gradient(135deg, #ff6b9d, #c44569);
+            color: white;
+            padding: 20px;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-        }
-        
-        .feature-icon {
-            font-size: 2.5em;
-            margin-bottom: 15px;
-        }
-        
-        .feature-title {
-            font-size: 1.5em;
-            color: #4a5568;
-            margin-bottom: 10px;
-        }
-        
-        .feature-description {
-            color: #718096;
-            margin-bottom: 20px;
-        }
-        
-        .feature-list {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .feature-list li {
-            padding: 5px 0;
-            color: #4a5568;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        
-        .feature-list li:before {
-            content: "✓ ";
-            color: #48bb78;
-            font-weight: bold;
-        }
-        
-        .cta-section {
             text-align: center;
-            padding: 40px;
-            background: rgba(255,255,255,0.95);
-            border-radius: 20px;
             margin-bottom: 30px;
         }
         
-        .cta-title {
-            font-size: 2em;
-            color: #4a5568;
-            margin-bottom: 20px;
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .time-block {
+            text-align: center;
+        }
+        
+        .time-value {
+            font-size: 2rem;
+            font-weight: bold;
+            display: block;
+        }
+        
+        .time-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .modules {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .module-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .module-card:hover {
+            transform: translateY(-5px);
+            background: #ff6b9d;
+            color: white;
+        }
+        
+        .module-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .progress-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b9d, #c44569);
+            transition: width 0.5s ease;
+        }
+        
+        .challenge {
+            background: linear-gradient(135deg, #f8b500, #f39c12);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
         }
         
         .btn {
-            display: inline-block;
-            padding: 15px 30px;
-            margin: 10px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #ff6b9d;
             color: white;
-            text-decoration: none;
-            border-radius: 10px;
-            font-weight: bold;
-            transition: all 0.3s ease;
             border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
             cursor: pointer;
-            font-size: 1.1em;
+            margin: 10px;
+            transition: all 0.3s ease;
         }
         
         .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102,126,234,0.4);
+            background: #c44569;
+            transform: scale(1.05);
         }
         
-        .btn-secondary {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
         }
         
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-        
-        .stat-card {
-            background: rgba(255,255,255,0.95);
-            padding: 25px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-        
-        .stat-number {
-            font-size: 2.5em;
-            font-weight: bold;
-            color: #667eea;
-            margin-bottom: 10px;
-        }
-        
-        .stat-label {
-            color: #718096;
-            font-weight: 500;
-        }
-        
-        footer {
-            text-align: center;
+        .modal-content {
+            background: white;
+            margin: 5% auto;
             padding: 30px;
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
+            width: 80%;
+            max-width: 600px;
             border-radius: 15px;
-            color: white;
+            position: relative;
         }
         
-        .share-buttons {
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 30px;
+            cursor: pointer;
+        }
+        
+        .lesson-content {
+            margin: 20px 0;
+        }
+        
+        .practice-actions {
             margin: 20px 0;
         }
         
         @media (max-width: 768px) {
             .container {
-                padding: 10px;
+                padding: 15px;
             }
             
-            h1 {
-                font-size: 2em;
-            }
-            
-            .features {
+            .modules {
                 grid-template-columns: 1fr;
-                gap: 15px;
             }
             
-            .feature-card {
-                padding: 20px;
+            .countdown-timer {
+                flex-wrap: wrap;
+                gap: 10px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <div class="logo">🐰</div>
-            <h1>Emilia's IHK Lernplattform</h1>
-            <p class="subtitle">Kostenlose Lernplattform für IHK Zwischenprüfung Büromanagement</p>
-            <div class="share-buttons">
-                <button class="btn" onclick="shareApp()">📱 Teilen</button>
-                <button class="btn btn-secondary" onclick="installApp()">📱 Installieren</button>
+        <div class="header">
+            <div class="logo">💝 Emilia's Lernplattform</div>
+            <div class="welcome">Hallo, mein зайчик! 👋</div>
+        </div>
+
+        <div class="countdown">
+            <h2>🎯 Deine Zwischenprüfung</h2>
+            <div class="countdown-timer">
+                <div class="time-block">
+                    <span class="time-value" id="days">--</span>
+                    <span class="time-label">Tage</span>
+                </div>
+                <div class="time-block">
+                    <span class="time-value" id="hours">--</span>
+                    <span class="time-label">Stunden</span>
+                </div>
+                <div class="time-block">
+                    <span class="time-value" id="minutes">--</span>
+                    <span class="time-label">Minuten</span>
+                </div>
+                <div class="time-block">
+                    <span class="time-value" id="seconds">--</span>
+                    <span class="time-label">Sekunden</span>
+                </div>
             </div>
-        </header>
-        
-        <section class="stats">
-            <div class="stat-card">
-                <div class="stat-number">40+</div>
-                <div class="stat-label">Interaktive Übungen</div>
+            <p>26./27. Februar 2026 - Informationstechnisches Büromanagement</p>
+        </div>
+
+        <div class="progress-section">
+            <h2>📊 Dein Lernfortschritt</h2>
+            <div style="margin: 15px 0;">
+                <h3>📝 Textverarbeitung</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="word-progress" style="width: 0%"></div>
+                </div>
+                <span id="word-text">0% abgeschlossen</span>
             </div>
-            <div class="stat-card">
-                <div class="stat-number">4</div>
-                <div class="stat-label">Office-Anwendungen</div>
+            <div style="margin: 15px 0;">
+                <h3>📊 Tabellenkalkulation</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="excel-progress" style="width: 0%"></div>
+                </div>
+                <span id="excel-text">0% abgeschlossen</span>
             </div>
-            <div class="stat-card">
-                <div class="stat-number">3</div>
-                <div class="stat-label">Prüfungssimulationen</div>
+            <div style="margin: 15px 0;">
+                <h3>🎯 Prüfungssimulation</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="exam-progress" style="width: 0%"></div>
+                </div>
+                <span id="exam-text">0% abgeschlossen</span>
             </div>
-            <div class="stat-card">
-                <div class="stat-number">100%</div>
-                <div class="stat-label">Kostenlos</div>
+        </div>
+
+        <div class="modules">
+            <div class="module-card" onclick="openModule('word')">
+                <div class="module-icon">📝</div>
+                <h3>Microsoft Word</h3>
+                <p>Briefe, Protokolle, DIN 5008</p>
+                <button class="btn">Starten ></button>
             </div>
-        </section>
-        
-        <section class="features">
-            <div class="feature-card">
-                <div class="feature-icon">📊</div>
-                <h3 class="feature-title">Excel</h3>
-                <p class="feature-description">Meistere alle Excel-Funktionen für die Prüfung</p>
-                <ul class="feature-list">
-                    <li>SVERWEIS & XVERWEIS</li>
-                    <li>WENN-Funktionen (verschachtelt)</li>
-                    <li>Pivot-Tabellen & Gruppierung</li>
-                    <li>SUMMEWENN & ZÄHLENWENN</li>
-                    <li>Bedingte Formatierung</li>
-                    <li>Datentools & Bezüge</li>
-                </ul>
-                <button class="btn" onclick="startModule('excel')">Excel üben</button>
+
+            <div class="module-card" onclick="openModule('excel')">
+                <div class="module-icon">📊</div>
+                <h3>Microsoft Excel</h3>
+                <p>Formeln, SVERWEIS, Pivot</p>
+                <button class="btn">Starten ></button>
             </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">📝</div>
-                <h3 class="feature-title">Word</h3>
-                <p class="feature-description">Perfekte DIN 5008 Geschäftsbriefe</p>
-                <ul class="feature-list">
-                    <li>DIN 5008 Briefaufbau</li>
-                    <li>Serienbriefe erstellen</li>
-                    <li>Formulare & Vorlagen</li>
-                    <li>Formatvorlagen</li>
-                    <li>Inhaltsverzeichnisse</li>
-                    <li>Tabellen & Grafiken</li>
-                </ul>
-                <button class="btn" onclick="startModule('word')">Word üben</button>
+
+            <div class="module-card" onclick="openModule('practice')">
+                <div class="module-icon">🎯</div>
+                <h3>Prüfungssimulation</h3>
+                <p>120 Min. Simulation</p>
+                <button class="btn">Starten ></button>
             </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">🎨</div>
-                <h3 class="feature-title">PowerPoint</h3>
-                <p class="feature-description">Professionelle Präsentationen erstellen</p>
-                <ul class="feature-list">
-                    <li>Folienmaster gestalten</li>
-                    <li>Animationen & Übergänge</li>
-                    <li>Diagramme & SmartArt</li>
-                    <li>Bilder & Medien</li>
-                    <li>Hyperlinks & Aktionen</li>
-                    <li>Präsentationstools</li>
-                </ul>
-                <button class="btn" onclick="startModule('powerpoint')">PowerPoint üben</button>
+
+            <div class="module-card" onclick="openModule('tutor')">
+                <div class="module-icon">💝</div>
+                <h3>Emilia Tutor</h3>
+                <p>Persönliche Hilfe</p>
+                <button class="btn">Chat starten ></button>
             </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">📧</div>
-                <h3 class="feature-title">Outlook</h3>
-                <p class="feature-description">Effiziente E-Mail & Zeitverwaltung</p>
-                <ul class="feature-list">
-                    <li>E-Mail Regeln erstellen</li>
-                    <li>Kalender & Termine</li>
-                    <li>Aufgaben & To-Do</li>
-                    <li>Kontakte & Verteiler</li>
-                    <li>QuickSteps</li>
-                    <li>Zeitzonen & Besprechungen</li>
-                </ul>
-                <button class="btn" onclick="startModule('outlook')">Outlook üben</button>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">🎯</div>
-                <h3 class="feature-title">Prüfungssimulation</h3>
-                <p class="feature-description">Echte Prüfung unter Originalbedingungen</p>
-                <ul class="feature-list">
-                    <li>120 Minuten Zeit</li>
-                    <li>AKA Musteraufgaben</li>
-                    <li>Alle Office-Programme</li>
-                    <li>Realistische Bewertung</li>
-                    <li>Zeitmanagement-Training</li>
-                    <li>Prüfungs-Nervosität überwinden</li>
-                </ul>
-                <button class="btn" onclick="startSimulation()">Simulation starten</button>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">🐰</div>
-                <h3 class="feature-title">Emilia Coach</h3>
-                <p class="feature-description">Deine persönliche Lern-Coachin</p>
-                <ul class="feature-list">
-                    <li>Tägliche Motivation</li>
-                    <li>Lernpläne erstellen</li>
-                    <li>Schwachstellen analysieren</li>
-                    <li>Fortschritt verfolgen</li>
-                    <li>Tipps & Tricks</li>
-                    <li>24/7 Unterstützung</li>
-                </ul>
-                <button class="btn" onclick="openCoach()">Coach starten</button>
-            </div>
-        </section>
-        
-        <section class="cta-section">
-            <h2 class="cta-title">🚀 Bereit für deine Prüfung?</h2>
-            <p style="font-size: 1.2em; color: #718096; margin-bottom: 30px;">
-                Starte jetzt kostenlos und bestehe deine IHK Zwischenprüfung mit Bravur!
-            </p>
-            <div>
-                <button class="btn" onclick="startLearning()">🎯 Jetzt starten</button>
-                <button class="btn btn-secondary" onclick="showInfo()">ℹ️ Mehr Infos</button>
-            </div>
-        </section>
-        
-        <footer>
-            <p>🐰 Emilia's IHK Lernplattform - 100% Kostenlos</p>
-            <p style="opacity: 0.8; font-size: 0.9em; margin-top: 10px;">
-                Gebaut mit ❤️ für alle angehenden Kaufleute für Büromanagement
-            </p>
-        </footer>
+        </div>
+
+        <div class="challenge">
+            <h2>🔥 Tägliche Herausforderung</h2>
+            <p id="daily-challenge">Heute: Erstelle ein Geschäftsbrief nach DIN 5008!</p>
+            <button class="btn" onclick="startDailyChallenge()">Annehmen ></button>
+        </div>
     </div>
-    
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
     <script>
-        // App Funktionen
-        function startLearning() {
-            alert('🚀 Lern-App wird gestartet! Hier kommt die vollständige Lernplattform...');
-            // Später zur Haupt-App weiterleiten
-        }
-        
-        function startModule(module) {
-            alert(`📚 ${module.charAt(0).toUpperCase() + module.slice(1)} Modul wird geladen...`);
-        }
-        
-        function startSimulation() {
-            alert('🎯 Prüfungssimulation wird vorbereitet...');
-        }
-        
-        function openCoach() {
-            alert('🐰 Emilia Coach wird gestartet...');
-        }
-        
-        function shareApp() {
-            if (navigator.share) {
-                navigator.share({
-                    title: 'Emilia\'s IHK Lernplattform',
-                    text: 'Kostenlose Lernplattform für IHK Zwischenprüfung Büromanagement',
-                    url: window.location.href
-                });
-            } else {
-                alert('📱 Teilen wird vorbereitet...');
+        // Globale Variablen
+        let learningProgress = {
+            word: 0,
+            excel: 0,
+            practice: 0
+        };
+
+        // Countdown
+        function updateCountdown() {
+            const examDate = new Date('2026-02-26T09:00:00');
+            const now = new Date();
+            const timeLeft = examDate - now;
+            
+            if (timeLeft > 0) {
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                
+                document.getElementById('days').textContent = days.toString().padStart(2, '0');
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
             }
         }
-        
-        function installApp() {
-            if ('serviceWorker' in navigator && 'BeforeInstallPromptEvent' in window) {
-                alert('📱 App wird installiert...');
-            } else {
-                alert('📱 Auf dem Home-Bildschirm hinzufügen für schnellen Zugriff!');
+
+        // Progress laden
+        function loadProgress() {
+            const saved = localStorage.getItem('emiliaLearningProgress');
+            if (saved) {
+                learningProgress = JSON.parse(saved);
             }
+            updateProgressDisplay();
         }
-        
-        function showInfo() {
-            alert('ℹ️ Emilia\'s IHK Lernplattform ist eine kostenlose, werbefreie Lernplattform speziell für die IHK Zwischenprüfung Kaufmann für Büromanagement.');
+
+        function updateProgressDisplay() {
+            document.getElementById('word-progress').style.width = learningProgress.word + '%';
+            document.getElementById('excel-progress').style.width = learningProgress.excel + '%';
+            document.getElementById('exam-progress').style.width = learningProgress.practice + '%';
+            
+            document.getElementById('word-text').textContent = learningProgress.word + '% abgeschlossen';
+            document.getElementById('excel-text').textContent = learningProgress.excel + '% abgeschlossen';
+            document.getElementById('exam-text').textContent = learningProgress.practice + '% abgeschlossen';
         }
-        
-        // Service Worker Registration
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/sw.js')
-                .then(registration => console.log('Service Worker registered'))
-                .catch(error => console.log('Service Worker registration failed'));
+
+        function updateProgress(module, percentage) {
+            learningProgress[module] = Math.min(100, learningProgress[module] + percentage);
+            localStorage.setItem('emiliaLearningProgress', JSON.stringify(learningProgress));
+            updateProgressDisplay();
+            showMessage('Super, mein зайcookie! Progress: ' + learningProgress[module] + '%');
         }
-        
-        // PWA Install Prompt
-        let deferredPrompt;
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
+
+        // Module
+        function openModule(module) {
+            let content = '';
+            
+            switch(module) {
+                case 'word':
+                    content = `
+                        <h2>📝 Microsoft Word</h2>
+                        <div class="lesson-content">
+                            <h3>DIN 5008 - Schreibregeln</h3>
+                            <ul>
+                                <li>Briefaufbau: Absender + Empfänger + Datum + Betreff</li>
+                                <li>Ränder: Links 2,5cm, Rechts 2cm, Oben/Unten 2cm</li>
+                                <li>Schrift: 12pt, 1,5 Zeilenabstand</li>
+                                <li>Anrede: Sehr geehrte/r...</li>
+                                <li>Grußformel: Mit freundlichen Grüßen</li>
+                            </ul>
+                            <div class="practice-actions">
+                                <button class="btn" onclick="updateProgress('word', 10)">Übung abgeschlossen</button>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'excel':
+                    content = `
+                        <h2>📊 Microsoft Excel</h2>
+                        <div class="lesson-content">
+                            <h3>Wichtige Funktionen</h3>
+                            <ul>
+                                <li>SUMME() - Summe berechnen</li>
+                                <li>SVERWEIS() - Daten suchen</li>
+                                <li>WENN() - Bedingte Formeln</li>
+                                <li>Pivot-Tabellen - Daten auswerten</li>
+                            </ul>
+                            <div class="practice-actions">
+                                <button class="btn" onclick="updateProgress('excel', 10)">Übung abgeschlossen</button>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'practice':
+                    content = `
+                        <h2>🎯 Prüfungssimulation</h2>
+                        <div class="lesson-content">
+                            <p>120 Minuten Zeit für:</p>
+                            <ul>
+                                <li>Textverarbeitungsaufgabe (60 Min)</li>
+                                <li>Tabellenkalkulation (60 Min)</li>
+                                <li>Ganzheitlicher Arbeitsauftrag</li>
+                            </ul>
+                            <div class="practice-actions">
+                                <button class="btn" onclick="updateProgress('practice', 15)">Simulation abgeschlossen</button>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'tutor':
+                    content = `
+                        <h2>💝 Emilia Tutor</h2>
+                        <div class="lesson-content">
+                            <p>Hallo mein зайчик! Ich bin hier für dich!</p>
+                            <p>Frag mich alles, was du wissen möchtest:</p>
+                            <ul>
+                                <li>❓ Fragen zu Word/Excel</li>
+                                <li>💡 Lern-Tipps</li>
+                                <li>🎯 Prüfungsvorbereitung</li>
+                                <li>💝 Motivation</li>
+                            </ul>
+                            <p>Schreib mir einfach deine Frage!</p>
+                            <div class="practice-actions">
+                                <button class="btn" onclick="showMessage('Ich bin für dich da, mein зайчик! 💝')">Tutor-Nachricht</button>
+                            </div>
+                        </div>
+                    `;
+                    break;
+            }
+            
+            document.getElementById('modal-body').innerHTML = content;
+            document.getElementById('modal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        function startDailyChallenge() {
+            showMessage('Super! Tägliche Herausforderung angenommen! 💝');
+            updateProgress('practice', 5);
+        }
+
+        function showMessage(msg) {
+            const toast = document.createElement('div');
+            toast.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: linear-gradient(135deg, #ff6b9d, #c44569);
+                color: white;
+                padding: 15px;
+                border-radius: 10px;
+                z-index: 1001;
+                animation: slideIn 0.3s ease;
+            `;
+            toast.textContent = msg;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+
+        // Daily Challenge
+        function generateDailyChallenge() {
+            const challenges = [
+                "Erstelle ein Geschäftsbrief nach DIN 5008!",
+                "Berechne Umsatzstatistik mit Excel!",
+                "Erstelle ein Meeting-Protokoll!",
+                "Analysiere Kundendaten mit Diagrammen!",
+                "Formatiere einen Bericht mit Inhaltsverzeichnis!"
+            ];
+            
+            const today = new Date().getDate();
+            const challenge = challenges[today % challenges.length];
+            document.getElementById('daily-challenge').textContent = "Heute: " + challenge;
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProgress();
+            generateDailyChallenge();
+            setInterval(updateCountdown, 1000);
+            updateCountdown();
         });
+
+        // Modal close on outside click
+        window.onclick = function(event) {
+            const modal = document.getElementById('modal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
     </script>
 </body>
 </html>
