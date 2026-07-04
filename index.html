@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emilia's IHK Lernplattform - Kaufmann für Büromanagement</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#6366f1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="IHK Lernen">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐰</text></svg>">
+    <!-- Chart.js for progress charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <div class="app">
+        <!-- PWA Install Banner -->
+        <div class="install-banner" id="install-banner">
+            <div class="install-banner-content">
+                <span class="install-banner-icon">🐰</span>
+                <div class="install-banner-text">
+                    <div class="install-banner-title">Emilia's IHK Lernplattform installieren</div>
+                    <div class="install-banner-desc">Offline lernen, Push-Nachrichten erhalten, wie eine echte App nutzen</div>
+                </div>
+            </div>
+            <div class="install-banner-actions">
+                <button class="install-banner-btn primary" id="install-btn">📱 Installieren</button>
+                <button class="install-banner-btn secondary" id="install-dismiss">Später</button>
+            </div>
+        </div>
+
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="emilia-icon">🐰</span>
+                    <h1>IHK Lernplattform</h1>
+                </div>
+                <div class="user-info">
+                    <span id="countdown" class="countdown">Lade...</span>
+                    <div class="progress-ring">
+                        <svg width="60" height="60">
+                            <circle class="progress-bg" cx="30" cy="30" r="26"></circle>
+                            <circle id="progress-circle" class="progress-fill" cx="30" cy="30" r="26"></circle>
+                        </svg>
+                        <span id="progress-text">0%</span>
+                    </div>
+                </div>
+            </div>
+            <nav class="tabs" id="tabs">
+                <button class="tab active" data-tab="dashboard">📊 Dashboard</button>
+                <button class="tab" data-tab="word">📝 Word</button>
+                <button class="tab" data-tab="excel">📊 Excel</button>
+                <button class="tab" data-tab="powerpoint">🎨 PowerPoint</button>
+                <button class="tab" data-tab="outlook">📧 Outlook</button>
+                <button class="tab" data-tab="simulation">🎯 Simulation</button>
+                <button class="tab" data-tab="progress">📈 Fortschritt</button>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Dashboard Tab -->
+            <section id="dashboard-tab" class="tab-content active">
+                <div class="welcome-card">
+                    <h2>Guten Morgen, mein зайчик! 🌅</h2>
+                    <p class="daily-quote" id="daily-quote">Lade Tagesmotivation...</p>
+                    <button class="btn btn-primary" onclick="startMorningCheckin()">☕ Morning Command Center starten</button>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-number" id="total-exercises">0</span>
+                        <span class="stat-label">Übungen gelöst</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" id="study-hours">0h</span>
+                        <span class="stat-label">Lernzeit</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" id="streak">0</span>
+                        <span class="stat-label">Tage am Stück</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" id="weak-areas">0</span>
+                        <span class="stat-label">Schwachstellen</span>
+                    </div>
+                </div>
+
+                <div class="today-plan">
+                    <h3>📅 Heutiger Lernplan</h3>
+                    <div id="today-tasks" class="task-list">
+                        <div class="task-item">
+                            <input type="checkbox" id="task1">
+                            <label for="task1">SVERWEIS/XVERWEIS: 3 Übungen lösen</label>
+                            <span class="task-category excel">Excel</span>
+                        </div>
+                        <div class="task-item">
+                            <input type="checkbox" id="task2">
+                            <label for="task2">DIN 5008 Briefaufbau wiederholen</label>
+                            <span class="task-category word">Word</span>
+                        </div>
+                        <div class="task-item">
+                            <input type="checkbox" id="task3">
+                            <label for="task3">Pivot-Tabelle erstellen & gruppieren</label>
+                            <span class="task-category excel">Excel</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quick-actions">
+                    <h3>⚡ Schnellzugriff</h3>
+                    <div class="action-buttons">
+                        <button class="btn btn-secondary" onclick="switchTab('excel')">📊 Excel Üben</button>
+                        <button class="btn btn-secondary" onclick="switchTab('word')">📝 Word Üben</button>
+                        <button class="btn btn-secondary" onclick="switchTab('simulation')">🎯 Prüfungssimulation</button>
+                        <button class="btn btn-secondary" onclick="switchTab('progress')">📈 Fortschritt</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Word Tab -->
+            <section id="word-tab" class="tab-content">
+                <div class="module-header">
+                    <h2>📝 Word - Textverarbeitung</h2>
+                    <p>DIN 5008, Serienbriefe, Formulare, Vorlagen</p>
+                </div>
+                <div class="exercise-categories">
+                    <div class="category-card">
+                        <h3>📐 DIN 5008 Geschäftsbriefe</h3>
+                        <p>Briefaufbau, Abkürzungen, Zahlenformat, Betreffzeile</p>
+                        <div class="exercise-list" id="word-din-exercises"></div>
+                    </div>
+                    <div class="category-card">
+                        <h3>📨 Serienbriefe</h3>
+                        <p>Datenquelle verbinden, Felder, Vorschau, Druck</p>
+                        <div class="exercise-list" id="word-serienbrief-exercises"></div>
+                    </div>
+                    <div class="category-card">
+                        <h3>📋 Formulare & Vorlagen</h3>
+                        <p>Formularfelder, .dotx, Formatvorlagen, Inhaltsverzeichnis</p>
+                        <div class="exercise-list" id="word-forms-exercises"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Excel Tab -->
+            <section id="excel-tab" class="tab-content">
+                <div class="module-header">
+                    <h2>📊 Excel - Tabellenkalkulation</h2>
+                    <p>SVERWEIS, WENN, Pivot, Bedingte Formatierung - KEIN Taschenrechner!</p>
+                </div>
+                <div class="exercise-categories">
+                    <div class="category-card priority-high">
+                        <h3>🔥 SVERWEIS / XVERWEIS <span class="badge">SEHR HOCH</span></h3>
+                        <p>Exakter/ungefährer Vergleich, WENNFEHLER, #NV vermeiden</p>
+                        <div class="exercise-list" id="excel-sverweis-exercises"></div>
+                    </div>
+                    <div class="category-card priority-high">
+                        <h3>🔥 WENN-Funktionen <span class="badge">SEHR HOCH</span></h3>
+                        <p>WENN, WENNS, verschachtelt, UND/ODER kombinieren</p>
+                        <div class="exercise-list" id="excel-wenn-exercises"></div>
+                    </div>
+                    <div class="category-card priority-high">
+                        <h3>🔥 Pivot-Tabellen <span class="badge">SEHR HOCH</span></h3>
+                        <p>Erstellen, Gruppieren, berechnete Felder, Slicer</p>
+                        <div class="exercise-list" id="excel-pivot-exercises"></div>
+                    </div>
+                    <div class="category-card">
+                        <h3>📈 Summen/Anzahl-WENN <span class="badge">HOCH</span></h3>
+                        <p>SUMMEWENN/S, ZÄHLENWENN/S mit Kriterien</p>
+                        <div class="exercise-list" id="excel-sumif-exercises"></div>
+                    </div>
+                    <div class="category-card">
+                        <h3>🎨 Bedingte Formatierung <span class="badge">HOCH</span></h3>
+                        <p>Regeln, Datensymbole, Farbskalen, Formeln</p>
+                        <div class="exercise-list" id="excel-cf-exercises"></div>
+                    </div>
+                    <div class="category-card">
+                        <h3>🔗 Bezüge & Datentools <span class="badge">MITTEL</span></h3>
+                        <p>Absolut/relativ, 3D-Bezüge, Text in Spalten, Duplikate</p>
+                        <div class="exercise-list" id="excel-refs-exercises"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PowerPoint Tab -->
+            <section id="powerpoint-tab" class="tab-content">
+                <div class="module-header">
+                    <h2>🎨 PowerPoint - Präsentationsgrafik</h2>
+                    <p>Folienmaster, Animationen, Diagramme, Verknüpfungen</p>
+                </div>
+                <div class="exercise-categories">
+                    <div class="category-card">
+                        <h3>🎭 Folienmaster</h3>
+                        <p>Layouts, Platzhalter, Farbschemata, Schriftarten</p>
+                        <div class="exercise-list" id="ppt-master-exercises"></div>
+                    </div>
+                    <div class="category-card">
+                        <h3>✨ Animationen & Übergänge</h3>
+                        <p>Eintritt, Betonung, Austritt, Pfadanimationen</p>
+                        <div class="exercise-list" id="ppt-anim-exercises"></div>
+                    </div>
+                    <div class="category-card">
+                        <h3>📊 Diagramme & SmartArt</h3>
+                        <p>Einfügen, Daten bearbeiten, Excel-Verknüpfung</p>
+                        <div class="exercise-list" id="ppt-charts-exercises"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Outlook Tab -->
+            <section id="outlook-tab" class="tab-content">
+                <div class="module-header">
+                    <h2>📧 Outlook - E-Mail & Kalender</h2>
+                    <p>Regeln, Kalender, Aufgaben, Kontakte</p>
+                </div>
+                <div class="exercise-categories">
+                    <div class="category-card">
+                        <h3>⚙️ Regeln & QuickSteps</h3>
+                        <p>Automatisieren, Kategorisieren, Weiterleiten</p>
+                        <div class="exercise-list" id="outlook-rules-exercises"></div>
+                    </div>
+                    <div class="category-card">
+                        <h3>📅 Kalender & Termine</h3>
+                        <p>Serien, Freigabe, Ressourcen, Zeitzonen</p>
+                        <div class="exercise-list" id="outlook-cal-exercises"></div>
+                    </div>
+                    <div class="category-card">
+                        <h3>✅ Aufgaben & Kontakte</h3>
+                        <p>To-Do, Zuweisen, Nachverfolgen, Verteiler</p>
+                        <div class="exercise-list" id="outlook-tasks-exercises"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Simulation Tab -->
+            <section id="simulation-tab" class="tab-content">
+                <div class="module-header">
+                    <h2>🎯 Prüfungssimulation - Teil 1 (120 Min)</h2>
+                    <p>Echte IHK-Aufgaben unter Prüfungsbedingungen</p>
+                </div>
+                <div class="simulation-setup">
+                    <div class="sim-card">
+                        <h3>📋 Neue Simulation starten</h3>
+                        <p>Wähle einen Prüfungssatz aus den offiziellen AKA-Musteraufgaben</p>
+                        <select id="simulation-select" class="form-select">
+                            <option value="">-- Prüfungssatz wählen --</option>
+                            <option value="aka-2024-1">AKA Musteraufgabe 2024/1 (Herbst)</option>
+                            <option value="aka-2024-2">AKA Musteraufgabe 2024/2 (Frühjahr)</option>
+                            <option value="aka-2023-1">AKA Musteraufgabe 2023/1</option>
+                            <option value="aka-2023-2">AKA Musteraufgabe 2023/2</option>
+                            <option value="custom">Benutzerdefiniert (eigene Schwerpunkte)</option>
+                        </select>
+                        <div class="sim-options">
+                            <label><input type="checkbox" id="timer-enabled" checked> ⏱️ 120 Minuten Timer</label>
+                            <label><input type="checkbox" id="din-allowed"> 📖 DIN 5008 erlaubt</label>
+                            <label><input type="checkbox" id="dict-allowed"> 📚 Wörterbuch erlaubt</label>
+                        </div>
+                        <button class="btn btn-primary" onclick="startSimulation()">🚀 Simulation starten</button>
+                    </div>
+                    <div class="sim-card" id="active-simulation" style="display:none;">
+                        <h3>⏱️ Laufende Simulation</h3>
+                        <div class="timer-display" id="timer-display">120:00</div>
+                        <div class="sim-progress">
+                            <div class="progress-bar"><div id="sim-progress-fill" class="progress-fill-bar"></div></div>
+                            <span id="sim-progress-text">0% abgeschlossen</span>
+                        </div>
+                        <div class="sim-tasks" id="sim-tasks"></div>
+                        <button class="btn btn-danger" onclick="endSimulation()">⏹️ Abbrechen</button>
+                    </div>
+                    <div class="sim-card">
+                        <h3>📊 Vergangene Simulationen</h3>
+                        <div id="past-simulations" class="past-sims"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Progress Tab -->
+            <section id="progress-tab" class="tab-content">
+                <div class="module-header">
+                    <h2>📈 Lernfortschritt & Analytics</h2>
+                    <p>Dein Weg zur bestandenen Prüfung</p>
+                </div>
+                <div class="progress-grid">
+                    <div class="progress-card">
+                        <h3>📊 Themen-Fortschritt</h3>
+                        <canvas id="progress-chart" width="400" height="200"></canvas>
+                    </div>
+                    <div class="progress-card">
+                        <h3>⏱️ Wochenübersicht</h3>
+                        <canvas id="weekly-chart" width="400" height="200"></canvas>
+                    </div>
+                    <div class="progress-card full-width">
+                        <h3>🎯 Schwachstellen-Analyse</h3>
+                        <div id="weakness-analysis" class="weakness-list"></div>
+                    </div>
+                    <div class="progress-card full-width">
+                        <h3>🏆 Meilensteine</h3>
+                        <div id="milestones" class="milestone-list"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Exercise Modal -->
+        <div id="exercise-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="modal-title">Übung</h3>
+                    <button class="close-btn" onclick="closeModal()">&times;</button>
+                </div>
+                <div class="modal-body" id="modal-body">
+                    <!-- Exercise content injected here -->
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" onclick="closeModal()">Schließen</button>
+                    <button class="btn btn-primary" id="check-answer-btn" onclick="checkAnswer()">✅ Prüfen</button>
+                    <button class="btn btn-success" id="next-exercise-btn" onclick="nextExercise()" style="display:none;">➡️ Nächste</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Emilia Coach Chat -->
+        <div id="coach-chat" class="coach-chat">
+            <div class="chat-header" onclick="toggleChat()">
+                <span class="emilia-avatar">🐰</span>
+                <span>Emilia Coach</span>
+                <span class="chat-toggle">▼</span>
+            </div>
+            <div class="chat-body" id="chat-body">
+                <div class="message coach">
+                    <div class="message-avatar">🐰</div>
+                    <div class="message-content">
+                        <p>Hallo mein зайчик! 🌅 Ich bin dein Lern-Coach. Wie kann ich dir heute helfen?</p>
+                        <div class="quick-replies">
+                            <button onclick="coachReply('lernplan')">📅 Lernplan erstellen</button>
+                            <button onclick="coachReply('motivation')">💪 Motivation brauchen</button>
+                            <button onclick="coachReply('schwachstellen')">🎯 Schwachstellen finden</button>
+                            <button onclick="coachReply('übung')">📝 Übung machen</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="chat-input" placeholder="Frag Emilia..." onkeypress="handleChatEnter(event)">
+                <button onclick="sendChat()">➤</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
