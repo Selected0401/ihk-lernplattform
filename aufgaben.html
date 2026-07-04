@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aufgaben-Engine - IHK Lernplattform</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/aufgaben-engine.css">
+    <link rel="stylesheet" href="css/fortschritt.css">
+    <link rel="stylesheet" href="css/pruefung.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#667eea">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>🎯 Aufgaben-Engine</h1>
+                    <span class="subtitle">Echte Office-Aufgaben für IHK-Prüfung</span>
+                </div>
+                <div class="header-actions">
+                    <button class="theme-toggle" id="themeToggle">
+                        <span class="theme-icon">🌙</span>
+                    </button>
+                    <button class="btn btn-outline" id="helpBtn">
+                        <span>❓</span> Hilfe
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="task-nav">
+            <div class="nav-tabs">
+                <button class="nav-tab active" data-tab="word">
+                    <span class="nav-icon">📝</span>
+                    <span>Word</span>
+                </button>
+                <button class="nav-tab" data-tab="excel">
+                    <span class="nav-icon">📊</span>
+                    <span>Excel</span>
+                </button>
+                <button class="nav-tab" data-tab="powerpoint">
+                    <span class="nav-icon">📈</span>
+                    <span>PowerPoint</span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Task Selection -->
+            <section class="task-selection" id="taskSelection">
+                <div class="section-header">
+                    <h2>Aufgaben auswählen</h2>
+                    <div class="filter-controls">
+                        <select class="filter-select" id="difficultyFilter">
+                            <option value="all">Alle Schwierigkeiten</option>
+                            <option value="anfaenger">Anfänger</option>
+                            <option value="mittel">Mittel</option>
+                            <option value="fortgeschritten">Fortgeschritten</option>
+                        </select>
+                        <select class="filter-select" id="categoryFilter">
+                            <option value="all">Alle Kategorien</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="task-grid" id="taskGrid">
+                    <!-- Tasks werden dynamisch geladen -->
+                </div>
+            </section>
+
+            <!-- Word Task Engine -->
+            <section class="task-engine word-engine" id="wordEngine" style="display: none;">
+                <div class="engine-header">
+                    <h3>Word Aufgaben-Engine</h3>
+                    <div class="engine-controls">
+                        <button class="btn btn-sm" id="wordTemplateBtn">📄 Vorlage</button>
+                        <button class="btn btn-sm" id="wordSaveBtn">💾 Speichern</button>
+                        <button class="btn btn-sm" id="wordExportBtn">📤 Export</button>
+                    </div>
+                </div>
+                <div class="word-workspace">
+                    <!-- Rich Text Editor Toolbar -->
+                    <div class="word-toolbar">
+                        <div class="toolbar-group">
+                            <button class="toolbar-btn" data-command="bold" title="Fett">
+                                <strong>B</strong>
+                            </button>
+                            <button class="toolbar-btn" data-command="italic" title="Kursiv">
+                                <em>I</em>
+                            </button>
+                            <button class="toolbar-btn" data-command="underline" title="Unterstrichen">
+                                <u>U</u>
+                            </button>
+                        </div>
+                        <div class="toolbar-group">
+                            <button class="toolbar-btn" data-command="formatBlock" data-value="h1" title="Überschrift 1">H1</button>
+                            <button class="toolbar-btn" data-command="formatBlock" data-value="h2" title="Überschrift 2">H2</button>
+                            <button class="toolbar-btn" data-command="formatBlock" data-value="h3" title="Überschrift 3">H3</button>
+                            <button class="toolbar-btn" data-command="formatBlock" data-value="p" title="Normal">P</button>
+                        </div>
+                        <div class="toolbar-group">
+                            <button class="toolbar-btn" data-command="justifyLeft" title="Links ausrichten">⬅</button>
+                            <button class="toolbar-btn" data-command="justifyCenter" title="Zentriert">⬌</button>
+                            <button class="toolbar-btn" data-command="justifyRight" title="Rechts ausrichten">➡</button>
+                            <button class="toolbar-btn" data-command="justifyFull" title="Blocksatz">⬌</button>
+                        </div>
+                        <div class="toolbar-group">
+                            <button class="toolbar-btn" data-command="insertUnorderedList" title="Aufzählung">•</button>
+                            <button class="toolbar-btn" data-command="insertOrderedList" title="Nummerierung">1.</button>
+                            <button class="toolbar-btn" id="wordTableBtn" title="Tabelle einfügen">⊞</button>
+                            <button class="toolbar-btn" id="wordImageBtn" title="Bild einfügen">🖼</button>
+                        </div>
+                        <div class="toolbar-group">
+                            <select class="font-select" id="fontFamily">
+                                <option value="Arial">Arial</option>
+                                <option value="Times New Roman">Times New Roman</option>
+                                <option value="Calibri">Calibri</option>
+                                <option value="Verdana">Verdana</option>
+                            </select>
+                            <select class="font-size-select" id="fontSize">
+                                <option value="1">8pt</option>
+                                <option value="2">10pt</option>
+                                <option value="3" selected>12pt</option>
+                                <option value="4">14pt</option>
+                                <option value="5">16pt</option>
+                                <option value="6">18pt</option>
+                                <option value="7">20pt</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Word Editor -->
+                    <div class="word-editor" contenteditable="true" id="wordEditor">
+                        <p>Beginnen Sie hier mit Ihrer Aufgabe...</p>
+                    </div>
+                    <!-- Word Status Bar -->
+                    <div class="word-statusbar">
+                        <span class="word-count">Wörter: <span id="wordCount">0</span></span>
+                        <span class="char-count">Zeichen: <span id="charCount">0</span></span>
+                        <span class="page-info">Seite 1 von 1</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Excel Task Engine -->
+            <section class="task-engine excel-engine" id="excelEngine" style="display: none;">
+                <div class="engine-header">
+                    <h3>Excel Aufgaben-Engine</h3>
+                    <div class="engine-controls">
+                        <button class="btn btn-sm" id="excelFormulaBtn">📊 Formeln</button>
+                        <button class="btn btn-sm" id="excelChartBtn">📈 Diagramm</button>
+                        <button class="btn btn-sm" id="excelSaveBtn">💾 Speichern</button>
+                        <button class="btn btn-sm" id="excelExportBtn">📤 Export</button>
+                    </div>
+                </div>
+                <div class="excel-workspace">
+                    <!-- Excel Toolbar -->
+                    <div class="excel-toolbar">
+                        <div class="toolbar-group">
+                            <button class="toolbar-btn" id="excelBoldBtn" title="Fett"><strong>B</strong></button>
+                            <button class="toolbar-btn" id="excelItalicBtn" title="Kursiv"><em>I</em></button>
+                            <button class="toolbar-btn" id="excelUnderlineBtn" title="Unterstrichen"><u>U</u></button>
+                        </div>
+                        <div class="toolbar-group">
+                            <button class="toolbar-btn" id="excelAlignLeftBtn" title="Links">⬅</button>
+                            <button class="toolbar-btn" id="excelAlignCenterBtn" title="Zentriert">⬌</button>
+                            <button class="toolbar-btn" id="excelAlignRightBtn" title="Rechts">➡</button>
+                        </div>
+                        <div class="toolbar-group">
+                            <button class="toolbar-btn" id="excelSumBtn" title="SUMME">Σ</button>
+                            <button class="toolbar-btn" id="excelAverageBtn" title="MITTELWERT">Ø</button>
+                            <button class="toolbar-btn" id="excelCountBtn" title="ANZAHL">#</button>
+                        </div>
+                        <div class="toolbar-group">
+                            <button class="toolbar-btn" id="excelBorderBtn" title="Rahmen">⊞</button>
+                            <button class="toolbar-btn" id="excelFillBtn" title="Füllen">🪣</button>
+                            <button class="toolbar-btn" id="excelFormatBtn" title="Format">💱</button>
+                        </div>
+                    </div>
+                    <!-- Formula Bar -->
+                    <div class="excel-formula-bar">
+                        <div class="formula-label">fx</div>
+                        <input type="text" class="formula-input" id="formulaInput" placeholder="Formel eingeben...">
+                    </div>
+                    <!-- Excel Grid -->
+                    <div class="excel-grid-container">
+                        <div class="excel-column-headers">
+                            <div class="corner-cell"></div>
+                            <!-- Column headers A-Z werden generiert -->
+                        </div>
+                        <div class="excel-row-headers">
+                            <!-- Row headers 1-1000 werden generiert -->
+                        </div>
+                        <div class="excel-grid" id="excelGrid">
+                            <!-- Excel cells werden generiert -->
+                        </div>
+                    </div>
+                    <!-- Excel Status Bar -->
+                    <div class="excel-statusbar">
+                        <span class="cell-info">Zelle: <span id="currentCell">A1</span></span>
+                        <span class="formula-info">Formel: <span id="currentFormula">-</span></span>
+                        <span class="sum-info">Summe: <span id="sumInfo">0</span></span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PowerPoint Task Engine -->
+            <section class="task-engine powerpoint-engine" id="powerpointEngine" style="display: none;">
+                <div class="engine-header">
+                    <h3>PowerPoint Aufgaben-Engine</h3>
+                    <div class="engine-controls">
+                        <button class="btn btn-sm" id="pptNewSlideBtn">📄 Neue Folie</button>
+                        <button class="btn btn-sm" id="pptLayoutBtn">📐 Layout</button>
+                        <button class="btn btn-sm" id="pptAnimationBtn">✨ Animation</button>
+                        <button class="btn btn-sm" id="pptSaveBtn">💾 Speichern</button>
+                    </div>
+                </div>
+                <div class="powerpoint-workspace">
+                    <!-- Slide Thumbnails -->
+                    <div class="ppt-thumbnails">
+                        <div class="thumbnails-header">
+                            <h4>Folien</h4>
+                            <button class="btn btn-xs" id="addSlideBtn">+</button>
+                        </div>
+                        <div class="thumbnails-list" id="thumbnailsList">
+                            <!-- Slide thumbnails werden generiert -->
+                        </div>
+                    </div>
+                    <!-- Main Slide Area -->
+                    <div class="ppt-main-area">
+                        <!-- Slide Toolbar -->
+                        <div class="ppt-toolbar">
+                            <div class="toolbar-group">
+                                <button class="toolbar-btn" id="pptTextBtn" title="Text">T</button>
+                                <button class="toolbar-btn" id="pptImageBtn" title="Bild">🖼</button>
+                                <button class="toolbar-btn" id="pptShapeBtn" title="Form">⬚</button>
+                                <button class="toolbar-btn" id="pptChartBtn" title="Diagramm">📊</button>
+                            </div>
+                            <div class="toolbar-group">
+                                <button class="toolbar-btn" id="pptBoldBtn" title="Fett"><strong>B</strong></button>
+                                <button class="toolbar-btn" id="pptItalicBtn" title="Kursiv"><em>I</em></button>
+                                <button class="toolbar-btn" id="pptUnderlineBtn" title="Unterstrichen"><u>U</u></button>
+                            </div>
+                            <div class="toolbar-group">
+                                <button class="toolbar-btn" id="pptAlignLeftBtn" title="Links">⬅</button>
+                                <button class="toolbar-btn" id="pptAlignCenterBtn" title="Zentriert">⬌</button>
+                                <button class="toolbar-btn" id="pptAlignRightBtn" title="Rechts">➡</button>
+                            </div>
+                        </div>
+                        <!-- Slide Canvas -->
+                        <div class="ppt-slide-canvas" id="slideCanvas">
+                            <div class="slide-placeholder">
+                                <div class="slide-content">
+                                    <h2 class="slide-title" contenteditable="true">Titel der Folie</h2>
+                                    <p class="slide-subtitle" contenteditable="true">Untertitel hier einfügen</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Notes Panel -->
+                        <div class="ppt-notes-panel">
+                            <div class="notes-header">
+                                <h4>Notizen</h4>
+                            </div>
+                            <div class="notes-content" contenteditable="true" id="notesContent">
+                                <p>Fügen Sie hier Ihre Referentennotizen ein...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Task Details Panel -->
+            <section class="task-details" id="taskDetails" style="display: none;">
+                <div class="details-header">
+                    <h3 id="taskTitle">Aufgabe</h3>
+                    <button class="btn btn-sm" id="closeDetailsBtn">✕</button>
+                </div>
+                <div class="details-content">
+                    <div class="task-meta">
+                        <span class="difficulty-badge" id="taskDifficulty">Anfänger</span>
+                        <span class="points-badge" id="taskPoints">20 Punkte</span>
+                        <span class="time-badge" id="taskTime">15 Min</span>
+                    </div>
+                    <div class="task-description">
+                        <h4>Beschreibung</h4>
+                        <p id="taskDescription">Aufgabenbeschreibung...</p>
+                    </div>
+                    <div class="task-hints">
+                        <h4>Hinweise</h4>
+                        <ul id="taskHints">
+                            <li>Hinweis 1</li>
+                        </ul>
+                    </div>
+                    <div class="task-actions">
+                        <button class="btn btn-primary" id="startTaskBtn">Aufgabe starten</button>
+                        <button class="btn btn-outline" id="previewSolutionBtn">Lösung ansehen</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+            </div>
+            <div class="progress-text">
+                <span id="progressText">0% abgeschlossen</span>
+                <span id="taskCounter">0 von 0 Aufgaben</span>
+            </div>
+        </div>
+
+        <!-- Help Modal -->
+        <div class="modal" id="helpModal" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Hilfe zur Aufgaben-Engine</h3>
+                    <button class="modal-close" id="closeHelpBtn">✕</button>
+                </div>
+                <div class="modal-body">
+                    <div class="help-section">
+                        <h4>📝 Word Aufgaben</h4>
+                        <p>Erstellen Sie echte Dokumente mit Formatierungen, Tabellen und Grafiken.</p>
+                    </div>
+                    <div class="help-section">
+                        <h4>📊 Excel Aufgaben</h4>
+                        <p>Arbeiten Sie mit echten Tabellen, Formeln und Diagrammen.</p>
+                    </div>
+                    <div class="help-section">
+                        <h4>📈 PowerPoint Aufgaben</h4>
+                        <p>Gestalten Sie professionelle Präsentationen mit Drag & Drop.</p>
+                    </div>
+                    <div class="help-section">
+                        <h4>⌨️ Tastenkürzel</h4>
+                        <ul>
+                            <li><strong>Strg+B</strong> - Fett</li>
+                            <li><strong>Strg+I</strong> - Kursiv</li>
+                            <li><strong>Strg+U</strong> - Unterstrichen</li>
+                            <li><strong>Strg+S</strong> - Speichern</li>
+                            <li><strong>Strg+Z</strong> - Rückgängig</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Success Toast -->
+        <div class="toast" id="successToast" style="display: none;">
+            <div class="toast-content">
+                <span class="toast-icon">✅</span>
+                <span class="toast-message">Aufgabe erfolgreich abgeschlossen!</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/aufgaben-engine.js"></script>
+    <script src="js/fortschritt.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

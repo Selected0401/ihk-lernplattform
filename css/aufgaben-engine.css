@@ -1,0 +1,1100 @@
+/* Aufgaben-Engine Styles - Echte Office-Aufgaben für IHK */
+
+/* ===== TASK NAVIGATION ===== */
+.task-nav {
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+    padding: var(--spacing-md) 0;
+    margin-bottom: var(--spacing-lg);
+    position: sticky;
+    top: 0;
+    z-index: var(--z-dropdown);
+    backdrop-filter: blur(10px);
+    background: rgba(var(--bg-card-rgb, 255, 255, 255), 0.9);
+}
+
+.nav-tabs {
+    display: flex;
+    gap: var(--spacing-sm);
+    padding: 0 var(--spacing-lg);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.nav-tab {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: var(--bg-primary);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    font-weight: 500;
+}
+
+.nav-tab:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.nav-tab.active {
+    background: var(--gradient-primary);
+    color: white;
+    border-color: var(--primary);
+    box-shadow: var(--shadow-lg);
+}
+
+.nav-icon {
+    font-size: var(--font-size-lg);
+}
+
+/* ===== TASK SELECTION ===== */
+.task-selection {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.section-header h2 {
+    color: var(--text-primary);
+    font-size: var(--font-size-2xl);
+    font-weight: 600;
+}
+
+.filter-controls {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.filter-select {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--bg-card);
+    color: var(--text-primary);
+    font-size: var(--font-size-sm);
+}
+
+.task-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.task-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    transition: all var(--transition-normal);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.task-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--gradient-primary);
+    transform: scaleX(0);
+    transition: transform var(--transition-normal);
+}
+
+.task-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary);
+}
+
+.task-card:hover::before {
+    transform: scaleX(1);
+}
+
+.task-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--spacing-md);
+}
+
+.task-card-title {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.task-card-category {
+    display: inline-block;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: var(--gradient-primary);
+    color: white;
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-xs);
+    font-weight: 500;
+}
+
+.task-card-description {
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-sm);
+}
+
+.task-card-meta {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.task-meta-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    color: var(--text-muted);
+    font-size: var(--font-size-xs);
+}
+
+.difficulty-badge {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-xs);
+    font-weight: 500;
+}
+
+.difficulty-badge.anfaenger {
+    background: var(--success);
+    color: white;
+}
+
+.difficulty-badge.mittel {
+    background: var(--warning);
+    color: white;
+}
+
+.difficulty-badge.fortgeschritten {
+    background: var(--danger);
+    color: white;
+}
+
+/* ===== TASK ENGINE ===== */
+.task-engine {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+    display: none;
+}
+
+.task-engine.active {
+    display: block;
+}
+
+.engine-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 2px solid var(--border);
+}
+
+.engine-header h3 {
+    color: var(--text-primary);
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+}
+
+.engine-controls {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+/* ===== WORD ENGINE ===== */
+.word-workspace {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.word-toolbar {
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border);
+    padding: var(--spacing-sm);
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.toolbar-group {
+    display: flex;
+    gap: var(--spacing-xs);
+    padding: 0 var(--spacing-sm);
+    border-right: 1px solid var(--border);
+}
+
+.toolbar-group:last-child {
+    border-right: none;
+}
+
+.toolbar-btn {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    font-size: var(--font-size-sm);
+}
+
+.toolbar-btn:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-1px);
+}
+
+.toolbar-btn.active {
+    background: var(--primary);
+    color: white;
+}
+
+.font-select,
+.font-size-select {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--bg-card);
+    color: var(--text-primary);
+    font-size: var(--font-size-sm);
+}
+
+.word-editor {
+    min-height: 400px;
+    padding: var(--spacing-lg);
+    background: white;
+    color: var(--text-primary);
+    font-family: 'Times New Roman', serif;
+    font-size: 12pt;
+    line-height: 1.5;
+    outline: none;
+    overflow-y: auto;
+    max-height: 600px;
+}
+
+.word-editor:focus {
+    background: var(--bg-light);
+}
+
+.word-statusbar {
+    background: var(--bg-primary);
+    border-top: 1px solid var(--border);
+    padding: var(--spacing-sm) var(--spacing-md);
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+}
+
+/* ===== EXCEL ENGINE ===== */
+.excel-workspace {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.excel-toolbar {
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border);
+    padding: var(--spacing-sm);
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.excel-formula-bar {
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border);
+    padding: var(--spacing-sm) var(--spacing-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.formula-label {
+    background: var(--primary);
+    color: white;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: var(--font-size-xs);
+}
+
+.formula-input {
+    flex: 1;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--bg-card);
+    color: var(--text-primary);
+    font-family: 'Courier New', monospace;
+}
+
+.excel-grid-container {
+    display: flex;
+    background: var(--bg-light);
+    position: relative;
+    height: 500px;
+    overflow: auto;
+}
+
+.excel-column-headers {
+    position: sticky;
+    top: 0;
+    left: 40px;
+    right: 0;
+    display: flex;
+    background: var(--bg-primary);
+    border-bottom: 2px solid var(--border);
+    z-index: 10;
+}
+
+.column-header {
+    width: 80px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid var(--border);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    color: var(--text-primary);
+    background: var(--bg-primary);
+}
+
+.excel-row-headers {
+    position: sticky;
+    left: 0;
+    top: 20px;
+    bottom: 0;
+    width: 40px;
+    background: var(--bg-primary);
+    border-right: 2px solid var(--border);
+    z-index: 10;
+}
+
+.row-header {
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid var(--border);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    color: var(--text-primary);
+    background: var(--bg-primary);
+}
+
+.excel-grid {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-left: 40px;
+    margin-top: 20px;
+}
+
+.excel-row {
+    display: flex;
+}
+
+.excel-cell {
+    width: 80px;
+    height: 20px;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    padding: 0 var(--spacing-xs);
+    font-size: var(--font-size-xs);
+    color: var(--text-primary);
+    background: white;
+    cursor: cell;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.excel-cell:hover {
+    background: var(--bg-light);
+}
+
+.excel-cell.selected {
+    background: var(--primary);
+    color: white;
+}
+
+.excel-cell.editing {
+    background: white;
+    border: 2px solid var(--primary);
+    outline: none;
+}
+
+.excel-statusbar {
+    background: var(--bg-primary);
+    border-top: 1px solid var(--border);
+    padding: var(--spacing-sm) var(--spacing-md);
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+}
+
+/* ===== POWERPOINT ENGINE ===== */
+.powerpoint-workspace {
+    display: flex;
+    gap: var(--spacing-md);
+    height: 600px;
+}
+
+.ppt-thumbnails {
+    width: 150px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+}
+
+.thumbnails-header {
+    padding: var(--spacing-sm);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.thumbnails-header h4 {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.thumbnails-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--spacing-sm);
+}
+
+.slide-thumbnail {
+    width: 100%;
+    height: 80px;
+    background: white;
+    border: 2px solid var(--border);
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--spacing-sm);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+    transition: all var(--transition-fast);
+}
+
+.slide-thumbnail:hover {
+    border-color: var(--primary);
+    transform: scale(1.05);
+}
+
+.slide-thumbnail.active {
+    border-color: var(--primary);
+    box-shadow: var(--shadow-md);
+}
+
+.ppt-main-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+}
+
+.ppt-toolbar {
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border);
+    padding: var(--spacing-sm);
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.ppt-slide-canvas {
+    flex: 1;
+    background: var(--bg-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-lg);
+    overflow: auto;
+}
+
+.slide-placeholder {
+    width: 100%;
+    max-width: 800px;
+    height: 450px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.slide-content {
+    text-align: center;
+    padding: var(--spacing-xl);
+}
+
+.slide-title {
+    font-size: var(--font-size-4xl);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-lg);
+    outline: none;
+}
+
+.slide-subtitle {
+    font-size: var(--font-size-lg);
+    color: var(--text-secondary);
+    outline: none;
+}
+
+.ppt-notes-panel {
+    height: 120px;
+    background: var(--bg-primary);
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+}
+
+.notes-header {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-bottom: 1px solid var(--border);
+}
+
+.notes-header h4 {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.notes-content {
+    flex: 1;
+    padding: var(--spacing-md);
+    background: white;
+    color: var(--text-primary);
+    font-size: var(--font-size-sm);
+    line-height: 1.4;
+    outline: none;
+    overflow-y: auto;
+}
+
+/* ===== TASK DETAILS ===== */
+.task-details {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 400px;
+    height: 100vh;
+    background: var(--bg-card);
+    border-left: 2px solid var(--border);
+    box-shadow: var(--shadow-xl);
+    z-index: var(--z-modal);
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform var(--transition-normal);
+}
+
+.task-details.open {
+    transform: translateX(0);
+}
+
+.details-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-lg);
+    border-bottom: 1px solid var(--border);
+}
+
+.details-header h3 {
+    color: var(--text-primary);
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+}
+
+.details-content {
+    padding: var(--spacing-lg);
+}
+
+.task-meta {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+    flex-wrap: wrap;
+}
+
+.points-badge,
+.time-badge {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: var(--gradient-accent);
+    color: white;
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-xs);
+    font-weight: 500;
+}
+
+.task-description {
+    margin-bottom: var(--spacing-lg);
+}
+
+.task-description h4 {
+    color: var(--text-primary);
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+}
+
+.task-description p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.task-hints {
+    margin-bottom: var(--spacing-lg);
+}
+
+.task-hints h4 {
+    color: var(--text-primary);
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+}
+
+.task-hints ul {
+    list-style: none;
+    padding: 0;
+}
+
+.task-hints li {
+    padding: var(--spacing-xs) 0;
+    color: var(--text-secondary);
+    position: relative;
+    padding-left: var(--spacing-lg);
+}
+
+.task-hints li::before {
+    content: '💡';
+    position: absolute;
+    left: 0;
+}
+
+.task-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-lg);
+}
+
+/* ===== MODAL ===== */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: var(--z-modal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-lg);
+    border-bottom: 1px solid var(--border);
+}
+
+.modal-header h3 {
+    color: var(--text-primary);
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: var(--font-size-lg);
+    cursor: pointer;
+    padding: var(--spacing-xs);
+}
+
+.modal-body {
+    padding: var(--spacing-lg);
+}
+
+.help-section {
+    margin-bottom: var(--spacing-lg);
+}
+
+.help-section h4 {
+    color: var(--text-primary);
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+}
+
+.help-section p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.help-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.help-section li {
+    padding: var(--spacing-xs) 0;
+    color: var(--text-secondary);
+}
+
+/* ===== TOAST ===== */
+.toast {
+    position: fixed;
+    bottom: var(--spacing-xl);
+    right: var(--spacing-xl);
+    background: var(--gradient-success);
+    color: white;
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-xl);
+    z-index: var(--z-toast);
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all var(--transition-normal);
+}
+
+.toast.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.toast-content {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.toast-icon {
+    font-size: var(--font-size-lg);
+}
+
+.toast-message {
+    font-weight: 500;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+    .nav-tabs {
+        padding: 0 var(--spacing-md);
+    }
+    
+    .nav-tab {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: var(--font-size-sm);
+    }
+    
+    .nav-tab span:not(.nav-icon) {
+        display: none;
+    }
+    
+    .task-selection,
+    .task-engine {
+        padding: 0 var(--spacing-md);
+    }
+    
+    .section-header {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        align-items: stretch;
+    }
+    
+    .filter-controls {
+        justify-content: center;
+    }
+    
+    .task-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .task-details {
+        width: 100%;
+        right: 0;
+    }
+    
+    .powerpoint-workspace {
+        flex-direction: column;
+        height: auto;
+    }
+    
+    .ppt-thumbnails {
+        width: 100%;
+        height: 120px;
+        flex-direction: row;
+    }
+    
+    .thumbnails-list {
+        flex-direction: row;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+    
+    .slide-thumbnail {
+        width: 100px;
+        height: 60px;
+        margin-right: var(--spacing-sm);
+        margin-bottom: 0;
+        flex-shrink: 0;
+    }
+    
+    .ppt-slide-canvas {
+        min-height: 400px;
+    }
+    
+    .slide-placeholder {
+        height: 300px;
+    }
+    
+    .slide-title {
+        font-size: var(--font-size-2xl);
+    }
+    
+    .word-toolbar,
+    .excel-toolbar,
+    .ppt-toolbar {
+        overflow-x: auto;
+        justify-content: flex-start;
+    }
+    
+    .excel-grid-container {
+        height: 400px;
+    }
+    
+    .excel-cell {
+        width: 60px;
+    }
+    
+    .column-header {
+        width: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .engine-header {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        align-items: stretch;
+    }
+    
+    .engine-controls {
+        justify-content: center;
+    }
+    
+    .toolbar-group {
+        padding: 0 var(--spacing-xs);
+    }
+    
+    .toolbar-btn {
+        width: 28px;
+        height: 28px;
+        font-size: var(--font-size-xs);
+    }
+    
+    .word-editor {
+        min-height: 300px;
+        padding: var(--spacing-md);
+    }
+    
+    .slide-placeholder {
+        height: 250px;
+    }
+    
+    .slide-title {
+        font-size: var(--font-size-xl);
+    }
+    
+    .slide-subtitle {
+        font-size: var(--font-size-base);
+    }
+    
+    .ppt-notes-panel {
+        height: 100px;
+    }
+}
+
+/* ===== DARK MODE SUPPORT ===== */
+[data-theme="dark"] .word-editor {
+    background: var(--bg-dark);
+    color: var(--text-primary-dark);
+}
+
+[data-theme="dark"] .excel-cell {
+    background: var(--bg-dark);
+    color: var(--text-primary-dark);
+}
+
+[data-theme="dark"] .excel-cell:hover {
+    background: var(--bg-card-dark);
+}
+
+[data-theme="dark"] .slide-placeholder {
+    background: var(--bg-dark);
+}
+
+[data-theme="dark"] .notes-content {
+    background: var(--bg-dark);
+    color: var(--text-primary-dark);
+}
+
+[data-theme="dark"] .column-header,
+[data-theme="dark"] .row-header {
+    background: var(--bg-card-dark);
+    color: var(--text-primary-dark);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.task-engine.active {
+    animation: fadeIn 0.3s ease;
+}
+
+.task-details.open {
+    animation: slideIn 0.3s ease;
+}
+
+.task-card:hover {
+    animation: pulse 0.3s ease;
+}
+
+/* ===== ACCESSIBILITY ===== */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+.toolbar-btn:focus,
+.nav-tab:focus,
+.btn:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+    .task-nav,
+    .engine-header,
+    .toolbar,
+    .statusbar,
+    .task-details {
+        display: none !important;
+    }
+    
+    .word-editor,
+    .slide-placeholder {
+        border: none !important;
+        box-shadow: none !important;
+    }
+    
+    .word-editor {
+        min-height: auto !important;
+        max-height: none !important;
+    }
+}
