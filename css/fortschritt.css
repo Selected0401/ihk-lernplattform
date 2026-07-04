@@ -1,0 +1,531 @@
+/**
+ * Lernfortschritt-System Styles
+ * Styling für Fortschrittsbalken, Statistiken und Charts
+ */
+
+/* Fortschritts-Sektion */
+.fortschritt-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 30px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    color: white;
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+}
+
+.fortschritt-section h2 {
+    font-size: 2rem;
+    margin-bottom: 25px;
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Gesamt-Statistiken */
+.global-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-bottom: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.stat-card .stat-label {
+    font-size: 0.85rem;
+    opacity: 0.9;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.stat-card .stat-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.streak-value {
+    color: #ff6b9d !important;
+    font-size: 1.8rem !important;
+}
+
+/* Kategorie-Fortschritte */
+.category-progress {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.category-card {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.category-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.category-icon {
+    font-size: 2rem;
+    margin-right: 10px;
+}
+
+.category-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2d3436;
+}
+
+.category-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #636e72;
+}
+
+.category-stats span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Fortschrittsbalken */
+.progress-container {
+    margin: 15px 0;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 25px;
+    background: linear-gradient(90deg, #e0e0e0, #f5f5f5);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    border-radius: 12px;
+    transition: width 0.6s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Verschiedene Farben für Kategorien */
+.excel .progress-fill {
+    background: linear-gradient(90deg, #4facfe, #00f2fe);
+    box-shadow: 0 0 10px rgba(79, 172, 254, 0.5);
+}
+
+.word .progress-fill {
+    background: linear-gradient(90deg, #43e97b, #38f9d7);
+    box-shadow: 0 0 10px rgba(67, 233, 123, 0.5);
+}
+
+.powerpoint .progress-fill {
+    background: linear-gradient(90deg, #fa709a, #fee140);
+    box-shadow: 0 0 10px rgba(250, 112, 154, 0.5);
+}
+
+.outlook .progress-fill {
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+}
+
+/* Animierte Schwebung im Fortschrittsbalken */
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.progress-text {
+    text-align: center;
+    margin-top: 8px;
+    font-weight: bold;
+    color: #2d3436;
+    font-size: 0.95rem;
+}
+
+/* Charts-Sektion */
+.charts-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.chart-card {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.chart-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: #2d3436;
+    text-align: center;
+}
+
+.chart-container {
+    position: relative;
+    height: 300px;
+    width: 100%;
+}
+
+/* Vollbreites Chart */
+.chart-full {
+    grid-column: 1 / -1;
+}
+
+.chart-full .chart-container {
+    height: 350px;
+}
+
+/* Aktions-Buttons */
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.action-btn {
+    background: linear-gradient(135deg, #ff6b9d, #c44569);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
+}
+
+.action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 107, 157, 0.4);
+}
+
+.action-btn:active {
+    transform: translateY(0);
+}
+
+.action-btn.secondary {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.action-btn.secondary:hover {
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.action-btn.danger {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a5a);
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+}
+
+.action-btn.danger:hover {
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+}
+
+/* Erfolgsmeldungen */
+.success-message {
+    background: linear-gradient(135deg, #43e97b, #38f9d7);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 10px;
+    margin-top: 15px;
+    text-align: center;
+    font-weight: 500;
+    animation: slideIn 0.5s ease;
+    box-shadow: 0 4px 15px rgba(67, 233, 123, 0.3);
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .fortschritt-section {
+        padding: 20px;
+    }
+
+    .fortschritt-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .global-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 15px;
+    }
+
+    .stat-card {
+        padding: 12px;
+    }
+
+    .stat-card .stat-value {
+        font-size: 1.2rem;
+    }
+
+    .category-progress {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .charts-section {
+        grid-template-columns: 1fr;
+    }
+
+    .chart-card {
+        padding: 15px;
+    }
+
+    .chart-container {
+        height: 250px;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .action-btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .global-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .category-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .category-icon {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .progress-bar {
+        height: 20px;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .category-card {
+        background: #2d3436;
+        color: #dfe6e9;
+    }
+
+    .category-title {
+        color: #dfe6e9;
+    }
+
+    .category-stats {
+        color: #b2bec3;
+    }
+
+    .progress-text {
+        color: #dfe6e9;
+    }
+
+    .chart-card {
+        background: #2d3436;
+    }
+
+    .chart-card h3 {
+        color: #dfe6e9;
+    }
+
+    .progress-bar {
+        background: linear-gradient(90deg, #636e72, #2d3436);
+    }
+}
+
+/* Loading Animation */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Toast Notifications */
+.toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #ff6b9d, #c44569);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    animation: toastSlideIn 0.3s ease, toastFadeOut 0.3s ease 2.7s;
+    max-width: 300px;
+}
+
+@keyframes toastSlideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes toastFadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+/* Badge Styles */
+.badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-left: 8px;
+}
+
+.badge-success {
+    background: linear-gradient(135deg, #43e97b, #38f9d7);
+    color: white;
+}
+
+.badge-warning {
+    background: linear-gradient(135deg, #fa709a, #fee140);
+    color: white;
+}
+
+.badge-info {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+}
+
+/* Achievements Section */
+.achievements-section {
+    margin-top: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+.achievements-section h3 {
+    color: white;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 15px;
+}
+
+.achievement-badge {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.achievement-badge:hover {
+    transform: scale(1.1);
+}
+
+.achievement-icon {
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
+.achievement-name {
+    font-size: 0.8rem;
+    color: #2d3436;
+    font-weight: 500;
+}

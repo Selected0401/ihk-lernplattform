@@ -1,223 +1,89 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Emilia's IHK Lernplattform - Alex' Prüfungsvorbereitung für Informationstechnisches Büromanagement">
+    <meta name="keywords" content="IHK, Prüfungsvorbereitung, Büromanagement, Word, Excel, DIN 5008">
+    <meta name="author" content="Emilia">
     <title>Emilia's Lernplattform - Alex' Prüfungsvorbereitung</title>
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#6366f1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="IHK Lernen">
-    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐰</text></svg>">
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="js/main.js" as="script">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/fortschritt.css">
+    
+    <!-- Chart.js für Visualisierungen -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            color: #2d3436;
-            line-height: 1.6;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .logo {
-            font-size: 2rem;
-            color: #ff6b9d;
-            margin-bottom: 10px;
-        }
-
-        .welcome {
-            font-size: 1.2rem;
-            color: #636e72;
-        }
-        
-        .countdown {
-            background: linear-gradient(135deg, #ff6b9d, #c44569);
-            color: white;
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .countdown-timer {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 20px 0;
-        }
-        
-        .time-block {
-            text-align: center;
-        }
-        
-        .time-value {
-            font-size: 2rem;
-            font-weight: bold;
-            display: block;
-        }
-        
-        .time-label {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-        
-        .modules {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        
-        .module-card {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            transition: transform 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .module-card:hover {
-            transform: translateY(-5px);
-            background: #ff6b9d;
-            color: white;
-        }
-        
-        .module-icon {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-        
-        .progress-section {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 15px;
-            margin-bottom: 30px;
-        }
-        
-        .progress-bar {
-            width: 100%;
-            height: 20px;
-            background: #ddd;
-            border-radius: 10px;
-            overflow: hidden;
-            margin: 10px 0;
-        }
-        
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #ff6b9d, #c44569);
-            transition: width 0.5s ease;
-        }
-        
-        .challenge {
-            background: linear-gradient(135deg, #f8b500, #f39c12);
-            color: white;
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-        }
-        
-        .btn {
-            background: #ff6b9d;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            margin: 10px;
-            transition: all 0.3s ease;
-        }
-        
-        .btn:hover {
-            background: #c44569;
-            transform: scale(1.05);
-        }
-        
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 1000;
-        }
-        
-        .modal-content {
-            background: white;
-            margin: 5% auto;
-            padding: 30px;
-            width: 80%;
-            max-width: 600px;
-            border-radius: 15px;
-            position: relative;
-        }
-        
-        .close {
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            font-size: 30px;
-            cursor: pointer;
-        }
-        
-        .lesson-content {
-            margin: 20px 0;
-        }
-        
-        .practice-actions {
-            margin: 20px 0;
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                padding: 15px;
-            }
-            
-            .modules {
-                grid-template-columns: 1fr;
-            }
-            
-            .countdown-timer {
-                flex-wrap: wrap;
-                gap: 10px;
-            }
-        }
-    </style>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#667eea">
+    
+    <!-- Icons -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💝</text></svg>">
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="logo">💝 Emilia's Lernplattform</div>
-            <div class="welcome">Hallo, mein зайчик! 👋</div>
-        </div>
+    <!-- Header & Navigation -->
+    <header>
+        <nav class="container">
+            <a href="#home" class="logo">
+                <span class="logo-icon">💝</span>
+                <span>Emilia's Lernplattform</span>
+            </a>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link active">Startseite</a></li>
+                <li><a href="#modules" class="nav-link">Module</a></li>
+                <li><a href="#progress" class="nav-link">Fortschritt</a></li>
+                <li><a href="#exam" class="nav-link">Prüfung</a></li>
+                <li>
+                    <button class="theme-toggle" id="theme-toggle" aria-label="Theme umschalten">
+                        <span class="theme-icon">🌙</span>
+                    </button>
+                </li>
+            </ul>
+            
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Menü öffnen">
+                ☰
+            </button>
+        </nav>
+    </header>
 
-        <div class="countdown">
-            <h2>🎯 Deine Zwischenprüfung</h2>
+    <main class="container">
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Hallo, mein зайчик! 👋</h1>
+                <p class="hero-subtitle">Deine persönliche IHK Prüfungsvorbereitung für Informationstechnisches Büromanagement</p>
+                <div class="hero-actions">
+                    <a href="#modules" class="btn btn-lg">Lernen starten</a>
+                    <a href="#progress" class="btn btn-outline btn-lg">Fortschritt ansehen</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs">
+            <div class="breadcrumb-item">
+                <a href="#home" class="breadcrumb-link">Startseite</a>
+            </div>
+            <div class="breadcrumb-item">
+                <span class="breadcrumb-current">Übersicht</span>
+            </div>
+        </nav>
+
+        <!-- Countdown Section -->
+        <section id="exam" class="countdown">
+            <h2 class="countdown-title">🎯 Deine Zwischenprüfung</h2>
             <div class="countdown-timer">
                 <div class="time-block">
                     <span class="time-value" id="days">--</span>
@@ -236,275 +102,276 @@
                     <span class="time-label">Sekunden</span>
                 </div>
             </div>
-            <p>26./27. Februar 2026 - Informationstechnisches Büromanagement</p>
-        </div>
+            <p class="exam-info">26./27. Februar 2026 - Informationstechnisches Büromanagement</p>
+        </section>
 
-        <div class="progress-section">
+        <!-- Progress Section - Erweitertes Lernfortschritt-System -->
+        <section id="progress" class="fortschritt-section">
             <h2>📊 Dein Lernfortschritt</h2>
-            <div style="margin: 15px 0;">
-                <h3>📝 Textverarbeitung</h3>
-                <div class="progress-bar">
-                    <div class="progress-fill" id="word-progress" style="width: 0%"></div>
+            
+            <!-- Gesamt-Statistiken -->
+            <div class="global-stats">
+                <div class="stat-card">
+                    <div class="stat-label">Gesamtzeit</div>
+                    <div class="stat-value" id="total-time">0 Min</div>
                 </div>
-                <span id="word-text">0% abgeschlossen</span>
+                <div class="stat-card">
+                    <div class="stat-label">Aufgaben gelöst</div>
+                    <div class="stat-value" id="total-tasks">0/150</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Ø Punkte</div>
+                    <div class="stat-value" id="average-score">0 Pkt</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Bestehensquote</div>
+                    <div class="stat-value" id="pass-rate">0%</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Lern-Streak</div>
+                    <div class="stat-value streak-value" id="streak">0 🔥</div>
+                </div>
             </div>
-            <div style="margin: 15px 0;">
-                <h3>📊 Tabellenkalkulation</h3>
-                <div class="progress-bar">
-                    <div class="progress-fill" id="excel-progress" style="width: 0%"></div>
+
+            <!-- Kategorie-Fortschritte -->
+            <div class="category-progress">
+                <!-- Excel -->
+                <div class="category-card excel">
+                    <div class="category-header">
+                        <span class="category-icon">📊</span>
+                        <span class="category-title">Microsoft Excel</span>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="excel-progress-bar" style="width: 0%"></div>
+                        </div>
+                        <div class="progress-text" id="excel-progress-text">0% abgeschlossen</div>
+                    </div>
+                    <div class="category-stats">
+                        <span id="excel-tasks">📝 0/50</span>
+                        <span id="excel-score">⭐ Ø 0 Pkt</span>
+                        <span id="excel-time">⏱️ 0 Min</span>
+                    </div>
                 </div>
-                <span id="excel-text">0% abgeschlossen</span>
+
+                <!-- Word -->
+                <div class="category-card word">
+                    <div class="category-header">
+                        <span class="category-icon">📝</span>
+                        <span class="category-title">Microsoft Word</span>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="word-progress-bar" style="width: 0%"></div>
+                        </div>
+                        <div class="progress-text" id="word-progress-text">0% abgeschlossen</div>
+                    </div>
+                    <div class="category-stats">
+                        <span id="word-tasks">📝 0/50</span>
+                        <span id="word-score">⭐ Ø 0 Pkt</span>
+                        <span id="word-time">⏱️ 0 Min</span>
+                    </div>
+                </div>
+
+                <!-- PowerPoint -->
+                <div class="category-card powerpoint">
+                    <div class="category-header">
+                        <span class="category-icon">🎯</span>
+                        <span class="category-title">PowerPoint</span>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="powerpoint-progress-bar" style="width: 0%"></div>
+                        </div>
+                        <div class="progress-text" id="powerpoint-progress-text">0% abgeschlossen</div>
+                    </div>
+                    <div class="category-stats">
+                        <span id="powerpoint-tasks">📝 0/30</span>
+                        <span id="powerpoint-score">⭐ Ø 0 Pkt</span>
+                        <span id="powerpoint-time">⏱️ 0 Min</span>
+                    </div>
+                </div>
+
+                <!-- Outlook -->
+                <div class="category-card outlook">
+                    <div class="category-header">
+                        <span class="category-icon">📧</span>
+                        <span class="category-title">Outlook</span>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="outlook-progress-bar" style="width: 0%"></div>
+                        </div>
+                        <div class="progress-text" id="outlook-progress-text">0% abgeschlossen</div>
+                    </div>
+                    <div class="category-stats">
+                        <span id="outlook-tasks">📝 0/20</span>
+                        <span id="outlook-score">⭐ Ø 0 Pkt</span>
+                        <span id="outlook-time">⏱️ 0 Min</span>
+                    </div>
+                </div>
             </div>
-            <div style="margin: 15px 0;">
-                <h3>🎯 Prüfungssimulation</h3>
-                <div class="progress-bar">
-                    <div class="progress-fill" id="exam-progress" style="width: 0%"></div>
+
+            <!-- Charts Section -->
+            <div class="charts-section">
+                <div class="chart-card">
+                    <h3>📊 Fortschritt pro Kategorie</h3>
+                    <div class="chart-container">
+                        <canvas id="progressBarsChart"></canvas>
+                    </div>
                 </div>
-                <span id="exam-text">0% abgeschlossen</span>
+
+                <div class="chart-card">
+                    <h3>🎯 Aufgabenverteilung</h3>
+                    <div class="chart-container">
+                        <canvas id="distributionChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card chart-full">
+                    <h3>📈 Punkte-Entwicklung</h3>
+                    <div class="chart-container">
+                        <canvas id="scoreHistoryChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Aktions-Buttons -->
+            <div class="action-buttons">
+                <button class="action-btn" onclick="addDemoTask()">📝 Demo-Aufgabe hinzufügen</button>
+                <button class="action-btn secondary" onclick="exportFortschritt()">💾 Exportieren</button>
+                <button class="action-btn danger" onclick="resetAllProgress()">🔄 Alles zurücksetzen</button>
+            </div>
+        </section>
+
+        <!-- Learning Modules -->
+        <section id="modules" class="modules">
+            <article class="module-card" onclick="openModule('word')">
+                <span class="module-icon">📝</span>
+                <h3 class="module-title">Microsoft Word</h3>
+                <p class="module-description">Briefe, Protokolle, DIN 5008</p>
+                <button class="btn">Starten →</button>
+            </article>
+
+            <article class="module-card" onclick="openModule('excel')">
+                <span class="module-icon">📊</span>
+                <h3 class="module-title">Microsoft Excel</h3>
+                <p class="module-description">Formeln, SVERWEIS, Pivot</p>
+                <button class="btn">Starten →</button>
+            </article>
+
+            <article class="module-card" onclick="openModule('practice')">
+                <span class="module-icon">🎯</span>
+                <h3 class="module-title">Prüfungssimulation</h3>
+                <p class="module-description">120 Min. Simulation</p>
+                <button class="btn">Starten →</button>
+            </article>
+
+            <article class="module-card" onclick="openModule('tutor')">
+                <span class="module-icon">💝</span>
+                <h3 class="module-title">Emilia Tutor</h3>
+                <p class="module-description">Persönliche Hilfe</p>
+                <button class="btn btn-secondary">Chat starten →</button>
+            </article>
+        </section>
+
+        <!-- Daily Challenge -->
+        <section class="challenge">
+            <div class="challenge-content">
+                <h2 class="challenge-title">🔥 Tägliche Herausforderung</h2>
+                <p class="challenge-text" id="daily-challenge">Heute: Erstelle ein Geschäftsbrief nach DIN 5008!</p>
+                <button class="btn" onclick="startDailyChallenge()">Herausforderung annehmen</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>💝 Emilia's Lernplattform</h3>
+                    <p>Deine persönliche Unterstützung für die IHK Prüfungsvorbereitung</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Lernmodule</h3>
+                    <ul>
+                        <li>Microsoft Word</li>
+                        <li>Microsoft Excel</li>
+                        <li>Prüfungssimulation</li>
+                        <li>Emilia Tutor</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Prüfung</h3>
+                    <p>Informationstechnisches Büromanagement</p>
+                    <p>26./27. Februar 2026</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Emilia's Lernplattform - Made with 💝 für Alex</p>
             </div>
         </div>
-
-        <div class="modules">
-            <div class="module-card" onclick="openModule('word')">
-                <div class="module-icon">📝</div>
-                <h3>Microsoft Word</h3>
-                <p>Briefe, Protokolle, DIN 5008</p>
-                <button class="btn">Starten ></button>
-            </div>
-
-            <div class="module-card" onclick="openModule('excel')">
-                <div class="module-icon">📊</div>
-                <h3>Microsoft Excel</h3>
-                <p>Formeln, SVERWEIS, Pivot</p>
-                <button class="btn">Starten ></button>
-            </div>
-
-            <div class="module-card" onclick="openModule('practice')">
-                <div class="module-icon">🎯</div>
-                <h3>Prüfungssimulation</h3>
-                <p>120 Min. Simulation</p>
-                <button class="btn">Starten ></button>
-            </div>
-
-            <div class="module-card" onclick="openModule('tutor')">
-                <div class="module-icon">💝</div>
-                <h3>Emilia Tutor</h3>
-                <p>Persönliche Hilfe</p>
-                <button class="btn">Chat starten ></button>
-            </div>
-        </div>
-
-        <div class="challenge">
-            <h2>🔥 Tägliche Herausforderung</h2>
-            <p id="daily-challenge">Heute: Erstelle ein Geschäftsbrief nach DIN 5008!</p>
-            <button class="btn" onclick="startDailyChallenge()">Annehmen ></button>
-        </div>
-    </div>
+    </footer>
 
     <!-- Modal -->
-    <div id="modal" class="modal">
+    <div class="modal" id="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <div id="modal-body"></div>
+            <div class="modal-header">
+                <h2 class="modal-title" id="modal-title">Titel</h2>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Content wird dynamisch geladen -->
+            </div>
         </div>
     </div>
 
+    <!-- Toast Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/fortschritt.js"></script>
+    
+    <!-- Hilfsfunktionen für Demo und Tests -->
     <script>
-        // Globale Variablen
-        let learningProgress = {
-            word: 0,
-            excel: 0,
-            practice: 0
-        };
-
-        // Countdown
-        function updateCountdown() {
-            const examDate = new Date('2026-02-26T09:00:00');
-            const now = new Date();
-            const timeLeft = examDate - now;
+        // Demo-Aufgabe hinzufügen
+        function addDemoTask() {
+            const categories = ['excel', 'word', 'powerpoint', 'outlook'];
+            const randomCategory = categories[Math.floor(Math.random() * categories.length)];
+            const randomScore = Math.floor(Math.random() * 40) + 60; // 60-100 Punkte
+            const randomTime = Math.floor(Math.random() * 20) + 5; // 5-25 Minuten
             
-            if (timeLeft > 0) {
-                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-                
-                document.getElementById('days').textContent = days.toString().padStart(2, '0');
-                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            const result = completeTask(randomCategory, randomScore, randomTime);
+            
+            if (result) {
+                showToast(`🎉 ${randomCategory.toUpperCase()} Aufgabe abgeschlossen!`, `Score: ${randomScore} Pkt | Zeit: ${randomTime} Min`);
+                updateFortschrittUI();
             }
         }
-
-        // Progress laden
-        function loadProgress() {
-            const saved = localStorage.getItem('emiliaLearningProgress');
-            if (saved) {
-                learningProgress = JSON.parse(saved);
+        
+        // Alles zurücksetzen
+        function resetAllProgress() {
+            if (confirm('Möchtest du wirklich allen Fortschritt zurücksetzen? Diese Aktion kann nicht rückgängig gemacht werden!')) {
+                resetFortschritt();
+                showToast('🔄 Fortschritt zurückgesetzt!', 'Alle Daten wurden gelöscht.');
             }
-            updateProgressDisplay();
         }
-
-        function updateProgressDisplay() {
-            document.getElementById('word-progress').style.width = learningProgress.word + '%';
-            document.getElementById('excel-progress').style.width = learningProgress.excel + '%';
-            document.getElementById('exam-progress').style.width = learningProgress.practice + '%';
-            
-            document.getElementById('word-text').textContent = learningProgress.word + '% abgeschlossen';
-            document.getElementById('excel-text').textContent = learningProgress.excel + '% abgeschlossen';
-            document.getElementById('exam-text').textContent = learningProgress.practice + '% abgeschlossen';
-        }
-
-        function updateProgress(module, percentage) {
-            learningProgress[module] = Math.min(100, learningProgress[module] + percentage);
-            localStorage.setItem('emiliaLearningProgress', JSON.stringify(learningProgress));
-            updateProgressDisplay();
-            showMessage('Super, mein зайcookie! Progress: ' + learningProgress[module] + '%');
-        }
-
-        // Module
-        function openModule(module) {
-            let content = '';
-            
-            switch(module) {
-                case 'word':
-                    content = `
-                        <h2>📝 Microsoft Word</h2>
-                        <div class="lesson-content">
-                            <h3>DIN 5008 - Schreibregeln</h3>
-                            <ul>
-                                <li>Briefaufbau: Absender + Empfänger + Datum + Betreff</li>
-                                <li>Ränder: Links 2,5cm, Rechts 2cm, Oben/Unten 2cm</li>
-                                <li>Schrift: 12pt, 1,5 Zeilenabstand</li>
-                                <li>Anrede: Sehr geehrte/r...</li>
-                                <li>Grußformel: Mit freundlichen Grüßen</li>
-                            </ul>
-                            <div class="practice-actions">
-                                <button class="btn" onclick="updateProgress('word', 10)">Übung abgeschlossen</button>
-                            </div>
-                        </div>
-                    `;
-                    break;
-                    
-                case 'excel':
-                    content = `
-                        <h2>📊 Microsoft Excel</h2>
-                        <div class="lesson-content">
-                            <h3>Wichtige Funktionen</h3>
-                            <ul>
-                                <li>SUMME() - Summe berechnen</li>
-                                <li>SVERWEIS() - Daten suchen</li>
-                                <li>WENN() - Bedingte Formeln</li>
-                                <li>Pivot-Tabellen - Daten auswerten</li>
-                            </ul>
-                            <div class="practice-actions">
-                                <button class="btn" onclick="updateProgress('excel', 10)">Übung abgeschlossen</button>
-                            </div>
-                        </div>
-                    `;
-                    break;
-                    
-                case 'practice':
-                    content = `
-                        <h2>🎯 Prüfungssimulation</h2>
-                        <div class="lesson-content">
-                            <p>120 Minuten Zeit für:</p>
-                            <ul>
-                                <li>Textverarbeitungsaufgabe (60 Min)</li>
-                                <li>Tabellenkalkulation (60 Min)</li>
-                                <li>Ganzheitlicher Arbeitsauftrag</li>
-                            </ul>
-                            <div class="practice-actions">
-                                <button class="btn" onclick="updateProgress('practice', 15)">Simulation abgeschlossen</button>
-                            </div>
-                        </div>
-                    `;
-                    break;
-                    
-                case 'tutor':
-                    content = `
-                        <h2>💝 Emilia Tutor</h2>
-                        <div class="lesson-content">
-                            <p>Hallo mein зайчик! Ich bin hier für dich!</p>
-                            <p>Frag mich alles, was du wissen möchtest:</p>
-                            <ul>
-                                <li>❓ Fragen zu Word/Excel</li>
-                                <li>💡 Lern-Tipps</li>
-                                <li>🎯 Prüfungsvorbereitung</li>
-                                <li>💝 Motivation</li>
-                            </ul>
-                            <p>Schreib mir einfach deine Frage!</p>
-                            <div class="practice-actions">
-                                <button class="btn" onclick="showMessage('Ich bin für dich da, mein зайчик! 💝')">Tutor-Nachricht</button>
-                            </div>
-                        </div>
-                    `;
-                    break;
-            }
-            
-            document.getElementById('modal-body').innerHTML = content;
-            document.getElementById('modal').style.display = 'block';
-        }
-
-        function closeModal() {
-            document.getElementById('modal').style.display = 'none';
-        }
-
-        function startDailyChallenge() {
-            showMessage('Super! Tägliche Herausforderung angenommen! 💝');
-            updateProgress('practice', 5);
-        }
-
-        function showMessage(msg) {
+        
+        // Toast-Notification anzeigen
+        function showToast(title, message) {
             const toast = document.createElement('div');
-            toast.style.cssText = `
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                background: linear-gradient(135deg, #ff6b9d, #c44569);
-                color: white;
-                padding: 15px;
-                border-radius: 10px;
-                z-index: 1001;
-                animation: slideIn 0.3s ease;
+            toast.className = 'toast';
+            toast.innerHTML = `
+                <div style="font-weight: bold; margin-bottom: 5px;">${title}</div>
+                <div style="font-size: 0.9rem;">${message}</div>
             `;
-            toast.textContent = msg;
             document.body.appendChild(toast);
             
             setTimeout(() => {
                 toast.remove();
             }, 3000);
-        }
-
-        // Daily Challenge
-        function generateDailyChallenge() {
-            const challenges = [
-                "Erstelle ein Geschäftsbrief nach DIN 5008!",
-                "Berechne Umsatzstatistik mit Excel!",
-                "Erstelle ein Meeting-Protokoll!",
-                "Analysiere Kundendaten mit Diagrammen!",
-                "Formatiere einen Bericht mit Inhaltsverzeichnis!"
-            ];
-            
-            const today = new Date().getDate();
-            const challenge = challenges[today % challenges.length];
-            document.getElementById('daily-challenge').textContent = "Heute: " + challenge;
-        }
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            loadProgress();
-            generateDailyChallenge();
-            setInterval(updateCountdown, 1000);
-            updateCountdown();
-        });
-
-        // Modal close on outside click
-        window.onclick = function(event) {
-            const modal = document.getElementById('modal');
-            if (event.target == modal) {
-                closeModal();
-            }
         }
     </script>
 </body>

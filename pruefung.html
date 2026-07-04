@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prüfungssimulation - Emilia's Lernplattform</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#667eea">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="IHK Prüfung">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <link rel="stylesheet" href="css/pruefung.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <div class="exam-container">
+        <!-- Header mit Timer -->
+        <header class="exam-header">
+            <div class="header-content">
+                <div class="exam-title">
+                    <h1>🎯 IHK Prüfungssimulation</h1>
+                    <p>Informationstechnisches Büromanagement</p>
+                </div>
+                <div class="timer-section">
+                    <div class="timer-display" id="timer">
+                        <span class="time-value" id="minutes">60</span>
+                        <span class="time-separator">:</span>
+                        <span class="time-value" id="seconds">00</span>
+                    </div>
+                    <div class="timer-label">Verbleibende Zeit</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hauptbereich -->
+        <main class="exam-main">
+            <!-- Sidebar Navigation -->
+            <aside class="exam-sidebar">
+                <div class="progress-section">
+                    <h3>Fortschritt</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-bar"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span id="current-question">1</span> / <span id="total-questions">10</span>
+                    </div>
+                </div>
+
+                <div class="navigation-section">
+                    <h3>Aufgaben Navigation</h3>
+                    <div class="question-nav" id="question-nav">
+                        <!-- Wird dynamisch generiert -->
+                    </div>
+                </div>
+
+                <div class="points-section">
+                    <h3>Punkte</h3>
+                    <div class="points-display">
+                        <span class="current-points" id="current-points">0</span>
+                        <span class="points-separator">/</span>
+                        <span class="max-points" id="max-points">500</span>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Inhaltsbereich -->
+            <section class="exam-content">
+                <div class="question-container" id="question-container">
+                    <!-- Wird dynamisch generiert -->
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" id="prev-btn" onclick="previousQuestion()">
+                        ← Vorherige Aufgabe
+                    </button>
+                    <button class="btn btn-primary" id="next-btn" onclick="nextQuestion()">
+                        Nächste Aufgabe →
+                    </button>
+                    <button class="btn btn-success" id="finish-btn" onclick="finishExam()" style="display: none;">
+                        Prüfung beenden ✓
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Ergebnisse Modal -->
+    <div id="results-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🎉 Prüfung abgeschlossen!</h2>
+                <span class="close" onclick="closeResults()">&times;</span>
+            </div>
+            <div class="modal-body" id="results-body">
+                <!-- Wird dynamisch generiert -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeResults()">Schließen</button>
+                <button class="btn btn-primary" onclick="exportPDF()">PDF Export</button>
+                <button class="btn btn-success" onclick="restartExam()">Neue Prüfung</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Start Modal -->
+    <div id="start-modal" class="modal" style="display: block;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🎯 Prüfungssimulation starten</h2>
+            </div>
+            <div class="modal-body">
+                <div class="exam-info">
+                    <h3>Prüfungsbedingungen:</h3>
+                    <ul>
+                        <li>⏰ Zeitlimit: 60 Minuten</li>
+                        <li>📝 10 zufällige Aufgaben</li>
+                        <li>🎯 Maximale Punkte: 500</li>
+                        <li>✅ Bestanden ab: 60% (300 Punkte)</li>
+                    </ul>
+                    
+                    <h3>Aufgabenbereiche:</h3>
+                    <ul>
+                        <li>📄 Textverarbeitung (Word)</li>
+                        <li>📊 Tabellenkalkulation (Excel)</li>
+                        <li>🖥️ IT-Grundlagen</li>
+                        <li>💼 Büromanagement</li>
+                    </ul>
+                    
+                    <div class="warning">
+                        ⚠️ Die Zeit läuft erst nach dem Start, bereite dich gut vor!
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary btn-large" onclick="startExam()">
+                    Prüfung starten 🚀
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/pruefung.js"></script>
+</body>
+</html>
