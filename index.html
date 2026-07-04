@@ -1,319 +1,523 @@
 <!DOCTYPE html>
-<html lang="de" data-theme="light">
+<html lang="de" data-theme="fable5">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Emilia's IHK Lernplattform - Alex' Prüfungsvorbereitung für Informationstechnisches Büromanagement">
-    <meta name="keywords" content="IHK, Prüfungsvorbereitung, Büromanagement, Word, Excel, DIN 5008">
+    <meta name="description" content="Emilia's IHK Lernplattform - Fable 5 Edition | Alex' Prüfungsvorbereitung für Informationstechnisches Büromanagement">
+    <meta name="keywords" content="IHK, Prüfungsvorbereitung, Büromanagement, Word, Excel, DIN 5008, Fable 5">
     <meta name="author" content="Emilia">
-    <title>Emilia's Lernplattform - Alex' Prüfungsvorbereitung</title>
+    <title>Emilia's Lernplattform - Fable 5 Edition</title>
     
-    <!-- Preload Critical Resources -->
-    <link rel="preload" href="style.css" as="style">
-    <link rel="preload" href="js/main.js" as="script">
+    <!-- Performance Critical CSS (Inline) -->
+    <style>
+        /* Fable 5 Critical CSS - Above the Fold */
+        :root {
+            /* Fable 5 Game-UI Colors */
+            --fable-gold: #d4af37;
+            --fable-brown: #8b4513;
+            --fable-green: #90ee90;
+            --fable-blue: #4682b4;
+            --fable-red: #dc143c;
+            --fable-parchment: #f4e4c1;
+            --fable-shadow: #2c1810;
+            --fable-light: #faf8f3;
+            --fable-medium: #d4c4a0;
+            
+            /* Performance Variables */
+            --transition-fast: 0.15s ease;
+            --transition-medium: 0.3s ease;
+            --border-radius-game: 8px;
+            --shadow-game: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'IM Fell English', serif;
+            background: linear-gradient(135deg, var(--fable-parchment) 0%, var(--fable-light) 100%);
+            color: var(--fable-shadow);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .game-container {
+            display: grid;
+            grid-template-areas: 
+                "header header"
+                "sidebar main"
+                "footer footer";
+            grid-template-columns: 250px 1fr;
+            grid-template-rows: 60px 1fr 40px;
+            min-height: 100vh;
+            will-change: transform;
+            contain: layout style paint;
+        }
+        
+        .game-header {
+            grid-area: header;
+            background: linear-gradient(135deg, var(--fable-gold), var(--fable-brown));
+            border-bottom: 3px solid var(--fable-shadow);
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-shadow: var(--shadow-game);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .game-nav {
+            display: flex;
+            gap: 20px;
+            flex: 1;
+        }
+        
+        .nav-item {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid var(--fable-gold);
+            border-radius: var(--border-radius-game);
+            padding: 8px 16px;
+            color: var(--fable-light);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            text-decoration: none;
+        }
+        
+        .nav-item:hover, .nav-item.active {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-game);
+        }
+        
+        .game-sidebar {
+            grid-area: sidebar;
+            background: var(--fable-parchment);
+            border-right: 3px solid var(--fable-brown);
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .game-main {
+            grid-area: main;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .game-footer {
+            grid-area: footer;
+            background: var(--fable-brown);
+            color: var(--fable-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-top: 3px solid var(--fable-shadow);
+        }
+        
+        .quest-log, .inventory {
+            background: var(--fable-light);
+            border: 3px solid var(--fable-brown);
+            border-radius: var(--border-radius-game);
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: var(--shadow-game);
+        }
+        
+        .quest-log h3, .inventory h3 {
+            color: var(--fable-gold);
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .quest-area, .interaction-zone {
+            background: var(--fable-light);
+            border: 3px solid var(--fable-brown);
+            border-radius: var(--border-radius-game);
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-game);
+        }
+        
+        .fable-button {
+            background: linear-gradient(135deg, var(--fable-gold), var(--fable-brown));
+            border: 2px solid var(--fable-shadow);
+            border-radius: var(--border-radius-game);
+            color: var(--fable-light);
+            font-weight: 600;
+            padding: 12px 24px;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            box-shadow: var(--shadow-game);
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .fable-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .game-container {
+                grid-template-areas: 
+                    "header"
+                    "main"
+                    "sidebar"
+                    "footer";
+                grid-template-columns: 1fr;
+                grid-template-rows: 50px 1fr 200px 30px;
+            }
+            
+            .game-sidebar {
+                transform: translateY(100%);
+                transition: transform 0.3s ease;
+                position: fixed;
+                bottom: 30px;
+                left: 0;
+                right: 0;
+                z-index: 99;
+            }
+            
+            .game-sidebar.open {
+                transform: translateY(0);
+            }
+        }
+    </style>
     
-    <!-- Google Fonts -->
+    <!-- Preload Critical Assets -->
+    <link rel="preload" href="css/fable5-game.css" as="style">
+    <link rel="preload" href="js/fable5-ui.js" as="script">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=IM+Fell+English&display=swap" as="style">
+    
+    <!-- Fable 5 Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=IM+Fell+English&display=swap" rel="stylesheet">
     
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="css/fortschritt.css">
-    
-    <!-- Chart.js für Visualisierungen -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <!-- Critical CSS first -->
+    <link rel="stylesheet" href="css/fable5-game.css">
     
     <!-- PWA Manifest -->
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#667eea">
+    <meta name="theme-color" content="#d4af37">
     
     <!-- Icons -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💝</text></svg>">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐰</text></svg>">
 </head>
 <body>
-    <!-- Header & Navigation -->
-    <header>
-        <nav class="container">
-            <a href="#home" class="logo">
-                <span class="logo-icon">💝</span>
-                <span>Emilia's Lernplattform</span>
-            </a>
+    <!-- Fable 5 Game Container -->
+    <div class="game-container">
+        <!-- Game Header -->
+        <header class="game-header">
+            <div class="game-logo">
+                <span class="logo-icon">🐰</span>
+                <span class="logo-text">Fable 5 Lernplattform</span>
+            </div>
+            <nav class="game-nav">
+                <a href="#home" class="nav-item active" data-section="home">Start</a>
+                <a href="#modules" class="nav-item" data-section="modules">Lernfelder</a>
+                <a href="#progress" class="nav-item" data-section="progress">Fortschritt</a>
+                <a href="#exam" class="nav-item" data-section="exam">Prüfung</a>
+            </nav>
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle">☰</button>
+        </header>
+        
+        <!-- Game Sidebar -->
+        <aside class="game-sidebar" id="game-sidebar">
+            <!-- Quest Log -->
+            <div class="quest-log">
+                <h3>📜 Quest Log</h3>
+                <div class="quest-list" id="quest-list">
+                    <div class="quest-item" data-quest="daily">
+                        <div class="quest-title">Tägliche Herausforderung</div>
+                        <div class="quest-progress">
+                            <div class="quest-progress-bar" style="width: 0%"></div>
+                        </div>
+                        <div class="quest-reward">🏆 50 XP</div>
+                    </div>
+                    <div class="quest-item" data-quest="weekly">
+                        <div class="quest-title">Wöchentliche Mission</div>
+                        <div class="quest-progress">
+                            <div class="quest-progress-bar" style="width: 30%"></div>
+                        </div>
+                        <div class="quest-reward">🏆 200 XP</div>
+                    </div>
+                    <div class="quest-item" data-quest="main">
+                        <div class="quest-title">Hauptquest: IHK Prüfung</div>
+                        <div class="quest-progress">
+                            <div class="quest-progress-bar" style="width: 15%"></div>
+                        </div>
+                        <div class="quest-reward">🏆 1000 XP</div>
+                    </div>
+                </div>
+            </div>
             
-            <ul class="nav-menu" id="nav-menu">
-                <li><a href="#home" class="nav-link active">Startseite</a></li>
-                <li><a href="#modules" class="nav-link">Module</a></li>
-                <li><a href="#progress" class="nav-link">Fortschritt</a></li>
-                <li><a href="#exam" class="nav-link">Prüfung</a></li>
-                <li>
-                    <button class="theme-toggle" id="theme-toggle" aria-label="Theme umschalten">
-                        <span class="theme-icon">🌙</span>
-                    </button>
-                </li>
-            </ul>
+            <!-- Inventory -->
+            <div class="inventory">
+                <h3>🎒 Inventar</h3>
+                <div class="inventory-grid" id="inventory-grid">
+                    <div class="inventory-slot" data-slot="1">
+                        <div class="item-icon">📝</div>
+                        <div class="item-name">Word</div>
+                    </div>
+                    <div class="inventory-slot" data-slot="2">
+                        <div class="item-icon">📊</div>
+                        <div class="item-name">Excel</div>
+                    </div>
+                    <div class="inventory-slot" data-slot="3">
+                        <div class="item-icon">🎯</div>
+                        <div class="item-name">PowerPoint</div>
+                    </div>
+                    <div class="inventory-slot" data-slot="4">
+                        <div class="item-icon">📧</div>
+                        <div class="item-name">Outlook</div>
+                    </div>
+                    <div class="inventory-slot empty" data-slot="5"></div>
+                    <div class="inventory-slot empty" data-slot="6"></div>
+                </div>
+            </div>
             
-            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Menü öffnen">
-                ☰
-            </button>
-        </nav>
-    </header>
-
-    <main class="container">
-        <!-- Hero Section -->
-        <section id="home" class="hero">
-            <div class="hero-content">
-                <h1>Hallo, mein зайчик! 👋</h1>
-                <p class="hero-subtitle">Deine persönliche IHK Prüfungsvorbereitung für Informationstechnisches Büromanagement</p>
-                <div class="hero-actions">
-                    <a href="#modules" class="btn btn-lg">Lernen starten</a>
-                    <a href="#progress" class="btn btn-outline btn-lg">Fortschritt ansehen</a>
+            <!-- Player Stats -->
+            <div class="player-stats">
+                <h3>📊 Statistiken</h3>
+                <div class="stat-item">
+                    <span class="stat-label">Level</span>
+                    <span class="stat-value" id="player-level">5</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">XP</span>
+                    <span class="stat-value" id="player-xp">250 / 500</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Lern-Streak</span>
+                    <span class="stat-value" id="player-streak">3 🔥</span>
                 </div>
             </div>
-        </section>
-
-        <!-- Breadcrumbs -->
-        <nav class="breadcrumbs">
-            <div class="breadcrumb-item">
-                <a href="#home" class="breadcrumb-link">Startseite</a>
-            </div>
-            <div class="breadcrumb-item">
-                <span class="breadcrumb-current">Übersicht</span>
-            </div>
-        </nav>
-
-        <!-- Countdown Section -->
-        <section id="exam" class="countdown">
-            <h2 class="countdown-title">🎯 Deine Zwischenprüfung</h2>
-            <div class="countdown-timer">
-                <div class="time-block">
-                    <span class="time-value" id="days">--</span>
-                    <span class="time-label">Tage</span>
+        </aside>
+        
+        <!-- Game Main Content -->
+        <main class="game-main">
+            <!-- Hero Section -->
+            <section id="home" class="quest-area">
+                <div class="hero-content">
+                    <h1 class="fable-heading">Hallo, mein зайчик! 🐰</h1>
+                    <p class="hero-subtitle">Deine Fable 5 inspirierte IHK Prüfungsvorbereitung für Informationstechnisches Büromanagement</p>
+                    <div class="hero-actions">
+                        <button class="fable-button" onclick="startAdventure()">Abenteuer starten</button>
+                        <button class="fable-button secondary" onclick="showProgress()">Fortschritt ansehen</button>
+                    </div>
                 </div>
-                <div class="time-block">
-                    <span class="time-value" id="hours">--</span>
-                    <span class="time-label">Stunden</span>
-                </div>
-                <div class="time-block">
-                    <span class="time-value" id="minutes">--</span>
-                    <span class="time-label">Minuten</span>
-                </div>
-                <div class="time-block">
-                    <span class="time-value" id="seconds">--</span>
-                    <span class="time-label">Sekunden</span>
-                </div>
-            </div>
-            <p class="exam-info">26./27. Februar 2026 - Informationstechnisches Büromanagement</p>
-        </section>
-
-        <!-- Progress Section - Erweitertes Lernfortschritt-System -->
-        <section id="progress" class="fortschritt-section">
-            <h2>📊 Dein Lernfortschritt</h2>
+            </section>
             
-            <!-- Gesamt-Statistiken -->
-            <div class="global-stats">
-                <div class="stat-card">
-                    <div class="stat-label">Gesamtzeit</div>
-                    <div class="stat-value" id="total-time">0 Min</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Aufgaben gelöst</div>
-                    <div class="stat-value" id="total-tasks">0/150</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Ø Punkte</div>
-                    <div class="stat-value" id="average-score">0 Pkt</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Bestehensquote</div>
-                    <div class="stat-value" id="pass-rate">0%</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Lern-Streak</div>
-                    <div class="stat-value streak-value" id="streak">0 🔥</div>
-                </div>
-            </div>
-
-            <!-- Kategorie-Fortschritte -->
-            <div class="category-progress">
-                <!-- Excel -->
-                <div class="category-card excel">
-                    <div class="category-header">
-                        <span class="category-icon">📊</span>
-                        <span class="category-title">Microsoft Excel</span>
-                    </div>
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <div class="progress-fill" id="excel-progress-bar" style="width: 0%"></div>
+            <!-- Learning Modules -->
+            <section id="modules" class="interaction-zone">
+                <h2 class="section-title">🎮 Lernmodule</h2>
+                <div class="modules-grid">
+                    <div class="module-card" data-module="word">
+                        <div class="module-icon">📝</div>
+                        <h3>Microsoft Word</h3>
+                        <p>Briefe, Protokolle, DIN 5008</p>
+                        <div class="module-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text">0% abgeschlossen</span>
                         </div>
-                        <div class="progress-text" id="excel-progress-text">0% abgeschlossen</div>
+                        <button class="fable-button module-btn">Starten →</button>
                     </div>
-                    <div class="category-stats">
-                        <span id="excel-tasks">📝 0/50</span>
-                        <span id="excel-score">⭐ Ø 0 Pkt</span>
-                        <span id="excel-time">⏱️ 0 Min</span>
-                    </div>
-                </div>
-
-                <!-- Word -->
-                <div class="category-card word">
-                    <div class="category-header">
-                        <span class="category-icon">📝</span>
-                        <span class="category-title">Microsoft Word</span>
-                    </div>
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <div class="progress-fill" id="word-progress-bar" style="width: 0%"></div>
+                    
+                    <div class="module-card" data-module="excel">
+                        <div class="module-icon">📊</div>
+                        <h3>Microsoft Excel</h3>
+                        <p>Formeln, SVERWEIS, Pivot</p>
+                        <div class="module-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text">0% abgeschlossen</span>
                         </div>
-                        <div class="progress-text" id="word-progress-text">0% abgeschlossen</div>
+                        <button class="fable-button module-btn">Starten →</button>
                     </div>
-                    <div class="category-stats">
-                        <span id="word-tasks">📝 0/50</span>
-                        <span id="word-score">⭐ Ø 0 Pkt</span>
-                        <span id="word-time">⏱️ 0 Min</span>
-                    </div>
-                </div>
-
-                <!-- PowerPoint -->
-                <div class="category-card powerpoint">
-                    <div class="category-header">
-                        <span class="category-icon">🎯</span>
-                        <span class="category-title">PowerPoint</span>
-                    </div>
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <div class="progress-fill" id="powerpoint-progress-bar" style="width: 0%"></div>
+                    
+                    <div class="module-card" data-module="powerpoint">
+                        <div class="module-icon">🎯</div>
+                        <h3>PowerPoint</h3>
+                        <p>Präsentationen, Design, Animation</p>
+                        <div class="module-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text">0% abgeschlossen</span>
                         </div>
-                        <div class="progress-text" id="powerpoint-progress-text">0% abgeschlossen</div>
+                        <button class="fable-button module-btn">Starten →</button>
                     </div>
-                    <div class="category-stats">
-                        <span id="powerpoint-tasks">📝 0/30</span>
-                        <span id="powerpoint-score">⭐ Ø 0 Pkt</span>
-                        <span id="powerpoint-time">⏱️ 0 Min</span>
-                    </div>
-                </div>
-
-                <!-- Outlook -->
-                <div class="category-card outlook">
-                    <div class="category-header">
-                        <span class="category-icon">📧</span>
-                        <span class="category-title">Outlook</span>
-                    </div>
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <div class="progress-fill" id="outlook-progress-bar" style="width: 0%"></div>
+                    
+                    <div class="module-card" data-module="outlook">
+                        <div class="module-icon">📧</div>
+                        <h3>Outlook</h3>
+                        <p>E-Mail, Kalender, Aufgaben</p>
+                        <div class="module-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text">0% abgeschlossen</span>
                         </div>
-                        <div class="progress-text" id="outlook-progress-text">0% abgeschlossen</div>
-                    </div>
-                    <div class="category-stats">
-                        <span id="outlook-tasks">📝 0/20</span>
-                        <span id="outlook-score">⭐ Ø 0 Pkt</span>
-                        <span id="outlook-time">⏱️ 0 Min</span>
+                        <button class="fable-button module-btn">Starten →</button>
                     </div>
                 </div>
-            </div>
-
-            <!-- Charts Section -->
-            <div class="charts-section">
-                <div class="chart-card">
-                    <h3>📊 Fortschritt pro Kategorie</h3>
-                    <div class="chart-container">
-                        <canvas id="progressBarsChart"></canvas>
+            </section>
+            
+            <!-- Progress Section -->
+            <section id="progress" class="interaction-zone">
+                <h2 class="section-title">📊 Dein Fortschritt</h2>
+                
+                <!-- Global Stats -->
+                <div class="global-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">⏱️</div>
+                        <div class="stat-label">Gesamtzeit</div>
+                        <div class="stat-value" id="total-time">0 Min</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📝</div>
+                        <div class="stat-label">Aufgaben gelöst</div>
+                        <div class="stat-value" id="total-tasks">0/150</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⭐</div>
+                        <div class="stat-label">Ø Punkte</div>
+                        <div class="stat-value" id="average-score">0 Pkt</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🏆</div>
+                        <div class="stat-label">Erfolgsquote</div>
+                        <div class="stat-value" id="success-rate">0%</div>
                     </div>
                 </div>
-
-                <div class="chart-card">
-                    <h3>🎯 Aufgabenverteilung</h3>
-                    <div class="chart-container">
-                        <canvas id="distributionChart"></canvas>
+                
+                <!-- Category Progress -->
+                <div class="category-progress">
+                    <div class="category-item excel">
+                        <div class="category-header">
+                            <span class="category-icon">📊</span>
+                            <span class="category-title">Excel</span>
+                        </div>
+                        <div class="category-progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <div class="category-stats">
+                            <span>0/50 Aufgaben</span>
+                            <span>Ø 0 Pkt</span>
+                        </div>
+                    </div>
+                    
+                    <div class="category-item word">
+                        <div class="category-header">
+                            <span class="category-icon">📝</span>
+                            <span class="category-title">Word</span>
+                        </div>
+                        <div class="category-progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <div class="category-stats">
+                            <span>0/50 Aufgaben</span>
+                            <span>Ø 0 Pkt</span>
+                        </div>
+                    </div>
+                    
+                    <div class="category-item powerpoint">
+                        <div class="category-header">
+                            <span class="category-icon">🎯</span>
+                            <span class="category-title">PowerPoint</span>
+                        </div>
+                        <div class="category-progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <div class="category-stats">
+                            <span>0/30 Aufgaben</span>
+                            <span>Ø 0 Pkt</span>
+                        </div>
+                    </div>
+                    
+                    <div class="category-item outlook">
+                        <div class="category-header">
+                            <span class="category-icon">📧</span>
+                            <span class="category-title">Outlook</span>
+                        </div>
+                        <div class="category-progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <div class="category-stats">
+                            <span>0/20 Aufgaben</span>
+                            <span>Ø 0 Pkt</span>
+                        </div>
                     </div>
                 </div>
-
-                <div class="chart-card chart-full">
-                    <h3>📈 Punkte-Entwicklung</h3>
-                    <div class="chart-container">
-                        <canvas id="scoreHistoryChart"></canvas>
+                
+                <!-- Charts -->
+                <div class="charts-section">
+                    <div class="chart-card">
+                        <h3>📊 Fortschritt pro Kategorie</h3>
+                        <div class="chart-container">
+                            <canvas id="progressChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="chart-card">
+                        <h3>🎯 Aufgabenverteilung</h3>
+                        <div class="chart-container">
+                            <canvas id="distributionChart"></canvas>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Aktions-Buttons -->
-            <div class="action-buttons">
-                <button class="action-btn" onclick="addDemoTask()">📝 Demo-Aufgabe hinzufügen</button>
-                <button class="action-btn secondary" onclick="exportFortschritt()">💾 Exportieren</button>
-                <button class="action-btn danger" onclick="resetAllProgress()">🔄 Alles zurücksetzen</button>
-            </div>
-        </section>
-
-        <!-- Learning Modules -->
-        <section id="modules" class="modules">
-            <article class="module-card" onclick="openModule('word')">
-                <span class="module-icon">📝</span>
-                <h3 class="module-title">Microsoft Word</h3>
-                <p class="module-description">Briefe, Protokolle, DIN 5008</p>
-                <button class="btn">Starten →</button>
-            </article>
-
-            <article class="module-card" onclick="openModule('excel')">
-                <span class="module-icon">📊</span>
-                <h3 class="module-title">Microsoft Excel</h3>
-                <p class="module-description">Formeln, SVERWEIS, Pivot</p>
-                <button class="btn">Starten →</button>
-            </article>
-
-            <article class="module-card" onclick="openModule('practice')">
-                <span class="module-icon">🎯</span>
-                <h3 class="module-title">Prüfungssimulation</h3>
-                <p class="module-description">120 Min. Simulation</p>
-                <button class="btn">Starten →</button>
-            </article>
-
-            <article class="module-card" onclick="openModule('tutor')">
-                <span class="module-icon">💝</span>
-                <h3 class="module-title">Emilia Tutor</h3>
-                <p class="module-description">Persönliche Hilfe</p>
-                <button class="btn btn-secondary">Chat starten →</button>
-            </article>
-        </section>
-
-        <!-- Daily Challenge -->
-        <section class="challenge">
-            <div class="challenge-content">
-                <h2 class="challenge-title">🔥 Tägliche Herausforderung</h2>
-                <p class="challenge-text" id="daily-challenge">Heute: Erstelle ein Geschäftsbrief nach DIN 5008!</p>
-                <button class="btn" onclick="startDailyChallenge()">Herausforderung annehmen</button>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>💝 Emilia's Lernplattform</h3>
-                    <p>Deine persönliche Unterstützung für die IHK Prüfungsvorbereitung</p>
+            </section>
+            
+            <!-- Exam Section -->
+            <section id="exam" class="interaction-zone">
+                <h2 class="section-title">🎯 Deine Zwischenprüfung</h2>
+                
+                <!-- Countdown Timer -->
+                <div class="countdown-timer">
+                    <div class="time-block">
+                        <span class="time-value" id="days">--</span>
+                        <span class="time-label">Tage</span>
+                    </div>
+                    <div class="time-block">
+                        <span class="time-value" id="hours">--</span>
+                        <span class="time-label">Stunden</span>
+                    </div>
+                    <div class="time-block">
+                        <span class="time-value" id="minutes">--</span>
+                        <span class="time-label">Minuten</span>
+                    </div>
+                    <div class="time-block">
+                        <span class="time-value" id="seconds">--</span>
+                        <span class="time-label">Sekunden</span>
+                    </div>
                 </div>
-                <div class="footer-section">
-                    <h3>Lernmodule</h3>
-                    <ul>
-                        <li>Microsoft Word</li>
-                        <li>Microsoft Excel</li>
-                        <li>Prüfungssimulation</li>
-                        <li>Emilia Tutor</li>
-                    </ul>
+                
+                <div class="exam-info">
+                    <p>26./27. Februar 2026 - Informationstechnisches Büromanagement</p>
+                    <button class="fable-button" onclick="startExamSimulation()">Prüfungssimulation starten</button>
                 </div>
-                <div class="footer-section">
-                    <h3>Prüfung</h3>
-                    <p>Informationstechnisches Büromanagement</p>
-                    <p>26./27. Februar 2026</p>
-                </div>
+            </section>
+        </main>
+        
+        <!-- Game Footer -->
+        <footer class="game-footer">
+            <div class="status-bar">
+                <span class="status-item">💝 Emilia's Fable 5 Lernplattform</span>
+                <span class="status-item" id="connection-status">🟢 Online</span>
+                <span class="status-item" id="performance-status">⚡ 60fps</span>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Emilia's Lernplattform - Made with 💝 für Alex</p>
-            </div>
-        </div>
-    </footer>
-
+        </footer>
+    </div>
+    
     <!-- Modal -->
     <div class="modal" id="modal">
         <div class="modal-content">
@@ -326,53 +530,60 @@
             </div>
         </div>
     </div>
-
+    
     <!-- Toast Container -->
     <div class="toast-container" id="toast-container"></div>
-
-    <!-- Scripts -->
-    <script src="js/main.js"></script>
-    <script src="js/fortschritt.js"></script>
     
-    <!-- Hilfsfunktionen für Demo und Tests -->
+    <!-- Performance Scripts (deferred) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
+    <script src="js/fable5-ui.js" defer></script>
+    
+    <!-- Performance Monitoring -->
     <script>
-        // Demo-Aufgabe hinzufügen
-        function addDemoTask() {
-            const categories = ['excel', 'word', 'powerpoint', 'outlook'];
-            const randomCategory = categories[Math.floor(Math.random() * categories.length)];
-            const randomScore = Math.floor(Math.random() * 40) + 60; // 60-100 Punkte
-            const randomTime = Math.floor(Math.random() * 20) + 5; // 5-25 Minuten
-            
-            const result = completeTask(randomCategory, randomScore, randomTime);
-            
-            if (result) {
-                showToast(`🎉 ${randomCategory.toUpperCase()} Aufgabe abgeschlossen!`, `Score: ${randomScore} Pkt | Zeit: ${randomTime} Min`);
-                updateFortschrittUI();
-            }
+        // Performance Monitoring
+        if ('performance' in window) {
+            window.addEventListener('load', () => {
+                const navigation = performance.getEntriesByType('navigation')[0];
+                const loadTime = navigation.loadEventEnd - navigation.loadEventStart;
+                console.log(`Page load time: ${loadTime}ms`);
+                
+                // Track performance metrics
+                if (loadTime > 2000) {
+                    console.warn('Page load time exceeds 2 seconds');
+                }
+            });
         }
         
-        // Alles zurücksetzen
-        function resetAllProgress() {
-            if (confirm('Möchtest du wirklich allen Fortschritt zurücksetzen? Diese Aktion kann nicht rückgängig gemacht werden!')) {
-                resetFortschritt();
-                showToast('🔄 Fortschritt zurückgesetzt!', 'Alle Daten wurden gelöscht.');
+        // FPS Monitoring
+        let fps = 0;
+        let lastTime = performance.now();
+        let frameCount = 0;
+        
+        function measureFPS() {
+            frameCount++;
+            const currentTime = performance.now();
+            
+            if (currentTime - lastTime >= 1000) {
+                fps = frameCount;
+                frameCount = 0;
+                lastTime = currentTime;
+                
+                // Update FPS display
+                const fpsElement = document.getElementById('performance-status');
+                if (fpsElement) {
+                    fpsElement.textContent = fps >= 55 ? `⚡ ${fps}fps` : `⚠️ ${fps}fps`;
+                }
+                
+                if (fps < 55) {
+                    console.warn(`Low FPS detected: ${fps}`);
+                }
             }
+            
+            requestAnimationFrame(measureFPS);
         }
         
-        // Toast-Notification anzeigen
-        function showToast(title, message) {
-            const toast = document.createElement('div');
-            toast.className = 'toast';
-            toast.innerHTML = `
-                <div style="font-weight: bold; margin-bottom: 5px;">${title}</div>
-                <div style="font-size: 0.9rem;">${message}</div>
-            `;
-            document.body.appendChild(toast);
-            
-            setTimeout(() => {
-                toast.remove();
-            }, 3000);
-        }
+        // Start FPS monitoring
+        requestAnimationFrame(measureFPS);
     </script>
 </body>
 </html>

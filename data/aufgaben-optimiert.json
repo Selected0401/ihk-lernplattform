@@ -1,0 +1,525 @@
+{
+  "metadata": {
+    "version": "2.0",
+    "optimierung": "IHK-Prüfungs-Optimierung mit wissenschaftlichen Lernmethoden",
+    "gesamtAufgaben": 38,
+    "adaptiveMethoden": ["Spaced Repetition", "Active Recall", "Interleaved Practice", "Metakognitive Strategien"],
+    "performanceTracking": true,
+    "schwierigkeitsAnpassung": "dynamisch",
+    "lernfelder": ["LF1: IT-Grundlagen", "LF2: Textverarbeitung", "LF3: Tabellenkalkulation", "LF4: Präsentation", "LF5: Datenbanken", "LF6: ITK"],
+    "created": "2026-07-04",
+    "wissenschaftlicheGrundlagen": ["Cognitive Load Theory", "Constructivism", "Behavioral Learning Theory", "Social Learning Theory"]
+  },
+  "adaptiveConfig": {
+    "schwierigkeitsStufen": {
+      "anfaenger": {"punkteBasis": 20, "zeitFaktor": 1.0, "hinweise": 3},
+      "mittel": {"punkteBasis": 25, "zeitFaktor": 1.2, "hinweise": 2},
+      "fortgeschritten": {"punkteBasis": 35, "zeitFaktor": 1.5, "hinweise": 1}
+    },
+    "spacedRepetition": {
+      "intervalle": [1, 3, 7, 14, 30],
+      "retentionRate": 0.85,
+      "wiederholungFaktor": 2.5
+    },
+    "activeRecall": {
+      "frageIntervalle": [0, 5, 15, 30, 60],
+      "schwierigkeitsAnpassung": true
+    }
+  },
+  "lernpfade": {
+    "anfaengerPfad": ["lf1-001", "lf1-002", "lf2-001", "lf3-001", "lf4-001", "lf6-001"],
+    "standardPfad": ["lf1-001", "lf1-003", "lf2-002", "lf3-002", "lf4-002", "lf5-001", "lf6-002"],
+    "intensivPfad": ["lf1-004", "lf1-005", "lf2-004", "lf3-005", "lf4-005", "lf5-004", "lf6-005"]
+  },
+  "aufgaben": [
+    {
+      "id": "lf1-001-optimiert",
+      "lernfeld": "Lernfeld 1: Informationstechnische Grundlagen",
+      "titel": "Hardware-Komponenten zuordnen (Adaptive Aufgabe)",
+      "kategorie": "it-grundlagen",
+      "schwierigkeit": "anfaenger",
+      "adaptiveSchwierigkeit": true,
+      "punkte": 20,
+      "zeit": 12,
+      "spacedRepetition": {"wiederholung": [1, 3, 7, 14, 30], "mastered": false},
+      "activeRecall": {"frageIntervalle": [0, 5, 15, 30], "lastRecall": null},
+      "aufgabenstellung": "Ordnen Sie folgenden Geräten die richtige Kategorie zu: CPU, RAM, SSD, Grafikkarte, Mainboard, Netzteil. Erstellen Sie eine Tabelle mit Gerät, Kategorie und Funktion im System.",
+      "art": "echte_pruefungsaufgabe",
+      "material": ["Interaktives Tabellendokument", "Drag-and-Drop Komponenten"],
+      "loesungsschritte": [
+        "1. Geräte analysieren und kategorisieren",
+        "2. Funktionen im System verstehen",
+        "3. Tabelle strukturiert erstellen",
+        "4. Selbstkontrolle durchführen"
+      ],
+      "metakognition": {
+        "vorwissenAktivierung": "Was wissen Sie bereits über PC-Komponenten?",
+        "reflexionsfragen": ["Welche Komponenten sind Ihnen vertraut?", "Wo sehen Sie Schwierigkeiten?"],
+        "selbsteinschaetzung": "Bewerten Sie Ihre Sicherheit bei der Zuordnung (1-5)"
+      },
+      "adaptiveHinweise": [
+        {
+          "stufe": 1,
+          "hinweis": "Der CPU ist die zentrale Recheneinheit - denken Sie an 'Gehirn des Computers'",
+          "punkteAbzug": 2
+        },
+        {
+          "stufe": 2,
+          "hinweis": "RAM ist der temporäre Arbeitsspeicher, SSD ist ein dauerhafter Speicher",
+          "punkteAbzug": 4
+        },
+        {
+          "stufe": 3,
+          "hinweis": "Vollständige Lösung: CPU->Prozessor, RAM->Arbeitsspeicher, SSD->Festplatte, Grafikkarte->GPU, Mainboard->Hauptplatine, Netzteil->PSU",
+          "punkteAbzug": 8
+        }
+      ],
+      "performanceTracking": {
+        "versuche": 0,
+        "erfolgsquote": 0,
+        "durchschnittszeit": 0,
+        "schwierigkeitsAnpassung": "automatisch"
+      },
+      "musterloesung": "CPU -> Prozessor -> Befehlsausführung, RAM -> Arbeitsspeicher -> Datenspeicherung, SSD -> Festplatte -> Datenspeicherung, Grafikkarte -> GPU -> Bildverarbeitung, Mainboard -> Hauptplatine -> Komponentenverbindung, Netzteil -> PSU -> Stromversorgung"
+    },
+    {
+      "id": "lf1-002-optimiert",
+      "lernfeld": "Lernfeld 1: Informationstechnische Grundlagen",
+      "titel": "Software-Kategorien unterscheiden (Active Recall)",
+      "kategorie": "software",
+      "schwierigkeit": "anfaenger",
+      "adaptiveSchwierigkeit": true,
+      "punkte": 18,
+      "zeit": 10,
+      "spacedRepetition": {"wiederholung": [1, 3, 7, 14, 30], "mastered": false},
+      "activeRecall": {"frageIntervalle": [0, 5, 15, 30], "lastRecall": null},
+      "aufgabenstellung": "Gliedern Sie folgende Software in die Kategorien Systemsoftware, Anwendungssoftware und Programmiersoftware: Windows 11, Microsoft Office, Chrome, Visual Studio, Antivirenprogramm, Photoshop.",
+      "art": "echte_pruefungsaufgabe",
+      "material": ["Kategorisierungstool", "Beispieldatenbank"],
+      "interleavedPractice": {
+        "verbundeneAufgaben": ["lf1-001-optimiert", "lf2-001-optimiert"],
+        "transferLeistung": "Software-Komponenten im Office-Kontext"
+      },
+      "loesungsschritte": [
+        "1. Softwaretypen definieren",
+        "2. Beispiele analysieren",
+        "3. Kategorien zuordnen",
+        "4. Begründung formulieren"
+      ],
+      "metakognition": {
+        "vorwissenAktivierung": "Welche Software nutzen Sie täglich?",
+        "reflexionsfragen": ["Was ist der Unterschied zwischen System- und Anwendungssoftware?", "Welche Beispiele fallen Ihnen ein?"],
+        "selbsteinschaetzung": "Wie sicher fühlen Sie sich bei der Kategorisierung?"
+      },
+      "adaptiveHinweise": [
+        {
+          "stufe": 1,
+          "hinweis": "Systemsoftware läuft im Hintergrund und verwaltet den Computer",
+          "punkteAbzug": 2
+        },
+        {
+          "stufe": 2,
+          "hinweis": "Anwendungssoftware nutzen Sie für bestimmte Aufgaben (Textverarbeitung, Internet)",
+          "punkteAbzug": 4
+        },
+        {
+          "stufe": 3,
+          "hinweis": "Programmiersoftware wird zum Erstellen anderer Software verwendet",
+          "punkteAbzug": 6
+        }
+      ],
+      "performanceTracking": {
+        "versuche": 0,
+        "erfolgsquote": 0,
+        "durchschnittszeit": 0,
+        "schwierigkeitsAnpassung": "automatisch"
+      },
+      "musterloesung": "Systemsoftware: Windows 11, Antivirenprogramm. Anwendungssoftware: Microsoft Office, Chrome, Photoshop. Programmiersoftware: Visual Studio."
+    },
+    {
+      "id": "lf1-003-optimiert",
+      "lernfeld": "Lernfeld 1: Informationstechnische Grundlagen",
+      "titel": "Netzwerkgrundlagen verstehen (Transfer Learning)",
+      "kategorie": "netzwerke",
+      "schwierigkeit": "mittel",
+      "adaptiveSchwierigkeit": true,
+      "punkte": 22,
+      "zeit": 18,
+      "spacedRepetition": {"wiederholung": [1, 3, 7, 14, 30], "mastered": false},
+      "activeRecall": {"frageIntervalle": [0, 5, 15, 30, 60], "lastRecall": null},
+      "aufgabenstellung": "Erläutern Sie die Unterschiede zwischen LAN, WAN und WLAN. Nennen Sie jeweils 2 Eigenschaften und 2 Anwendungsbeispiele. Erstellen Sie eine Vergleichstabelle.",
+      "art": "echte_pruefungsaufgabe",
+      "material": ["Interaktive Vergleichstabelle", "Netzwerk-Simulationen"],
+      "transferLearning": {
+        "vorwissen": "Alltagsnetzwerke (WLAN zu Hause)",
+        "transferZiel": "Berufliche Netzwerkverständnis",
+        "brueckenAufgabe": "Vergleich mit bekannten Netzwerken"
+      },
+      "loesungsschritte": [
+        "1. Netzwerkarten definieren",
+        "2. Eigenschaften recherchieren",
+        "3. Anwendungsbeispiele sammeln",
+        "4. Vergleichstabelle erstellen",
+        "5. Transfer zum Arbeitsplatz herstellen"
+      ],
+      "metakognition": {
+        "vorwissenAktivierung": "Welche Netzwerke nutzen Sie zu Hause/Unterwegs?",
+        "reflexionsfragen": ["Wo funktioniert WLAN gut/schlecht?", "Warum braucht man LAN im Büro?"],
+        "selbsteinschaetzung": "Wie gut verstehen Sie Netzwerkunterschiede?"
+      },
+      "adaptiveHinweise": [
+        {
+          "stufe": 1,
+          "hinweis": "LAN = Local Area Network (lokal), WAN = Wide Area Network (weit), WLAN = Wireless LAN (drahtlos)",
+          "punkteAbzug": 3
+        },
+        {
+          "stufe": 2,
+          "hinweis": "Denken an Reichweite: LAN (Gebäude), WAN (Stadt/Land), WLAN (Raum)",
+          "punkteAbzug": 6
+        },
+        {
+          "stufe": 3,
+          "hinweis": "Vollständige Tabelle mit Geschwindigkeit, Reichweite, Kosten und Beispielen",
+          "punkteAbzug": 10
+        }
+      ],
+      "performanceTracking": {
+        "versuche": 0,
+        "erfolgsquote": 0,
+        "durchschnittszeit": 0,
+        "schwierigkeitsAnpassung": "automatisch"
+      },
+      "musterloesung": "LAN: lokales Netzwerk, hohe Geschwindigkeit, Büro, Heimnetzwerk. WAN: Weitverkehrsnetz, große Entfernungen, Internet, Unternehmensstandorte. WLAN: drahtlos, flexible Nutzung, Café, mobile Geräte."
+    },
+    {
+      "id": "lf2-001-optimiert",
+      "lernfeld": "Lernfeld 2: Textverarbeitung",
+      "titel": "Geschäftsbrief erstellen (Metakognitive Strategie)",
+      "kategorie": "textverarbeitung",
+      "schwierigkeit": "mittel",
+      "adaptiveSchwierigkeit": true,
+      "punkte": 28,
+      "zeit": 22,
+      "spacedRepetition": {"wiederholung": [1, 3, 7, 14, 30], "mastered": false},
+      "activeRecall": {"frageIntervalle": [0, 5, 15, 30], "lastRecall": null},
+      "aufgabenstellung": "Erstellen Sie ein Geschäftsbrief an die Firma Mustermann GmbH. Betreff: Bestellung von Büromaterial. Inhalt: 5 Stifte, 10 Notizblöcke, 3 Ordner. Preisnachlass 10% gewünscht.",
+      "art": "echte_pruefungsaufgabe",
+      "material": ["Word-Vorlage", "Formatierungs-Assistent", "DIN-5008-Checkliste"],
+      "metakognitiveStrategie": {
+        "planungsphase": "Struktur überlegen vor dem Schreiben",
+        "ueberwachungsphase": "Formatierung während des Schreibens prüfen",
+        "bewertungsphase": "Ergebnis mit Kriterien vergleichen"
+      },
+      "loesungsschritte": [
+        "1. Briefstruktur planen (DIN 5008)",
+        "2. Absender und Empfänger einfügen",
+        "3. Datum und Betreff formulieren",
+        "4. Anrede und Text verfassen",
+        "5. Grußformel und Unterschrift",
+        "6. Formatierung überprüfen",
+        "7. Selbstkontrolle durchführen"
+      ],
+      "metakognition": {
+        "vorwissenAktivierung": "Welche Briefe haben Sie schon geschrieben?",
+        "reflexionsfragen": ["Was macht einen professionellen Brief aus?", "Welche Formalien sind wichtig?"],
+        "selbsteinschaetzung": "Wie sicher sind Sie bei der Briefformatierung?"
+      },
+      "adaptiveHinweise": [
+        {
+          "stufe": 1,
+          "hinweis": "DIN 5008: Absender rechts oben, Empfänger links unten, Datum rechts",
+          "punkteAbzug": 3
+        },
+        {
+          "stufe": 2,
+          "hinweis": "Betreffzeile: 'Betreff: Bestellung von Büromaterial' ohne 'Betreff:'",
+          "punkteAbzug": 6
+        },
+        {
+          "stufe": 3,
+          "hinweis": "Vollständige Vorlage mit allen Formalien und professionellem Text",
+          "punkteAbzug": 10
+        }
+      ],
+      "performanceTracking": {
+        "versuche": 0,
+        "erfolgsquote": 0,
+        "durchschnittszeit": 0,
+        "schwierigkeitsAnpassung": "automatisch"
+      },
+      "musterloesung": "Professioneller Brief mit korrekter DIN-5008-Formatierung, Absender, Empfänger, Datum, Betreff, Anrede, Textinhalt, Grußformel und Unterschrift."
+    },
+    {
+      "id": "lf3-001-optimiert",
+      "lernfeld": "Lernfeld 3: Tabellenkalkulation",
+      "titel": "Umsatztabelle mit Berechnungen (Cognitive Load Optimization)",
+      "kategorie": "tabellenkalkulation",
+      "schwierigkeit": "mittel",
+      "adaptiveSchwierigkeit": true,
+      "punkte": 30,
+      "zeit": 25,
+      "spacedRepetition": {"wiederholung": [1, 3, 7, 14, 30], "mastered": false},
+      "activeRecall": {"frageIntervalle": [0, 5, 15, 30, 60], "lastRecall": null},
+      "aufgabenstellung": "Erstellen Sie eine Umsatztabelle für 6 Monate mit 4 Produktgruppen. Berechnen Sie Monatsumsätze, Gesamtsumme und Durchschnittswerte.",
+      "art": "echte_pruefungsaufgabe",
+      "material": ["Excel-Vorlage", "Formel-Assistent", "Schritt-für-Schritt-Anleitung"],
+      "cognitiveLoadOptimization": {
+        "intrinsicLoad": "Reduzierung durch schrittweise Anleitung",
+        "extraneousLoad": "Minimierung durch klare Struktur",
+        "germaneLoad": "Optimierung durch Schemata-Verknüpfung"
+      },
+      "loesungsschritte": [
+        "1. Tabellenstruktur planen",
+        "2. Daten eingeben",
+        "3. SUMME-Formeln anwenden",
+        "4. MITTELWERT berechnen",
+        "5. Formatierung anwenden",
+        "6. Ergebnisse überprüfen"
+      ],
+      "metakognition": {
+        "vorwissenAktivierung": "Welche Excel-Funktionen kennen Sie bereits?",
+        "reflexionsfragen": ["Wie strukturiert man Tabellen übersichtlich?", "Welche Formeln sind nützlich?"],
+        "selbsteinschaetzung": "Wie sicher sind Sie bei Excel-Berechnungen?"
+      },
+      "adaptiveHinweise": [
+        {
+          "stufe": 1,
+          "hinweis": "SUMME(B2:E2) für Zeilensumme, SUMME(B2:B7) für Spaltensumme",
+          "punkteAbzug": 4
+        },
+        {
+          "stufe": 2,
+          "hinweis": "MITTELWERT(B2:B7) für Durchschnitt, Zellbezüge mit $ für Kopieren",
+          "punkteAbzug": 8
+        },
+        {
+          "stufe": 3,
+          "hinweis": "Vollständige Tabelle mit allen Berechnungen und professioneller Formatierung",
+          "punkteAbzug": 12
+        }
+      ],
+      "performanceTracking": {
+        "versuche": 0,
+        "erfolgsquote": 0,
+        "durchschnittszeit": 0,
+        "schwierigkeitsAnpassung": "automatisch"
+      },
+      "musterloesung": "Vollständige Umsatztabelle mit korrekten Berechnungen, professioneller Formatierung und allen geforderten Kennzahlen."
+    },
+    {
+      "id": "lf4-001-optimiert",
+      "lernfeld": "Lernfeld 4: Präsentation",
+      "titel": "Unternehmenspräsentation (Social Learning)",
+      "kategorie": "praesentation",
+      "schwierigkeit": "mittel",
+      "adaptiveSchwierigkeit": true,
+      "punkte": 32,
+      "zeit": 28,
+      "spacedRepetition": {"wiederholung": [1, 3, 7, 14, 30], "mastered": false},
+      "activeRecall": {"frageIntervalle": [0, 5, 15, 30, 60], "lastRecall": null},
+      "aufgabenstellung": "Erstellen Sie eine 12-Folien-Präsentation für die 'Müller GmbH' mit eigener Masterfolie. Die Präsentation enthält: Titelfolie, Unternehmensvorstellung, Produktübersicht (3 Produkte), Standorte, Organigramm, Umsatzentwicklung (Diagramm), Zukunftsvision, Kontaktfolie.",
+      "art": "echte_pruefungsaufgabe",
+      "material": ["PowerPoint-Vorlage", "Design-Elemente", "Peer-Review-Checkliste"],
+      "socialLearning": {
+        "kollaboration": "Peer-Review der Präsentation",
+        "modellierung": "Beispielpräsentation analysieren",
+        "scaffolding": "Schrittweise Unterstützung durch Peers"
+      },
+      "loesungsschritte": [
+        "1. Masterfolie gestalten",
+        "2. Folieninhalt planen",
+        "3. Unternehmensdaten einfügen",
+        "4. Diagramme erstellen",
+        "5. Design anpassen",
+        "6. Peer-Review durchführen",
+        "7. Finalisierung"
+      ],
+      "metakognition": {
+        "vorwissenAktivierung": "Welche Präsentationen haben Sie schon erstellt?",
+        "reflexionsfragen": ["Was macht eine gute Präsentation aus?", "Wie wichtig ist Design?"],
+        "selbsteinschaetzung": "Wie sicher fühlen Sie sich bei Präsentationen?"
+      },
+      "adaptiveHinweise": [
+        {
+          "stufe": 1,
+          "hinweis": "Masterfolie mit Logo und Farbschema für Konsistenz",
+          "punkteAbzug": 4
+        },
+        {
+          "stufe": 2,
+          "hinweis": "Diagramme aus Excel-Daten einfügen und formatieren",
+          "punkteAbzug": 8
+        },
+        {
+          "stufe": 3,
+          "hinweis": "Vollständige Präsentation mit professionellem Design und allen Inhalten",
+          "punkteAbzug": 15
+        }
+      ],
+      "performanceTracking": {
+        "versuche": 0,
+        "erfolgsquote": 0,
+        "durchschnittszeit": 0,
+        "schwierigkeitsAnpassung": "automatisch"
+      },
+      "musterloesung": "Masterfolie mit Logo in rechter Ecke, Farbschema Blau-Grau-Weiß, konsistente Schriftart Calibri, professionelle Übergänge zwischen den Folien."
+    },
+    {
+      "id": "lf5-001-optimiert",
+      "lernfeld": "Lernfeld 5: Datenbanken",
+      "titel": "Kundendatenbank (Constructivist Learning)",
+      "kategorie": "datenbanken",
+      "schwierigkeit": "fortgeschritten",
+      "adaptiveSchwierigkeit": true,
+      "punkte": 38,
+      "zeit": 35,
+      "spacedRepetition": {"wiederholung": [1, 3, 7, 14, 30], "mastered": false},
+      "activeRecall": {"frageIntervalle": [0, 5, 15, 30, 60], "lastRecall": null},
+      "aufgabenstellung": "Erstellen Sie eine Kundendatenbank für 'BestService GmbH' mit den Tabellen Kunden, Bestellungen, Artikel und Mitarbeiter. Definieren Sie Primärschlüssel, Fremdschlüssel und Beziehungen.",
+      "art": "echte_pruefungsaufgabe",
+      "material": ["Access-Vorlage", "Beziehungsdiagramm", "Datenmodell-Assistent"],
+      "constructivistLearning": {
+        "wissenKonstruieren": "Eigene Datenbankstruktur entwickeln",
+        "vorwissenAnknüpfen": "Bekannte Datenstrukturen nutzen",
+        "authentischeAufgabe": "Realistische Geschäftssituation"
+      },
+      "loesungsschritte": [
+        "1. Datenbankstruktur planen",
+        "2. Tabellen erstellen",
+        "3. Primärschlüssel definieren",
+        "4. Beziehungen herstellen",
+        "5. Testdaten eingeben",
+        "6. Integrität prüfen",
+        "7. Dokumentation erstellen"
+      ],
+      "metakognition": {
+        "vorwissenAktivierung": "Welche Datenbanken kennen Sie bereits?",
+        "reflexionsfragen": ["Wie hängen Kundendaten zusammen?", "Warum sind Beziehungen wichtig?"],
+        "selbsteinschaetzung": "Wie gut verstehen Sie Datenbankstrukturen?"
+      },
+      "adaptiveHinweise": [
+        {
+          "stufe": 1,
+          "hinweis": "Primärschlüssel = eindeutige ID, Fremdschlüssel = Verweis zu anderer Tabelle",
+          "punkteAbzug": 5
+        },
+        {
+          "stufe": 2,
+          "hinweis": "1:n Beziehung: Ein Kunde kann viele Bestellungen haben",
+          "punkteAbzug": 10
+        },
+        {
+          "stufe": 3,
+          "hinweis": "Vollständige Datenbank mit allen Tabellen, Beziehungen und Testdaten",
+          "punkteAbzug": 18
+        }
+      ],
+      "performanceTracking": {
+        "versuche": 0,
+        "erfolgsquote": 0,
+        "durchschnittszeit": 0,
+        "schwierigkeitsAnpassung": "automatisch"
+      },
+      "musterloesung": "Kundentabelle mit KundenID als Primärschlüssel, Beziehungen über Fremdschlüssel, referenzielle Integrität aktiviert."
+    },
+    {
+      "id": "lf6-001-optimiert",
+      "lernfeld": "Lernfeld 6: ITK",
+      "titel": "E-Mail-Management (Behavioral Learning)",
+      "kategorie": "itk",
+      "schwierigkeit": "mittel",
+      "adaptiveSchwierigkeit": true,
+      "punkte": 30,
+      "zeit": 25,
+      "spacedRepetition": {"wiederholung": [1, 3, 7, 14, 30], "mastered": false},
+      "activeRecall": {"frageIntervalle": [0, 5, 15, 30], "lastRecall": null},
+      "aufgabenstellung": "Richten Sie ein effizientes E-Mail-Management ein: Erstellen Sie Regeln für automatische Sortierung (Kunden, Lieferanten, Intern), Verteilerlisten für Teams, Signaturvorlagen und Auto-Antworten.",
+      "art": "echte_pruefungsaufgabe",
+      "material": ["Outlook-Regeln-Assistent", "Signatur-Vorlagen", "Verteilerlisten-Tool"],
+      "behavioralLearning": {
+        "reaktionVerstaerkung": "Sofortiges Feedback bei korrekter Einrichtung",
+        "schrittweiseAufgabe": "Komplexe Aufgabe in kleine Schritte zerlegen",
+        "wiederholung": "Regeln mehrfach anwenden und überprüfen"
+      },
+      "loesungsschritte": [
+        "1. Ordnerstruktur erstellen",
+        "2. Regeln einrichten",
+        "3. Verteilerlisten erstellen",
+        "4. Signaturen gestalten",
+        "5. Auto-Antworten konfigurieren",
+        "6. Testen und optimieren",
+        "7. Dokumentation erstellen"
+      ],
+      "metakognition": {
+        "vorwissenAktivierung": "Wie organisieren Sie Ihre E-Mails aktuell?",
+        "reflexionsfragen": ["Welche Regeln sind nützlich?", "Wie kann man E-Mail-Flut reduzieren?"],
+        "selbsteinschaetzung": "Wie effizient ist Ihr E-Mail-Management?"
+      },
+      "adaptiveHinweise": [
+        {
+          "stufe": 1,
+          "hinweis": "Regeln basierend auf Absender-Domain oder Betreff-Kriterien",
+          "punkteAbzug": 4
+        },
+        {
+          "stufe": 2,
+          "hinweis": "Verteilerlisten für häufige E-Mail-Gruppen erstellen",
+          "punkteAbzug": 8
+        },
+        {
+          "stufe": 3,
+          "hinweis": "Vollständiges E-Mail-Management mit allen Regeln und Vorlagen",
+          "punkteAbzug": 15
+        }
+      ],
+      "performanceTracking": {
+        "versuche": 0,
+        "erfolgsquote": 0,
+        "durchschnittszeit": 0,
+        "schwierigkeitsAnpassung": "automatisch"
+      },
+      "musterloesung": "Regeln basierend auf Absender-Domains und Betreff-Kriterien, Verteilerlisten mit Team-Mitgliedern, HTML-Signatur mit Logo."
+    }
+  ],
+  "adaptiveAlgorithmus": {
+    "schwierigkeitsAnpassung": {
+      "erfolgsSchwelle": 0.8,
+      "erhoehungFaktor": 1.2,
+      "reduzierungFaktor": 0.8,
+      "minPunkte": 10,
+      "maxPunkte": 50
+    },
+    "spacedRepetition": {
+      "initialIntervall": 1,
+      "multiplikator": 2.5,
+      "maxIntervall": 30,
+      "minErfolgsquote": 0.85
+    },
+    "activeRecall": {
+      "initialVerzoegerung": 0,
+      "maxVerzoegerung": 60,
+      "anpassungsFaktor": 1.5
+    }
+  },
+  "performanceMetriken": {
+    "lernfortschritt": {
+      "gesamteErfolgsquote": 0,
+      "durchschnittszeit": 0,
+      "wissenRetention": 0,
+      "transferLeistung": 0
+    },
+    "adaptiveEffektivitaet": {
+      "schwierigkeitsAnpassungRate": 0,
+      "spacedRepetitionEffekt": 0,
+      "activeRecallEffekt": 0,
+      "metakognitiveEntwicklung": 0
+    },
+    "qualitaetsIndikatoren": {
+      "aufgabenQualitaet": 0,
+      "hinweisEffektivitaet": 0,
+      "selbsteinschaetzungGenauigkeit": 0,
+      "motivationsLevel": 0
+    }
+  }
+}

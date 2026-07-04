@@ -1,0 +1,130 @@
+{
+  "budgets": [
+    {
+      "resource": "total",
+      "limit": "300KB"
+    },
+    {
+      "resource": "script",
+      "limit": "150KB"
+    },
+    {
+      "resource": "css",
+      "limit": "50KB"
+    },
+    {
+      "resource": "image",
+      "limit": "200KB"
+    },
+    {
+      "resource": "font",
+      "limit": "50KB"
+    },
+    {
+      "resource": "third-party",
+      "limit": "100KB"
+    },
+    {
+      "metric": "LCP",
+      "limit": "2500ms"
+    },
+    {
+      "metric": "FID",
+      "limit": "100ms"
+    },
+    {
+      "metric": "CLS",
+      "limit": "0.1"
+    },
+    {
+      "metric": "TTFB",
+      "limit": "600ms"
+    },
+    {
+      "metric": "FCP",
+      "limit": "1800ms"
+    },
+    {
+      "metric": "TTI",
+      "limit": "3500ms"
+    },
+    {
+      "metric": "TBT",
+      "limit": "200ms"
+    }
+  ],
+  "budgets": [
+    {
+      "type": "bundle",
+      "name": "main",
+      "maximumWarning": "150kb",
+      "maximumError": "200kb"
+    },
+    {
+      "type": "bundle",
+      "name": "vendor-react",
+      "maximumWarning": "80kb",
+      "maximumError": "120kb"
+    },
+    {
+      "type": "bundle",
+      "name": "vendor-chart",
+      "maximumWarning": "100kb",
+      "maximumError": "150kb"
+    },
+    {
+      "type": "bundle",
+      "name": "feature-exam",
+      "maximumWarning": "50kb",
+      "maximumError": "80kb"
+    },
+    {
+      "type": "bundle",
+      "name": "feature-editor",
+      "maximumWarning": "60kb",
+      "maximumError": "100kb"
+    },
+    {
+      "type": "bundle",
+      "name": "feature-progress",
+      "maximumWarning": "50kb",
+      "maximumError": "80kb"
+    },
+    {
+      "type": "asset",
+      "name": "images",
+      "maximumWarning": "200kb",
+      "maximumError": "300kb"
+    },
+    {
+      "type": "asset",
+      "name": "fonts",
+      "maximumWarning": "50kb",
+      "maximumError": "80kb"
+    }
+  ],
+  "monitoring": {
+    "webVitals": true,
+    "reportTo": "/api/analytics/vitals",
+    "sampleRate": 0.1,
+    "thresholds": {
+      "LCP": { "good": 2500, "needsImprovement": 4000, "poor": 4000 },
+      "FID": { "good": 100, "needsImprovement": 300, "poor": 300 },
+      "CLS": { "good": 0.1, "needsImprovement": 0.25, "poor": 0.25 },
+      "FCP": { "good": 1800, "needsImprovement": 3000, "poor": 3000 },
+      "TTFB": { "good": 600, "needsImprovement": 1500, "poor": 1500 }
+    }
+  },
+  "ci": {
+    "lighthouse": {
+      "performance": 90,
+      "accessibility": 90,
+      "bestPractices": 90,
+      "seo": 90,
+      "pwa": 90
+    },
+    "bundleAnalyzer": true,
+    "criticalCss": true,
+    "serviceWorker": true
+  }
+}
