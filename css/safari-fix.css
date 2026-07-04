@@ -1,0 +1,93 @@
+/* Safari Button Fix - Mobile Safari Compatibility */
+
+/* Fix für Safari Touch-Events */
+* {
+    -webkit-tap-highlight-color: transparent !important;
+    -webkit-touch-callout: none !important;
+    -webkit-user-select: none !important;
+    user-select: none !important;
+}
+
+/* Button z-index Fix */
+.btn, .fable-button, .module-btn, .nav-item, button {
+    position: relative !important;
+    z-index: 100 !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    -webkit-appearance: none !important;
+    appearance: none !important;
+}
+
+/* Module Card Button Fix */
+.module-card .module-btn {
+    position: relative !important;
+    z-index: 200 !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    width: 100% !important;
+    min-height: 44px !important; /* iOS Touch Target */
+    padding: 12px 20px !important;
+}
+
+/* Navigation Button Fix */
+.nav-item {
+    position: relative !important;
+    z-index: 150 !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    min-height: 44px !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+/* Fix für überdeckte Elemente */
+.game-container > * {
+    position: relative !important;
+}
+
+/* Safari Touch Optimization */
+button, .btn, .fable-button {
+    touch-action: manipulation !important;
+    -webkit-transform: translateZ(0) !important;
+    transform: translateZ(0) !important;
+    will-change: transform !important;
+}
+
+/* Hover State Fix für Safari */
+.btn:hover, .module-btn:hover, .nav-item:hover {
+    opacity: 0.9 !important;
+}
+
+/* Active State Fix für Safari */
+.btn:active, .module-btn:active, .nav-item:active {
+    opacity: 0.8 !important;
+    transform: scale(0.98) !important;
+}
+
+/* Pseudo-Element Fix für Safari */
+.btn::before, .module-btn::before {
+    position: absolute !important;
+    z-index: -1 !important;
+    pointer-events: none !important;
+}
+
+/* Mobile Safari Specific Fixes */
+@supports (-webkit-touch-callout: none) {
+    .btn, .module-btn, .nav-item {
+        -webkit-transform: translateZ(0) !important;
+        transform: translateZ(0) !important;
+    }
+    
+    .module-card {
+        -webkit-transform: translateZ(0) !important;
+        transform: translateZ(0) !important;
+    }
+}
+
+/* Safe Area Fix für iPhone */
+@supports (padding: max(0px)) {
+    .btn, .module-btn {
+        padding-left: max(20px, env(safe-area-inset-left)) !important;
+        padding-right: max(20px, env(safe-area-inset-right)) !important;
+    }
+}
