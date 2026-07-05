@@ -1195,22 +1195,33 @@
         }
         
         // Task-Details im Modal anzeigen
-        function showTaskDetail(aufgabe) {
+        async function showTaskDetail(aufgabe) {
             const modal = document.getElementById('taskModal');
             const taskDetail = document.getElementById('taskDetail');
             
+            // Try to get full task data from optimized JSON
+            let fullTask = aufgabe;
+            try {
+                const response = await fetch('data/aufgaben-optimiert.json');
+                const data = await response.json();
+                const full = data.aufgaben.find(t => t.id === aufgabe.id);
+                if (full) fullTask = full;
+            } catch (e) {
+                console.warn('Could not load full task data, using basic:', e);
+            }
+            
             taskDetail.innerHTML = `
-                <h3 id="modal-title">${aufgabe.titel}</h3>
-                <p>${aufgabe.beschreibung}</p>
+                <h3 id="modal-title">${fullTask.titel}</h3>
+                <p>${fullTask.beschreibung}</p>
                 
                 <div class="task-meta-detail">
-                    <strong>Modul:</strong> ${aufgabe.modul}<br>
-                    <strong>Dauer:</strong> ${aufgabe.dauer}<br>
-                    <strong>Punkte:</strong> ${aufgabe.punkte}<br>
-                    <strong>Schwierigkeit:</strong> ${aufgabe.schwierigkeit}
+                    <strong>Modul:</strong> ${fullTask.modul || fullTask.kategorie}<br>
+                    <strong>Dauer:</strong> ${fullTask.dauer || fullTask.zeit}<br>
+                    <strong>Punkte:</strong> ${fullTask.punkte}<br>
+                    <strong>Schwierigkeit:</strong> ${fullTask.schwierigkeit}
                 </div>
                 
-                <button class="start-task-btn" onclick="startTask('${aufgabe.id}')" aria-label="Aufgabe ${aufgabe.titel} starten">
+                <button class="start-task-btn" onclick="startTask('${fullTask.id}')" aria-label="Aufgabe ${fullTask.titel} starten">
                     Aufgabe starten →
                 </button>
             `;
@@ -1224,7 +1235,7 @@
                 if (closeBtn) closeBtn.focus();
             }, 100);
             
-            console.log('Modal geöffnet für Aufgabe:', aufgabe.titel);
+            console.log('Modal geöffnet für Aufgabe:', fullTask.titel);
         }
         
         // Modal schließen mit Accessibility
