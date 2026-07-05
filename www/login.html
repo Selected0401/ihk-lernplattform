@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Zugangscode eingeben · IHK 80/20 Trainer</title>
+  <link rel="stylesheet" href="style.css?v=build-20260705-premium-2">
+  <style>
+    body { min-height:100vh; display:grid; place-items:center; padding:1rem; background:linear-gradient(135deg,#0f172a,#1d4ed8 54%,#0f766e); }
+    .login-card { width:min(560px, 100%); padding:clamp(1.4rem,4vw,2.2rem); border-radius:32px; background:rgba(255,255,255,.94); box-shadow:0 32px 90px rgba(0,0,0,.24); }
+    .login-card h1 { font-size:clamp(2rem,5vw,3.4rem); line-height:.96; letter-spacing:-.065em; margin-bottom:1rem; color:var(--ink); }
+    .login-card p { color:var(--muted); line-height:1.65; margin-bottom:1rem; }
+    .code-input { width:100%; min-height:56px; border:1px solid var(--line); border-radius:18px; padding:0 1rem; font-size:1.15rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; margin:1rem 0; }
+    .error { display:none; margin-top:.75rem; color:#b91c1c; font-weight:750; }
+    .hint { padding:.9rem 1rem; border-radius:18px; background:#f1f5f9; color:var(--muted); font-size:.9rem; }
+  </style>
+</head>
+<body>
+  <main class="login-card">
+    <span class="badge" style="color:var(--blue-dark);background:rgba(37,99,235,.08);border-color:rgba(37,99,235,.14)">Zugangscode</span>
+    <h1>Gib deinen Zugangscode ein.</h1>
+    <p>Nach dem Kauf über Digistore24 oder PayPal bekommst du deinen Zugangscode per E-Mail. Gib ihn hier ein, dann öffnet sich die Lernplattform.</p>
+    <input id="accessCode" class="code-input" placeholder="z.B. IHK-2027-PRO" autocomplete="one-time-code">
+    <button class="module-btn" onclick="unlockAccess()">Lernplattform öffnen →</button>
+    <p id="error" class="error">Der Code ist ungültig. Bitte prüfe die Schreibweise oder kontaktiere den Support.</p>
+    <p class="hint">MVP-Democodes für Tests: <strong>IHK-2027-PRO</strong> oder <strong>BUERO-99-START</strong>. Für echten Verkauf werden individuelle Codes per Digistore24/Webhook erzeugt.</p>
+  </main>
+  <script>
+    const VALID_CODES = ['IHK-2027-PRO', 'BUERO-99-START', 'BUERO-149-PLUS'];
+    function unlockAccess() {
+      const input = document.getElementById('accessCode');
+      const error = document.getElementById('error');
+      const code = input.value.trim().toUpperCase();
+      if (VALID_CODES.includes(code)) {
+        localStorage.setItem('ihk_access_granted', 'true');
+        localStorage.setItem('ihk_access_code', code);
+        window.location.href = 'index.html?access=granted';
+        return;
+      }
+      error.style.display = 'block';
+      input.focus();
+    }
+    document.getElementById('accessCode').addEventListener('keydown', event => {
+      if (event.key === 'Enter') unlockAccess();
+    });
+  </script>
+</body>
+</html>

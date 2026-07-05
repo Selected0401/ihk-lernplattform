@@ -501,6 +501,40 @@
             opacity: 0.9;
         }
         
+        .access-gate {
+            position: fixed;
+            inset: 0;
+            z-index: 6000;
+            display: none;
+            place-items: center;
+            padding: 1rem;
+            background: rgba(15, 23, 42, .72);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+        }
+
+        .access-gate-card {
+            width: min(620px, 100%);
+            padding: clamp(1.5rem, 4vw, 2.25rem);
+            border-radius: 30px;
+            background: white;
+            box-shadow: 0 28px 90px rgba(0,0,0,.28);
+        }
+
+        .access-gate-card h2 {
+            color: #102033;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            letter-spacing: -.055em;
+            line-height: 1;
+            margin-bottom: .85rem;
+        }
+
+        .access-gate-card p {
+            color: #667485;
+            line-height: 1.65;
+            margin-bottom: 1rem;
+        }
+
         /* Cookie Consent Banner */
         .cookie-consent {
             position: fixed;
@@ -670,6 +704,18 @@
     <meta name="apple-mobile-web-app-title" content="IHK Lernplattform">
 </head>
 <body>
+    <div class="access-gate" id="accessGate" role="dialog" aria-labelledby="accessGateTitle" aria-modal="true">
+        <div class="access-gate-card">
+            <h2 id="accessGateTitle">Zugangscode erforderlich</h2>
+            <p>Die Lernplattform ist öffentlich erreichbar, der volle Trainingsbereich ist aber für Käufer freigeschaltet. Nach dem Kauf erhältst du deinen Zugangscode per E-Mail.</p>
+            <div style="display:flex;gap:.75rem;flex-wrap:wrap">
+                <a class="module-btn" style="width:auto;text-decoration:none" href="login.html">Code eingeben</a>
+                <a class="module-btn" style="width:auto;text-decoration:none;background:linear-gradient(135deg,#0f766e,#16a34a)!important" href="landing.html#preise">Zugang kaufen</a>
+                <button class="module-btn" style="width:auto;background:#e5e7eb!important;color:#102033!important" onclick="previewAccess()">Demo ansehen</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Cookie Consent Banner -->
     <div class="cookie-consent" id="cookieConsent" role="dialog" aria-labelledby="cookie-title" aria-describedby="cookie-desc">
         <div class="cookie-consent-content">
@@ -1009,6 +1055,22 @@
         let currentFilter = 'alle';
         let mobileMenuOpen = false;
         
+        function hasAccess() {
+            const params = new URLSearchParams(window.location.search);
+            return localStorage.getItem('ihk_access_granted') === 'true' || params.get('access') === 'granted' || params.get('preview') === 'true';
+        }
+
+        function previewAccess() {
+            localStorage.setItem('ihk_preview_mode', 'true');
+            document.getElementById('accessGate').style.display = 'none';
+        }
+
+        function enforceAccessGate() {
+            if (!hasAccess() && localStorage.getItem('ihk_preview_mode') !== 'true') {
+                document.getElementById('accessGate').style.display = 'grid';
+            }
+        }
+        
         // Cookie Consent Management
         function checkCookieConsent() {
             const consent = localStorage.getItem('cookieConsent');
@@ -1086,6 +1148,7 @@
             loadFullTaskList();
             setupEventListeners();
             checkCookieConsent();
+            enforceAccessGate();
             console.log('IHK Lernplattform geladen -', aufgaben.length, 'optimierte Aufgaben verfügbar');
             console.log('Accessibility: ARIA-Labels, Keyboard Navigation, Screen Reader Support implementiert');
         });

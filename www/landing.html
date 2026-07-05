@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="IHK-nahe 80/20-Lernplattform für Kaufleute für Büromanagement: Excel, Word, PowerPoint, Outlook und Prüfungsangst-Training.">
-  <title>IHK 80/20 Prüfungstrainer für Büromanagement</title>
+  <meta name="description" content="Einmalzahlung für die IHK-nahe 80/20-Lernplattform für Kaufleute für Büromanagement. Zugangscode per E-Mail nach Kauf.">
+  <title>IHK 80/20 Prüfungstrainer kaufen</title>
   <link rel="stylesheet" href="style.css?v=build-20260705-premium-2">
   <style>
     .sales-page { background: radial-gradient(circle at 10% 0%, rgba(37,99,235,.16), transparent 30rem), #f7fbff; }
     .sales-hero { padding: clamp(4rem, 8vw, 7rem) 0; color: white; background: linear-gradient(135deg, #0f172a, #1d4ed8 54%, #0f766e); overflow: hidden; position: relative; }
     .sales-hero::after { content: ''; position: absolute; width: 38rem; height: 38rem; right: -12rem; top: -16rem; border-radius: 999px; background: radial-gradient(circle, rgba(255,255,255,.32), transparent 65%); }
-    .sales-hero .container { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(320px, .9fr); gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+    .sales-hero .container { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr); gap: clamp(2rem, 5vw, 4rem); align-items: center; }
     .badge { display: inline-flex; width: fit-content; margin-bottom: 1rem; padding: .45rem .75rem; border: 1px solid rgba(255,255,255,.22); border-radius: 999px; background: rgba(255,255,255,.13); font-weight: 850; }
     .sales-hero h1 { font-size: clamp(2.6rem, 7vw, 5.6rem); line-height: .92; letter-spacing: -.07em; margin-bottom: 1.2rem; }
     .sales-hero p { font-size: clamp(1.08rem, 2vw, 1.35rem); line-height: 1.6; color: rgba(255,255,255,.86); }
@@ -22,11 +22,16 @@
     .sales-box { padding: clamp(1.25rem, 3vw, 2rem); border: 1px solid var(--line); border-radius: 28px; background: rgba(255,255,255,.82); box-shadow: var(--shadow-sm); }
     .sales-box h3 { margin-bottom: .6rem; color: var(--ink); letter-spacing: -.035em; font-size: 1.35rem; }
     .sales-box p, .sales-box li { color: var(--muted); line-height: 1.65; }
-    .pricing { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; align-items: stretch; }
+    .pricing { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; align-items: stretch; }
     .price-card { position: relative; padding: 1.5rem; border-radius: 30px; background: white; border: 1px solid var(--line); box-shadow: var(--shadow-sm); }
     .price-card.featured { border-color: rgba(37,99,235,.35); box-shadow: var(--shadow-md); transform: translateY(-6px); }
-    .price { font-size: 2.4rem; font-weight: 950; letter-spacing: -.06em; color: var(--ink); margin: .5rem 0; }
+    .ribbon { display:inline-flex; margin-bottom:.65rem; padding:.35rem .65rem; border-radius:999px; background:rgba(22,163,74,.1); color:#15803d; font-weight:900; font-size:.8rem; }
+    .price { font-size: 3rem; font-weight: 950; letter-spacing: -.06em; color: var(--ink); margin: .5rem 0; }
     .price small { font-size: .9rem; color: var(--muted); font-weight: 700; }
+    .buy-actions { display:grid; gap:.6rem; margin-top:1rem; }
+    .checkout-note { color: var(--muted); font-size:.9rem; line-height:1.55; }
+    .access-flow { counter-reset: step; display:grid; gap: .85rem; }
+    .access-flow .sales-box::before { counter-increment: step; content: counter(step); display:inline-grid; place-items:center; width:2.1rem; height:2.1rem; margin-bottom:.75rem; border-radius:999px; background:var(--gradient-primary); color:white; font-weight:950; }
     .faq { display: grid; gap: .8rem; }
     .faq details { padding: 1rem 1.15rem; border: 1px solid var(--line); border-radius: 20px; background: white; }
     .faq summary { cursor: pointer; font-weight: 850; color: var(--ink); }
@@ -38,11 +43,11 @@
   <header>
     <div class="container">
       <div class="header-content">
-        <a class="logo" href="index.html" style="text-decoration:none">📚 IHK 80/20 Trainer</a>
+        <a class="logo" href="landing.html" style="text-decoration:none">📚 IHK 80/20 Trainer</a>
         <nav class="nav-menu active" style="display:flex">
-          <a class="nav-link" href="index.html">App testen</a>
           <a class="nav-link" href="#preise">Preise</a>
-          <a class="nav-link" href="BUSINESS_PLAN.md">Businessplan</a>
+          <a class="nav-link" href="#zugang">Zugang</a>
+          <a class="nav-link" href="login.html">Login</a>
         </nav>
       </div>
     </div>
@@ -51,75 +56,85 @@
   <section class="sales-hero">
     <div class="container">
       <div>
-        <span class="badge">Für Kaufleute für Büromanagement · Zwischenprüfung Teil 1</span>
+        <span class="badge">Einmalzahlung · Zugangscode per E-Mail · Kein Abo</span>
         <h1>Bestehe die IHK-Zwischenprüfung mit dem 80/20-System.</h1>
         <p>Trainiere Excel, Word, PowerPoint und Outlook mit eigenen prüfungsnahen Aufgaben, klaren Musterlösungen und kleinen Schritten gegen Prüfungsangst — optimiert für wenig Zeit und maximalen Lernerfolg.</p>
         <div class="hero-actions">
-          <a class="module-btn" style="width:auto;text-decoration:none" href="index.html">Kostenlos testen →</a>
-          <a class="module-btn" style="width:auto;text-decoration:none;background:rgba(255,255,255,.14)!important" href="#freebie">Freebie sichern</a>
+          <a class="module-btn" style="width:auto;text-decoration:none" href="#preise">Jetzt Zugang kaufen →</a>
+          <a class="module-btn" style="width:auto;text-decoration:none;background:rgba(255,255,255,.14)!important" href="login.html">Ich habe einen Code</a>
         </div>
       </div>
       <div class="sales-card">
-        <h2>Was du bekommst</h2>
+        <h2>Was Käufer bekommen</h2>
         <ul>
           <li>56 eigene IHK-nahe Übungsaufgaben</li>
           <li>Interaktive Excel-, Word-, PowerPoint- und Outlook-Umgebung</li>
           <li>80/20-Lernpfad statt planloser Theorie</li>
           <li>Mobile Nutzung im Browser und als PWA/App</li>
-          <li>Prüfungsangst-freundlicher Aufbau mit kleinen Erfolgserlebnissen</li>
+          <li>Prüfungsangst-freundlicher Aufbau mit schnellen Erfolgserlebnissen</li>
+          <li>Zugangscode nach Zahlung per E-Mail</li>
         </ul>
       </div>
     </div>
   </section>
 
   <main>
-    <section class="sales-section" id="freebie">
+    <section class="sales-section">
       <div class="container sales-grid">
-        <div class="sales-box">
-          <h3>1. Schnell Klarheit</h3>
-          <p>Du siehst sofort, welche Office-Themen wirklich relevant sind: Excel-Funktionen, DIN 5008, Serienbrief, Präsentation, Outlook-Organisation.</p>
-        </div>
-        <div class="sales-box">
-          <h3>2. Aktiv üben</h3>
-          <p>Keine passiven PDFs. Du öffnest Aufgaben, arbeitest in einer simulierten Umgebung und kontrollierst mit Musterlösungen.</p>
-        </div>
-        <div class="sales-box">
-          <h3>3. Weniger Angst</h3>
-          <p>Kurze Aufgaben, klare Fortschritte und Wiederholung reduzieren Prüfungsstress und geben Sicherheit.</p>
-        </div>
+        <div class="sales-box"><h3>Für wenig Zeit</h3><p>Fokus auf die Office-Aufgaben, die typischerweise schnell Punkte bringen: Formeln, Dokumentstruktur, Präsentation und Organisation.</p></div>
+        <div class="sales-box"><h3>Für Prüfungsangst</h3><p>Kurze Aufgaben, klare Schritte und Musterlösungen helfen, Sicherheit aufzubauen statt im Lernstoff zu ersticken.</p></div>
+        <div class="sales-box"><h3>Für Handy & App</h3><p>Die Plattform läuft öffentlich im Browser und kann später als PWA/App installiert oder hinter einen Login gelegt werden.</p></div>
       </div>
     </section>
 
     <section class="sales-section" id="preise">
       <div class="container">
-        <h2 class="section-title">Preismodell für den Launch</h2>
+        <h2 class="section-title">Einmalzahlung statt Monatsabo</h2>
         <div class="pricing">
-          <article class="price-card">
-            <h3>Free</h3>
-            <div class="price">0€</div>
-            <p>5 Probeaufgaben, 7-Tage-Lernplan und Prüfungsangst-Checkliste als Lead Magnet.</p>
-          </article>
           <article class="price-card featured">
-            <h3>Pro</h3>
-            <div class="price">19,90€ <small>/ Monat</small></div>
-            <p>Alle Aufgaben, interaktive Umgebung, Musterlösungen, Fortschritt und 80/20-Lernpfad.</p>
+            <span class="ribbon">Launch-Angebot</span>
+            <h3>Prüfungstrainer Pro</h3>
+            <div class="price">99€ <small>einmalig</small></div>
+            <p>Perfekt für den Start: vollständiger Zugang zur aktuellen Lernplattform, alle Aufgaben, Musterlösungen und 80/20-System.</p>
+            <div class="buy-actions">
+              <a class="module-btn" href="https://www.digistore24.com/" target="_blank" rel="noopener">Über Digistore24 kaufen</a>
+              <a class="module-btn" style="background:var(--gradient-success)!important" href="https://www.paypal.com/" target="_blank" rel="noopener">Über PayPal kaufen</a>
+            </div>
+            <p class="checkout-note">Platzhalter-Links: Sobald dein Digistore24-/PayPal-Produkt angelegt ist, werden diese URLs ersetzt.</p>
           </article>
           <article class="price-card">
-            <h3>Premium</h3>
-            <div class="price">299€+</div>
-            <p>Pro-Zugang plus persönlicher Lernplan, Gruppen-Call oder Prüfungsangst-Coaching.</p>
+            <span class="ribbon">Empfohlen später</span>
+            <h3>Prüfungstrainer Plus</h3>
+            <div class="price">149€ <small>einmalig</small></div>
+            <p>Für später: Plattformzugang plus Bonus-Paket mit 7-Tage-Lernplan, Prüfungsangst-Checkliste und zusätzlichen Simulationen.</p>
+            <div class="buy-actions">
+              <a class="module-btn" href="https://www.digistore24.com/" target="_blank" rel="noopener">Plus über Digistore24</a>
+              <a class="module-btn" style="background:var(--gradient-success)!important" href="https://www.paypal.com/" target="_blank" rel="noopener">Plus über PayPal</a>
+            </div>
+            <p class="checkout-note">Meine Empfehlung: Mit 99€ validieren, danach 149€ als regulären Preis testen.</p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="sales-section" id="zugang">
+      <div class="container">
+        <h2 class="section-title">So funktioniert der Zugangscode</h2>
+        <div class="sales-grid access-flow">
+          <div class="sales-box"><h3>Kunde kauft</h3><p>Über Digistore24 oder PayPal. Digistore24 ist für Deutschland stark, weil Rechnung, Affiliate und E-Mail-Auslieferung einfacher sind.</p></div>
+          <div class="sales-box"><h3>E-Mail kommt</h3><p>Nach Zahlung erhält der Käufer automatisch einen Zugangscode. Im MVP kann das Digistore24 per Auslieferungs-E-Mail senden.</p></div>
+          <div class="sales-box"><h3>Login freischalten</h3><p>Käufer öffnet <strong>login.html</strong>, gibt Code ein und wird zur Lernplattform weitergeleitet.</p></div>
         </div>
       </div>
     </section>
 
     <section class="sales-section">
       <div class="container">
-        <h2 class="section-title">Umsetzung mit WordPress oder schlankem Funnel</h2>
+        <h2 class="section-title">Empfohlene technische Umsetzung</h2>
         <div class="sales-grid">
-          <div class="sales-box"><h3>WordPress + Digistore24</h3><p>Schnellster MVP: Landingpage, Checkout, Affiliate-System und automatische Zahlungsabwicklung.</p></div>
-          <div class="sales-box"><h3>MemberPress + Stripe</h3><p>Mehr Kontrolle über Mitgliederbereich, monatliche Zahlungen und später Klassenlizenzen.</p></div>
-          <div class="sales-box"><h3>PWA + Lizenzsystem</h3><p>Später Supabase/Login ergänzen, damit nur Käufer Zugriff auf Pro-Inhalte haben.</p></div>
+          <div class="sales-box"><h3>MVP sofort</h3><p>Statische GitHub-Pages-Seite, einfacher Code-Login, Digistore24/PayPal-Link. Schnell testbar, aber Codes sind nicht maximal sicher.</p></div>
+          <div class="sales-box"><h3>Solide Version</h3><p>WordPress Landingpage + Digistore24 Checkout + automatischer Zugangscode per Mail + geschützte PWA-URL.</p></div>
+          <div class="sales-box"><h3>Skalierbare Version</h3><p>Digistore24 Webhook → Cloudflare Worker/Supabase → individueller Lizenzcode → Login prüft Code serverseitig.</p></div>
         </div>
       </div>
     </section>
@@ -127,9 +142,10 @@
     <section class="sales-section">
       <div class="container faq">
         <h2 class="section-title">FAQ</h2>
-        <details open><summary>Sind das originale IHK-Prüfungen?</summary><p class="legal">Nein. Die Aufgaben sind eigene, prüfungsnahe Übungsaufgaben im Stil typischer Anforderungen. Offizielle IHK-Prüfungen oder Logos sollten nur mit Lizenz verwendet werden.</p></details>
-        <details><summary>Für wen ist die Plattform?</summary><p class="legal">Für Azubis und Umschüler im Bereich Kaufmann/Kauffrau für Büromanagement, besonders bei wenig Lernzeit oder Prüfungsangst.</p></details>
-        <details><summary>Wie wird daraus ein Business?</summary><p class="legal">Freebie → E-Mail-Liste → Pro-Abo → Premium-Coaching → Affiliate/B2B-Schullizenzen. Details stehen im Businessplan.</p></details>
+        <details open><summary>Sind das originale IHK-Prüfungen?</summary><p class="legal">Nein. Die Aufgaben sind eigene, prüfungsnahe Übungsaufgaben im Stil typischer Anforderungen. Offizielle IHK-Prüfungen oder Logos sollten nur mit ausdrücklicher Lizenz verwendet werden.</p></details>
+        <details><summary>Warum keine Monatszahlung?</summary><p class="legal">Für Azubis ist eine faire Einmalzahlung oft attraktiver. 99€ als Launch-Angebot und 149€ als späterer Standardpreis sind realistisch testbar.</p></details>
+        <details><summary>Wie kommt der Zugangscode per E-Mail?</summary><p class="legal">Bei Digistore24 über die Auslieferungs-/Kaufbestätigungs-E-Mail. Für echte Skalierung besser per Webhook + Lizenzdatenbank.</p></details>
+        <details><summary>Ist der MVP-Code-Login sicher?</summary><p class="legal">Für einen ersten Verkaufstest reicht er als Prototyp. Für echten Umsatz sollte der Code serverseitig geprüft werden, sonst können Codes geteilt oder im Frontend gefunden werden.</p></details>
       </div>
     </section>
   </main>
