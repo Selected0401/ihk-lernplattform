@@ -13,7 +13,28 @@
         "Verwenden Sie MITTELWERT für den Durchschnitt",
         "Formatieren Sie die Werte als Währung"
       ],
-      "loesung": "SUMME(B2:B4) = 46.530€, MITTELWERT(B2:B4) = 15.510€"
+      "loesung": "SUMME(B2:B4) = 46.530€, MITTELWERT(B2:B4) = 15.510€",
+      "content": {
+        "solution": "SUMME(B2:B4) = 46.530€, MITTELWERT(B2:B4) = 15.510€",
+        "data": [
+          [
+            "Monat",
+            "Umsatz"
+          ],
+          [
+            "Januar",
+            12450
+          ],
+          [
+            "Februar",
+            15320
+          ],
+          [
+            "März",
+            18760
+          ]
+        ]
+      }
     },
     {
       "id": "excel-002",
@@ -29,7 +50,32 @@
         "Spaltenindex beachten (Preis in Spalte 3)",
         "Spaltenindex: Preis in Spalte C = 3. Spalte"
       ],
-      "loesung": "SVERWEIS(\"A-4711\",A2:C11,3,FALSCH)"
+      "loesung": "SVERWEIS(\"A-4711\",A2:C11,3,FALSCH)",
+      "content": {
+        "solution": "SVERWEIS(\"A-4711\",A2:C11,3,FALSCH)",
+        "data": [
+          [
+            "Artikel-Nr",
+            "Bezeichnung",
+            "Preis"
+          ],
+          [
+            "A-4711",
+            "Schraube M6",
+            0.15
+          ],
+          [
+            "A-4712",
+            "Mutter M6",
+            0.08
+          ],
+          [
+            "A-4713",
+            "Unterlegscheibe",
+            0.03
+          ]
+        ]
+      }
     },
     {
       "id": "excel-003",
@@ -45,7 +91,42 @@
         "Formatieren Sie Ergebnisse als Währung",
         "Klar definierte Umsatzschwellen für Bonusstufen"
       ],
-      "loesung": "WENN(B2>50000,B2*0,1,B2*0,05)"
+      "loesung": "WENN(B2>50000,B2*0,1,B2*0,05)",
+      "content": {
+        "solution": "WENN(B2>50000,B2*0,1,B2*0,05)",
+        "data": [
+          [
+            "Mitarbeiter",
+            "Umsatz",
+            "Bonus"
+          ],
+          [
+            "Müller",
+            65000,
+            ""
+          ],
+          [
+            "Schmidt",
+            42000,
+            ""
+          ],
+          [
+            "Meier",
+            78000,
+            ""
+          ],
+          [
+            "Weber",
+            35000,
+            ""
+          ],
+          [
+            "Huber",
+            55000,
+            ""
+          ]
+        ]
+      }
     },
     {
       "id": "excel-004",
@@ -60,7 +141,28 @@
         "Formatieren Sie Zeitangaben korrekt",
         "Nutzen Sie SUMME für Wochen总计"
       ],
-      "loesung": "Endzeit - Startzeit, SUMME(C2:C6)"
+      "loesung": "Endzeit - Startzeit, SUMME(C2:C6)",
+      "content": {
+        "solution": "Endzeit - Startzeit, SUMME(C2:C6)",
+        "data": [
+          [
+            "Monat",
+            "Umsatz"
+          ],
+          [
+            "Januar",
+            12450
+          ],
+          [
+            "Februar",
+            15320
+          ],
+          [
+            "März",
+            18760
+          ]
+        ]
+      }
     },
     {
       "id": "excel-005",
@@ -75,7 +177,20 @@
         "Erstellen Sie 3 Regeln für verschiedene Status",
         "Wenden Sie Farbe auf gesamte Zeile an"
       ],
-      "loesung": "Bedingte Formatierung mit Textentsprechungen: $B2=\"Abgeschlossen\" etc."
+      "loesung": "Bedingte Formatierung mit Textentsprechungen: $B2=\"Abgeschlossen\" etc.",
+      "content": {
+        "solution": "Bedingte Formatierung mit Textentsprechungen: $B2=\"Abgeschlossen\" etc.",
+        "data": [
+          [
+            "Spalte 1",
+            "Spalte 2"
+          ],
+          [
+            "Daten 1",
+            "Daten 2"
+          ]
+        ]
+      }
     },
     {
       "id": "excel-006",
@@ -90,7 +205,28 @@
         "Nutzen Sie Pivot-Table-Assistent",
         "Ziehen Sie Felder in Bereiche"
       ],
-      "loesung": "Pivot-Tabelle mit Zeilen: Region, Spalten: Produkt, Werte: SUMME(Umsatz)"
+      "loesung": "Pivot-Tabelle mit Zeilen: Region, Spalten: Produkt, Werte: SUMME(Umsatz)",
+      "content": {
+        "solution": "Pivot-Tabelle mit Zeilen: Region, Spalten: Produkt, Werte: SUMME(Umsatz)",
+        "data": [
+          [
+            "Monat",
+            "Umsatz"
+          ],
+          [
+            "Januar",
+            12450
+          ],
+          [
+            "Februar",
+            15320
+          ],
+          [
+            "März",
+            18760
+          ]
+        ]
+      }
     },
     {
       "id": "excel-007",
@@ -105,7 +241,20 @@
         "Verwenden Sie TEIL für Textextraktion",
         "Kombinieren Sie mehrere Funktionen"
       ],
-      "loesung": "GLÄTTEN(GROSS2(A2)), TEIL(B2,1,LÄNGE(B2)-3)"
+      "loesung": "GLÄTTEN(GROSS2(A2)), TEIL(B2,1,LÄNGE(B2)-3)",
+      "content": {
+        "solution": "GLÄTTEN(GROSS2(A2)), TEIL(B2,1,LÄNGE(B2)-3)",
+        "data": [
+          [
+            "Spalte 1",
+            "Spalte 2"
+          ],
+          [
+            "Daten 1",
+            "Daten 2"
+          ]
+        ]
+      }
     },
     {
       "id": "excel-008",
@@ -120,7 +269,20 @@
         "Fügen Sie Trendlinie hinzu",
         "Formatieren Sie alle Elemente professionell"
       ],
-      "loesung": "Liniendiagramm mit Datenbeschriftungen und linearer Trendlinie"
+      "loesung": "Liniendiagramm mit Datenbeschriftungen und linearer Trendlinie",
+      "content": {
+        "solution": "Liniendiagramm mit Datenbeschriftungen und linearer Trendlinie",
+        "data": [
+          [
+            "Spalte 1",
+            "Spalte 2"
+          ],
+          [
+            "Daten 1",
+            "Daten 2"
+          ]
+        ]
+      }
     },
     {
       "id": "excel-009",
@@ -135,7 +297,30 @@
         "Fügen Sie Trennzeichen ein",
         "Kombinieren Sie mehrere Zellen"
       ],
-      "loesung": "TEXTVERKETTEN(B2;\", \";A2;\" - \";C2)"
+      "loesung": "TEXTVERKETTEN(B2;\", \";A2;\" - \";C2)",
+      "content": {
+        "solution": "TEXTVERKETTEN(B2;\", \";A2;\" - \";C2)",
+        "data": [
+          [
+            "Vorname",
+            "Nachname",
+            "Abteilung",
+            "Vollständig"
+          ],
+          [
+            "Max",
+            "Mustermann",
+            "IT",
+            ""
+          ],
+          [
+            "Anna",
+            "Schmidt",
+            "HR",
+            ""
+          ]
+        ]
+      }
     },
     {
       "id": "excel-010",
@@ -150,7 +335,20 @@
         "Verwenden Sie TAG und WOCHENTAG",
         "Erstellen Sie dynamische Formeln"
       ],
-      "loesung": "DATUM(Jahr;Monat;1) + SPALTE(A1)-1 + (ZEILE(A1)-1)*7"
+      "loesung": "DATUM(Jahr;Monat;1) + SPALTE(A1)-1 + (ZEILE(A1)-1)*7",
+      "content": {
+        "solution": "DATUM(Jahr;Monat;1) + SPALTE(A1)-1 + (ZEILE(A1)-1)*7",
+        "data": [
+          [
+            "Spalte 1",
+            "Spalte 2"
+          ],
+          [
+            "Daten 1",
+            "Daten 2"
+          ]
+        ]
+      }
     },
     {
       "id": "excel-011",
@@ -165,7 +363,32 @@
         "VERGLEICH findet Position",
         "Kombination ist flexibler als SVERWEIS"
       ],
-      "loesung": "INDEX(C2:C20;VERGLEICH(E2;A2:A20;0))"
+      "loesung": "INDEX(C2:C20;VERGLEICH(E2;A2:A20;0))",
+      "content": {
+        "solution": "INDEX(C2:C20;VERGLEICH(E2;A2:A20;0))",
+        "data": [
+          [
+            "Produkt-ID",
+            "Produkt",
+            "Preis"
+          ],
+          [
+            "P001",
+            "Laptop",
+            899
+          ],
+          [
+            "P002",
+            "Mouse",
+            29
+          ],
+          [
+            "P003",
+            "Keyboard",
+            79
+          ]
+        ]
+      }
     },
     {
       "id": "excel-012",
@@ -180,7 +403,28 @@
         "Mehrere Kriterien möglich",
         "Bereichsgrößen müssen übereinstimmen"
       ],
-      "loesung": "SUMMEWENNS(D2:D100;B2:B100;\"Norden\";C2:C100;\">10000\")"
+      "loesung": "SUMMEWENNS(D2:D100;B2:B100;\"Norden\";C2:C100;\">10000\")",
+      "content": {
+        "solution": "SUMMEWENNS(D2:D100;B2:B100;\"Norden\";C2:C100;\">10000\")",
+        "data": [
+          [
+            "Monat",
+            "Umsatz"
+          ],
+          [
+            "Januar",
+            12450
+          ],
+          [
+            "Februar",
+            15320
+          ],
+          [
+            "März",
+            18760
+          ]
+        ]
+      }
     },
     {
       "id": "excel-013",
@@ -195,7 +439,20 @@
         "Listen erstellen für Dropdown",
         "Eingabemeldungen und Fehlermeldungen"
       ],
-      "loesung": "Datenüberprüfung mit Liste und Ganzzahl/Bedingungen"
+      "loesung": "Datenüberprüfung mit Liste und Ganzzahl/Bedingungen",
+      "content": {
+        "solution": "Datenüberprüfung mit Liste und Ganzzahl/Bedingungen",
+        "data": [
+          [
+            "Spalte 1",
+            "Spalte 2"
+          ],
+          [
+            "Daten 1",
+            "Daten 2"
+          ]
+        ]
+      }
     },
     {
       "id": "excel-014",
@@ -210,7 +467,20 @@
         "Schrittweise Aktionen ausführen",
         "Makro zuweisen und testen"
       ],
-      "loesung": "Makro mit Formatierungsaktionen und Zuweisung zu Schaltfläche"
+      "loesung": "Makro mit Formatierungsaktionen und Zuweisung zu Schaltfläche",
+      "content": {
+        "solution": "Makro mit Formatierungsaktionen und Zuweisung zu Schaltfläche",
+        "data": [
+          [
+            "Spalte 1",
+            "Spalte 2"
+          ],
+          [
+            "Daten 1",
+            "Daten 2"
+          ]
+        ]
+      }
     },
     {
       "id": "excel-015",
@@ -225,7 +495,20 @@
         "Duplikate entfernen",
         "Daten sortieren und filtern"
       ],
-      "loesung": "Power Query oder Daten/Text in Spalten mit Duplikatentfernung"
+      "loesung": "Power Query oder Daten/Text in Spalten mit Duplikatentfernung",
+      "content": {
+        "solution": "Power Query oder Daten/Text in Spalten mit Duplikatentfernung",
+        "data": [
+          [
+            "Spalte 1",
+            "Spalte 2"
+          ],
+          [
+            "Daten 1",
+            "Daten 2"
+          ]
+        ]
+      }
     },
     {
       "id": "excel-016",
@@ -240,7 +523,32 @@
         "Spaltenindex genau prüfen",
         "Bereichsnamen für bessere Übersicht"
       ],
-      "loesung": "WENNFEHLER(SVERWEIS(A2;Kunden!$A:$D;4;FALSCH); \"Kein Treffer\")"
+      "loesung": "WENNFEHLER(SVERWEIS(A2;Kunden!$A:$D;4;FALSCH); \"Kein Treffer\")",
+      "content": {
+        "solution": "WENNFEHLER(SVERWEIS(A2;Kunden!$A:$D;4;FALSCH); \"Kein Treffer\")",
+        "data": [
+          [
+            "Artikel-Nr",
+            "Bezeichnung",
+            "Preis"
+          ],
+          [
+            "A-4711",
+            "Schraube M6",
+            0.15
+          ],
+          [
+            "A-4712",
+            "Mutter M6",
+            0.08
+          ],
+          [
+            "A-4713",
+            "Unterlegscheibe",
+            0.03
+          ]
+        ]
+      }
     },
     {
       "id": "excel-017",
@@ -255,7 +563,47 @@
         "Slicer für Region und Produkt",
         "Zeitliche Gruppierung (Quartale)"
       ],
-      "loesung": "Pivot-Tabelle mit Slicern und berechnetem Feld: = (Umsatz-Kosten)/Umsatz"
+      "loesung": "Pivot-Tabelle mit Slicern und berechnetem Feld: = (Umsatz-Kosten)/Umsatz",
+      "content": {
+        "solution": "Pivot-Tabelle mit Slicern und berechnetem Feld: = (Umsatz-Kosten)/Umsatz",
+        "data": [
+          [
+            "Region",
+            "Produkt",
+            "Umsatz"
+          ],
+          [
+            "Nord",
+            "A",
+            15000
+          ],
+          [
+            "Nord",
+            "B",
+            22000
+          ],
+          [
+            "Süd",
+            "A",
+            18000
+          ],
+          [
+            "Süd",
+            "B",
+            25000
+          ],
+          [
+            "West",
+            "A",
+            12000
+          ],
+          [
+            "West",
+            "B",
+            19000
+          ]
+        ]
+      }
     },
     {
       "id": "excel-018",
@@ -270,7 +618,28 @@
         "Datum mit MONAT(Jahr) filtern",
         "Platzhalter (*) für Textsuche nutzen"
       ],
-      "loesung": "SUMMEWENNS(Umsatz;Region;\"Norden\";Kategorie;\"Elektronik\";Datum;\">=01.01.2024\")"
+      "loesung": "SUMMEWENNS(Umsatz;Region;\"Norden\";Kategorie;\"Elektronik\";Datum;\">=01.01.2024\")",
+      "content": {
+        "solution": "SUMMEWENNS(Umsatz;Region;\"Norden\";Kategorie;\"Elektronik\";Datum;\">=01.01.2024\")",
+        "data": [
+          [
+            "Monat",
+            "Umsatz"
+          ],
+          [
+            "Januar",
+            12450
+          ],
+          [
+            "Februar",
+            15320
+          ],
+          [
+            "März",
+            18760
+          ]
+        ]
+      }
     },
     {
       "id": "excel-019",
@@ -285,7 +654,20 @@
         "Icon-Sets für Trendanzeigen",
         "Formelbasierte Regeln für komplexe Bedingungen"
       ],
-      "loesung": "Bedingte Formatierung mit Formel: =UND(B2>0;B2<50) für Gelb, =B2>=50 für Grün"
+      "loesung": "Bedingte Formatierung mit Formel: =UND(B2>0;B2<50) für Gelb, =B2>=50 für Grün",
+      "content": {
+        "solution": "Bedingte Formatierung mit Formel: =UND(B2>0;B2<50) für Gelb, =B2>=50 für Grün",
+        "data": [
+          [
+            "Spalte 1",
+            "Spalte 2"
+          ],
+          [
+            "Daten 1",
+            "Daten 2"
+          ]
+        ]
+      }
     },
     {
       "id": "outlook-001",
@@ -301,7 +683,10 @@
         "Aktionen definieren",
         "Bedingungen: Absender- und Betrefffilter definieren"
       ],
-      "loesung": "Regeln/Regel erstellen mit Absender- und Betreffbedingungen"
+      "loesung": "Regeln/Regel erstellen mit Absender- und Betreffbedingungen",
+      "content": {
+        "solution": "Regeln/Regel erstellen mit Absender- und Betreffbedingungen"
+      }
     },
     {
       "id": "outlook-002",
@@ -316,7 +701,10 @@
         "Teilnehmer einladen",
         "Antworten verwalten"
       ],
-      "loesung": "Neuer Termin mit Teilnehmerliste und Raumplanung"
+      "loesung": "Neuer Termin mit Teilnehmerliste und Raumplanung",
+      "content": {
+        "solution": "Neuer Termin mit Teilnehmerliste und Raumplanung"
+      }
     },
     {
       "id": "outlook-003",
@@ -331,7 +719,10 @@
         "Verteilerlisten anlegen",
         "Felder anpassen"
       ],
-      "loesung": "Kontakte mit Kategorien und Verteilerlisten"
+      "loesung": "Kontakte mit Kategorien und Verteilerlisten",
+      "content": {
+        "solution": "Kontakte mit Kategorien und Verteilerlisten"
+      }
     },
     {
       "id": "outlook-004",
@@ -346,7 +737,10 @@
         "Prioritäten setzen",
         "Fortschritt verfolgen"
       ],
-      "loesung": "Aufgaben mit Kategorien und Fälligkeitsmanagement"
+      "loesung": "Aufgaben mit Kategorien und Fälligkeitsmanagement",
+      "content": {
+        "solution": "Aufgaben mit Kategorien und Fälligkeitsmanagement"
+      }
     },
     {
       "id": "outlook-005",
@@ -361,7 +755,10 @@
         "Vorlagen speichern",
         "Automatische Anwendung"
       ],
-      "loesung": "Datei/Optionen/Mail/Signaturen mit HTML-Formatierung"
+      "loesung": "Datei/Optionen/Mail/Signaturen mit HTML-Formatierung",
+      "content": {
+        "solution": "Datei/Optionen/Mail/Signaturen mit HTML-Formatierung"
+      }
     },
     {
       "id": "outlook-006",
@@ -376,7 +773,10 @@
         "Berechtigungen vergeben",
         "Delegierung einrichten"
       ],
-      "loesung": "Kalenderfreigabe mit verschiedenen Berechtigungsstufen"
+      "loesung": "Kalenderfreigabe mit verschiedenen Berechtigungsstufen",
+      "content": {
+        "solution": "Kalenderfreigabe mit verschiedenen Berechtigungsstufen"
+      }
     },
     {
       "id": "outlook-007",
@@ -391,7 +791,10 @@
         "Filter anwenden",
         "Gespeicherte Suchen"
       ],
-      "loesung": "Suchordner mit benutzerdefinierten Kriterien"
+      "loesung": "Suchordner mit benutzerdefinierten Kriterien",
+      "content": {
+        "solution": "Suchordner mit benutzerdefinierten Kriterien"
+      }
     },
     {
       "id": "outlook-008",
@@ -406,7 +809,10 @@
         "AutoArchiv einrichten",
         "Speicher optimieren"
       ],
-      "loesung": "Datei/Account-Einstellungen/Datendateien mit AutoArchiv"
+      "loesung": "Datei/Account-Einstellungen/Datendateien mit AutoArchiv",
+      "content": {
+        "solution": "Datei/Account-Einstellungen/Datendateien mit AutoArchiv"
+      }
     },
     {
       "id": "outlook-009",
@@ -421,7 +827,10 @@
         "Sicherheitseinstellungen",
         "Verschlüsselung"
       ],
-      "loesung": "Datei/Optionen/Sicherheitscenter mit Filterregeln"
+      "loesung": "Datei/Optionen/Sicherheitscenter mit Filterregeln",
+      "content": {
+        "solution": "Datei/Optionen/Sicherheitscenter mit Filterregeln"
+      }
     },
     {
       "id": "outlook-010",
@@ -436,7 +845,10 @@
         "Installieren",
         "Konfigurieren"
       ],
-      "loesung": "Store-Add-Ins mit Synchronisationseinstellungen"
+      "loesung": "Store-Add-Ins mit Synchronisationseinstellungen",
+      "content": {
+        "solution": "Store-Add-Ins mit Synchronisationseinstellungen"
+      }
     },
     {
       "id": "outlook-011",
@@ -451,7 +863,10 @@
         "Synchronisation",
         "Konfliktlösung"
       ],
-      "loesung": "Exchange/IMAP-Konfiguration mit mobiler Synchronisation"
+      "loesung": "Exchange/IMAP-Konfiguration mit mobiler Synchronisation",
+      "content": {
+        "solution": "Exchange/IMAP-Konfiguration mit mobiler Synchronisation"
+      }
     },
     {
       "id": "powerpoint-001",
@@ -467,7 +882,10 @@
         "Konsistente Anwendung",
         "Mindestens 3 Layout-Vorlagen erstellen"
       ],
-      "loesung": "Ansicht/Masterfolie mit Logo und Farbschema"
+      "loesung": "Ansicht/Masterfolie mit Logo und Farbschema",
+      "content": {
+        "solution": "Ansicht/Masterfolie mit Logo und Farbschema"
+      }
     },
     {
       "id": "powerpoint-002",
@@ -482,7 +900,10 @@
         "Übergänge auswählen",
         "Wegklick-Animationen"
       ],
-      "loesung": "Animationen/Einblenden und Übergänge/Auswischen"
+      "loesung": "Animationen/Einblenden und Übergänge/Auswischen",
+      "content": {
+        "solution": "Animationen/Einblenden und Übergänge/Auswischen"
+      }
     },
     {
       "id": "powerpoint-003",
@@ -497,7 +918,10 @@
         "Daten verknüpfen",
         "SmartArt einsetzen"
       ],
-      "loesung": "Eingefügte Excel-Diagramme und SmartArt-Hierarchie"
+      "loesung": "Eingefügte Excel-Diagramme und SmartArt-Hierarchie",
+      "content": {
+        "solution": "Eingefügte Excel-Diagramme und SmartArt-Hierarchie"
+      }
     },
     {
       "id": "powerpoint-004",
@@ -512,7 +936,10 @@
         "Hyperlinks erstellen",
         "Autoplay einstellen"
       ],
-      "loesung": "Eingebettete Videos mit Klick-Steuerung und Hyperlinks"
+      "loesung": "Eingebettete Videos mit Klick-Steuerung und Hyperlinks",
+      "content": {
+        "solution": "Eingebettete Videos mit Klick-Steuerung und Hyperlinks"
+      }
     },
     {
       "id": "powerpoint-005",
@@ -527,7 +954,10 @@
         "Referentenansicht testen",
         "Druckansicht prüfen"
       ],
-      "loesung": "Notizen unter Folien und Referentenansicht mit Timer"
+      "loesung": "Notizen unter Folien und Referentenansicht mit Timer",
+      "content": {
+        "solution": "Notizen unter Folien und Referentenansicht mit Timer"
+      }
     },
     {
       "id": "powerpoint-006",
@@ -542,7 +972,10 @@
         "Farbschema erstellen",
         "Vorlage speichern"
       ],
-      "loesung": "Designs speichern als .potx Vorlage"
+      "loesung": "Designs speichern als .potx Vorlage",
+      "content": {
+        "solution": "Designs speichern als .potx Vorlage"
+      }
     },
     {
       "id": "powerpoint-007",
@@ -557,7 +990,10 @@
         "Effekte anwenden",
         "Beleuchtung anpassen"
       ],
-      "loesung": "3D-Objekte mit Rotation und Schatteneffekten"
+      "loesung": "3D-Objekte mit Rotation und Schatteneffekten",
+      "content": {
+        "solution": "3D-Objekte mit Rotation und Schatteneffekten"
+      }
     },
     {
       "id": "powerpoint-008",
@@ -572,7 +1008,10 @@
         "Navigation planen",
         "Zurück-Buttons"
       ],
-      "loesung": "Menüfolie mit Hyperlinks zu allen Abschnitten"
+      "loesung": "Menüfolie mit Hyperlinks zu allen Abschnitten",
+      "content": {
+        "solution": "Menüfolie mit Hyperlinks zu allen Abschnitten"
+      }
     },
     {
       "id": "powerpoint-009",
@@ -587,7 +1026,10 @@
         "Timing einstellen",
         "Video exportieren"
       ],
-      "loesung": "Aufzeichnungsfunktion mit Klick-Steuerung"
+      "loesung": "Aufzeichnungsfunktion mit Klick-Steuerung",
+      "content": {
+        "solution": "Aufzeichnungsfunktion mit Klick-Steuerung"
+      }
     },
     {
       "id": "powerpoint-010",
@@ -602,7 +1044,10 @@
         "Aktualisierungsoptionen",
         "Formate beibehalten"
       ],
-      "loesung": "Verknüpfte Diagramme mit automatischer Aktualisierung"
+      "loesung": "Verknüpfte Diagramme mit automatischer Aktualisierung",
+      "content": {
+        "solution": "Verknüpfte Diagramme mit automatischer Aktualisierung"
+      }
     },
     {
       "id": "powerpoint-011",
@@ -617,7 +1062,10 @@
         "Objekte skalieren",
         "Druckansicht prüfen"
       ],
-      "loesung": "Design/Seite einrichten mit verschiedenen Formaten"
+      "loesung": "Design/Seite einrichten mit verschiedenen Formaten",
+      "content": {
+        "solution": "Design/Seite einrichten mit verschiedenen Formaten"
+      }
     },
     {
       "id": "powerpoint-012",
@@ -632,7 +1080,10 @@
         "Review-Modus nutzen",
         "Änderungen zusammenführen"
       ],
-      "loesung": "Überprüfen/Kommentare mit Review-Workflow"
+      "loesung": "Überprüfen/Kommentare mit Review-Workflow",
+      "content": {
+        "solution": "Überprüfen/Kommentare mit Review-Workflow"
+      }
     },
     {
       "id": "powerpoint-013",
@@ -648,7 +1099,10 @@
         "Farbschema an Corporate Design anpassen",
         "Hyperlinks auf einzelne Positionen"
       ],
-      "loesung": "SmartArt-Hierarchie mit integrierten Fotos und Hyperlinks zu Detailfolien"
+      "loesung": "SmartArt-Hierarchie mit integrierten Fotos und Hyperlinks zu Detailfolien",
+      "content": {
+        "solution": "SmartArt-Hierarchie mit integrierten Fotos und Hyperlinks zu Detailfolien"
+      }
     },
     {
       "id": "word-001",
@@ -663,7 +1117,10 @@
         "Platzierung von Datum und Empfänger",
         "Professionelle Schriftart wählen"
       ],
-      "loesung": "DIN 5008 Format mit Blocksatz und 10pt Times New Roman"
+      "loesung": "DIN 5008 Format mit Blocksatz und 10pt Times New Roman",
+      "content": {
+        "solution": "DIN 5008 Format mit Blocksatz und 10pt Times New Roman"
+      }
     },
     {
       "id": "word-002",
@@ -678,7 +1135,10 @@
         "Serienbrieffelder einfügen",
         "Vorschau und Zusammenführung"
       ],
-      "loesung": "Serienbrief mit <<Anrede>> <<Nachname>> und personalisiertem Inhalt"
+      "loesung": "Serienbrief mit <<Anrede>> <<Nachname>> und personalisiertem Inhalt",
+      "content": {
+        "solution": "Serienbrief mit <<Anrede>> <<Nachname>> und personalisiertem Inhalt"
+      }
     },
     {
       "id": "word-003",
@@ -693,7 +1153,10 @@
         "Überschriftenhierarchie",
         "Konsistente Anwendung"
       ],
-      "loesung": "Formatvorlagen: Überschrift 1-3, Normal, Zitat mit verschiedenen Formatierungen"
+      "loesung": "Formatvorlagen: Überschrift 1-3, Normal, Zitat mit verschiedenen Formatierungen",
+      "content": {
+        "solution": "Formatvorlagen: Überschrift 1-3, Normal, Zitat mit verschiedenen Formatierungen"
+      }
     },
     {
       "id": "word-004",
@@ -708,7 +1171,10 @@
         "Formeln in Word",
         "Zellen verbinden für Gesamtsumme"
       ],
-      "loesung": "Tabelle mit =FORMEL(LEFT*RIGHT) und =SUMME(ABOVE)"
+      "loesung": "Tabelle mit =FORMEL(LEFT*RIGHT) und =SUMME(ABOVE)",
+      "content": {
+        "solution": "Tabelle mit =FORMEL(LEFT*RIGHT) und =SUMME(ABOVE)"
+      }
     },
     {
       "id": "word-005",
@@ -723,7 +1189,10 @@
         "Inhaltsverzeichnis einfügen",
         "Aktualisieren bei Änderungen"
       ],
-      "loesung": "Referenzen/Inhaltsverzeichnis mit Überschriften 1-3"
+      "loesung": "Referenzen/Inhaltsverzeichnis mit Überschriften 1-3",
+      "content": {
+        "solution": "Referenzen/Inhaltsverzeichnis mit Überschriften 1-3"
+      }
     },
     {
       "id": "word-006",
@@ -738,7 +1207,10 @@
         "Seitenumbruch einfügen",
         "Ausrichtung optimieren"
       ],
-      "loesung": "Layout/Spalten mit manuellem Seitenumbruch"
+      "loesung": "Layout/Spalten mit manuellem Seitenumbruch",
+      "content": {
+        "solution": "Layout/Spalten mit manuellem Seitenumbruch"
+      }
     },
     {
       "id": "word-007",
@@ -753,7 +1225,10 @@
         "Verschiedene für erste Seite",
         "Seitenzahlen formatieren"
       ],
-      "loesung": "Kopfzeile mit Logo und Titel, Fußzeile mit Seitenzahl und Datum"
+      "loesung": "Kopfzeile mit Logo und Titel, Fußzeile mit Seitenzahl und Datum",
+      "content": {
+        "solution": "Kopfzeile mit Logo und Titel, Fußzeile mit Seitenzahl und Datum"
+      }
     },
     {
       "id": "word-008",
@@ -768,7 +1243,10 @@
         "Dokument schützen",
         "Kommentare einfügen"
       ],
-      "loesung": "Überprüfen/Änderungen nachverfolgen mit Schutz für Überarbeitung"
+      "loesung": "Überprüfen/Änderungen nachverfolgen mit Schutz für Überarbeitung",
+      "content": {
+        "solution": "Überprüfen/Änderungen nachverfolgen mit Schutz für Überarbeitung"
+      }
     },
     {
       "id": "word-009",
@@ -783,7 +1261,10 @@
         "Index einfügen",
         "Häufigkeit anzeigen"
       ],
-      "loesung": "Referenzen/Index markieren und Index einfügen"
+      "loesung": "Referenzen/Index markieren und Index einfügen",
+      "content": {
+        "solution": "Referenzen/Index markieren und Index einfügen"
+      }
     },
     {
       "id": "word-010",
@@ -798,7 +1279,10 @@
         "Formeln in Tabellen",
         "Vorlage speichern"
       ],
-      "loesung": "Funktionen {DATE}, {SEQ} und Tabellenformeln"
+      "loesung": "Funktionen {DATE}, {SEQ} und Tabellenformeln",
+      "content": {
+        "solution": "Funktionen {DATE}, {SEQ} und Tabellenformeln"
+      }
     },
     {
       "id": "word-011",
@@ -813,7 +1297,10 @@
         "Änderungen akzeptieren/ablehnen",
         "Zusammenführen durchführen"
       ],
-      "loesung": "Überprüfen/Vergleichen und Zusammenführen mit Überprüfungsfenster"
+      "loesung": "Überprüfen/Vergleichen und Zusammenführen mit Überprüfungsfenster",
+      "content": {
+        "solution": "Überprüfen/Vergleichen und Zusammenführen mit Überprüfungsfenster"
+      }
     },
     {
       "id": "word-012",
@@ -828,7 +1315,10 @@
         "Papierformat einstellen",
         "PDF exportieren"
       ],
-      "loesung": "Datei/Export als PDF mit Druckeinstellungen"
+      "loesung": "Datei/Export als PDF mit Druckeinstellungen",
+      "content": {
+        "solution": "Datei/Export als PDF mit Druckeinstellungen"
+      }
     },
     {
       "id": "word-013",
@@ -844,7 +1334,10 @@
         "Betreffzeile mit 'Betreff:' oder ohne Präfix",
         "Serienbrieffelder für persönliche Anrede"
       ],
-      "loesung": "DIN 5008 Vorlage mit Serienbrief-Feldern: <<Anrede>> <<Nachname>>, korrekte Absatzformate"
+      "loesung": "DIN 5008 Vorlage mit Serienbrief-Feldern: <<Anrede>> <<Nachname>>, korrekte Absatzformate",
+      "content": {
+        "solution": "DIN 5008 Vorlage mit Serienbrief-Feldern: <<Anrede>> <<Nachname>>, korrekte Absatzformate"
+      }
     }
   ]
 }

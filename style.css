@@ -9,7 +9,7 @@
     width: 95vw;
     max-height: 95vh;
     margin: 1vh auto;
-    display: flex;
+    display: flex !important;
     flex-direction: column;
     animation: modalSlideIn 0.3s ease;
 }

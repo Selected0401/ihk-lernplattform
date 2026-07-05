@@ -662,6 +662,7 @@
     </style>
     
     <!-- PWA -->
+    <link rel="stylesheet" href="style.css?v=build-20260705-1815">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#3498db">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -1193,6 +1194,35 @@
             currentFilter = 'alle';
             filterTasks('alle');
         }
+
+        // Normalize rich JSON tasks to the LearningEnvironment editor contract.
+        // The JSON stores module/time as kategorie/zeit, the editor expects modul/dauer.
+        function normalizeTask(task) {
+            if (!task) return task;
+
+            const rawModule = task.modul || task.kategorie || '';
+            const moduleMap = {
+                excel: 'Excel',
+                word: 'Word',
+                powerpoint: 'PowerPoint',
+                outlook: 'Outlook'
+            };
+            const normalizedModule = moduleMap[String(rawModule).toLowerCase()] || rawModule;
+            const rawDuration = task.dauer || task.zeit || '';
+            const normalizedDuration = typeof rawDuration === 'number' ? `${rawDuration} Min` : rawDuration;
+
+            return {
+                ...task,
+                modul: normalizedModule,
+                dauer: normalizedDuration,
+                beschreibung: task.beschreibung || task.aufgabenstellung || '',
+                hinweise: task.hinweise || task.loesungsschritte || [],
+                content: {
+                    ...(task.content || {}),
+                    solution: task.content?.solution || task.loesung || ''
+                }
+            };
+        }
         
         // Task-Details im Modal anzeigen
         async function showTaskDetail(aufgabe) {
@@ -1209,6 +1239,7 @@
             } catch (e) {
                 console.warn('Could not load full task data, using basic:', e);
             }
+            fullTask = normalizeTask(fullTask);
             
             taskDetail.innerHTML = `
                 <h3 id="modal-title">${fullTask.titel}</h3>
@@ -1259,7 +1290,7 @@
             fetch('data/aufgaben-optimiert.json')
                 .then(response => response.json())
                 .then(data => {
-                    const aufgabe = data.aufgaben.find(a => a.id === aufgabeId);
+                    const aufgabe = normalizeTask(data.aufgaben.find(a => a.id === aufgabeId));
                     if (!aufgabe) return;
                     
                     // Haptic Feedback für Mobile Devices
@@ -1284,7 +1315,7 @@
                 .catch(e => {
                     console.error('Could not load task data:', e);
                     // Fallback to basic array
-                    const aufgabe = aufgaben.find(a => a.id === aufgabeId);
+                    const aufgabe = normalizeTask(aufgaben.find(a => a.id === aufgabeId));
                     if (aufgabe) {
                         if (window.learningEnv) window.learningEnv.startTask(aufgabe);
                         closeModal();
@@ -1294,7 +1325,7 @@
     </script>
 
     <!-- Learning Environment Module -->
-    <script src="learning-environment.js?v=build-20260705-2240"></script>
+    <script src="learning-environment.js?v=build-20260705-1815"></script>
     
     <script>
         // Initialize Learning Environment
