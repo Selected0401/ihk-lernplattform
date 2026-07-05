@@ -6,6 +6,13 @@
     <meta name="description" content="IHK Lernplattform - Professionelle Prüfungsvorbereitung für Informationstechnisches Büromanagement">
     <title>IHK Lernplattform</title>
     
+    <!-- Security Headers - Critical Fixes -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none';">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    
     <!-- Critical CSS -->
     <style>
         * {
@@ -451,6 +458,51 @@
             opacity: 0.9;
         }
         
+        /* Cookie Consent Banner */
+        .cookie-consent {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #2c3e50;
+            color: white;
+            padding: 1rem;
+            z-index: 1001;
+            display: none;
+        }
+        
+        .cookie-consent-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .cookie-consent-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .cookie-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        
+        .cookie-accept {
+            background: #3498db;
+            color: white;
+        }
+        
+        .cookie-decline {
+            background: #ecf0f1;
+            color: #2c3e50;
+        }
+        
         /* Mobile Responsive */
         @media (max-width: 768px) {
             .header-content {
@@ -491,17 +543,22 @@
                 width: 95%;
                 padding: 1.5rem;
             }
+            
+            .cookie-consent-content {
+                flex-direction: column;
+                text-align: center;
+            }
         }
         
         /* Safari Fixes */
-        .module-btn, .filter-tab, .task-item, .close, .start-task-btn {
+        .module-btn, .filter-tab, .task-item, .close, .start-task-btn, .cookie-btn {
             -webkit-tap-highlight-color: transparent;
             -webkit-touch-callout: none;
             -webkit-user-select: none;
             user-select: none;
         }
         
-        .module-btn, .filter-tab, .close, .start-task-btn {
+        .module-btn, .filter-tab, .close, .start-task-btn, .cookie-btn {
             touch-action: manipulation;
         }
     </style>
@@ -514,6 +571,21 @@
     <meta name="apple-mobile-web-app-title" content="IHK Lernplattform">
 </head>
 <body>
+    <!-- Cookie Consent Banner -->
+    <div class="cookie-consent" id="cookieConsent">
+        <div class="cookie-consent-content">
+            <div>
+                <strong>🍪 Cookie-Einwilligung</strong><br>
+                Diese Website verwendet essenzielle Cookies für die Funktionalität. Keine Tracking-Cookies. 
+                <a href="#privacy" style="color: #3498db;">Datenschutzerklärung</a>
+            </div>
+            <div class="cookie-consent-buttons">
+                <button class="cookie-btn cookie-accept" onclick="acceptCookies()">Akzeptieren</button>
+                <button class="cookie-btn cookie-decline" onclick="declineCookies()">Ablehnen</button>
+            </div>
+        </div>
+    </div>
+
     <header>
         <div class="container">
             <div class="header-content">
@@ -888,11 +960,33 @@
         
         let currentFilter = 'alle';
         
+        // Cookie Consent Management
+        function checkCookieConsent() {
+            const consent = localStorage.getItem('cookieConsent');
+            if (!consent) {
+                document.getElementById('cookieConsent').style.display = 'block';
+            }
+        }
+        
+        function acceptCookies() {
+            localStorage.setItem('cookieConsent', 'accepted');
+            document.getElementById('cookieConsent').style.display = 'none';
+            console.log('Cookie consent accepted');
+        }
+        
+        function declineCookies() {
+            localStorage.setItem('cookieConsent', 'declined');
+            document.getElementById('cookieConsent').style.display = 'none';
+            console.log('Cookie consent declined');
+        }
+        
         // Lade Aufgaben beim Start
         document.addEventListener('DOMContentLoaded', function() {
             displayTasks();
             setupEventListeners();
+            checkCookieConsent();
             console.log('IHK Lernplattform geladen -', aufgaben.length, 'Aufgaben verfügbar');
+            console.log('Security Headers: CSP, X-Frame-Options, X-XSS-Protection implementiert');
         });
         
         // Event-Listener einrichten
