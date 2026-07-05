@@ -73,6 +73,21 @@ Nachteil:
 
 Empfohlen für echten Verkauf.
 
+## Empfohlener Webseiten-Stack
+
+Für den schnellen, aber professionellen Verkaufsstart:
+
+1. **WordPress** als öffentliche Webseite
+2. **Bricks Builder** für eine schnelle, hochwertige Landingpage
+   - Alternative: Elementor Pro, wenn einfache Bedienung wichtiger ist als Performance
+3. **Digistore24** für Checkout, Rechnung, Zahlungsabwicklung, Zahlungsarten und Affiliate-Programm
+4. **FluentCRM** oder **MailPoet** für Follow-up-E-Mails
+5. **PWA/Lernplattform separat lassen** auf GitHub Pages, Netlify oder später eigener Domain
+6. **MemberPress erst später**, falls WordPress selbst einen Mitgliederbereich hosten soll
+
+Minimaler Flow:
+WordPress Landingpage → Digistore24 Checkout → Käufer erhält E-Mail mit Zugangscode → Login auf der PWA.
+
 ## Code-Format
 
 Beispiele:
@@ -89,8 +104,9 @@ Regeln:
 
 ## Rechtliche Hinweise
 
-- Nicht mit „originale IHK-Prüfungen“ werben, solange keine Lizenz vorliegt.
-- Sicher formulieren: „eigene prüfungsnahe Übungsaufgaben im Stil typischer IHK-Anforderungen“.
+- Nicht mit „originale IHK-Prüfungen“, „IHK-Prüfungsaufgaben“, „offizielle IHK-App“, „IHK-zertifiziert“ oder „echte Prüfungen“ werben, solange keine Lizenz vorliegt.
+- Sicher formulieren: „eigene prüfungsnahe Übungsaufgaben im Stil typischer IHK-Anforderungen für Kaufleute für Büromanagement“.
+- Disclaimer nutzen: „Dieses Angebot steht in keiner Verbindung zur Industrie- und Handelskammer oder zu einer offiziellen Prüfungsstelle.“
 - Impressum, Datenschutz, AGB und Widerrufsbelehrung vor Verkauf erstellen lassen.
 - Bei sofortigem digitalen Zugriff Widerrufsrecht sauber regeln lassen.
 

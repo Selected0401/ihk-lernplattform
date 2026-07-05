@@ -58,7 +58,7 @@
       <div>
         <span class="badge">Einmalzahlung · Zugangscode per E-Mail · Kein Abo</span>
         <h1>Bestehe die IHK-Zwischenprüfung mit dem 80/20-System.</h1>
-        <p>Trainiere Excel, Word, PowerPoint und Outlook mit eigenen prüfungsnahen Aufgaben, klaren Musterlösungen und kleinen Schritten gegen Prüfungsangst — optimiert für wenig Zeit und maximalen Lernerfolg.</p>
+        <p>Trainiere Excel, Word, PowerPoint und Outlook mit eigenen prüfungsnahen Übungsaufgaben im Stil typischer IHK-Anforderungen, klaren Musterlösungen und kleinen Schritten gegen Prüfungsangst — optimiert für wenig Zeit und maximalen Lernerfolg.</p>
         <div class="hero-actions">
           <a class="module-btn" style="width:auto;text-decoration:none" href="#preise">Jetzt Zugang kaufen →</a>
           <a class="module-btn" style="width:auto;text-decoration:none;background:rgba(255,255,255,.14)!important" href="login.html">Ich habe einen Code</a>
@@ -67,7 +67,7 @@
       <div class="sales-card">
         <h2>Was Käufer bekommen</h2>
         <ul>
-          <li>56 eigene IHK-nahe Übungsaufgaben</li>
+          <li>56 eigene prüfungsnahe Übungsaufgaben</li>
           <li>Interaktive Excel-, Word-, PowerPoint- und Outlook-Umgebung</li>
           <li>80/20-Lernpfad statt planloser Theorie</li>
           <li>Mobile Nutzung im Browser und als PWA/App</li>
@@ -133,8 +133,17 @@
         <h2 class="section-title">Empfohlene technische Umsetzung</h2>
         <div class="sales-grid">
           <div class="sales-box"><h3>MVP sofort</h3><p>Statische GitHub-Pages-Seite, einfacher Code-Login, Digistore24/PayPal-Link. Schnell testbar, aber Codes sind nicht maximal sicher.</p></div>
-          <div class="sales-box"><h3>Solide Version</h3><p>WordPress Landingpage + Digistore24 Checkout + automatischer Zugangscode per Mail + geschützte PWA-URL.</p></div>
+          <div class="sales-box"><h3>Empfohlener Verkaufsstack</h3><p>WordPress + Bricks Builder + Digistore24 + FluentCRM. Die PWA bleibt separat und wird per Zugangscode freigegeben.</p></div>
           <div class="sales-box"><h3>Skalierbare Version</h3><p>Digistore24 Webhook → Cloudflare Worker/Supabase → individueller Lizenzcode → Login prüft Code serverseitig.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sales-section">
+      <div class="container">
+        <div class="sales-box">
+          <h2>Rechtlicher Hinweis zur Positionierung</h2>
+          <p class="legal">Dieses Angebot steht in keiner Verbindung zur Industrie- und Handelskammer oder zu einer offiziellen Prüfungsstelle. Alle Aufgaben, Texte und Lösungen wurden eigenständig erstellt und dienen der prüfungsnahen Vorbereitung. Es werden keine originalen IHK-Prüfungen oder offiziellen Prüfungsunterlagen bereitgestellt. Die Inhalte orientieren sich an typischen Anforderungen der Zwischenprüfung im Ausbildungsberuf Kaufmann/Kauffrau für Büromanagement.</p>
         </div>
       </div>
     </section>
@@ -142,7 +151,7 @@
     <section class="sales-section">
       <div class="container faq">
         <h2 class="section-title">FAQ</h2>
-        <details open><summary>Sind das originale IHK-Prüfungen?</summary><p class="legal">Nein. Die Aufgaben sind eigene, prüfungsnahe Übungsaufgaben im Stil typischer Anforderungen. Offizielle IHK-Prüfungen oder Logos sollten nur mit ausdrücklicher Lizenz verwendet werden.</p></details>
+        <details open><summary>Sind das originale IHK-Prüfungen?</summary><p class="legal">Nein. Die Aufgaben sind eigene, prüfungsnahe Übungsaufgaben im Stil typischer Anforderungen. Offizielle IHK-Prüfungen, Scans, Logos oder geschützte Unterlagen werden nicht bereitgestellt und sollten nur mit ausdrücklicher Lizenz verwendet werden.</p></details>
         <details><summary>Warum keine Monatszahlung?</summary><p class="legal">Für Azubis ist eine faire Einmalzahlung oft attraktiver. 99€ als Launch-Angebot und 149€ als späterer Standardpreis sind realistisch testbar.</p></details>
         <details><summary>Wie kommt der Zugangscode per E-Mail?</summary><p class="legal">Bei Digistore24 über die Auslieferungs-/Kaufbestätigungs-E-Mail. Für echte Skalierung besser per Webhook + Lizenzdatenbank.</p></details>
         <details><summary>Ist der MVP-Code-Login sicher?</summary><p class="legal">Für einen ersten Verkaufstest reicht er als Prototyp. Für echten Umsatz sollte der Code serverseitig geprüft werden, sonst können Codes geteilt oder im Frontend gefunden werden.</p></details>
