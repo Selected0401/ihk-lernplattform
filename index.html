@@ -1251,8 +1251,18 @@
                     navigator.vibrate(50);
                 }
                 
-                // Use new Learning Environment
-                window.learningEnv.startTask(aufgabe);
+                // Wait for learningEnv to be ready
+                if (window.learningEnv) {
+                    window.learningEnv.startTask(aufgabe);
+                } else {
+                    // learning-environment.js might not be loaded yet, wait for it
+                    const checkLearningEnv = setInterval(() => {
+                        if (window.learningEnv) {
+                            clearInterval(checkLearningEnv);
+                            window.learningEnv.startTask(aufgabe);
+                        }
+                    }, 50);
+                }
                 closeModal();
             }
         }
