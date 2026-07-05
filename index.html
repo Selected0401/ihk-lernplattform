@@ -230,6 +230,9 @@
             min-height: 44px;
             touch-action: manipulation;
             -webkit-tap-highlight-color: transparent;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
         }
         
         .module-btn:hover {
@@ -271,6 +274,9 @@
             cursor: pointer;
             transition: all 0.3s;
             font-weight: 500;
+            min-height: 44px;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
         }
         
         .filter-tab.active {
@@ -289,6 +295,10 @@
             border-radius: 8px;
             border-left: 4px solid #3498db;
             transition: transform 0.3s;
+            cursor: pointer;
+            min-height: 44px;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
         }
         
         .task-item:hover {
@@ -354,6 +364,93 @@
             font-weight: 500;
         }
         
+        /* Modal for Tasks */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+        
+        .close {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            color: #aaa;
+            min-width: 44px;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .close:hover {
+            color: #000;
+        }
+        
+        .task-detail {
+            margin-top: 1rem;
+        }
+        
+        .task-detail h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        
+        .task-detail p {
+            color: #7f8c8d;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .task-meta-detail {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        
+        .start-task-btn {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.3s;
+            width: 100%;
+            font-size: 1rem;
+            min-height: 44px;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .start-task-btn:hover {
+            opacity: 0.9;
+        }
+        
         /* Mobile Responsive */
         @media (max-width: 768px) {
             .header-content {
@@ -388,17 +485,23 @@
             .filter-tabs {
                 flex-wrap: wrap;
             }
+            
+            .modal-content {
+                margin: 10% auto;
+                width: 95%;
+                padding: 1.5rem;
+            }
         }
         
         /* Safari Fixes */
-        .module-btn, .filter-tab, .task-item {
+        .module-btn, .filter-tab, .task-item, .close, .start-task-btn {
             -webkit-tap-highlight-color: transparent;
             -webkit-touch-callout: none;
             -webkit-user-select: none;
             user-select: none;
         }
         
-        .module-btn, .filter-tab {
+        .module-btn, .filter-tab, .close, .start-task-btn {
             touch-action: manipulation;
         }
     </style>
@@ -471,7 +574,7 @@
                         <div class="progress-bar">
                             <div class="progress-fill" style="width: 35%"></div>
                         </div>
-                        <button class="module-btn" onclick="location.href='word.html'">Modul starten →</button>
+                        <button class="module-btn" onclick="showModuleTasks('Word')">Modul starten →</button>
                     </div>
                     
                     <div class="module-card">
@@ -490,7 +593,7 @@
                         <div class="progress-bar">
                             <div class="progress-fill" style="width: 20%"></div>
                         </div>
-                        <button class="module-btn" onclick="location.href='excel.html'">Modul starten →</button>
+                        <button class="module-btn" onclick="showModuleTasks('Excel')">Modul starten →</button>
                     </div>
                     
                     <div class="module-card">
@@ -509,7 +612,7 @@
                         <div class="progress-bar">
                             <div class="progress-fill" style="width: 60%"></div>
                         </div>
-                        <button class="module-btn" onclick="location.href='powerpoint.html'">Modul starten →</button>
+                        <button class="module-btn" onclick="showModuleTasks('PowerPoint')">Modul starten →</button>
                     </div>
                     
                     <div class="module-card">
@@ -528,7 +631,7 @@
                         <div class="progress-bar">
                             <div class="progress-fill" style="width: 80%"></div>
                         </div>
-                        <button class="module-btn" onclick="location.href='outlook.html'">Modul starten →</button>
+                        <button class="module-btn" onclick="showModuleTasks('Outlook')">Modul starten →</button>
                     </div>
                 </div>
             </section>
@@ -537,101 +640,19 @@
                 <div class="tasks-section">
                     <div class="tasks-header">
                         <h2 class="section-title">Aktuelle Aufgaben</h2>
-                        <button class="module-btn" style="width: auto; padding: 8px 16px;">Alle Aufgaben</button>
+                        <button class="module-btn" style="width: auto; padding: 8px 16px;" onclick="showAllTasks()">Alle Aufgaben</button>
                     </div>
                     
                     <div class="filter-tabs">
-                        <button class="filter-tab active">Alle</button>
-                        <button class="filter-tab">Word</button>
-                        <button class="filter-tab">Excel</button>
-                        <button class="filter-tab">PowerPoint</button>
-                        <button class="filter-tab">Outlook</button>
+                        <button class="filter-tab active" onclick="filterTasks('alle')">Alle</button>
+                        <button class="filter-tab" onclick="filterTasks('Word')">Word</button>
+                        <button class="filter-tab" onclick="filterTasks('Excel')">Excel</button>
+                        <button class="filter-tab" onclick="filterTasks('PowerPoint')">PowerPoint</button>
+                        <button class="filter-tab" onclick="filterTasks('Outlook')">Outlook</button>
                     </div>
                     
-                    <div class="tasks-grid">
-                        <div class="task-item">
-                            <div class="task-header">
-                                <div class="task-title">DIN 5008 Briefvorlage erstellen</div>
-                                <div class="task-meta">
-                                    <span>📝 Word</span>
-                                    <span>⏱️ 15 Min</span>
-                                    <span>🎯 10 Pkt</span>
-                                </div>
-                            </div>
-                            <div class="task-description">
-                                Erstelle eine normgerechte Geschäftsbriefvorlage nach DIN 5008 mit komplettem Briefkopf, Absender und Empfänger.
-                            </div>
-                        </div>
-                        
-                        <div class="task-item">
-                            <div class="task-header">
-                                <div class="task-title">SVERWEIS mit Kundendaten</div>
-                                <div class="task-meta">
-                                    <span>📊 Excel</span>
-                                    <span>⏱️ 20 Min</span>
-                                    <span>🎯 15 Pkt</span>
-                                </div>
-                            </div>
-                            <div class="task-description">
-                                Verbinde zwei Tabellen mit SVERWEIS und erstelle eine Kundendatenbank mit automatischer Datenabfrage.
-                            </div>
-                        </div>
-                        
-                        <div class="task-item">
-                            <div class="task-header">
-                                <div class="task-title">Präsentation mit Masterfolien</div>
-                                <div class="task-meta">
-                                    <span>🎯 PowerPoint</span>
-                                    <span>⏱️ 25 Min</span>
-                                    <span>🎯 12 Pkt</span>
-                                </div>
-                            </div>
-                            <div class="task-description">
-                                Erstelle eine Unternehmenspräsentation mit konsistenten Masterfolien und professionellem Layout.
-                            </div>
-                        </div>
-                        
-                        <div class="task-item">
-                            <div class="task-header">
-                                <div class="task-title">Terminserie mit Besprechungsanfragen</div>
-                                <div class="task-meta">
-                                    <span>📧 Outlook</span>
-                                    <span>⏱️ 10 Min</span>
-                                    <span>🎯 8 Pkt</span>
-                                </div>
-                            </div>
-                            <div class="task-description">
-                                Erstelle eine wöchentliche Terminserie und sende Besprechungsanfragen mit automatischen Erinnerungen.
-                            </div>
-                        </div>
-                        
-                        <div class="task-item">
-                            <div class="task-header">
-                                <div class="task-title">Serienbrief für 100 Kunden</div>
-                                <div class="task-meta">
-                                    <span>📝 Word</span>
-                                    <span>⏱️ 30 Min</span>
-                                    <span>🎯 20 Pkt</span>
-                                </div>
-                            </div>
-                            <div class="task-description">
-                                Erstelle einen Serienbrief für 100 Kunden mit personalisierter Anrede und automatischem Datenimport.
-                            </div>
-                        </div>
-                        
-                        <div class="task-item">
-                            <div class="task-header">
-                                <div class="task-title">Pivot-Tabelle Umsatzanalyse</div>
-                                <div class="task-meta">
-                                    <span>📊 Excel</span>
-                                    <span>⏱️ 25 Min</span>
-                                    <span>🎯 18 Pkt</span>
-                                </div>
-                            </div>
-                            <div class="task-description">
-                                Analysiere Umsatzdaten mit Pivot-Tabellen und erstelle aussagekräftige Auswertungsberichte.
-                            </div>
-                        </div>
+                    <div class="tasks-grid" id="tasksGrid">
+                        <!-- Tasks werden per JavaScript geladen -->
                     </div>
                 </div>
             </section>
@@ -670,23 +691,72 @@
         </div>
     </main>
     
+    <!-- Modal für Task-Details -->
+    <div id="taskModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div class="task-detail" id="taskDetail">
+                <!-- Task-Details werden per JavaScript geladen -->
+            </div>
+        </div>
+    </div>
+    
     <script>
+        // Aufgaben-Daten (aus der JSON-Datei geladen)
+        let aufgaben = [];
+        let currentFilter = 'alle';
+        
+        // Lade Aufgaben beim Start
         document.addEventListener('DOMContentLoaded', function() {
+            loadAufgaben();
+            setupEventListeners();
             console.log('IHK Lernplattform geladen');
-            
+        });
+        
+        // Aufgaben aus JSON laden
+        async function loadAufgaben() {
+            try {
+                const response = await fetch('data/aufgaben.json');
+                aufgaben = await response.json();
+                displayTasks();
+            } catch (error) {
+                console.error('Fehler beim Laden der Aufgaben:', error);
+                // Fallback-Aufgaben, falls JSON nicht geladen werden kann
+                aufgaben = [
+                    {
+                        "id": "word-001",
+                        "modul": "Word",
+                        "titel": "DIN 5008 Geschäftsbrief",
+                        "beschreibung": "Erstellen Sie einen normgerechten Geschäftsbrief nach DIN 5008.",
+                        "dauer": "15 Min",
+                        "punkte": 10,
+                        "schwierigkeit": "Mittel"
+                    },
+                    {
+                        "id": "excel-001",
+                        "modul": "Excel",
+                        "titel": "SVERWEIS Kundendaten",
+                        "beschreibung": "Verbinden Sie zwei Tabellen mit SVERWEIS.",
+                        "dauer": "20 Min",
+                        "punkte": 15,
+                        "schwierigkeit": "Mittel"
+                    }
+                ];
+                displayTasks();
+            }
+        }
+        
+        // Event-Listener einrichten
+        function setupEventListeners() {
             // Navigation
             const navLinks = document.querySelectorAll('.nav-link');
             navLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
                     
-                    // Remove active class from all links
                     navLinks.forEach(l => l.classList.remove('active'));
-                    
-                    // Add active class to clicked link
                     this.classList.add('active');
                     
-                    // Smooth scroll to section
                     const targetId = this.getAttribute('href').substring(1);
                     const targetSection = document.getElementById(targetId);
                     
@@ -699,51 +769,127 @@
                 });
             });
             
-            // Filter tabs
-            const filterTabs = document.querySelectorAll('.filter-tab');
-            filterTabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    // Remove active class from all tabs
-                    filterTabs.forEach(t => t.classList.remove('active'));
-                    
-                    // Add active class to clicked tab
-                    this.classList.add('active');
-                    
-                    console.log('Filter:', this.textContent);
-                });
+            // Modal schließen beim Klick außerhalb
+            window.onclick = function(event) {
+                const modal = document.getElementById('taskModal');
+                if (event.target == modal) {
+                    closeModal();
+                }
+            };
+        }
+        
+        // Aufgaben anzeigen
+        function displayTasks() {
+            const tasksGrid = document.getElementById('tasksGrid');
+            const filteredAufgaben = currentFilter === 'alle' 
+                ? aufgaben 
+                : aufgaben.filter(aufgabe => aufgabe.modul === currentFilter);
+            
+            tasksGrid.innerHTML = '';
+            
+            filteredAufgaben.forEach(aufgabe => {
+                const taskElement = createTaskElement(aufgabe);
+                tasksGrid.appendChild(taskElement);
+            });
+        }
+        
+        // Task-Element erstellen
+        function createTaskElement(aufgabe) {
+            const taskItem = document.createElement('div');
+            taskItem.className = 'task-item';
+            taskItem.onclick = () => showTaskDetail(aufgabe);
+            
+            taskItem.innerHTML = `
+                <div class="task-header">
+                    <div class="task-title">${aufgabe.titel}</div>
+                    <div class="task-meta">
+                        <span>${aufgabe.modul}</span>
+                        <span>⏱️ ${aufgabe.dauer}</span>
+                        <span>🎯 ${aufgabe.punkte} Pkt</span>
+                    </div>
+                </div>
+                <div class="task-description">
+                    ${aufgabe.beschreibung}
+                </div>
+            `;
+            
+            return taskItem;
+        }
+        
+        // Filter-Tab wechseln
+        function filterTasks(modul) {
+            currentFilter = modul;
+            
+            // Tabs aktualisieren
+            const tabs = document.querySelectorAll('.filter-tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+                if (tab.textContent === modul || (modul === 'alle' && tab.textContent === 'Alle')) {
+                    tab.classList.add('active');
+                }
             });
             
-            // Module buttons
-            const moduleBtns = document.querySelectorAll('.module-btn');
-            moduleBtns.forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    console.log('Modul Button geklickt:', this.textContent);
-                    
-                    // Get href from onclick attribute
-                    const onclick = this.getAttribute('onclick');
-                    if (onclick) {
-                        const match = onclick.match(/location\.href='([^']+)'/);
-                        if (match && match[1]) {
-                            window.location.href = match[1];
-                        }
-                    }
-                });
+            displayTasks();
+        }
+        
+        // Aufgaben eines Moduls anzeigen
+        function showModuleTasks(modul) {
+            currentFilter = modul;
+            
+            // Zum Aufgaben-Bereich scrollen
+            document.getElementById('tasks').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
             });
             
-            // Touch events for mobile
-            if ('ontouchstart' in window) {
-                moduleBtns.forEach(btn => {
-                    btn.addEventListener('touchstart', function() {
-                        this.style.opacity = '0.8';
-                    });
-                    
-                    btn.addEventListener('touchend', function() {
-                        this.style.opacity = '1';
-                    });
-                });
+            // Filter aktualisieren
+            filterTasks(modul);
+        }
+        
+        // Alle Aufgaben anzeigen
+        function showAllTasks() {
+            currentFilter = 'alle';
+            filterTasks('alle');
+        }
+        
+        // Task-Details im Modal anzeigen
+        function showTaskDetail(aufgabe) {
+            const modal = document.getElementById('taskModal');
+            const taskDetail = document.getElementById('taskDetail');
+            
+            taskDetail.innerHTML = `
+                <h3>${aufgabe.titel}</h3>
+                <p>${aufgabe.beschreibung}</p>
+                
+                <div class="task-meta-detail">
+                    <strong>Modul:</strong> ${aufgabe.modul}<br>
+                    <strong>Dauer:</strong> ${aufgabe.dauer}<br>
+                    <strong>Punkte:</strong> ${aufgabe.punkte}<br>
+                    <strong>Schwierigkeit:</strong> ${aufgabe.schwierigkeit}
+                </div>
+                
+                <button class="start-task-btn" onclick="startTask('${aufgabe.id}')">
+                    Aufgabe starten →
+                </button>
+            `;
+            
+            modal.style.display = 'block';
+        }
+        
+        // Modal schließen
+        function closeModal() {
+            const modal = document.getElementById('taskModal');
+            modal.style.display = 'none';
+        }
+        
+        // Aufgabe starten
+        function startTask(aufgabeId) {
+            const aufgabe = aufgaben.find(a => a.id === aufgabeId);
+            if (aufgabe) {
+                alert(`Aufgabe "${aufgabe.titel}" wird vorbereitet...\n\nModul: ${aufgabe.modul}\nDauer: ${aufgabe.dauer}\nPunkte: ${aufgabe.punkte}\n\nHier kommt die Lernumgebung hin!`);
+                closeModal();
             }
-        });
+        }
     </script>
 </body>
 </html>
