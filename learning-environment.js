@@ -13,6 +13,7 @@ class LearningEnvironment {
 
     // Start a task with full learning environment
     startTask(task) {
+        this.closeEnvironment();
         this.currentTask = task;
         this.userAnswers = {};
         
@@ -125,13 +126,13 @@ class LearningEnvironment {
     }
 
     closeEnvironment() {
-        const modal = document.querySelector('.learning-env-modal');
-        if (modal) {
+        const modals = document.querySelectorAll('.learning-env-modal, .result-modal');
+        modals.forEach((modal) => {
             if (modal._keydownHandler) {
                 modal.removeEventListener('keydown', modal._keydownHandler);
             }
             modal.remove();
-        }
+        });
         document.body.style.overflow = '';
         this.currentTask = null;
         this.userAnswers = {};
