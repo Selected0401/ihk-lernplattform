@@ -1,0 +1,215 @@
+{
+  "lernfelder": [
+    {
+      "feld": "Lernfeld 1: Informationstechnische Grundlagen",
+      "beschreibung": "Grundlegende IT-Kompetenzen für die Bürokommunikation, Hardware-Kenntnisse, Software-Anwendungen, Netzwerkgrundlagen und IT-Sicherheit. Vermittlung von Basiswissen über Computersysteme, Peripheriegeräte, Datenverarbeitung und informationstechnische Systeme im Bürobereich.",
+      "typische_aufgaben": [
+        "Hardware-Komponenten identifizieren und zuordnen",
+        "Software-Anwendungen im Bürobereich auswählen und anwenden",
+        "Netzwerkgrundlagen verstehen und anwenden",
+        "IT-Sicherheitsmaßnahmen implementieren",
+        "Datenschutz und Datensicherung im Büroalltag",
+        "Systeme und Peripheriegeräte konfigurieren",
+        "Fehlerbehebung bei IT-Systemen"
+      ],
+      "pruefungsbeispiele": [
+        {
+          "jahr": 2025,
+          "aufgabe": "Erstellen einer Systemdokumentation für eine Bürokommunikationsanlage. Identifizieren Sie die Hardware-Komponenten, beschreiben Sie die Software-Anwendungen und erläutern Sie die notwendigen Sicherheitsmaßnahmen.",
+          "loesung": "Systematische Auflistung der Hardware (Computer, Drucker, Scanner, Netzwerkgeräte), Beschreibung der Software (Betriebssystem, Office-Pakete, Branchensoftware), Darstellung der Sicherheitskonzepte (Passwortrichtlinien, Virenschutz, Datensicherung, Netzwerksicherheit)."
+        },
+        {
+          "jahr": 2024,
+          "aufgabe": "Analyse von Netzwerkproblemen in einem Büro. Beschreiben Sie mögliche Ursachen für Verbindungsprobleme und entwickeln Sie einen Lösungsansatz.",
+          "loesung": "Systematische Fehleranalyse: Prüfung physischer Verbindungen, IP-Konfiguration, Router-Einstellungen, Firewall-Konfiguration. Lösungsansätze umfassen Neustart von Systemen, Kabelprüfung, IP-Adressenzuweisung und Konfigurationsanpassungen."
+        },
+        {
+          "jahr": 2023,
+          "aufgabe": "Erstellung eines IT-Sicherheitskonzepts für ein kleines Büro. Berücksichtigen Sie Datenschutz, Zugriffskontrolle und Datensicherung.",
+          "loesung": "Konzept mit folgenden Elementen: Passwortrichtlinien, Benutzerrechtevergabe, regelmäßige Datensicherungen, Virenschutz, Firewall-Konfiguration, Verschlüsselung sensibler Daten, Schulungsmaßnahmen für Mitarbeiter."
+        }
+      ]
+    },
+    {
+      "feld": "Lernfeld 2: Textverarbeitung (Word)",
+      "beschreibung": "Erstellung, Formatierung und Gestaltung von Dokumenten mit Microsoft Word. Schwerpunkte liegen auf professioneller Korrespondenz, Serienbriefen, Vorlagenerstellung und Layout-Gestaltung nach DIN 5008.",
+      "typische_aufgaben": [
+        "Geschäftsbriefe nach DIN 5008 erstellen",
+        "Serienbriefe für Massenkommunikation gestalten",
+        "Vorlagen für wiederkehrende Dokumente erstellen",
+        "Layout und Formatierung komplexer Dokumente",
+        "Tabellen und Grafiken in Textdokumente integrieren",
+        "Dokumentation und Berichterstellung",
+        "Textbausteine und Makros erstellen"
+      ],
+      "pruefungsbeispiele": [
+        {
+          "jahr": 2025,
+          "aufgabe": "Erstellen Sie ein Online-Formular für Hausmitteilungen nach vorgegebenem Muster. Gestalten Sie das Formular mit Textfeldern, Datumsfeldern und Kontrollkästchen.",
+          "loesung": "Erstellung einer formatierten Tabelle mit Kopfzeile, Integration von Formularfeldern (Textfelder für Namen/Abteilung, Datumsfelder, Kontrollkästchen für Optionen), Anwendung geeigneter Zellformate und Zellverbindungen."
+        },
+        {
+          "jahr": 2024,
+          "aufgabe": "Verfassen Sie einen Geschäftsbrief an einen Kunden zur Reklamationsbearbeitung. Beachten Sie die formale Gestaltung nach DIN 5008 und fügen Sie eine Tabelle mit Sachverhalten ein.",
+          "loesung": "Formal korrekter Geschäftsbrief mit Absender, Datum, Empfänger, Betreffzeile, Anrede, Grußformel. Inhaltliche Bearbeitung der Reklamation mit sachlicher Argumentation und Lösungsvorschlägen. Integrierte Tabelle zur Übersicht der Sachverhalte."
+        },
+        {
+          "jahr": 2023,
+          "aufgabe": "Erstellen Sie eine Serienbriefvorlage für die Einladung zu einer Kundenvorstellung. Die Vorlage muss personalisierte Felder und eine ansprechende Formatierung enthalten.",
+          "loesung": "Serienbriefvorlage mit Seriendruckfeldern für Anrede, Name, Adresse und personalisierte Inhalte. Professionelle Formatierung mit Firmenlogo, übersichtlicher Gliederung und ansprechender Typografie."
+        }
+      ]
+    },
+    {
+      "feld": "Lernfeld 3: Tabellenkalkulation (Excel)",
+      "beschreibung": "Erstellung und Bearbeitung von Tabellen mit Microsoft Excel. Fokus auf Formeln, Funktionen, Diagramme, Auswertungen und Pivot-Tabellen für betriebswirtschaftliche Berechnungen und Analysen.",
+      "typische_aufgaben": [
+        "Tabellen für betriebswirtschaftliche Berechnungen erstellen",
+        "Formeln und Funktionen anwenden (Summe, Mittelwert, WENN, SVERWEIS)",
+        "Diagramme zur Visualisierung von Daten erstellen",
+        "Auswertungen und Pivot-Tabellen erstellen",
+        "Kalkulationen und Preisvergleiche durchführen",
+        "Bestandsmanagement und Meldebestandsermittlung",
+        "Datenfilterung und Sortierung"
+      ],
+      "pruefungsbeispiele": [
+        {
+          "jahr": 2025,
+          "aufgabe": "Erstellen Sie eine Bestandstabelle für Kopierpapier. Ermitteln Sie den Meldebestand, zeigen Sie bei Erreichen die zu bestellende Menge an und erstellen Sie ein Säulendiagramm zur Visualisierung.",
+          "loesung": "Excel-Tabelle mit Artikelnummern, Bezeichnungen, aktuellen Beständen und Meldebeständen. WENN-Funktion zur Anzeige der Bestellmenge bei Erreichen des Meldebestands. Säulendiagramm mit Bestands- und Meldebestandswerten für verschiedene Papiersorten."
+        },
+        {
+          "jahr": 2024,
+          "aufgabe": "Führen Sie einen Angebotsvergleich für Büroartikel durch. Kalkulieren Sie die Bezugspreise verschiedener Anbieter, ermitteln Sie den günstigsten Lieferanten und berechnen Sie die prozentuale Abweichung zum bisherigen Preis.",
+          "loesung": "Vergleichstabelle mit Angebotsdaten, Kalkulation der Gesamtpreise inkl. Rabatte und Bezugskosten. MIN- und WENN-Funktionen zur Ermittlung des günstigsten Anbieters. SVERWEIS zur Übernahme bisheriger Preise. Prozentuale Abweichungsberechnung."
+        },
+        {
+          "jahr": 2023,
+          "aufgabe": "Erstellen Sie eine Umsatzstatistik für die letzten 12 Monate. Berechnen Sie Durchschnittswerte, Maximalwerte und prozentuale Veränderungen. Visualisieren Sie die Ergebnisse in einem Liniendiagramm.",
+          "loesung": "Tabelle mit monatlichen Umsatzdaten, Berechnung von statistischen Kennzahlen (SUMME, MITTELWERT, MAX, MIN). Prozentuale Veränderungen gegenüber dem Vorjahresmonat. Liniendiagramm zur Darstellung der Umsatzentwicklung."
+        }
+      ]
+    },
+    {
+      "feld": "Lernfeld 4: Präsentation (PowerPoint)",
+      "beschreibung": "Erstellung und Gestaltung von Präsentationen mit Microsoft PowerPoint. Schwerpunkte auf Folienlayout, Animationen, Masterfolien, Multimedia-Einsatz und professioneller Präsentationstechnik.",
+      "typische_aufgaben": [
+        "Professionelle Präsentationen erstellen",
+        "Masterfolien und Vorlagen gestalten",
+        "Animationen und Übergänge einsetzen",
+        "Multimedia-Elemente integrieren",
+        "Visuelle Aufbereitung komplexer Sachverhalte",
+        "Präsentationsdokumentation erstellen",
+        "Kundenpräsentationen und Verkaufsgespräche vorbereiten"
+      ],
+      "pruefungsbeispiele": [
+        {
+          "jahr": 2025,
+          "aufgabe": "Erstellen Sie eine Präsentation für die Vorstellung eines neuen Bürokonzepts. Gestalten Sie Masterfolien mit Firmenlogo und verwenden Sie Animationen für schrittweise Informationen.",
+          "loesung": "PowerPoint-Präsentation mit 8-10 Folien, angepasster Masterfolienvorlage, professionelles Layout, schrittweise Animationen für komplexe Inhalte, Integration von Diagrammen und Grafiken zur Visualisierung."
+        },
+        {
+          "jahr": 2024,
+          "aufgabe": "Entwickeln Sie eine Verkaufspräsentation für ein neues Büromöbelprogramm. Berücksichtigen Sie unterschiedliche Zielgruppen und integrieren Sie Multimedia-Elemente.",
+          "loesung": "Zielgruppengerechte Präsentation mit ansprechender visueller Gestaltung, Produktbilder, Preisübersichten, Vergleichstabellen. Integration von Videosequenzen oder Audio-Elementen zur Produktpräsentation."
+        },
+        {
+          "jahr": 2023,
+          "aufgabe": "Erstellen Sie eine Schulungspräsentation für neue Mitarbeiter zum Thema Bürokommunikation. Gestalten Sie didaktisch aufbereitete Folien mit Übungsbeispielen.",
+          "loesung": "Didaktisch strukturierte Präsentation mit klaren Lernzielen, übersichtlicher Gliederung, praktischen Beispielen und Übungen. Einsatz von Diagrammen zur Verdeutlichung von Prozessen und Abläufen."
+        }
+      ]
+    },
+    {
+      "feld": "Lernfeld 5: Datenbanken",
+      "beschreibung": "Erstellung und Pflege von Datenbanken mit Microsoft Access. Schwerpunkte auf Datenbankdesign, Abfragen, Formulare, Berichte und datenbankgestütztem Informationsmanagement.",
+      "typische_aufgaben": [
+        "Datenbanken für betriebliche Zwecke erstellen",
+        "Tabellen und Beziehungen designen",
+        "Abfragen zur Datenauswertung erstellen",
+        "Formulare zur Dateneingabe gestalten",
+        "Berichte für die Auswertung erstellen",
+        "Datenimport und -export durchführen",
+        "Datenbanken pflegen und warten"
+      ],
+      "pruefungsbeispiele": [
+        {
+          "jahr": 2025,
+          "aufgabe": "Erstellen Sie eine Kundendatenbank für ein Büromaterialgeschäft. Entwerfen Sie Tabellen für Kunden, Artikel und Bestellungen sowie die dazugehörigen Beziehungen.",
+          "loesung": "Access-Datenbank mit drei Haupttabellen (Kunden, Artikel, Bestellungen), definierten Primärschlüsseln, Beziehungen zwischen den Tabellen, passenden Datentypen und Feldeigenschaften für die betriebliche Anwendung."
+        },
+        {
+          "jahr": 2024,
+          "aufgabe": "Erstellen Sie Abfragen zur Auswertung von Verkaufsdaten. Ermitteln Sie die umsatzstärksten Kunden und die meistverkauften Artikel des letzten Quartals.",
+          "loesung": "SQL-Abfragen mit Aggregatfunktionen (SUMME, GRUPPIEREN NACH), Verknüpfung mehrerer Tabellen, Filterung nach Zeitraum, Sortierung nach Umsatzwerten zur Identifikation der Top-Kunden und -Produkte."
+        },
+        {
+          "jahr": 2023,
+          "aufgabe": "Entwerfen Sie ein Eingabeformular für neue Bestellungen und einen Bericht zur monatlichen Umsatzstatistik. Berücksichtigen Sie Benutzerfreundlichkeit und Übersichtlichkeit.",
+          "loesung": "Access-Formular mit intuitiver Bedienung, Dropdown-Feldern für Artikelauswahl, automatischen Berechnungen. Umsatzbericht mit Gruppierungen nach Monaten, Summenbildung und grafischer Aufbereitung der Ergebnisse."
+        }
+      ]
+    },
+    {
+      "feld": "Lernfeld 6: Informations- und Telekommunikationstechnik",
+      "beschreibung": "Anwendung von Informations- und Telekommunikationstechnologien im Bürobereich. Schwerpunkte auf Internetnutzung, E-Mail-Kommunikation, Netzwerkanwendungen, Sicherheitsaspekten und digitaler Kooperation.",
+      "typische_aufgaben": [
+        "Internetrecherche und Informationsbeschaffung",
+        "E-Mail-Kommunikation professionell gestalten",
+        "Kalender- und Aufgabenmanagement mit Outlook",
+        "Netzwerk-Anwendungen nutzen",
+        "Online-Kollaboration und Cloud-Dienste",
+        "Digitale Sicherheitsmaßnahmen anwenden",
+        "Telekommunikations-systeme nutzen"
+      ],
+      "pruefungsbeispiele": [
+        {
+          "jahr": 2025,
+          "aufgabe": "Recherchieren Sie Informationen über neue Datenschutzrichtlinien für Büros. Erstellen Sie eine E-Mail an die Geschäftsführung mit den wichtigsten Erkenntnissen und Handlungsempfehlungen.",
+          "loesung": "Strukturierte Internetrecherche nach aktuellen Datenschutzrichtlinien, Bewertung der Relevanz für das eigene Unternehmen, professionelle E-Mail mit klarer Gliederung, Zusammenfassung der wichtigsten Punkte und konkreten Handlungsempfehlungen."
+        },
+        {
+          "jahr": 2024,
+          "aufgabe": "Organisieren Sie eine virtuelle Besprechung mit mehreren Standorten. Beschreiben Sie die notwendigen Vorbereitungen, die Durchführung und die Nachbereitung.",
+          "loesung": "Detaillierte Planung mit Technikanforderungen, Einladungsmanagement, Agendaerstellung, Durchführung mit Moderationstechniken, Dokumentation der Ergebnisse und Nachbereitung mit Aufgabenverteilung."
+        },
+        {
+          "jahr": 2023,
+          "aufgabe": "Richten Sie ein Aufgabenmanagement-System für ein Projektteam ein. Erstellen Sie Kategorien, Prioritäten und Fälligkeitszeiten. Beschreiben Sie die Vorteile der digitalen Aufgabenverwaltung.",
+          "loesung": "Einrichtung eines digitalen Aufgabenmanagement-Systems mit sinnvoller Kategorisierung, Prioritätenvergabe, Zeitplanung und Verantwortlichkeiten. Darstellung der Vorteile gegenüber manueller Aufgabenverwaltung (Übersicht, Erinnerungen, Zusammenarbeit)."
+        }
+      ]
+    }
+  ],
+  "pruefungsinformationen": {
+    "aufbau": {
+      "teil_1": {
+        "name": "Informationstechnisches Büromanagement",
+        "dauer": "120 Minuten",
+        "gewichtung": "25%",
+        "fokus_lernfelder": ["Lernfeld 2", "Lernfeld 3", "Lernfeld 4"],
+        "beschreibung": "Computergestützte Bearbeitung von Büro- und Beschaffungsprozessen unter Anwendung von Textverarbeitungs- und Tabellenkalkulationsprogrammen."
+      },
+      "teil_2": {
+        "name": "Kundenbeziehungsprozesse und Wirtschafts- und Sozialkunde",
+        "dauer": "150 Minuten (Kundenbeziehungsprozesse) + 60 Minuten (Wirtschafts- und Sozialkunde)",
+        "gewichtung": "30% (Kundenbeziehungsprozesse) + 10% (Wirtschafts- und Sozialkunde)",
+        "fokus_lernfelder": ["Lernfeld 5", "Lernfeld 6", "Lernfeld 8", "Lernfeld 10"],
+        "beschreibung": "Schriftliche Prüfung mit Ankreuzfragen, Zuordnungsaufgaben und Ausfüllfeldern."
+      }
+    },
+    "hilfsmittel": {
+      "teil_1": [
+        "Unkommentiertes Rechtschreibwörterbuch in gedruckter Form",
+        "Unkommentierte Ausgabe der DIN 5008 in gedruckter Form"
+      ],
+      "teil_2": [
+        "Nicht programmierter, netzunabhängiger Taschenrechner ohne Kommunikationsmöglichkeit"
+      ]
+    },
+    "bewertung": {
+      "bestehen": "Gesamtergebnis mit mindestens 4,0 ausreichend und drei der vier Prüfungsbereiche mindestens mit 4,0 ausreichend",
+      "nicht_bestehen": "Note 6 in einem Prüfungsbereich führt zum Nichtbestehen"
+    }
+  }
+}

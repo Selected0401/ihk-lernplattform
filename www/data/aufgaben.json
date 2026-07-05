@@ -1,0 +1,182 @@
+[
+    {
+        "id": "word-001",
+        "modul": "Word",
+        "titel": "DIN 5008 Geschäftsbrief",
+        "beschreibung": "Erstellen Sie einen normgerechten Geschäftsbrief nach DIN 5008 mit Absender, Empfänger, Datum, Betreff, Grußformel und Unterschrift.",
+        "dauer": "15 Min",
+        "punkte": 10,
+        "schwierigkeit": "Mittel"
+    },
+    {
+        "id": "word-002",
+        "modul": "Word",
+        "titel": "Serienbrief erstellen",
+        "beschreibung": "Erstellen Sie einen Serienbrief für 100 Adressaten mit personalisierten Anreden und Datenbankanbindung.",
+        "dauer": "25 Min",
+        "punkte": 15,
+        "schwierigkeit": "Mittel"
+    },
+    {
+        "id": "word-003",
+        "modul": "Word",
+        "titel": "Formatvorlagen gestalten",
+        "beschreibung": "Erstellen Sie professionelle Formatvorlagen für Überschriften, Fließtext und Zitate in einem Dokument.",
+        "dauer": "20 Min",
+        "punkte": 12,
+        "schwierigkeit": "Einfach"
+    },
+    {
+        "id": "word-004",
+        "modul": "Word",
+        "titel": "Inhaltsverzeichnis automatisieren",
+        "beschreibung": "Erstellen Sie ein automatisches Inhaltsverzeichnis mit Seitenzahlen und mehreren Ebenen.",
+        "dauer": "18 Min",
+        "punkte": 11,
+        "schwierigkeit": "Einfach"
+    },
+    {
+        "id": "word-005",
+        "modul": "Word",
+        "titel": "Dokumentenschutz einrichten",
+        "beschreibung": "Richten Sie Dokumentenschutz mit Passwort und Bearbeitungseinschränkungen für vertrauliche Dokumente ein.",
+        "dauer": "12 Min",
+        "punkte": 8,
+        "schwierigkeit": "Einfach"
+    },
+    {
+        "id": "excel-001",
+        "modul": "Excel",
+        "titel": "SVERWEIS Kundendaten",
+        "beschreibung": "Verbinden Sie zwei Tabellen mit SVERWEIS und erstellen Sie eine Kundendatenbank mit automatischer Datenabfrage.",
+        "dauer": "20 Min",
+        "punkte": 15,
+        "schwierigkeit": "Mittel"
+    },
+    {
+        "id": "excel-002",
+        "modul": "Excel",
+        "titel": "Pivot-Tabelle auswerten",
+        "beschreibung": "Erstellen Sie eine Pivot-Tabelle zur Umsatzanalyse nach Regionen und Produkten mit Diagrammen.",
+        "dauer": "25 Min",
+        "punkte": 18,
+        "schwierigkeit": "Schwer"
+    },
+    {
+        "id": "excel-003",
+        "modul": "Excel",
+        "titel": "WENN-Funktionen kaskadieren",
+        "beschreibung": "Erstellen Sie komplexe WENN-Funktionen für Bonusberechnungen und Rabattstaffeln.",
+        "dauer": "22 Min",
+        "punkte": 16,
+        "schwierigkeit": "Mittel"
+    },
+    {
+        "id": "excel-004",
+        "modul": "Excel",
+        "titel": "Datensicherung und Filter",
+        "beschreibung": "Richten Sie Datensicherung und erweiterte Filter für große Datenmengen ein.",
+        "dauer": "15 Min",
+        "punkte": 10,
+        "schwierigkeit": "Einfach"
+    },
+    {
+        "id": "excel-005",
+        "modul": "Excel",
+        "titel": "Makro aufzeichnen",
+        "beschreibung": "Zeichnen Sie ein Makro für wiederkehrende Formatierungen und Datenimporte auf.",
+        "dauer": "18 Min",
+        "punkte": 13,
+        "schwierigkeit": "Mittel"
+    },
+    {
+        "id": "ppt-001",
+        "modul": "PowerPoint",
+        "titel": "Unternehmenspräsentation",
+        "beschreibung": "Erstellen Sie eine 15-seitige Unternehmenspräsentation mit Masterfolien und Animationen.",
+        "dauer": "25 Min",
+        "punkte": 16,
+        "schwierigkeit": "Mittel"
+    },
+    {
+        "id": "ppt-002",
+        "modul": "PowerPoint",
+        "titel": "Diagramme animieren",
+        "beschreibung": "Erstellen Sie animierte Diagramme zur Visualisierung von Geschäftsdaten und Kennzahlen.",
+        "dauer": "20 Min",
+        "punkte": 14,
+        "schwierigkeit": "Einfach"
+    },
+    {
+        "id": "ppt-003",
+        "modul": "PowerPoint",
+        "titel": "Notizzseiten master",
+        "beschreibung": "Erstellen Sie Notizzseiten und Handouts für Präsentationen mit verteilten Inhalten.",
+        "dauer": "15 Min",
+        "punkte": 11,
+        "schwierigkeit": "Einfach"
+    },
+    {
+        "id": "ppt-004",
+        "modul": "PowerPoint",
+        "titel": "Übergänge synchronisieren",
+        "beschreibung": "Synchronisieren Sie Übergänge und Animationen mit Musik und Zeitsteuerung.",
+        "dauer": "22 Min",
+        "punkte": 15,
+        "schwierigkeit": "Mittel"
+    },
+    {
+        "id": "ppt-005",
+        "modul": "PowerPoint",
+        "titel": "Präsentation exportieren",
+        "beschreibung": "Exportieren Sie Präsentationen in verschiedene Formate und erstellen Sie Videos.",
+        "dauer": "18 Min",
+        "punkte": 12,
+        "schwierigkeit": "Einfach"
+    },
+    {
+        "id": "outlook-001",
+        "modul": "Outlook",
+        "titel": "E-Mail-Regeln einrichten",
+        "beschreibung": "Richten Sie automatische E-Mail-Regeln für Sortierung und Weiterleitung ein.",
+        "dauer": "15 Min",
+        "punkte": 10,
+        "schwierigkeit": "Einfach"
+    },
+    {
+        "id": "outlook-002",
+        "modul": "Outlook",
+        "titel": "Kalender synchronisieren",
+        "beschreibung": "Synchronisieren Sie Kalender mit mehreren Geräten und teilen Sie Termine.",
+        "dauer": "18 Min",
+        "punkte": 12,
+        "schwierigkeit": "Einfach"
+    },
+    {
+        "id": "outlook-003",
+        "modul": "Outlook",
+        "titel": "Verteilerlisten erstellen",
+        "beschreibung": "Erstellen und verwalten Sie E-Mail-Verteilerlisten für Abteilungen und Projekte.",
+        "dauer": "20 Min",
+        "punkte": 13,
+        "schwierigkeit": "Mittel"
+    },
+    {
+        "id": "outlook-004",
+        "modul": "Outlook",
+        "titel": "Aufgaben delegieren",
+        "beschreibung": "Erstellen Sie Aufgaben und delegieren Sie diese an Teammitglieder mit Fristen.",
+        "dauer": "16 Min",
+        "punkte": 11,
+        "schwierigkeit": "Einfach"
+    },
+    {
+        "id": "outlook-005",
+        "modul": "Outlook",
+        "titel": "Signatur gestalten",
+        "beschreibung": "Erstellen Sie professionelle E-Mail-Signaturen mit Logo und Kontaktdaten.",
+        "dauer": "12 Min",
+        "punkte": 8,
+        "schwierigkeit": "Einfach"
+    }
+]
