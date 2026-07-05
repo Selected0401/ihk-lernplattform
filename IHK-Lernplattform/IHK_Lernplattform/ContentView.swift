@@ -1,115 +1,201 @@
 import SwiftUI
+import FirebaseAuth
+import StoreKit
 
+// MARK: - Main App with License System
+@main
+struct IHK_LernplattformApp: App {
+    @StateObject private var licenseManager = LicenseManager()
+    @StateObject private var storeManager = StoreManager()
+    
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+                .environmentObject(licenseManager)
+                .environmentObject(storeManager)
+                .onAppear {
+                    setupApp()
+                }
+        }
+    }
+    
+    private func setupApp() {
+        // Firebase Konfiguration
+        // Analytics und Crashlytics
+        // Push-Benachrichtigungen
+    }
+}
+
+// MARK: - License Management
+class LicenseManager: ObservableObject {
+    @Published var isLicensed = false
+    @Published var licenseKey = ""
+    @Published var user: User?
+    @Published var isLoading = false
+    @Published var errorMessage = ""
+    
+    func validateLicense(key: String) async {
+        isLoading = true
+        errorMessage = ""
+        
+        do {
+            // API Call zur Lizenz-Validierung
+            let isValid = try await LicenseAPI.validate(key: key)
+            
+            await MainActor.run {
+                if isValid {
+                    isLicensed = true
+                    licenseKey = key
+                    saveLicenseToKeychain(key: key)
+                } else {
+                    errorMessage = "Ungültiger Lizenz-Schlüssel"
+                }
+                isLoading = false
+            }
+        } catch {
+            await MainActor.run {
+                errorMessage = "Fehler bei der Lizenz-Validierung: \(error.localizedDescription)"
+                isLoading = false
+            }
+        }
+    }
+    
+    func checkSavedLicense() {
+        if let savedKey = getLicenseFromKeychain() {
+            Task {
+                await validateLicense(key: savedKey)
+            }
+        }
+    }
+    
+    private func saveLicenseToKeychain(key: String) {
+        // Keychain Integration
+    }
+    
+    private func getLicenseFromKeychain() -> String? {
+        // Keychain Integration
+        return nil
+    }
+}
+
+// MARK: - Store Management (In-App Purchases)
+class StoreManager: NSObject, ObservableObject, SKPaymentTransactionObserver {
+    @Published var products: [SKProduct] = []
+    @Published var isLoading = false
+    
+    func fetchProducts() {
+        isLoading = true
+        
+        let productIdentifiers = Set([
+            "com.alex.ihk.lernplattform.monthly",
+            "com.alex.ihk.lernplattform.yearly",
+            "com.alex.ihk.lernplattform.lifetime"
+        ])
+        
+        let request = SKProductsRequest(productIdentifiers: productIdentifiers)
+        request.delegate = self
+        request.start()
+    }
+    
+    func purchaseProduct(_ product: SKProduct) {
+        let payment = SKPayment(product: product)
+        SKPaymentQueue.default().add(payment)
+    }
+    
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        for transaction in transactions {
+            switch transaction.transactionState {
+            case .purchased:
+                completeTransaction(transaction)
+            case .failed:
+                failedTransaction(transaction)
+            case .restored:
+                restoreTransaction(transaction)
+            case .deferred, .purchasing:
+                break
+            @unknown default:
+                break
+            }
+        }
+    }
+    
+    private func completeTransaction(_ transaction: SKPaymentTransaction) {
+        // Lizenz aktivieren
+        SKPaymentQueue.default().finishTransaction(transaction)
+    }
+    
+    private func failedTransaction(_ transaction: SKPaymentTransaction) {
+        if let error = transaction.error as? SKError, error.code != .paymentCancelled {
+            // Fehler anzeigen
+        }
+        SKPaymentQueue.default().finishTransaction(transaction)
+    }
+    
+    private func restoreTransaction(_ transaction: SKPaymentTransaction) {
+        // Wiederherstellung
+        SKPaymentQueue.default().finishTransaction(transaction)
+    }
+}
+
+// MARK: - Enhanced ContentView with License System
 struct ContentView: View {
+    @EnvironmentObject var licenseManager: LicenseManager
+    @EnvironmentObject var storeManager: StoreManager
+    
     @State private var selectedModule: String? = nil
     @State private var showingTaskDetail = false
     @State private var selectedTask: Task? = nil
-    
-    let modules = [
-        Module(
-            id: "word",
-            title: "Microsoft Word",
-            icon: "doc.text",
-            description: "Textverarbeitung mit DIN 5008, Briefgestaltung, Serienbriefen",
-            tasksCount: 45,
-            hours: 12,
-            difficulty: "Mittel",
-            progress: 0.35,
-            color: .blue
-        ),
-        Module(
-            id: "excel",
-            title: "Microsoft Excel",
-            icon: "chart.bar.doc.horizontal",
-            description: "Tabellenkalkulation mit Formeln, SVERWEIS, Pivot-Tabellen",
-            tasksCount: 52,
-            hours: 15,
-            difficulty: "Schwer",
-            progress: 0.20,
-            color: .green
-        ),
-        Module(
-            id: "powerpoint",
-            title: "PowerPoint",
-            icon: "play.rectangle",
-            description: "Präsentationen mit Design, Animationen, Vortragstechnik",
-            tasksCount: 28,
-            hours: 8,
-            difficulty: "Einfach",
-            progress: 0.60,
-            color: .orange
-        ),
-        Module(
-            id: "outlook",
-            title: "Outlook",
-            icon: "envelope",
-            description: "E-Mail-Management, Kalenderplanung, Aufgabenverwaltung",
-            tasksCount: 25,
-            hours: 6,
-            difficulty: "Einfach",
-            progress: 0.80,
-            color: .purple
-        )
-    ]
-    
-    let recentTasks = [
-        Task(
-            id: "word-001",
-            moduleId: "word",
-            title: "DIN 5008 Geschäftsbrief",
-            description: "Erstellen Sie einen normgerechten Geschäftsbrief nach DIN 5008 mit Absender, Empfänger, Datum, Betreff, Grußformel und Unterschrift.",
-            duration: "15 Min",
-            points: 10,
-            difficulty: "Mittel",
-            isCompleted: false
-        ),
-        Task(
-            id: "excel-001",
-            moduleId: "excel",
-            title: "SVERWEIS Kundendaten",
-            description: "Verbinden Sie zwei Tabellen mit SVERWEIS und erstellen Sie eine Kundendatenbank mit automatischer Datenabfrage.",
-            duration: "20 Min",
-            points: 15,
-            difficulty: "Mittel",
-            isCompleted: false
-        ),
-        Task(
-            id: "ppt-001",
-            moduleId: "powerpoint",
-            title: "Unternehmenspräsentation",
-            description: "Erstellen Sie eine 15-seitige Unternehmenspräsentation mit Masterfolien und Animationen.",
-            duration: "25 Min",
-            points: 16,
-            difficulty: "Mittel",
-            isCompleted: false
-        )
-    ]
+    @State private var showingLicenseModal = false
+    @State private var showingStoreModal = false
+    @State private var licenseInput = ""
     
     var body: some View {
         NavigationView {
-            ScrollView {
-                VStack(spacing: 20) {
-                    // Hero Section
-                    HeroSection()
-                        .padding(.bottom, 20)
-                    
-                    // Module Section
-                    ModulesSection(modules: modules, selectedModule: $selectedModule)
-                        .padding(.bottom, 20)
-                    
-                    // Recent Tasks Section
-                    RecentTasksSection(tasks: recentTasks, selectedTask: $selectedTask, showingTaskDetail: $showingTaskDetail)
-                        .padding(.bottom, 20)
-                    
-                    // Progress Section
-                    ProgressSection()
-                        .padding(.bottom, 20)
+            Group {
+                if licenseManager.isLicensed {
+                    MainAppContent()
+                } else {
+                    LicenseGateView()
                 }
-                .padding()
             }
             .navigationTitle("IHK Lernplattform")
             .navigationBarTitleDisplayMode(.large)
             .background(Color(.systemGroupedBackground))
+        }
+        .sheet(isPresented: $showingLicenseModal) {
+            LicenseInputView(licenseInput: $licenseInput)
+        }
+        .sheet(isPresented: $showingStoreModal) {
+            StoreView()
+        }
+        .onAppear {
+            licenseManager.checkSavedLicense()
+            storeManager.fetchProducts()
+        }
+    }
+    
+    // MARK: - Main App Content (Licensed)
+    @ViewBuilder
+    private func MainAppContent() -> some View {
+        ScrollView {
+            VStack(spacing: 20) {
+                // Hero Section mit User-Info
+                HeroSection()
+                    .padding(.bottom, 20)
+                
+                // Module Section
+                ModulesSection(modules: modules, selectedModule: $selectedModule)
+                    .padding(.bottom, 20)
+                
+                // Recent Tasks Section
+                RecentTasksSection(tasks: recentTasks, selectedTask: $selectedTask, showingTaskDetail: $showingTaskDetail)
+                    .padding(.bottom, 20)
+                
+                // Progress Section
+                ProgressSection()
+                    .padding(.bottom, 20)
+            }
+            .padding()
         }
         .sheet(isPresented: $showingTaskDetail) {
             if let task = selectedTask {
@@ -117,152 +203,238 @@ struct ContentView: View {
             }
         }
     }
-}
-
-// Hero Section
-struct HeroSection: View {
-    var body: some View {
-        VStack(spacing: 15) {
-            Text("IHK Lernplattform")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-                .foregroundColor(.primary)
+    
+    // MARK: - License Gate (Unlicensed)
+    @ViewBuilder
+    private func LicenseGateView() -> some View {
+        VStack(spacing: 30) {
+            Spacer()
             
-            Text("Professionelle Prüfungsvorbereitung für Informationstechnisches Büromanagement")
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-                .multilineTextAlignment(.center)
-                .padding(.horizontal)
+            // Logo und Titel
+            VStack(spacing: 15) {
+                Image(systemName: "graduationcap.fill")
+                    .font(.system(size: 60))
+                    .foregroundColor(.blue)
+                
+                Text("IHK Lernplattform")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                
+                Text("Professionelle Prüfungsvorbereitung")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+            }
             
-            HStack(spacing: 30) {
-                StatItem(number: "150", label: "Aufgaben")
-                StatItem(number: "38", label: "Stunden")
-                StatItem(number: "92%", label: "Erfolgsquote")
+            // Features
+            VStack(spacing: 20) {
+                FeatureRow(icon: "doc.text.fill", title: "150+ Aufgaben", description: "Echte IHK-Prüfungsaufgaben")
+                FeatureRow(icon: "chart.bar.fill", title: "Fortschritt tracking", description: "Dein persönlicher Lernfortschritt")
+                FeatureRow(icon: "iphone.fill", title: "iOS Native", description: "Optimiert für iPhone & iPad")
+                FeatureRow(icon: "star.fill", title: "92% Erfolgsquote", description: "Beste Vorbereitung garantiert")
+            }
+            .padding()
+            
+            // Lizenz-Buttons
+            VStack(spacing: 15) {
+                Button(action: {
+                    showingLicenseModal = true
+                }) {
+                    HStack {
+                        Image(systemName: "key.fill")
+                        Text("Lizenz-Schlüssel eingeben")
+                    }
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.blue)
+                    .cornerRadius(12)
+                }
+                
+                Button(action: {
+                    showingStoreModal = true
+                }) {
+                    HStack {
+                        Image(systemName: "cart.fill")
+                        Text("Lizenz kaufen")
+                    }
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.green)
+                    .cornerRadius(12)
+                }
+            }
+            .padding(.horizontal)
+            
+            Spacer()
+        }
+    }
+    
+    // MARK: - License Input Modal
+    private func LicenseInputView(licenseInput: Binding<String>) -> some View {
+        NavigationView {
+            VStack(spacing: 20) {
+                Text("Lizenz aktivieren")
+                    .font(.title2)
+                    .fontWeight(.bold)
+                
+                TextField("Lizenz-Schlüssel eingeben", text: licenseInput)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .keyboardType(.default)
+                    .autocapitalization(.allCharacters)
+                
+                Text("Gib deinen Lizenz-Schlüssel ein, den du nach dem Kauf per E-Mail erhalten hast.")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                    .multilineTextAlignment(.center)
+                
+                Spacer()
+                
+                Button(action: {
+                    Task {
+                        await licenseManager.validateLicense(key: licenseInput.wrappedValue)
+                    }
+                }) {
+                    HStack {
+                        if licenseManager.isLoading {
+                            ProgressView()
+                                .scaleEffect(0.8)
+                        }
+                        Text("Lizenz aktivieren")
+                    }
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(licenseManager.isLoading ? Color.gray : Color.blue)
+                    .cornerRadius(12)
+                }
+                .disabled(licenseManager.isLoading)
+                
+                if !licenseManager.errorMessage.isEmpty {
+                    Text(licenseManager.errorMessage)
+                        .font(.caption)
+                        .foregroundColor(.red)
+                        .multilineTextAlignment(.center)
+                }
+            }
+            .padding()
+            .navigationTitle("Lizenz")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Abbrechen") {
+                        showingLicenseModal = false
+                    }
+                }
             }
         }
-        .padding()
-        .background(
-            LinearGradient(
-                gradient: Gradient(colors: [.blue, .purple]),
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-        )
-        .foregroundColor(.white)
-        .cornerRadius(15)
-        .shadow(radius: 10)
     }
-}
-
-// Stat Item
-struct StatItem: View {
-    let number: String
-    let label: String
     
-    var body: some View {
-        VStack(spacing: 5) {
-            Text(number)
-                .font(.title2)
-                .fontWeight(.bold)
-            Text(label)
-                .font(.caption)
-                .opacity(0.8)
-        }
-    }
-}
-
-// Modules Section
-struct ModulesSection: View {
-    let modules: [Module]
-    @Binding var selectedModule: String?
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 15) {
-            Text("Lernmodule")
-                .font(.title2)
-                .fontWeight(.bold)
-                .padding(.horizontal)
-            
-            LazyVGrid(columns: [
-                GridItem(.flexible()),
-                GridItem(.flexible())
-            ], spacing: 15) {
-                ForEach(modules) { module in
-                    ModuleCard(module: module)
-                        .onTapGesture {
-                            selectedModule = module.id
+    // MARK: - Store View
+    private func StoreView() -> some View {
+        NavigationView {
+            ScrollView {
+                VStack(spacing: 20) {
+                    Text("Wähle deinen Tarif")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                    
+                    // Store Products
+                    ForEach(storeManager.products, id: \.productIdentifier) { product in
+                        StoreProductCard(product: product) {
+                            storeManager.purchaseProduct(product)
                         }
+                    }
+                }
+                .padding()
+            }
+            .navigationTitle("Shop")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Schließen") {
+                        showingStoreModal = false
+                    }
                 }
             }
         }
     }
 }
 
-// Module Card
-struct ModuleCard: View {
-    let module: Module
+// MARK: - Feature Row
+struct FeatureRow: View {
+    let icon: String
+    let title: String
+    let description: String
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 15) {
+        HStack(spacing: 15) {
+            Image(systemName: icon)
+                .font(.title2)
+                .foregroundColor(.blue)
+                .frame(width: 30)
+            
+            VStack(alignment: .leading, spacing: 2) {
+                Text(title)
+                    .font(.headline)
+                    .fontWeight(.medium)
+                Text(description)
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
+            
+            Spacer()
+        }
+    }
+}
+
+// MARK: - Store Product Card
+struct StoreProductCard: View {
+    let product: SKProduct
+    let onPurchase: () -> Void
+    
+    var body: some View {
+        VStack(spacing: 15) {
             HStack {
-                Image(systemName: module.icon)
-                    .font(.title2)
-                    .foregroundColor(.white)
-                    .frame(width: 50, height: 50)
-                    .background(module.color)
-                    .cornerRadius(10)
-                
                 VStack(alignment: .leading, spacing: 5) {
-                    Text(module.title)
+                    Text(product.localizedTitle)
                         .font(.headline)
-                        .fontWeight(.semibold)
-                    Text(module.difficulty)
+                        .fontWeight(.bold)
+                    
+                    Text(product.localizedDescription)
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
                 
                 Spacer()
-            }
-            
-            Text(module.description)
-                .font(.caption)
-                .foregroundColor(.secondary)
-                .lineLimit(2)
-            
-            HStack {
-                Text("\(module.tasksCount) Aufgaben")
-                    .font(.caption)
-                Spacer()
-                Text("\(module.hours) Std.")
-                    .font(.caption)
-            }
-            .foregroundColor(.secondary)
-            
-            // Progress Bar
-            ProgressView(value: module.progress)
-                .progressViewStyle(LinearProgressViewStyle(tint: module.color))
-                .scaleEffect(y: 0.8)
-            
-            Button(action: {
-                // Module starten
-            }) {
-                HStack {
-                    Text("Modul starten")
-                    Spacer()
-                    Image(systemName: "arrow.right")
+                
+                VStack(alignment: .trailing, spacing: 2) {
+                    Text(product.localizedPrice)
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .foregroundColor(.blue)
+                    
+                    Text(product.priceLocale.currencySymbol ?? "€")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
                 }
-                .foregroundColor(.white)
-                .padding()
-                .background(
-                    LinearGradient(
-                        gradient: Gradient(colors: [module.color.opacity(0.8), module.color]),
-                        startPoint: .leading,
-                        endPoint: .trailing
-                    )
-                )
-                .cornerRadius(8)
             }
-            .buttonStyle(PlainButtonStyle())
+            
+            Button(action: onPurchase) {
+                HStack {
+                    Image(systemName: "cart.fill")
+                    Text("Kaufen")
+                }
+                .font(.headline)
+                .foregroundColor(.white)
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(Color.green)
+                .cornerRadius(12)
+            }
         }
         .padding()
         .background(Color(.systemBackground))
@@ -271,233 +443,7 @@ struct ModuleCard: View {
     }
 }
 
-// Recent Tasks Section
-struct RecentTasksSection: View {
-    let tasks: [Task]
-    @Binding var selectedTask: Task?
-    @Binding var showingTaskDetail: Bool
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 15) {
-            Text("Aktuelle Aufgaben")
-                .font(.title2)
-                .fontWeight(.bold)
-                .padding(.horizontal)
-            
-            VStack(spacing: 10) {
-                ForEach(tasks) { task in
-                    TaskRow(task: task)
-                        .onTapGesture {
-                            selectedTask = task
-                            showingTaskDetail = true
-                        }
-                }
-            }
-        }
-    }
-}
-
-// Task Row
-struct TaskRow: View {
-    let task: Task
-    
-    var body: some View {
-        HStack {
-            VStack(alignment: .leading, spacing: 5) {
-                Text(task.title)
-                    .font(.headline)
-                    .fontWeight(.medium)
-                
-                Text(task.description)
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-                    .lineLimit(2)
-                
-                HStack {
-                    Text(task.moduleId.uppercased())
-                        .font(.caption)
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 2)
-                        .background(Color.blue.opacity(0.2))
-                        .cornerRadius(4)
-                    
-                    Text("⏱️ \(task.duration)")
-                        .font(.caption)
-                    
-                    Text("🎯 \(task.points) Pkt")
-                        .font(.caption)
-                }
-            }
-            
-            Spacer()
-            
-            Image(systemName: "chevron.right")
-                .foregroundColor(.secondary)
-        }
-        .padding()
-        .background(Color(.systemBackground))
-        .cornerRadius(8)
-        .shadow(color: .black.opacity(0.05), radius: 2, x: 0, y: 1)
-    }
-}
-
-// Progress Section
-struct ProgressSection: View {
-    var body: some View {
-        VStack(alignment: .leading, spacing: 15) {
-            Text("Dein Fortschritt")
-                .font(.title2)
-                .fontWeight(.bold)
-                .padding(.horizontal)
-            
-            LazyVGrid(columns: [
-                GridItem(.flexible()),
-                GridItem(.flexible()),
-                GridItem(.flexible())
-            ], spacing: 15) {
-                ProgressCard(number: "47", label: "Aufgaben erledigt")
-                ProgressCard(number: "31%", label: "Gesamtfortschritt")
-                ProgressCard(number: "12", label: "Lern-Streak (Tage)")
-                ProgressCard(number: "245", label: "Punkte gesamt")
-                ProgressCard(number: "4.8", label: "⭐ Durchschnitt")
-                ProgressCard(number: "89%", label: "Erfolgsquote")
-            }
-        }
-    }
-}
-
-// Progress Card
-struct ProgressCard: View {
-    let number: String
-    let label: String
-    
-    var body: some View {
-        VStack(spacing: 10) {
-            Text(number)
-                .font(.title)
-                .fontWeight(.bold)
-                .foregroundColor(.blue)
-            
-            Text(label)
-                .font(.caption)
-                .foregroundColor(.secondary)
-                .multilineTextAlignment(.center)
-        }
-        .padding()
-        .background(Color(.systemBackground))
-        .cornerRadius(8)
-        .shadow(color: .black.opacity(0.05), radius: 2, x: 0, y: 1)
-    }
-}
-
-// Task Detail View
-struct TaskDetailView: View {
-    let task: Task
-    @Environment(\.presentationMode) var presentationMode
-    
-    var body: some View {
-        NavigationView {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 20) {
-                    // Task Header
-                    VStack(alignment: .leading, spacing: 10) {
-                        Text(task.title)
-                            .font(.title2)
-                            .fontWeight(.bold)
-                        
-                        Text(task.description)
-                            .font(.body)
-                            .foregroundColor(.secondary)
-                    }
-                    .padding()
-                    .background(Color(.systemBackground))
-                    .cornerRadius(12)
-                    
-                    // Task Meta
-                    VStack(alignment: .leading, spacing: 15) {
-                        Text("Details")
-                            .font(.headline)
-                            .fontWeight(.semibold)
-                        
-                        HStack {
-                            Label("Modul", systemImage: "folder")
-                            Spacer()
-                            Text(task.moduleId)
-                        }
-                        
-                        HStack {
-                            Label("Dauer", systemImage: "clock")
-                            Spacer()
-                            Text(task.duration)
-                        }
-                        
-                        HStack {
-                            Label("Punkte", systemImage: "star")
-                            Spacer()
-                            Text("\(task.points) Pkt")
-                        }
-                        
-                        HStack {
-                            Label("Schwierigkeit", systemImage: "chart.bar")
-                            Spacer()
-                            Text(task.difficulty)
-                        }
-                    }
-                    .padding()
-                    .background(Color(.secondarySystemGroupedBackground))
-                    .cornerRadius(12)
-                    
-                    // Start Button
-                    Button(action: {
-                        startTask()
-                    }) {
-                        HStack {
-                            Image(systemName: "play.fill")
-                            Text("Aufgabe starten")
-                        }
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.green)
-                        .cornerRadius(12)
-                    }
-                    .buttonStyle(PlainButtonStyle())
-                }
-                .padding()
-            }
-            .navigationTitle("Aufgabe")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Schließen") {
-                        presentationMode.wrappedValue.dismiss()
-                    }
-                }
-            }
-        }
-    }
-    
-    private func startTask() {
-        // Hier kommt die Lernumgebung hin
-        let alert = UIAlertController(
-            title: "Aufgabe starten",
-            message: "Die Aufgabe '\(task.title)' wird vorbereitet...",
-            preferredStyle: .alert
-        )
-        
-        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
-            presentationMode.wrappedValue.dismiss()
-        })
-        
-        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-           let rootViewController = windowScene.windows.first?.rootViewController {
-            rootViewController.present(alert, animated: true)
-        }
-    }
-}
-
-// Data Models
+// MARK: - Data Models (erweitert)
 struct Module: Identifiable {
     let id: String
     let title: String
@@ -508,6 +454,7 @@ struct Module: Identifiable {
     let difficulty: String
     let progress: Double
     let color: Color
+    let isLocked: Bool // Neue Eigenschaft
 }
 
 struct Task: Identifiable {
@@ -519,11 +466,30 @@ struct Task: Identifiable {
     let points: Int
     let difficulty: String
     let isCompleted: Bool
+    let isLocked: Bool // Neue Eigenschaft
 }
 
-// Preview
+// MARK: - License API
+struct LicenseAPI {
+    static func validate(key: String) async throws -> Bool {
+        // API-Call zu deinem Backend
+        guard let url = URL(string: "https://api.ihk-lernplattform.de/validate") else {
+            throw URLError(.badURL)
+        }
+        
+        let request = URLRequest(url: url)
+        let (data, _) = try await URLSession.shared.data(for: request)
+        
+        // JSON-Parsing und Validierung
+        return true // Platzhalter
+    }
+}
+
+// MARK: - Preview
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(LicenseManager())
+            .environmentObject(StoreManager())
     }
 }
