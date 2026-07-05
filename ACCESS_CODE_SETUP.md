@@ -110,10 +110,19 @@ Regeln:
 - Impressum, Datenschutz, AGB und Widerrufsbelehrung vor Verkauf erstellen lassen.
 - Bei sofortigem digitalen Zugriff Widerrufsrecht sauber regeln lassen.
 
+## Mitgelieferte Dateien
+
+- `landing.html` — öffentliche Verkaufsseite
+- `login.html` — Zugangscode-Eingabe
+- `danke.html` — Danke-/Nachkaufseite
+- `DIGISTORE24_COPY.md` — Produktbeschreibung, Checkout-Bullets und E-Mail-Vorlagen
+- `cloudflare-worker/` — Worker-MVP für serverseitige Codeprüfung und Digistore24-Webhook
+
 ## Nächste technische Schritte
 
 1. Digistore24 Produkt anlegen
 2. Checkout-Link in `landing.html` ersetzen
-3. Danke-/Auslieferungs-E-Mail formulieren
-4. MVP mit 5–10 Testkäufern prüfen
-5. Danach Worker/Supabase Lizenzprüfung bauen
+3. Danke-/Auslieferungs-E-Mail aus `DIGISTORE24_COPY.md` übernehmen
+4. Cloudflare Worker deployen und `ACCESS_API_URL` in `login.html` setzen
+5. MVP mit 5–10 Testkäufern prüfen
+6. Danach Worker/Supabase Lizenzprüfung härten

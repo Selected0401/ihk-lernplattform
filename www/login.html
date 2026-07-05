@@ -26,20 +26,64 @@
     <p class="hint">MVP-Democodes für Tests: <strong>IHK-2027-PRO</strong> oder <strong>BUERO-99-START</strong>. Für echten Verkauf werden individuelle Codes per Digistore24/Webhook erzeugt.</p>
   </main>
   <script>
+    // Set this after deploying the Cloudflare Worker, e.g.
+    // const ACCESS_API_URL = 'https://ihk-access-worker.YOUR_SUBDOMAIN.workers.dev/verify-code';
+    const ACCESS_API_URL = '';
     const VALID_CODES = ['IHK-2027-PRO', 'BUERO-99-START', 'BUERO-149-PLUS'];
-    function unlockAccess() {
+
+    function grantAccess(code, plan = 'pro') {
+      localStorage.setItem('ihk_access_granted', 'true');
+      localStorage.setItem('ihk_access_code', code);
+      localStorage.setItem('ihk_access_plan', plan);
+      window.location.href = 'index.html?access=granted';
+    }
+
+    async function verifyWithApi(code) {
+      if (!ACCESS_API_URL) return false;
+      const response = await fetch(ACCESS_API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ code })
+      });
+      if (!response.ok) return false;
+      const data = await response.json();
+      return data && data.valid ? data : false;
+    }
+
+    async function unlockAccess() {
       const input = document.getElementById('accessCode');
       const error = document.getElementById('error');
+      const button = document.querySelector('button[onclick="unlockAccess()"]');
       const code = input.value.trim().toUpperCase();
-      if (VALID_CODES.includes(code)) {
-        localStorage.setItem('ihk_access_granted', 'true');
-        localStorage.setItem('ihk_access_code', code);
-        window.location.href = 'index.html?access=granted';
-        return;
+      error.style.display = 'none';
+      button.disabled = true;
+      button.textContent = 'Code wird geprüft...';
+
+      try {
+        const apiResult = await verifyWithApi(code);
+        if (apiResult) {
+          grantAccess(code, apiResult.plan || 'pro');
+          return;
+        }
+        if (!ACCESS_API_URL && VALID_CODES.includes(code)) {
+          grantAccess(code, code.includes('149') || code.includes('PLUS') ? 'plus' : 'pro');
+          return;
+        }
+      } catch (event) {
+        console.warn('Code API nicht erreichbar, prüfe lokalen MVP-Fallback:', event);
+        if (VALID_CODES.includes(code)) {
+          grantAccess(code, code.includes('149') || code.includes('PLUS') ? 'plus' : 'pro');
+          return;
+        }
+      } finally {
+        button.disabled = false;
+        button.textContent = 'Lernplattform öffnen →';
       }
+
       error.style.display = 'block';
       input.focus();
     }
+
     document.getElementById('accessCode').addEventListener('keydown', event => {
       if (event.key === 'Enter') unlockAccess();
     });
