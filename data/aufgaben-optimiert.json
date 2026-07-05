@@ -139,27 +139,39 @@
       "hinweise": [
         "Verwenden Sie DATUM-Differenz",
         "Formatieren Sie Zeitangaben korrekt",
-        "Nutzen Sie SUMME für Wochen总计"
+        "Nutzen Sie SUMME für Wochensumme"
       ],
       "loesung": "Endzeit - Startzeit, SUMME(C2:C6)",
       "content": {
         "solution": "Endzeit - Startzeit, SUMME(C2:C6)",
         "data": [
           [
-            "Monat",
-            "Umsatz"
+            "Wochentag",
+            "Start",
+            "Ende",
+            "Pause",
+            "Arbeitszeit"
           ],
           [
-            "Januar",
-            12450
+            "Montag",
+            "08:00",
+            "16:30",
+            "00:30",
+            ""
           ],
           [
-            "Februar",
-            15320
+            "Dienstag",
+            "08:15",
+            "17:00",
+            "00:45",
+            ""
           ],
           [
-            "März",
-            18760
+            "Mittwoch",
+            "09:00",
+            "15:30",
+            "00:30",
+            ""
           ]
         ]
       }
@@ -182,12 +194,24 @@
         "solution": "Bedingte Formatierung mit Textentsprechungen: $B2=\"Abgeschlossen\" etc.",
         "data": [
           [
-            "Spalte 1",
-            "Spalte 2"
+            "Projekt",
+            "Verantwortlich",
+            "Status"
           ],
           [
-            "Daten 1",
-            "Daten 2"
+            "Website-Relaunch",
+            "Müller",
+            "Abgeschlossen"
+          ],
+          [
+            "CRM-Einführung",
+            "Schmidt",
+            "In Arbeit"
+          ],
+          [
+            "Inventur",
+            "Weber",
+            "Verzögert"
           ]
         ]
       }
@@ -246,12 +270,28 @@
         "solution": "GLÄTTEN(GROSS2(A2)), TEIL(B2,1,LÄNGE(B2)-3)",
         "data": [
           [
-            "Spalte 1",
-            "Spalte 2"
+            "Kundennummer",
+            "Name roh",
+            "PLZ roh",
+            "Bereinigt"
           ],
           [
-            "Daten 1",
-            "Daten 2"
+            "1001",
+            "  Müller GmbH  ",
+            " 50667 ",
+            ""
+          ],
+          [
+            "1002",
+            "SCHMIDT AG",
+            "10115",
+            ""
+          ],
+          [
+            "1003",
+            "meier ohg ",
+            " 20095",
+            ""
           ]
         ]
       }
@@ -274,12 +314,24 @@
         "solution": "Liniendiagramm mit Datenbeschriftungen und linearer Trendlinie",
         "data": [
           [
-            "Spalte 1",
-            "Spalte 2"
+            "Monat",
+            "Umsatz",
+            "Kosten"
           ],
           [
-            "Daten 1",
-            "Daten 2"
+            "Januar",
+            12450,
+            8200
+          ],
+          [
+            "Februar",
+            15320,
+            9100
+          ],
+          [
+            "März",
+            18760,
+            10400
           ]
         ]
       }
@@ -340,12 +392,28 @@
         "solution": "DATUM(Jahr;Monat;1) + SPALTE(A1)-1 + (ZEILE(A1)-1)*7",
         "data": [
           [
-            "Spalte 1",
-            "Spalte 2"
+            "Jahr",
+            "Monat",
+            "Erster Tag",
+            "Letzter Tag"
           ],
           [
-            "Daten 1",
-            "Daten 2"
+            2026,
+            "Januar",
+            "",
+            ""
+          ],
+          [
+            2026,
+            "Februar",
+            "",
+            ""
+          ],
+          [
+            2026,
+            "März",
+            "",
+            ""
           ]
         ]
       }
@@ -374,18 +442,18 @@
           ],
           [
             "P001",
-            "Laptop",
-            899
+            "Notebook-Ständer",
+            39.9
           ],
           [
             "P002",
-            "Mouse",
-            29
+            "USB-C Dockingstation",
+            119.0
           ],
           [
             "P003",
-            "Keyboard",
-            79
+            "Ergonomische Tastatur",
+            79.0
           ]
         ]
       }
@@ -444,12 +512,24 @@
         "solution": "Datenüberprüfung mit Liste und Ganzzahl/Bedingungen",
         "data": [
           [
-            "Spalte 1",
-            "Spalte 2"
+            "Bestellnummer",
+            "Abteilung",
+            "Priorität"
           ],
           [
-            "Daten 1",
-            "Daten 2"
+            "B-1001",
+            "",
+            ""
+          ],
+          [
+            "B-1002",
+            "",
+            ""
+          ],
+          [
+            "B-1003",
+            "",
+            ""
           ]
         ]
       }
@@ -472,12 +552,28 @@
         "solution": "Makro mit Formatierungsaktionen und Zuweisung zu Schaltfläche",
         "data": [
           [
-            "Spalte 1",
-            "Spalte 2"
+            "Artikel",
+            "Menge",
+            "Einzelpreis",
+            "Gesamt"
           ],
           [
-            "Daten 1",
-            "Daten 2"
+            "Ordner A4",
+            20,
+            2.4,
+            ""
+          ],
+          [
+            "Druckerpapier",
+            15,
+            4.8,
+            ""
+          ],
+          [
+            "Briefumschläge",
+            8,
+            3.2,
+            ""
           ]
         ]
       }
@@ -500,12 +596,28 @@
         "solution": "Power Query oder Daten/Text in Spalten mit Duplikatentfernung",
         "data": [
           [
-            "Spalte 1",
-            "Spalte 2"
+            "Datum",
+            "Artikel",
+            "Menge",
+            "Preis"
           ],
           [
-            "Daten 1",
-            "Daten 2"
+            "01.03.",
+            "Ordner A4",
+            10,
+            2.4
+          ],
+          [
+            "01.03.",
+            "Ordner A4",
+            10,
+            2.4
+          ],
+          [
+            "02.03.",
+            "Druckerpapier",
+            5,
+            4.8
           ]
         ]
       }
@@ -659,12 +771,28 @@
         "solution": "Bedingte Formatierung mit Formel: =UND(B2>0;B2<50) für Gelb, =B2>=50 für Grün",
         "data": [
           [
-            "Spalte 1",
-            "Spalte 2"
+            "Kostenstelle",
+            "Budget",
+            "Ist-Kosten",
+            "Auslastung"
           ],
           [
-            "Daten 1",
-            "Daten 2"
+            "Vertrieb",
+            50000,
+            47200,
+            ""
+          ],
+          [
+            "Verwaltung",
+            32000,
+            35100,
+            ""
+          ],
+          [
+            "IT",
+            68000,
+            62000,
+            ""
           ]
         ]
       }
@@ -1065,7 +1193,7 @@
       "id": "powerpoint-003",
       "kategorie": "powerpoint",
       "titel": "Diagramme und Grafiken integrieren",
-      "beschreibung": "Erstellen Sie eine Verkaufspräsentation mit various Diagrammtypen und SmartArt-Grafiken.",
+      "beschreibung": "Erstellen Sie eine Verkaufspräsentation mit verschiedene Diagrammtypen und SmartArt-Grafiken.",
       "schwierigkeit": "mittel",
       "punkte": 30,
       "zeit": 25,

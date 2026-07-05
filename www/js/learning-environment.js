@@ -44,7 +44,7 @@ class LearningEnvironment {
                     </div>
                     <div class="header-right">
                         <div class="timer" id="taskTimer">⏱️ ${task.dauer}</div>
-                        <button class="modal-close" aria-label="Schließen">&times;</button>
+                        <button class="modal-close" onclick="window.learningEnv.closeEnvironment()" aria-label="Schließen">&times;</button>
                     </div>
                 </div>
                 <div class="modal-body learning-body">

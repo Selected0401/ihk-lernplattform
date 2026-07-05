@@ -144,6 +144,42 @@ Ambitioniert mit Affiliate/B2B:
 - 5 Klassenlizenzen × 999€ = 4.995€
 - Gesamt ca. 14.945€/Monat
 
+## 90-Tage-Launchplan
+
+### Tage 1–14: Validierung
+- Landing Page mit Warteliste/Freebie veröffentlichen
+- 20–30 Azubis direkt befragen
+- 10 Kurzvideos zu Excel/Word-Prüfungsfehlern posten
+- 5 kostenlose Probeaufgaben anbieten
+- Ziel: 100 E-Mail-Leads und erste 5–10 zahlende Tester
+
+### Tage 15–45: MVP-Verkauf
+- Digistore24 oder Stripe Checkout aktivieren
+- Pro-Version für Early-Bird-Preis anbieten
+- Feedback systematisch sammeln
+- Testimonials und Vorher/Nachher-Lernpläne aufnehmen
+- Ziel: 50 zahlende Kunden
+
+### Tage 46–90: Skalierung
+- Affiliate-Programm mit 30–40% Provision starten
+- YouTube SEO + TikTok/Reels täglich ausspielen
+- Berufsschulen/Nachhilfeanbieter mit Schullizenz anschreiben
+- Webinar/Challenge „7 Tage IHK Excel sicher bestehen“ anbieten
+- Ziel: 200 zahlende Kunden oder erste B2B-Lizenz
+
+## KPI-System
+
+- Landing-Page Conversion: Ziel 25–40% bei Freebie
+- E-Mail-zu-Kauf Conversion: Ziel 3–8%
+- CAC unter 30% des Customer Lifetime Value
+- Aktivierungsrate: mindestens 70% starten innerhalb von 24h eine Aufgabe
+- Retention: mindestens 50% nutzen die Plattform nach 14 Tagen weiter
+- Prüfungsangst-Modul: Feedbackscore > 4/5
+
 ## Kernbotschaft
 
 „Nicht mehr planlos lernen. Trainiere genau die Aufgaben, die in der IHK-Zwischenprüfung wirklich Punkte bringen — mit einem klaren 80/20-System, interaktiv und mobil.“
+
+## Rechtlicher Hinweis
+
+Dieser Plan ersetzt keine Rechts- oder Steuerberatung. Vor öffentlichem Verkauf sollten Impressum, Datenschutz, AGB, Widerrufsbelehrung, Zahlungsanbieter-Texte und die Nutzung des Begriffs „IHK“ durch eine IT-Recht-Kanzlei oder einen spezialisierten Anwalt geprüft werden.
