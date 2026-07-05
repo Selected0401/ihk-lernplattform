@@ -1,452 +1,182 @@
 [
-  {
-    "id": "word-001",
-    "modul": "Word",
-    "titel": "DIN 5008 Geschäftsbrief",
-    "beschreibung": "Erstellen Sie einen normgerechten Geschäftsbrief nach DIN 5008 mit Absender, Empfänger, Datum, Betreff, Grußformel und Unterschrift.",
-    "dauer": "15 Min",
-    "punkte": 10,
-    "schwierigkeit": "Mittel"
-  },
-  {
-    "id": "word-002",
-    "modul": "Word",
-    "titel": "Serienbrief für 50 Kunden",
-    "beschreibung": "Erstellen Sie einen Serienbrief für 50 Kunden mit personalisierter Anrede und automatischem Datenimport aus Excel.",
-    "dauer": "25 Min",
-    "punkte": 15,
-    "schwierigkeit": "Schwer"
-  },
-  {
-    "id": "word-003",
-    "modul": "Word",
-    "titel": "Besprechungsprotokoll",
-    "beschreibung": "Verfassen Sie ein Ergebnisprotokoll mit Teilnehmerliste, Tagesordnung, Beschlüssen und Maßnahmenplan.",
-    "dauer": "20 Min",
-    "punkte": 12,
-    "schwierigkeit": "Mittel"
-  },
-  {
-    "id": "word-004",
-    "modul": "Word",
-    "titel": "Angebotserstellung",
-    "beschreibung": "Erstellen Sie ein professionelles Angebot mit Artikelnummer, Preisberechnung, MwSt. und Zahlungsbedingungen.",
-    "dauer": "18 Min",
-    "punkte": 14,
-    "schwierigkeit": "Mittel"
-  },
-  {
-    "id": "word-005",
-    "modul": "Word",
-    "titel": "Rechnungsvorlage",
-    "beschreibung": "Gestalten Sie eine Rechnungsvorlage mit Kundenstamm, Artikelliste, Steuernummer und Bankverbindung.",
-    "dauer": "22 Min",
-    "punkte": 16,
-    "schwierigkeit": "Schwer"
-  },
-  {
-    "id": "word-006",
-    "modul": "Word",
-    "titel": "Berichtsformatierung",
-    "beschreibung": "Formatieren Sie einen 10-seitigen Bericht mit Inhaltsverzeichnis, Seitenzahlen, Überschriften und Fußnoten.",
-    "dauer": "20 Min",
-    "punkte": 13,
-    "schwierigkeit": "Mittel"
-  },
-  {
-    "id": "word-007",
-    "modul": "Word",
-    "titel": "Tabelldokument",
-    "beschreibung": "Erstellen Sie eine komplexe Tabelle mit Berechnungen, Formatierungen und Diagrammen.",
-    "dauer": "15 Min",
-    "punkte": 11,
-    "schwierigkeit": "Einfach"
-  },
-  {
-    "id": "word-008",
-    "modul": "Word",
-    "titel": "Vorlagensystem",
-    "beschreibung": "Erstellen Sie ein komplettes Vorlagensystem für Briefe, Berichte und Präsentationen mit Corporate Design.",
-    "dauer": "30 Min",
-    "punkte": 18,
-    "schwierigkeit": "Schwer"
-  },
-  {
-    "id": "word-009",
-    "modul": "Word",
-    "titel": "Dokumentenschutz",
-    "beschreibung": "Richten Sie Dokumentschutz mit Passwörtern, Bearbeitungseinschränkungen und Wasserzeichen ein.",
-    "dauer": "12 Min",
-    "punkte": 9,
-    "schwierigkeit": "Einfach"
-  },
-  {
-    "id": "word-010",
-    "modul": "Word",
-    "titel": "Formulare erstellen",
-    "beschreibung": "Gestalten Sie interaktive Formulare mit Dropdown-Feldern, Kontrollkästchen und Textfeldern.",
-    "dauer": "18 Min",
-    "punkte": 12,
-    "schwierigkeit": "Mittel"
-  },
-  {
-    "id": "word-011",
-    "modul": "Word",
-    "titel": "Makro-Automatisierung",
-    "beschreibung": "Erstellen Sie Makros zur automatischen Formatierung und Dokumentenerstellung.",
-    "dauer": "25 Min",
-    "punkte": 15,
-    "schwierigkeit": "Schwer"
-  },
-  {
-    "id": "word-012",
-    "modul": "Word",
-    "titel": "Druckvorbereitung",
-    "beschreibung": "Bereiten Sie ein Dokument für den professionellen Druck vor mit Farbprofilen und Druckereinstellungen.",
-    "dauer": "15 Min",
-    "punkte": 10,
-    "schwierigkeit": "Einfach"
-  },
-  {
-    "id": "word-013",
-    "modul": "Word",
-    "titel": "Dokumentenvergleich",
-    "beschreibung": "Nutzen Sie die Dokumentenvergleichsfunktion zur Überarbeitung von Texten mit Änderungsverfolgung.",
-    "dauer": "12 Min",
-    "punkte": 8,
-    "schwierigkeit": "Einfach"
-  },
-  {
-    "id": "word-014",
-    "modul": "Word",
-    "titel": "Indexerstellung",
-    "beschreibung": "Erstellen Sie ein automatisches Sach- und Personenverzeichnis für ein Fachbuch.",
-    "dauer": "20 Min",
-    "punkte": 13,
-    "schwierigkeit": "Mittel"
-  },
-  {
-    "id": "word-015",
-    "modul": "Word",
-    "titel": "Literaturverwaltung",
-    "beschreibung": "Richten Sie eine Literaturverwaltung mit Zitierstil und Bibliografie ein.",
-    "dauer": "18 Min",
-    "punkte": 11,
-    "schwierigkeit": "Mittel"
-  },
-  {
-    "id": "excel-001",
-    "modul": "Excel",
-    "titel": "SVERWEIS Kundendaten",
-    "beschreibung": "Verbinden Sie zwei Tabellen mit SVERWEIS und erstellen Sie eine Kundendatenbank.",
-    "dauer": "20 Min",
-    "punkte": 15,
-    "schwierigkeit": "Mittel"
-  },
-  {
-    "id": "excel-002",
-    "modul": "Excel",
-    "titel": "Pivot-Tabelle Umsatzanalyse",
-    "beschreibung": "Analysieren Sie Umsatzdaten mit Pivot-Tabellen und erstellen Sie aussagekräftige Auswertungen.",
-    "dauer": "25 Min",
-    "punkte": 18,
-    "schwierigkeit": "Schwer"
-  },
-  {
-    "id": "excel-003",
-    "modul": "Excel",
-    "titel": "WENN-Funktion Preisberechnung",
-    "beschreibung": "Erstellen Sie eine komplexe Preisberechnung mit verschachtelten WENN-Funktionen.",
-    "dauer": "15 Min",
-    "punkte": 12,
-    "schwierigkeit": "Mittel"
-  },
-  {
-    "id": "excel-004",
-    "modul": "Excel",
-    "titel": "Datumsfunktionen",
-    "beschreibung": "Berechnen Sie Projektzeiten mit Datums- und Zeitfunktionen.",
-    "dauer": "18 Min",
-    "punkte": 14,
-    "schwierigkeit": "Mittel"
-  },
-  {
-    "id": "excel-005",
-    "modul": "Excel",
-    "titel": "Bedingte Formatierung",
-    "beschreibung": "Visualisieren Sie Daten mit bedingter Formatierung und Ampeldiagrammen.",
-    "dauer": "12 Min",
-    "punkte": 10,
-    "schwierigkeit": "Einfach"
-  },
-  {
-    "id": "excel-006",
-    "modul": "Excel",
-    "titel": "Diagrammerstellung",
-    "beschreibung": "Erstellen Sie professionelle Diagramme mit Trendlinien und Fehlerbalken.",
-    "dauer": "20 Min",
-    "punkte": 13,
-    "schwierigkeit": "Mittel"
-  },
-  {
-    "id": "excel-007",
-    "modul": "Excel",
-    "titel": "Datenimport/Export",
-    "beschreibung": "Importieren Sie Daten aus verschiedenen Quellen und exportieren Sie in unterschiedliche Formate.",
-    "dauer": "22 Min",
-    "punkte": 16,
-    "schwierigkeit": "Schwer"
-  },
-  {
-    "id": "excel-008",
-    "modul": "Excel",
-    "titel": "Tabellenblattverknüpfungen",
-    "beschreibung": "Erstellen Sie 3D-Verknüpfungen zwischen Tabellenblättern und Arbeitsmappen.",
-    "dauer": "18 Min",
-    "punkte": 14,
-    "schwierigkeit": "Mittel"
-  },
-  {
-    "id": "excel-009",
-    "modul": "Excel",
-    "titel": "Datensicherheit",
-    "beschreibung": "Schützen Sie Zellen, Tabellenblätter und Arbeitsmappen mit Passwörtern.",
-    "dauer": "15 Min",
-    "punkte": 11,
-    "schwierigkeit": "Einfach"
-  },
-  {
-    "id": "excel-010",
-    "modul": "Excel",
-    "titel": "Textfunktionen",
-    "beschreibung": "Bearbeiten Sie Texte mit TEXTENVERKETTEN, TEIL, LÄNGE und anderen Textfunktionen.",
-    "dauer": "12 Min",
-    "punkte": 9,
-    "schwierigkeit": "Einfach"
-  },
-  {
-    "id": "excel-011",
-    "modul": "Excel",
-    "titel": "Statistische Funktionen",
-    "beschreibung": "Nutzen Sie MITTELWERT, STABW, RANG und QUANTIL für Datenanalyse.",
-    "dauer": "20 Min",
-    "punkte": 15,
-    "schwierigkeit": "Mittel"
-  },
-  {
-    "id": "excel-012",
-    "modul": "Excel",
-    "titel": "Finanzfunktionen",
-    "beschreibung": "Berechnen Sie Kreditraten, Investitionsrenditen und Barwerte mit Finanzfunktionen.",
-    "dauer": "25 Min",
-    "punkte": 18,
-    "schwierigkeit": "Schwer"
-  },
-  {
-    "id": "excel-013",
-    "modul": "Excel",
-    "titel": "Datenvalidierung",
-    "beschreibung": "Richten Sie Dropdown-Listen und Eingabeüberprüfungen für Formulare ein.",
-    "dauer": "15 Min",
-    "punkte": 12,
-    "schwierigkeit": "Mittel"
-  },
-  {
-    "id": "excel-014",
-    "modul": "Excel",
-    "titel": "Makro-Aufzeichnung",
-    "beschreibung": "Automatisieren Sie wiederkehrende Aufgaben mit Makros und VBA-Schleifen.",
-    "dauer": "22 Min",
-    "punkte": 16,
-    "schwierigkeit": "Schwer"
-  },
-  {
-    "id": "excel-015",
-    "modul": "Excel",
-    "titel": "Power Query",
-    "beschreibung": "Transformieren und bereinigen Sie große Datenmengen mit Power Query.",
-    "dauer": "28 Min",
-    "punkte": 20,
-    "schwierigkeit": "Schwer"
-  },
-  {
-    "id": "excel-016",
-    "modul": "Excel",
-    "titel": "Datenbankfunktionen",
-    "beschreibung": "Nutzen Sie DBSUMME, DBANZAHL und andere Datenbankfunktionen.",
-    "dauer": "18 Min",
-    "punkte": 13,
-    "schwierigkeit": "Mittel"
-  },
-  {
-    "id": "excel-017",
-    "modul": "Excel",
-    "titel": "Array-Formeln",
-    "beschreibung": "Erstellen Sie komplexe Array-Formeln für Matrixberechnungen.",
-    "dauer": "20 Min",
-    "punkte": 15,
-    "schwierigkeit": "Schwer"
-  },
-  {
-    "id": "excel-018",
-    "modul": "Excel",
-    "titel": "Druckaufbereitung",
-    "beschreibung": "Bereiten Sie große Tabellen für den Druck mit Seitenzahlen und Wiederholungszeilen vor.",
-    "dauer": "12 Min",
-    "punkte": 8,
-    "schwierigkeit": "Einfach"
-  },
-  {
-    "id": "excel-019",
-    "modul": "Excel",
-    "titel": "Fehlerbehandlung",
-    "beschreibung": "Implementieren Sie Fehlerbehandlung mit ISTFEHLER, WENNFEHLER und NV.",
-    "dauer": "15 Min",
-    "punkte": 11,
-    "schwierigkeit": "Mittel"
-  },
-  {
-    "id": "excel-020",
-    "modul": "Excel",
-    "titel": "Dashboard-Erstellung",
-    "beschreibung": "Erstellen Sie ein interaktives Dashboard mit Slicern und dynamischen Diagrammen.",
-    "dauer": "30 Min",
-    "punkte": 22,
-    "schwierigkeit": "Schwer"
-  },
-  {
-    "id": "ppt-001",
-    "modul": "PowerPoint",
-    "titel": "Unternehmenspräsentation",
-    "beschreibung": "Erstellen Sie eine 15-seitige Unternehmenspräsentation mit Masterfolien und Animationen.",
-    "dauer": "25 Min",
-    "punkte": 16,
-    "schwierigkeit": "Mittel"
-  },
-  {
-    "id": "ppt-002",
-    "modul": "PowerPoint",
-    "titel": "Diagramm-Animationen",
-    "beschreibung": "Animieren Sie komplexe Diagramme Schritt für Schritt mit professionellen Übergängen.",
-    "dauer": "20 Min",
-    "punkte": 14,
-    "schwierigkeit": "Mittel"
-  },
-  {
-    "id": "ppt-003",
-    "modul": "PowerPoint",
-    "titel": "Vorlagendesign",
-    "beschreibung": "Gestalten Sie eine professionelle Vorlage mit Farbschema und Schriftarten.",
-    "dauer": "18 Min",
-    "punkte": 12,
-    "schwierigkeit": "Einfach"
-  },
-  {
-    "id": "ppt-004",
-    "modul": "PowerPoint",
-    "titel": "Multimedia-Integration",
-    "beschreibung": "Integrieren Sie Videos, Audio und Hyperlinks in eine interaktive Präsentation.",
-    "dauer": "22 Min",
-    "punkte": 15,
-    "schwierigkeit": "Mittel"
-  },
-  {
-    "id": "ppt-005",
-    "modul": "PowerPoint",
-    "titel": "Präsentatoransicht",
-    "beschreibung": "Richten Sie Notizen, Timer und Präsentatoransicht für einen Vortrag ein.",
-    "dauer": "15 Min",
-    "punkte": 10,
-    "schwierigkeit": "Einfach"
-  },
-  {
-    "id": "ppt-006",
-    "modul": "PowerPoint",
-    "titel": "SmartArt-Grafiken",
-    "beschreibung": "Erstellen Sie komplexe Organigramme und Prozessdarstellungen mit SmartArt.",
-    "dauer": "18 Min",
-    "punkte": 12,
-    "schwierigkeit": "Mittel"
-  },
-  {
-    "id": "ppt-007",
-    "modul": "PowerPoint",
-    "titel": "3D-Objekte",
-    "beschreibung": "Integrieren und animieren Sie 3D-Objekte in einer Präsentation.",
-    "dauer": "20 Min",
-    "punkte": 13,
-    "schwierigkeit": "Mittel"
-  },
-  {
-    "id": "ppt-008",
-    "modul": "PowerPoint",
-    "titel": "Bildbearbeitung",
-    "beschreibung": "Bearbeiten Sie Bilder direkt in PowerPoint mit Effekten und Ausschnitten.",
-    "dauer": "15 Min",
-    "punkte": 11,
-    "schwierigkeit": "Einfach"
-  },
-  {
-    "id": "ppt-009",
-    "modul": "PowerPoint",
-    "titel": "Übergangs-Animationen",
-    "beschreibung": "Erstellen Sie professionelle Folienübergänge mit Timing und Synchronisation.",
-    "dauer": "18 Min",
-    "punkte": 12,
-    "schwierigkeit": "Mittel"
-  },
-  {
-    "id": "ppt-010",
-    "modul": "PowerPoint",
-    "titel": "Videoexport",
-    "beschreibung": "Exportieren Sie eine Präsentation als Video mit Timing und Narration.",
-    "dauer": "12 Min",
-    "punkte": 9,
-    "schwierigkeit": "Einfach"
-  },
-  {
-    "id": "outlook-001",
-    "modul": "Outlook",
-    "titel": "Terminserie planen",
-    "beschreibung": "Erstellen Sie eine wöchentliche Terminserie mit Besprechungsanfragen und Erinnerungen.",
-    "dauer": "15 Min",
-    "punkte": 10,
-    "schwierigkeit": "Einfach"
-  },
-  {
-    "id": "outlook-002",
-    "modul": "Outlook",
-    "titel": "Verteilerlisten",
-    "beschreibung": "Erstellen und verwalten Sie Verteilerlisten für 50+ Mitarbeiter.",
-    "dauer": "12 Min",
-    "punkte": 8,
-    "schwierigkeit": "Einfach"
-  },
-  {
-    "id": "outlook-003",
-    "modul": "Outlook",
-    "titel": "Regeln einrichten",
-    "beschreibung": "Automatisieren Sie die E-Mail-Verarbeitung mit Regeln und Ordnern.",
-    "dauer": "18 Min",
-    "punkte": 12,
-    "schwierigkeit": "Mittel"
-  },
-  {
-    "id": "outlook-004",
-    "modul": "Outlook",
-    "titel": "Kalenderfreigabe",
-    "beschreibung": "Richten Sie die Kalenderfreigabe für ein Team mit verschiedenen Berechtigungen ein.",
-    "dauer": "15 Min",
-    "punkte": 11,
-    "schwierigkeit": "Mittel"
-  },
-  {
-    "id": "outlook-005",
-    "modul": "Outlook",
-    "titel": "Aufgabenverwaltung",
-    "beschreibung": "Erstellen Sie Projektpläne mit Aufgaben, Abhängigkeiten und Fälligkeiten.",
-    "dauer": "20 Min",
-    "punkte": 13,
-    "schwierigkeit": "Mittel"
-  }
+    {
+        "id": "word-001",
+        "modul": "Word",
+        "titel": "DIN 5008 Geschäftsbrief",
+        "beschreibung": "Erstellen Sie einen normgerechten Geschäftsbrief nach DIN 5008 mit Absender, Empfänger, Datum, Betreff, Grußformel und Unterschrift.",
+        "dauer": "15 Min",
+        "punkte": 10,
+        "schwierigkeit": "Mittel"
+    },
+    {
+        "id": "word-002",
+        "modul": "Word",
+        "titel": "Serienbrief erstellen",
+        "beschreibung": "Erstellen Sie einen Serienbrief für 100 Adressaten mit personalisierten Anreden und Datenbankanbindung.",
+        "dauer": "25 Min",
+        "punkte": 15,
+        "schwierigkeit": "Mittel"
+    },
+    {
+        "id": "word-003",
+        "modul": "Word",
+        "titel": "Formatvorlagen gestalten",
+        "beschreibung": "Erstellen Sie professionelle Formatvorlagen für Überschriften, Fließtext und Zitate in einem Dokument.",
+        "dauer": "20 Min",
+        "punkte": 12,
+        "schwierigkeit": "Einfach"
+    },
+    {
+        "id": "word-004",
+        "modul": "Word",
+        "titel": "Inhaltsverzeichnis automatisieren",
+        "beschreibung": "Erstellen Sie ein automatisches Inhaltsverzeichnis mit Seitenzahlen und mehreren Ebenen.",
+        "dauer": "18 Min",
+        "punkte": 11,
+        "schwierigkeit": "Einfach"
+    },
+    {
+        "id": "word-005",
+        "modul": "Word",
+        "titel": "Dokumentenschutz einrichten",
+        "beschreibung": "Richten Sie Dokumentenschutz mit Passwort und Bearbeitungseinschränkungen für vertrauliche Dokumente ein.",
+        "dauer": "12 Min",
+        "punkte": 8,
+        "schwierigkeit": "Einfach"
+    },
+    {
+        "id": "excel-001",
+        "modul": "Excel",
+        "titel": "SVERWEIS Kundendaten",
+        "beschreibung": "Verbinden Sie zwei Tabellen mit SVERWEIS und erstellen Sie eine Kundendatenbank mit automatischer Datenabfrage.",
+        "dauer": "20 Min",
+        "punkte": 15,
+        "schwierigkeit": "Mittel"
+    },
+    {
+        "id": "excel-002",
+        "modul": "Excel",
+        "titel": "Pivot-Tabelle auswerten",
+        "beschreibung": "Erstellen Sie eine Pivot-Tabelle zur Umsatzanalyse nach Regionen und Produkten mit Diagrammen.",
+        "dauer": "25 Min",
+        "punkte": 18,
+        "schwierigkeit": "Schwer"
+    },
+    {
+        "id": "excel-003",
+        "modul": "Excel",
+        "titel": "WENN-Funktionen kaskadieren",
+        "beschreibung": "Erstellen Sie komplexe WENN-Funktionen für Bonusberechnungen und Rabattstaffeln.",
+        "dauer": "22 Min",
+        "punkte": 16,
+        "schwierigkeit": "Mittel"
+    },
+    {
+        "id": "excel-004",
+        "modul": "Excel",
+        "titel": "Datensicherung und Filter",
+        "beschreibung": "Richten Sie Datensicherung und erweiterte Filter für große Datenmengen ein.",
+        "dauer": "15 Min",
+        "punkte": 10,
+        "schwierigkeit": "Einfach"
+    },
+    {
+        "id": "excel-005",
+        "modul": "Excel",
+        "titel": "Makro aufzeichnen",
+        "beschreibung": "Zeichnen Sie ein Makro für wiederkehrende Formatierungen und Datenimporte auf.",
+        "dauer": "18 Min",
+        "punkte": 13,
+        "schwierigkeit": "Mittel"
+    },
+    {
+        "id": "ppt-001",
+        "modul": "PowerPoint",
+        "titel": "Unternehmenspräsentation",
+        "beschreibung": "Erstellen Sie eine 15-seitige Unternehmenspräsentation mit Masterfolien und Animationen.",
+        "dauer": "25 Min",
+        "punkte": 16,
+        "schwierigkeit": "Mittel"
+    },
+    {
+        "id": "ppt-002",
+        "modul": "PowerPoint",
+        "titel": "Diagramme animieren",
+        "beschreibung": "Erstellen Sie animierte Diagramme zur Visualisierung von Geschäftsdaten und Kennzahlen.",
+        "dauer": "20 Min",
+        "punkte": 14,
+        "schwierigkeit": "Einfach"
+    },
+    {
+        "id": "ppt-003",
+        "modul": "PowerPoint",
+        "titel": "Notizzseiten master",
+        "beschreibung": "Erstellen Sie Notizzseiten und Handouts für Präsentationen mit verteilten Inhalten.",
+        "dauer": "15 Min",
+        "punkte": 11,
+        "schwierigkeit": "Einfach"
+    },
+    {
+        "id": "ppt-004",
+        "modul": "PowerPoint",
+        "titel": "Übergänge synchronisieren",
+        "beschreibung": "Synchronisieren Sie Übergänge und Animationen mit Musik und Zeitsteuerung.",
+        "dauer": "22 Min",
+        "punkte": 15,
+        "schwierigkeit": "Mittel"
+    },
+    {
+        "id": "ppt-005",
+        "modul": "PowerPoint",
+        "titel": "Präsentation exportieren",
+        "beschreibung": "Exportieren Sie Präsentationen in verschiedene Formate und erstellen Sie Videos.",
+        "dauer": "18 Min",
+        "punkte": 12,
+        "schwierigkeit": "Einfach"
+    },
+    {
+        "id": "outlook-001",
+        "modul": "Outlook",
+        "titel": "E-Mail-Regeln einrichten",
+        "beschreibung": "Richten Sie automatische E-Mail-Regeln für Sortierung und Weiterleitung ein.",
+        "dauer": "15 Min",
+        "punkte": 10,
+        "schwierigkeit": "Einfach"
+    },
+    {
+        "id": "outlook-002",
+        "modul": "Outlook",
+        "titel": "Kalender synchronisieren",
+        "beschreibung": "Synchronisieren Sie Kalender mit mehreren Geräten und teilen Sie Termine.",
+        "dauer": "18 Min",
+        "punkte": 12,
+        "schwierigkeit": "Einfach"
+    },
+    {
+        "id": "outlook-003",
+        "modul": "Outlook",
+        "titel": "Verteilerlisten erstellen",
+        "beschreibung": "Erstellen und verwalten Sie E-Mail-Verteilerlisten für Abteilungen und Projekte.",
+        "dauer": "20 Min",
+        "punkte": 13,
+        "schwierigkeit": "Mittel"
+    },
+    {
+        "id": "outlook-004",
+        "modul": "Outlook",
+        "titel": "Aufgaben delegieren",
+        "beschreibung": "Erstellen Sie Aufgaben und delegieren Sie diese an Teammitglieder mit Fristen.",
+        "dauer": "16 Min",
+        "punkte": 11,
+        "schwierigkeit": "Einfach"
+    },
+    {
+        "id": "outlook-005",
+        "modul": "Outlook",
+        "titel": "Signatur gestalten",
+        "beschreibung": "Erstellen Sie professionelle E-Mail-Signaturen mit Logo und Kontaktdaten.",
+        "dauer": "12 Min",
+        "punkte": 8,
+        "schwierigkeit": "Einfach"
+    }
 ]
