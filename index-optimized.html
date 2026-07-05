@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="fable5">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Emilia's IHK Lernplattform - Fable 5 Edition | Alex' Prüfungsvorbereitung für Informationstechnisches Büromanagement">
+    <meta name="keywords" content="IHK, Prüfungsvorbereitung, Büromanagement, Word, Excel, DIN 5008, Fable 5">
+    <meta name="author" content="Emilia">
+    <meta name="theme-color" content="#667eea">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="IHK Lernplattform">
+    <meta name="format-detection" content="telephone=no">
+    <title>Emilia's Lernplattform - Fable 5 Edition</title>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Icons -->
+    <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Critical CSS - Inline for performance -->
+    <style data-critical="true">
+        /* Critical CSS for above-the-fold content */
+        :root {
+            /* Fable 5 Game-UI Colors */
+            --fable-gold: #d4af37;
+            --fable-brown: #8b4513;
+            --fable-green: #90ee90;
+            --fable-blue: #4682b4;
+            --fable-red: #dc143c;
+            --fable-parchment: #f4e4c1;
+            --fable-shadow: #2c1810;
+            --fable-light: #faf8f3;
+            --fable-medium: #d4c4a0;
+            
+            /* Performance Variables */
+            --transition-fast: 0.15s ease;
+            --transition-medium: 0.3s ease;
+            --border-radius-game: 8px;
+            --shadow-game: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, var(--fable-parchment) 0%, var(--fable-light) 100%);
+            color: var(--fable-shadow);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior: none;
+        }
+        
+        .game-container {
+            display: grid;
+            grid-template-areas: 
+                "header header"
+                "sidebar main"
+                "footer footer";
+            grid-template-columns: 250px 1fr;
+            grid-template-rows: 60px 1fr 40px;
+            min-height: 100vh;
+            will-change: transform;
+            contain: layout style paint;
+            transform: translateZ(0);
+        }
+        
+        .game-header {
+            grid-area: header;
+            background: linear-gradient(135deg, var(--fable-gold), var(--fable-brown));
+            border-bottom: 3px solid var(--fable-shadow);
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-shadow: var(--shadow-game);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transform: translateZ(0);
+            will-change: transform;
+        }
+        
+        .game-nav {
+            display: flex;
+            gap: 20px;
+            flex: 1;
+        }
+        
+        .nav-item {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid var(--fable-gold);
+            border-radius: var(--border-radius-game);
+            padding: 8px 16px;
+            color: var(--fable-light);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            text-decoration: none;
+            transform: translateZ(0);
+            will-change: transform;
+        }
+        
+        .nav-item:hover, .nav-item.active {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px) translateZ(0);
+            box-shadow: var(--shadow-game);
+        }
+        
+        .game-sidebar {
+            grid-area: sidebar;
+            background: var(--fable-parchment);
+            border-right: 3px solid var(--fable-brown);
+            padding: 20px;
+            overflow-y: auto;
+            transform: translateZ(0);
+        }
+        
+        .game-main {
+            grid-area: main;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .game-footer {
+            grid-area: footer;
+            background: var(--fable-brown);
+            color: var(--fable-light);
+            padding: 10px 20px;
+            text-align: center;
+        }
+        
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+        
+        .lazy {
+            background: #f0f0f0;
+            transition: opacity 0.3s;
+            min-height: 200px;
+        }
+        
+        .lazy.loaded {
+            opacity: 1;
+        }
+        
+        /* Safari-specific optimizations */
+        @media (-webkit-min-device-pixel-ratio: 2) {
+            body {
+                -webkit-font-smoothing: antialiased;
+            }
+        }
+        
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+        
+        /* Scroll performance */
+        .scrolling * {
+            will-change: transform;
+        }
+    </style>
+    
+    <!-- Defer non-critical CSS -->
+    <link rel="stylesheet" href="style.css" media="print" onload="this.media='all'">
+    
+    <!-- Preload critical scripts -->
+    <link rel="preload" href="data.js" as="script">
+    <link rel="preload" href="app.js" as="script">
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('✅ Service Worker registered:', registration);
+                    })
+                    .catch(error => {
+                        console.log('❌ Service Worker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+    
+    <!-- Chart.js with local fallback -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script>
+        // Local fallback if CDN fails
+        if (typeof Chart === 'undefined') {
+            var script = document.createElement('script');
+            script.src = 'chart.local.js';
+            document.head.appendChild(script);
+        }
+    </script>
+</head>
+<body>
+    <div class="game-container">
+        <header class="game-header">
+            <div class="game-nav">
+                <a href="index.html" class="nav-item active">🏠 Dashboard</a>
+                <a href="aufgaben.html" class="nav-item">📚 Aufgaben</a>
+                <a href="pruefung.html" class="nav-item">🎯 Prüfung</a>
+            </div>
+            <div class="user-info">
+                <span>👤 Alex</span>
+            </div>
+        </header>
+        
+        <aside class="game-sidebar">
+            <h3>📊 Fortschritt</h3>
+            <div class="progress-overview">
+                <div class="progress-item">
+                    <span>Excel</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 75%"></div>
+                    </div>
+                    <span class="progress-text">75%</span>
+                </div>
+                <div class="progress-item">
+                    <span>Word</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 60%"></div>
+                    </div>
+                    <span class="progress-text">60%</span>
+                </div>
+                <div class="progress-item">
+                    <span>DIN 5008</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 90%"></div>
+                    </div>
+                    <span class="progress-text">90%</span>
+                </div>
+            </div>
+            
+            <h3>🎯 Ziele</h3>
+            <ul class="goals-list">
+                <li>✅ Excel Grundlagen</li>
+                <li>✅ SVERWEIS beherrschen</li>
+                <li>⏳ Pivot-Tabellen</li>
+                <li>⏳ Word Formatierung</li>
+                <li>⏳ DIN 5008 Briefe</li>
+            </ul>
+        </aside>
+        
+        <main class="game-main">
+            <h1>🎮 Willkommen, Alex!</h1>
+            <p>Bereit für deine IHK-Prüfungsvorbereitung?</p>
+            
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <h2>📊 Excel</h2>
+                    <p>15 Aufgaben verfügbar</p>
+                    <button class="btn-primary">Starten</button>
+                </div>
+                
+                <div class="dashboard-card">
+                    <h2>📝 Word</h2>
+                    <p>12 Aufgaben verfügbar</p>
+                    <button class="btn-primary">Starten</button>
+                </div>
+                
+                <div class="dashboard-card">
+                    <h2>📋 DIN 5008</h2>
+                    <p>8 Aufgaben verfügbar</p>
+                    <button class="btn-primary">Starten</button>
+                </div>
+                
+                <div class="dashboard-card">
+                    <h2>🎯 Prüfungssimulation</h2>
+                    <p>Teste dein Wissen</p>
+                    <button class="btn-secondary">Starten</button>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <canvas id="progressChart"></canvas>
+            </div>
+        </main>
+        
+        <footer class="game-footer">
+            <p>© 2024 Emilia's IHK Lernplattform | Fable 5 Edition</p>
+        </footer>
+    </div>
+    
+    <!-- Performance Optimization Scripts -->
+    <script defer src="performance-suite.js"></script>
+    <script defer src="safari-optimizer.js"></script>
+    
+    <!-- Main Application Scripts -->
+    <script defer src="data.js"></script>
+    <script defer src="app.js"></script>
+    
+    <!-- Performance Monitoring -->
+    <script>
+        // Core Web Vitals Monitoring
+        const reportWebVitals = (metric) => {
+            console.log(`[Web Vitals] ${metric.name}: ${metric.value}ms`);
+            
+            // Send to analytics if available
+            if (navigator.sendBeacon) {
+                const data = JSON.stringify({
+                    name: metric.name,
+                    value: metric.value,
+                    id: metric.id
+                });
+                navigator.sendBeacon('/api/vitals', data);
+            }
+        };
+        
+        // LCP
+        if ('PerformanceObserver' in window) {
+            const lcpObserver = new PerformanceObserver((list) => {
+                const entries = list.getEntries();
+                const lastEntry = entries[entries.length - 1];
+                reportWebVitals({
+                    name: 'LCP',
+                    value: lastEntry.startTime,
+                    id: 'lcp'
+                });
+            });
+            lcpObserver.observe({ entryTypes: ['largest-contentful-paint'] });
+        }
+        
+        // FID
+        if ('PerformanceObserver' in window) {
+            const fidObserver = new PerformanceObserver((list) => {
+                const entries = list.getEntries();
+                entries.forEach(entry => {
+                    reportWebVitals({
+                        name: 'FID',
+                        value: entry.processingStart - entry.startTime,
+                        id: 'fid'
+                    });
+                });
+            });
+            fidObserver.observe({ entryTypes: ['first-input'] });
+        }
+        
+        // CLS
+        if ('PerformanceObserver' in window) {
+            let clsValue = 0;
+            const clsObserver = new PerformanceObserver((list) => {
+                list.getEntries().forEach(entry => {
+                    if (!entry.hadRecentInput) {
+                        clsValue += entry.value;
+                        reportWebVitals({
+                            name: 'CLS',
+                            value: clsValue,
+                            id: 'cls'
+                        });
+                    }
+                });
+            });
+            clsObserver.observe({ entryTypes: ['layout-shift'] });
+        }
+        
+        // FPS Monitoring
+        let frameCount = 0;
+        let lastTime = performance.now();
+        
+        const measureFPS = () => {
+            frameCount++;
+            const currentTime = performance.now();
+            
+            if (currentTime - lastTime >= 1000) {
+                const fps = frameCount;
+                console.log(`[Performance] FPS: ${fps}`);
+                
+                if (fps < 55) {
+                    console.warn('⚠️ Frame rate below 60fps target');
+                    document.body.classList.add('reduced-motion');
+                } else if (fps >= 58) {
+                    document.body.classList.remove('reduced-motion');
+                }
+                
+                frameCount = 0;
+                lastTime = currentTime;
+            }
+            
+            requestAnimationFrame(measureFPS);
+        };
+        
+        requestAnimationFrame(measureFPS);
+        
+        // Memory monitoring (Chrome only)
+        if ('memory' in performance) {
+            setInterval(() => {
+                const memory = performance.memory;
+                const usedMB = memory.usedJSHeapSize / 1024 / 1024;
+                const limitMB = memory.jsHeapSizeLimit / 1024 / 1024;
+                const usage = (usedMB / limitMB) * 100;
+                
+                if (usage > 80) {
+                    console.warn(`⚠️ High memory usage: ${usedMB.toFixed(2)}MB (${usage.toFixed(1)}%)`);
+                }
+            }, 10000);
+        }
+    </script>
+</body>
+</html>

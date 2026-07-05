@@ -1222,6 +1222,371 @@ footer {
     }
 }
 
+/* Modal System */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+}
+
+.modal {
+    background: var(--bg-card);
+    border-radius: 16px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    max-width: 90%;
+    max-height: 90%;
+    overflow-y: auto;
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.modal-close:hover {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.modal-footer {
+    padding: 1.5rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+/* Learning Modal */
+.learning-modal {
+    max-width: 95%;
+    max-height: 95%;
+}
+
+.learning-modal .modal-body {
+    padding: 0;
+}
+
+.workspace {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 0;
+    min-height: 500px;
+}
+
+.task-panel {
+    padding: 1.5rem;
+    background: var(--bg-primary);
+    border-right: 1px solid var(--border);
+}
+
+.work-panel {
+    padding: 1.5rem;
+}
+
+/* Exercise Cards */
+.exercise-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.exercise-card {
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.exercise-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary);
+}
+
+.exercise-card h4 {
+    margin: 0 0 0.5rem 0;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+}
+
+.exercise-card p {
+    margin: 0 0 1rem 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.exercise-meta {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+/* Exercise Info */
+.exercise-info {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.exercise-description {
+    margin-bottom: 1.5rem;
+}
+
+.exercise-content {
+    background: var(--bg-primary);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+}
+
+.exercise-content h4 {
+    margin: 0 0 1rem 0;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+}
+
+/* Data Table */
+.data-table {
+    margin: 1rem 0;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+.table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+.table td:first-child {
+    font-weight: 600;
+    background: var(--bg-primary);
+}
+
+/* Excel Simulator */
+.excel-simulator {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--bg-card);
+}
+
+.excel-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+
+.excel-row {
+    display: contents;
+}
+
+.excel-cell {
+    border: 1px solid var(--border);
+    padding: 0.5rem;
+    min-height: 32px;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.excel-cell:focus {
+    background: var(--bg-primary);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+}
+
+.excel-cell.header {
+    background: var(--bg-primary);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.excel-cell.modified {
+    background: rgba(72, 187, 120, 0.1);
+    border-color: var(--success);
+}
+
+/* Solution */
+.solution {
+    background: rgba(72, 187, 120, 0.1);
+    border: 1px solid var(--success);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.solution h4 {
+    margin: 0 0 0.5rem 0;
+    color: var(--success);
+}
+
+.solution-hint {
+    background: rgba(246, 173, 85, 0.1);
+    border: 1px solid var(--warning);
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+/* Timer */
+.timer {
+    background: var(--primary);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.timer.time-up {
+    background: var(--danger);
+    animation: pulse 1s infinite;
+}
+
+/* Result Modal */
+.result-modal {
+    text-align: center;
+}
+
+.points-earned {
+    background: var(--bg-primary);
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+.points-earned p {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+/* Coach Modal */
+.coach-modal {
+    max-width: 500px;
+}
+
+.coach-welcome {
+    margin-bottom: 2rem;
+}
+
+.coach-welcome ul {
+    text-align: left;
+    margin: 1rem 0;
+}
+
+.coach-stats {
+    background: var(--bg-primary);
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: left;
+}
+
+.coach-stats h4 {
+    margin: 0 0 0.5rem 0;
+    color: var(--text-primary);
+}
+
+.coach-stats p {
+    margin: 0.25rem 0;
+    color: var(--text-secondary);
+}
+
+/* Modal Animations */
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Mobile Responsive for Modals */
+@media (max-width: 768px) {
+    .modal {
+        max-width: 95%;
+        margin: 1rem;
+    }
+    
+    .workspace {
+        grid-template-columns: 1fr;
+    }
+    
+    .task-panel {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+    }
+    
+    .exercise-meta {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+    
+    .modal-footer {
+        flex-direction: column;
+    }
+    
+    .excel-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .excel-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .modal-header,
+    .modal-body,
+    .modal-footer {
+        padding: 1rem;
+    }
+}
+
 /* Print Styles */
 @media print {
     body {

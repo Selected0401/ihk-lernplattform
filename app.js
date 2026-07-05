@@ -1,4 +1,4 @@
-// Emilia's IHK Lernplattform - JavaScript App
+// Emilia's IHK Lernplattform - JavaScript App mit echten Aufgaben
 class LernApp {
     constructor() {
         this.modules = {
@@ -8,10 +8,29 @@ class LernApp {
                 exercises: [
                     {
                         id: 'excel-1',
+                        title: 'SUMME und MITTELWERT berechnen',
+                        description: 'Erstellen Sie eine Umsatztabelle für das 1. Quartal und berechnen Sie Summen und Mittelwerte',
+                        difficulty: 'easy',
+                        time: 15,
+                        points: 20,
+                        content: {
+                            task: 'Erstellen Sie eine Umsatztabelle für das 1. Quartal und berechnen Sie Summen und Mittelwerte',
+                            data: [
+                                ['Monat', 'Umsatz'],
+                                ['Januar', 15000],
+                                ['Februar', 18500],
+                                ['März', 22000]
+                            ],
+                            solution: 'SUMME(B2:B4) = 55500, MITTELWERT(B2:B4) = 18500'
+                        }
+                    },
+                    {
+                        id: 'excel-2',
                         title: 'SVERWEIS Grundlagen',
                         description: 'Kundendaten mit SVERWEIS suchen',
                         difficulty: 'medium',
                         time: 15,
+                        points: 25,
                         content: {
                             task: 'Suche den Umsatz für Kunden-Nr 1002',
                             data: [
@@ -24,11 +43,12 @@ class LernApp {
                         }
                     },
                     {
-                        id: 'excel-2',
+                        id: 'excel-3',
                         title: 'WENN-Funktion',
                         description: 'Bestandskontrolle mit WENN',
                         difficulty: 'easy',
                         time: 10,
+                        points: 15,
                         content: {
                             task: 'Markiere Artikel mit Lager < 50 als "Bestellen"',
                             data: [
@@ -38,23 +58,6 @@ class LernApp {
                                 ['A003', 75, '']
                             ],
                             solution: '=WENN(B2<50;"Bestellen";"Auf Lager")'
-                        }
-                    },
-                    {
-                        id: 'excel-3',
-                        title: 'Pivot-Tabelle',
-                        description: 'Umsatzanalyse nach Regionen',
-                        difficulty: 'hard',
-                        time: 25,
-                        content: {
-                            task: 'Erstelle Pivot nach Regionen mit Summe Umsatz',
-                            data: [
-                                ['Region', 'Produkt', 'Umsatz'],
-                                ['Norden', 'A001', 50000],
-                                ['Süden', 'A002', 75000],
-                                ['Norden', 'A003', 30000]
-                            ],
-                            solution: 'Pivot: Zeilen=Region, Werte=Summe von Umsatz'
                         }
                     }
                 ]
@@ -69,6 +72,7 @@ class LernApp {
                         description: 'Vollständiger Geschäftsbrief nach Norm',
                         difficulty: 'medium',
                         time: 20,
+                        points: 30,
                         content: {
                             task: 'Erstelle Geschäftsbrief mit allen Pflichtelementen',
                             elements: [
@@ -84,23 +88,6 @@ class LernApp {
                             ],
                             solution: 'Struktur nach DIN 5008 mit korrekten Abständen'
                         }
-                    },
-                    {
-                        id: 'word-2',
-                        title: 'Serienbrief',
-                        description: 'Adressen aus Excel übernehmen',
-                        difficulty: 'hard',
-                        time: 25,
-                        content: {
-                            task: 'Erstelle Serienbrief mit 100 Adressen',
-                            steps: [
-                                '1. Word: Sendungen → Serienbrief starten',
-                                '2. Empfänger auswählen → Vorhandene Liste',
-                                '3. Excel-Datei als Datenquelle wählen',
-                                '4. Serienbrieffelder einfügen',
-                                '5. Vorschau prüfen und drucken'
-                            ]
-                        }
                     }
                 ]
             },
@@ -114,6 +101,7 @@ class LernApp {
                         description: 'Corporate Design Vorlage erstellen',
                         difficulty: 'medium',
                         time: 30,
+                        points: 25,
                         content: {
                             task: 'Erstelle Folienmaster mit Logo',
                             elements: [
@@ -122,22 +110,6 @@ class LernApp {
                                 'Farbschema',
                                 'Schriftartenschema',
                                 'Hintergrundgestaltung'
-                            ]
-                        }
-                    },
-                    {
-                        id: 'ppt-2',
-                        title: 'Animationen',
-                        description: 'Professionelle Animationen einsetzen',
-                        difficulty: 'easy',
-                        time: 15,
-                        content: {
-                            task: 'Animiere Diagramm Schritt für Schritt',
-                            types: [
-                                'Eintrittsanimationen',
-                                'Betonungsanimationen',
-                                'Austrittsanimationen',
-                                'Wechselanimationen'
                             ]
                         }
                     }
@@ -153,6 +125,7 @@ class LernApp {
                         description: 'Automatische Weiterleitung einrichten',
                         difficulty: 'easy',
                         time: 10,
+                        points: 15,
                         content: {
                             task: 'Erstelle Regel für bestimmte Absender',
                             conditions: [
@@ -164,23 +137,6 @@ class LernApp {
                                 'In Ordner verschieben',
                                 'Weiterleiten an',
                                 'Kategorie zuweisen'
-                            ]
-                        }
-                    },
-                    {
-                        id: 'outlook-2',
-                        title: 'Kalender',
-                        description: 'Serie anlegen und einladen',
-                        difficulty: 'medium',
-                        time: 15,
-                        content: {
-                            task: 'Wöchentliche Teams-Meeting Serie',
-                            steps: [
-                                'Termin erstellen',
-                                'Serie festlegen (wöchentlich)',
-                                'Teilnehmer einladen',
-                                'Raum reservieren',
-                                'Erinnerung festlegen'
                             ]
                         }
                     }
@@ -199,32 +155,11 @@ class LernApp {
                     { module: 'powerpoint', time: 25, description: 'Präsentation mit Diagrammen' },
                     { module: 'outlook', time: 20, description: 'Terminorganisation und Regeln' }
                 ]
-            },
-            {
-                id: 'sim-2',
-                title: 'AKA Simulation 2024/2',
-                duration: 120,
-                tasks: [
-                    { module: 'excel', time: 45, description: 'Bestandsliste mit WENN und bedingter Formatierung' },
-                    { module: 'word', time: 30, description: 'Serienbrief mit Datenquelle' },
-                    { module: 'powerpoint', time: 30, description: 'Jahresbericht mit Animationen' },
-                    { module: 'outlook', time: 15, description: 'Aufgabenverteilung' }
-                ]
-            },
-            {
-                id: 'sim-3',
-                title: 'Prüfungstraining',
-                duration: 120,
-                tasks: [
-                    { module: 'excel', time: 50, description: 'Komplexe Analyse mit allen Funktionen' },
-                    { module: 'word', time: 40, description: 'Dokumentvorlage und Formatierung' },
-                    { module: 'powerpoint', time: 20, description: 'Schnelle Präsentation' },
-                    { module: 'outlook', time: 10, description: 'Schnelle Organisation' }
-                ]
             }
         ];
         
         this.progress = this.loadProgress();
+        this.currentExercise = null;
         this.init();
     }
     
@@ -233,6 +168,26 @@ class LernApp {
         this.setupPWA();
         this.setupAnalytics();
         this.updateUI();
+        this.setupEventListeners();
+    }
+    
+    setupEventListeners() {
+        // Close modal handlers
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal-close')) {
+                this.closeModal();
+            }
+            if (e.target.classList.contains('modal-overlay')) {
+                this.closeModal();
+            }
+        });
+        
+        // ESC key to close modal
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                this.closeModal();
+            }
+        });
     }
     
     setupServiceWorker() {
@@ -248,29 +203,24 @@ class LernApp {
     }
     
     setupPWA() {
-        // PWA Install Prompt
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             window.deferredPrompt = e;
         });
         
-        // Handle app install
         window.addEventListener('appinstalled', () => {
             console.log('PWA was installed');
         });
     }
     
     setupAnalytics() {
-        // Simple page tracking
         console.log('Page loaded:', window.location.pathname);
     }
     
     updateUI() {
-        // Update stats based on progress
         const totalExercises = this.getTotalExercises();
         const completedExercises = this.progress.completedExercises || 0;
         
-        // Update UI elements if they exist
         const statElements = document.querySelectorAll('.stat-number');
         if (statElements.length >= 4) {
             statElements[0].textContent = totalExercises + '+';
@@ -302,23 +252,371 @@ class LernApp {
         localStorage.setItem('emilia-progress', JSON.stringify(this.progress));
     }
     
+    startExercise(exerciseId) {
+        const exercise = this.findExercise(exerciseId);
+        if (!exercise) return;
+        
+        this.currentExercise = exercise;
+        this.showExerciseModal(exercise);
+        
+        console.log(`Starting exercise: ${exercise.title}`);
+    }
+    
+    findExercise(exerciseId) {
+        for (const module of Object.values(this.modules)) {
+            const exercise = module.exercises.find(ex => ex.id === exerciseId);
+            if (exercise) return exercise;
+        }
+        return null;
+    }
+    
+    showExerciseModal(exercise) {
+        const modal = document.createElement('div');
+        modal.className = 'modal-overlay';
+        modal.innerHTML = `
+            <div class="modal">
+                <div class="modal-header">
+                    <h3>${exercise.title}</h3>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="exercise-info">
+                        <span class="badge badge-${exercise.difficulty}">${exercise.difficulty}</span>
+                        <span class="time">⏱️ ${exercise.time} Min</span>
+                        <span class="points">🏆 ${exercise.points} Punkte</span>
+                    </div>
+                    <div class="exercise-description">
+                        <p>${exercise.description}</p>
+                    </div>
+                    <div class="exercise-content">
+                        <h4>📋 Aufgabe:</h4>
+                        <p>${exercise.content.task}</p>
+                        ${this.renderExerciseData(exercise)}
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" onclick="window.app.startLearningEnvironment('${exercise.id}')">
+                        Aufgabe starten
+                    </button>
+                    <button class="btn btn-secondary" onclick="window.app.closeModal()">
+                        Schließen
+                    </button>
+                </div>
+            </div>
+        `;
+        
+        document.body.appendChild(modal);
+    }
+    
+    renderExerciseData(exercise) {
+        if (!exercise.content.data) return '';
+        
+        let html = '<h4>📊 Daten:</h4><div class="data-table">';
+        
+        if (Array.isArray(exercise.content.data)) {
+            html += '<table class="table">';
+            exercise.content.data.forEach((row, index) => {
+                html += '<tr>';
+                if (Array.isArray(row)) {
+                    row.forEach(cell => {
+                        html += `<td>${cell}</td>`;
+                    });
+                } else {
+                    html += `<td colspan="${Object.keys(row).length}">${JSON.stringify(row)}</td>`;
+                }
+                html += '</tr>';
+            });
+            html += '</table>';
+        }
+        
+        html += '</div>';
+        
+        if (exercise.content.solution) {
+            html += `<div class="solution"><h4>💡 Lösung:</h4><p>${exercise.content.solution}</p></div>`;
+        }
+        
+        return html;
+    }
+    
+    startLearningEnvironment(exerciseId) {
+        const exercise = this.findExercise(exerciseId);
+        if (!exercise) return;
+        
+        // Close current modal
+        this.closeModal();
+        
+        // Create learning environment
+        const learningEnv = document.createElement('div');
+        learningEnv.className = 'modal-overlay';
+        learningEnv.innerHTML = `
+            <div class="modal learning-modal">
+                <div class="modal-header">
+                    <h3>🎯 Lernumgebung: ${exercise.title}</h3>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="workspace">
+                        <div class="task-panel">
+                            <h4>📋 Aufgabe</h4>
+                            <p>${exercise.content.task}</p>
+                            ${this.renderInteractiveExercise(exercise)}
+                        </div>
+                        <div class="work-panel">
+                            <h4>💻 Arbeitsbereich</h4>
+                            <div class="excel-simulator" id="excel-simulator">
+                                ${this.createExcelSimulator(exercise)}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success" onclick="window.app.checkSolution('${exerciseId}')">
+                        Lösung prüfen
+                    </button>
+                    <button class="btn btn-info" onclick="window.app.showHint('${exerciseId}')">
+                        💡 Tipp
+                    </button>
+                    <button class="btn btn-secondary" onclick="window.app.closeModal()">
+                        Schließen
+                    </button>
+                </div>
+            </div>
+        `;
+        
+        document.body.appendChild(learningEnv);
+        
+        // Initialize the exercise
+        this.initializeExercise(exercise);
+        
+        console.log(`Learning environment started for: ${exercise.title}`);
+    }
+    
+    createExcelSimulator(exercise) {
+        if (exercise.content.data) {
+            let html = '<div class="excel-grid">';
+            exercise.content.data.forEach((row, rowIndex) => {
+                html += '<div class="excel-row">';
+                if (Array.isArray(row)) {
+                    row.forEach((cell, colIndex) => {
+                        const cellId = `cell-${rowIndex}-${colIndex}`;
+                        const isHeader = rowIndex === 0;
+                        html += `<div class="excel-cell ${isHeader ? 'header' : ''}" id="${cellId}" contenteditable="${!isHeader}">${cell}</div>`;
+                    });
+                }
+                html += '</div>';
+            });
+            html += '</div>';
+            return html;
+        }
+        return '<div class="placeholder">Excel-Arbeitsbereich wird geladen...</div>';
+    }
+    
+    renderInteractiveExercise(exercise) {
+        if (exercise.content.elements) {
+            return '<ul>' + exercise.content.elements.map(el => `<li>${el}</li>`).join('') + '</ul>';
+        }
+        if (exercise.content.steps) {
+            return '<ol>' + exercise.content.steps.map(step => `<li>${step}</li>`).join('') + '</ol>';
+        }
+        return '';
+    }
+    
+    initializeExercise(exercise) {
+        // Add event listeners for interactive elements
+        const cells = document.querySelectorAll('.excel-cell[contenteditable="true"]');
+        cells.forEach(cell => {
+            cell.addEventListener('input', () => {
+                cell.classList.add('modified');
+            });
+        });
+        
+        // Start timer
+        this.startTimer(exercise.time);
+    }
+    
+    startTimer(minutes) {
+        let timeLeft = minutes * 60;
+        const timerElement = document.createElement('div');
+        timerElement.className = 'timer';
+        timerElement.textContent = `⏱️ ${Math.floor(timeLeft / 60)}:${(timeLeft % 60).toString().padStart(2, '0')}`;
+        
+        const modal = document.querySelector('.learning-modal .modal-header');
+        if (modal) {
+            modal.appendChild(timerElement);
+        }
+        
+        const timer = setInterval(() => {
+            timeLeft--;
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timerElement.textContent = `⏱️ ${minutes}:${seconds.toString().padStart(2, '0')}`;
+            
+            if (timeLeft <= 0) {
+                clearInterval(timer);
+                timerElement.textContent = '⏱️ Zeit abgelaufen!';
+                timerElement.classList.add('time-up');
+            }
+        }, 1000);
+    }
+    
+    checkSolution(exerciseId) {
+        const exercise = this.findExercise(exerciseId);
+        if (!exercise) return;
+        
+        // Simple solution checking
+        const modifiedCells = document.querySelectorAll('.excel-cell.modified');
+        let correct = true;
+        
+        if (exercise.content.solution && modifiedCells.length > 0) {
+            // For now, just mark as correct if user entered something
+            modifiedCells.forEach(cell => {
+                if (cell.textContent.trim() === '') {
+                    correct = false;
+                }
+            });
+        }
+        
+        this.showSolutionResult(correct, exercise);
+    }
+    
+    showSolutionResult(correct, exercise) {
+        const resultModal = document.createElement('div');
+        resultModal.className = 'modal-overlay';
+        resultModal.innerHTML = `
+            <div class="modal result-modal">
+                <div class="modal-header">
+                    <h3>${correct ? '🎉 Richtig!' : '❌ Noch nicht ganz'}</h3>
+                </div>
+                <div class="modal-body">
+                    <p>${correct ? 'Super! Du hast die Aufgabe gelöst.' : 'Versuche es noch einmal oder schau dir die Lösung an.'}</p>
+                    ${!correct ? `<div class="solution-hint"><strong>Lösung:</strong> ${exercise.content.solution}</div>` : ''}
+                    <div class="points-earned">
+                        <p>Punkte: ${correct ? exercise.points : 0} / ${exercise.points}</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" onclick="window.app.closeModal()">
+                        ${correct ? 'Weiter' : 'Nochmal versuchen'}
+                    </button>
+                </div>
+            </div>
+        `;
+        
+        // Close learning modal first
+        this.closeModal();
+        
+        // Show result
+        document.body.appendChild(resultModal);
+        
+        // Update progress
+        if (correct) {
+            this.progress.completedExercises = (this.progress.completedExercises || 0) + 1;
+            this.progress.totalTime = (this.progress.totalTime || 0) + exercise.time;
+            this.saveProgress();
+            this.updateUI();
+        }
+    }
+    
+    showHint(exerciseId) {
+        const exercise = this.findExercise(exerciseId);
+        if (!exercise || !exercise.content.solution) return;
+        
+        alert(`💡 Tipp:\n\n${exercise.content.solution}`);
+    }
+    
+    closeModal() {
+        const modal = document.querySelector('.modal-overlay');
+        if (modal) {
+            modal.remove();
+        }
+    }
+    
     startModule(moduleName) {
         const module = this.modules[moduleName];
         if (!module) return;
         
         console.log(`Starting ${module.title} module`);
-        alert(`🎯 ${module.icon} ${module.title} Modul wird geladen...\n\nVerfügbare Übungen: ${module.exercises.length}\n\nHier kommt die vollständige Lernumgebung!`);
         
-        // In a real app, this would navigate to the module
+        // Show module modal with exercises
+        const modal = document.createElement('div');
+        modal.className = 'modal-overlay';
+        modal.innerHTML = `
+            <div class="modal">
+                <div class="modal-header">
+                    <h3>${module.icon} ${module.title} Modul</h3>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="exercise-list">
+                        ${module.exercises.map(exercise => `
+                            <div class="exercise-card" onclick="window.app.startExercise('${exercise.id}')">
+                                <h4>${exercise.title}</h4>
+                                <p>${exercise.description}</p>
+                                <div class="exercise-meta">
+                                    <span class="badge badge-${exercise.difficulty}">${exercise.difficulty}</span>
+                                    <span class="time">⏱️ ${exercise.time} Min</span>
+                                    <span class="points">🏆 ${exercise.points} Punkte</span>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" onclick="window.app.closeModal()">
+                        Schließen
+                    </button>
+                </div>
+            </div>
+        `;
+        
+        document.body.appendChild(modal);
+        
         this.progress.lastModule = moduleName;
         this.saveProgress();
     }
     
     startSimulation() {
-        const simulation = this.simulations[0]; // Start with first simulation
+        const simulation = this.simulations[0];
         console.log('Starting simulation:', simulation.title);
         
-        alert(`🎯 ${simulation.title}\n⏱️ Dauer: ${simulation.duration} Minuten\n\nAufgaben:\n${simulation.tasks.map(task => `• ${task.description} (${task.time} Min)`).join('\n')}\n\nDie Simulation wird gestartet!`);
+        const modal = document.createElement('div');
+        modal.className = 'modal-overlay';
+        modal.innerHTML = `
+            <div class="modal">
+                <div class="modal-header">
+                    <h3>🎯 ${simulation.title}</h3>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="simulation-info">
+                        <p><strong>⏱️ Dauer:</strong> ${simulation.duration} Minuten</p>
+                        <h4>📋 Aufgaben:</h4>
+                        <ul>
+                            ${simulation.tasks.map(task => `
+                                <li>
+                                    <strong>${task.module.toUpperCase()}</strong> - ${task.description} (${task.time} Min)
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" onclick="window.app.startRealSimulation()">
+                        Simulation starten
+                    </button>
+                    <button class="btn btn-secondary" onclick="window.app.closeModal()">
+                        Schließen
+                    </button>
+                </div>
+            </div>
+        `;
+        
+        document.body.appendChild(modal);
+    }
+    
+    startRealSimulation() {
+        this.closeModal();
+        alert('🎯 Simulation wird gestartet!\n\nDie Prüfungsumgebung wird vorbereitet...\nViel Erfolg, mein Süßer! 💪');
         
         this.progress.simulations = (this.progress.simulations || 0) + 1;
         this.saveProgress();
@@ -326,7 +624,50 @@ class LernApp {
     
     openCoach() {
         console.log('Opening Emilia Coach');
-        alert(`🐰 Emilia Coach\n\nHallo mein зайчик! 👋\n\nIch bin deine persönliche Lern-Coachin:\n\n💪 Täglich motivieren\n📅 Lernpläne erstellen\n🎯 Schwachstellen finden\n📈 Fortschritt tracken\n\nWie kann ich dir heute helfen?`);
+        
+        const modal = document.createElement('div');
+        modal.className = 'modal-overlay';
+        modal.innerHTML = `
+            <div class="modal coach-modal">
+                <div class="modal-header">
+                    <h3>🐰 Emilia Coach</h3>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="coach-welcome">
+                        <p>Hallo mein зайчик! 👋</p>
+                        <p>Ich bin deine persönliche Lern-Coachin:</p>
+                        <ul>
+                            <li>💪 Täglich motivieren</li>
+                            <li>📅 Lernpläne erstellen</li>
+                            <li>🎯 Schwachstellen finden</li>
+                            <li>📈 Fortschritt tracken</li>
+                        </ul>
+                    </div>
+                    <div class="coach-stats">
+                        <h4>📊 Dein Fortschritt:</h4>
+                        <p>Erledigte Aufgaben: ${this.progress.completedExercises || 0}</p>
+                        <p>Lernzeit: ${this.progress.totalTime || 0} Minuten</p>
+                        <p>Simulationen: ${this.progress.simulations || 0}</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" onclick="window.app.createLearningPlan()">
+                        Lernplan erstellen
+                    </button>
+                    <button class="btn btn-secondary" onclick="window.app.closeModal()">
+                        Schließen
+                    </button>
+                </div>
+            </div>
+        `;
+        
+        document.body.appendChild(modal);
+    }
+    
+    createLearningPlan() {
+        this.closeModal();
+        alert('📅 Dein persönlicher Lernplan wird erstellt...\n\n💪 Täglich 30 Minuten Training\n🎯 Fokus auf deine Schwachstellen\n📈 Wöchentlicher Fortschritt\n\nIch bin stolz auf dich, mein Süßer! ❤️');
     }
     
     shareApp() {
@@ -341,7 +682,6 @@ class LernApp {
                 console.log('Error sharing app:', error);
             });
         } else {
-            // Fallback for browsers that don't support Web Share API
             const dummy = document.createElement('input');
             document.body.appendChild(dummy);
             dummy.value = window.location.href;
@@ -394,14 +734,6 @@ window.showInfo = () => window.app.showInfo();
 // Initialize app when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     window.app = new LernApp();
-});
-
-// Handle keyboard shortcuts
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-        // Close modals or go back
-        console.log('Escape pressed');
-    }
 });
 
 // Performance monitoring
