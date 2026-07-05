@@ -662,7 +662,7 @@
     </style>
     
     <!-- PWA -->
-    <link rel="stylesheet" href="style.css?v=build-20260705-1815">
+    <link rel="stylesheet" href="style.css?v=build-20260705-premium-1">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#3498db">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -735,6 +735,11 @@
         <div class="container">
             <section id="modules">
                 <h2 class="section-title">Lernmodule</h2>
+                <div class="value-strip" aria-label="Vorteile der Lernplattform">
+                    <div><strong>80/20 Fokus</strong><span>Nur das trainieren, was Punkte bringt.</span></div>
+                    <div><strong>Prüfungsnah</strong><span>Eigene Aufgaben im Stil typischer IHK-Anforderungen.</span></div>
+                    <div><strong>Gegen Prüfungsangst</strong><span>Kleine Schritte, schnelle Erfolgserlebnisse, klare Musterlösungen.</span></div>
+                </div>
                 <div class="modules-grid">
                     <div class="module-card">
                         <div class="module-header">
@@ -865,6 +870,15 @@
                         </div>
                     </div>
                 </div>
+            </section>
+
+            <section id="legal-positioning" class="product-note" aria-label="Rechtlicher Hinweis und Produktpositionierung">
+                <div>
+                    <span class="eyebrow">Für spätere Vermarktung vorbereitet</span>
+                    <h2>Eigene IHK-nahe Übungsplattform — keine offiziellen Prüfungsunterlagen</h2>
+                    <p>Diese Lernplattform nutzt selbst erstellte Aufgaben, die sich an typischen Anforderungen der Zwischenprüfung für Kaufleute für Büromanagement orientieren. Offizielle IHK-Prüfungen, Logos und geschützte Materialien sollten nur mit ausdrücklicher Lizenz verwendet werden.</p>
+                </div>
+                <a class="module-btn product-cta" href="BUSINESS_PLAN.md">Vermarktungsplan ansehen</a>
             </section>
         </div>
     </main>
@@ -1069,12 +1083,25 @@
         
         // Lade Aufgaben beim Start
         document.addEventListener('DOMContentLoaded', function() {
-            displayTasks();
+            loadFullTaskList();
             setupEventListeners();
             checkCookieConsent();
             console.log('IHK Lernplattform geladen -', aufgaben.length, 'optimierte Aufgaben verfügbar');
             console.log('Accessibility: ARIA-Labels, Keyboard Navigation, Screen Reader Support implementiert');
         });
+
+        async function loadFullTaskList() {
+            try {
+                const response = await fetch('data/aufgaben-optimiert.json');
+                const data = await response.json();
+                if (Array.isArray(data.aufgaben) && data.aufgaben.length > aufgaben.length) {
+                    aufgaben.splice(0, aufgaben.length, ...data.aufgaben.map(normalizeTask));
+                }
+            } catch (e) {
+                console.warn('Could not load full task list, using embedded preview tasks:', e);
+            }
+            displayTasks();
+        }
         
         // Event-Listener einrichten
         function setupEventListeners() {
@@ -1325,7 +1352,7 @@
     </script>
 
     <!-- Learning Environment Module -->
-    <script src="learning-environment.js?v=build-20260705-1815"></script>
+    <script src="learning-environment.js?v=build-20260705-premium-1"></script>
     
     <script>
         // Initialize Learning Environment
