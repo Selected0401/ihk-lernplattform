@@ -685,7 +685,19 @@
       ],
       "loesung": "Regeln/Regel erstellen mit Absender- und Betreffbedingungen",
       "content": {
-        "solution": "Regeln/Regel erstellen mit Absender- und Betreffbedingungen"
+        "solution": "Regeln/Regel erstellen mit Absender- und Betreffbedingungen",
+        "elements": [
+          "Regeln-Assistent nutzen",
+          "Bedingungen festlegen",
+          "Aktionen definieren",
+          "Bedingungen: Absender- und Betrefffilter definieren",
+          "Regeln/Regel erstellen mit Absender- und Betreffbedingungen",
+          "E-Mail-Regeln erstellen",
+          "Regel",
+          "Ordner",
+          "Bedingung",
+          "Aktion"
+        ]
       }
     },
     {
@@ -703,7 +715,19 @@
       ],
       "loesung": "Neuer Termin mit Teilnehmerliste und Raumplanung",
       "content": {
-        "solution": "Neuer Termin mit Teilnehmerliste und Raumplanung"
+        "solution": "Neuer Termin mit Teilnehmerliste und Raumplanung",
+        "elements": [
+          "Termin erstellen",
+          "Teilnehmer einladen",
+          "Antworten verwalten",
+          "Neuer Termin mit Teilnehmerliste und Raumplanung",
+          "Kalendertermin mit Besprechungsanfrage",
+          "Regel",
+          "Ordner",
+          "Bedingung",
+          "Aktion",
+          "Speichern"
+        ]
       }
     },
     {
@@ -721,7 +745,19 @@
       ],
       "loesung": "Kontakte mit Kategorien und Verteilerlisten",
       "content": {
-        "solution": "Kontakte mit Kategorien und Verteilerlisten"
+        "solution": "Kontakte mit Kategorien und Verteilerlisten",
+        "elements": [
+          "Kontakte erstellen",
+          "Verteilerlisten anlegen",
+          "Felder anpassen",
+          "Kontakte mit Kategorien und Verteilerlisten",
+          "Kontakte verwalten und gruppieren",
+          "Regel",
+          "Ordner",
+          "Bedingung",
+          "Aktion",
+          "Speichern"
+        ]
       }
     },
     {
@@ -739,7 +775,19 @@
       ],
       "loesung": "Aufgaben mit Kategorien und Fälligkeitsmanagement",
       "content": {
-        "solution": "Aufgaben mit Kategorien und Fälligkeitsmanagement"
+        "solution": "Aufgaben mit Kategorien und Fälligkeitsmanagement",
+        "elements": [
+          "Aufgaben erstellen",
+          "Prioritäten setzen",
+          "Fortschritt verfolgen",
+          "Aufgaben mit Kategorien und Fälligkeitsmanagement",
+          "Aufgaben und Projektmanagement",
+          "Regel",
+          "Ordner",
+          "Bedingung",
+          "Aktion",
+          "Speichern"
+        ]
       }
     },
     {
@@ -757,7 +805,19 @@
       ],
       "loesung": "Datei/Optionen/Mail/Signaturen mit HTML-Formatierung",
       "content": {
-        "solution": "Datei/Optionen/Mail/Signaturen mit HTML-Formatierung"
+        "solution": "Datei/Optionen/Mail/Signaturen mit HTML-Formatierung",
+        "elements": [
+          "Signatur erstellen",
+          "Vorlagen speichern",
+          "Automatische Anwendung",
+          "Datei/Optionen/Mail/Signaturen mit HTML-Formatierung",
+          "Signatur und Vorlagen",
+          "Regel",
+          "Ordner",
+          "Bedingung",
+          "Aktion",
+          "Speichern"
+        ]
       }
     },
     {
@@ -775,7 +835,19 @@
       ],
       "loesung": "Kalenderfreigabe mit verschiedenen Berechtigungsstufen",
       "content": {
-        "solution": "Kalenderfreigabe mit verschiedenen Berechtigungsstufen"
+        "solution": "Kalenderfreigabe mit verschiedenen Berechtigungsstufen",
+        "elements": [
+          "Kalender freigeben",
+          "Berechtigungen vergeben",
+          "Delegierung einrichten",
+          "Kalenderfreigabe mit verschiedenen Berechtigungsstufen",
+          "Kalenderfreigabe und Delegierung",
+          "Regel",
+          "Ordner",
+          "Bedingung",
+          "Aktion",
+          "Speichern"
+        ]
       }
     },
     {
@@ -793,7 +865,19 @@
       ],
       "loesung": "Suchordner mit benutzerdefinierten Kriterien",
       "content": {
-        "solution": "Suchordner mit benutzerdefinierten Kriterien"
+        "solution": "Suchordner mit benutzerdefinierten Kriterien",
+        "elements": [
+          "Erweiterte Suche",
+          "Filter anwenden",
+          "Gespeicherte Suchen",
+          "Suchordner mit benutzerdefinierten Kriterien",
+          "Suchfunktionen und Filter",
+          "Regel",
+          "Ordner",
+          "Bedingung",
+          "Aktion",
+          "Speichern"
+        ]
       }
     },
     {
@@ -811,7 +895,19 @@
       ],
       "loesung": "Datei/Account-Einstellungen/Datendateien mit AutoArchiv",
       "content": {
-        "solution": "Datei/Account-Einstellungen/Datendateien mit AutoArchiv"
+        "solution": "Datei/Account-Einstellungen/Datendateien mit AutoArchiv",
+        "elements": [
+          "Datendateien erstellen",
+          "AutoArchiv einrichten",
+          "Speicher optimieren",
+          "Datei/Account-Einstellungen/Datendateien mit AutoArchiv",
+          "Datendatei-Management",
+          "Regel",
+          "Ordner",
+          "Bedingung",
+          "Aktion",
+          "Speichern"
+        ]
       }
     },
     {
@@ -829,7 +925,19 @@
       ],
       "loesung": "Datei/Optionen/Sicherheitscenter mit Filterregeln",
       "content": {
-        "solution": "Datei/Optionen/Sicherheitscenter mit Filterregeln"
+        "solution": "Datei/Optionen/Sicherheitscenter mit Filterregeln",
+        "elements": [
+          "Junk-Mail-Filter",
+          "Sicherheitseinstellungen",
+          "Verschlüsselung",
+          "Datei/Optionen/Sicherheitscenter mit Filterregeln",
+          "Sicherheits- und Privatsphäre-Einstellungen",
+          "Regel",
+          "Ordner",
+          "Bedingung",
+          "Aktion",
+          "Speichern"
+        ]
       }
     },
     {
@@ -847,7 +955,19 @@
       ],
       "loesung": "Store-Add-Ins mit Synchronisationseinstellungen",
       "content": {
-        "solution": "Store-Add-Ins mit Synchronisationseinstellungen"
+        "solution": "Store-Add-Ins mit Synchronisationseinstellungen",
+        "elements": [
+          "Add-Ins suchen",
+          "Installieren",
+          "Konfigurieren",
+          "Store-Add-Ins mit Synchronisationseinstellungen",
+          "Outlook-Add-Ins nutzen",
+          "Regel",
+          "Ordner",
+          "Bedingung",
+          "Aktion",
+          "Speichern"
+        ]
       }
     },
     {
@@ -865,7 +985,19 @@
       ],
       "loesung": "Exchange/IMAP-Konfiguration mit mobiler Synchronisation",
       "content": {
-        "solution": "Exchange/IMAP-Konfiguration mit mobiler Synchronisation"
+        "solution": "Exchange/IMAP-Konfiguration mit mobiler Synchronisation",
+        "elements": [
+          "Konten einrichten",
+          "Synchronisation",
+          "Konfliktlösung",
+          "Exchange/IMAP-Konfiguration mit mobiler Synchronisation",
+          "Mobile Synchronisation",
+          "Regel",
+          "Ordner",
+          "Bedingung",
+          "Aktion",
+          "Speichern"
+        ]
       }
     },
     {
@@ -884,7 +1016,19 @@
       ],
       "loesung": "Ansicht/Masterfolie mit Logo und Farbschema",
       "content": {
-        "solution": "Ansicht/Masterfolie mit Logo und Farbschema"
+        "solution": "Ansicht/Masterfolie mit Logo und Farbschema",
+        "elements": [
+          "Masterfolie gestalten",
+          "Layouts erstellen",
+          "Konsistente Anwendung",
+          "Mindestens 3 Layout-Vorlagen erstellen",
+          "Ansicht/Masterfolie mit Logo und Farbschema",
+          "Präsentation mit Masterfolie erstellen",
+          "Titel",
+          "Inhalt",
+          "Corporate Design",
+          "Folienmaster"
+        ]
       }
     },
     {
@@ -902,7 +1046,19 @@
       ],
       "loesung": "Animationen/Einblenden und Übergänge/Auswischen",
       "content": {
-        "solution": "Animationen/Einblenden und Übergänge/Auswischen"
+        "solution": "Animationen/Einblenden und Übergänge/Auswischen",
+        "elements": [
+          "Animationen zeitlich steuern",
+          "Übergänge auswählen",
+          "Wegklick-Animationen",
+          "Animationen/Einblenden und Übergänge/Auswischen",
+          "Animationen und Übergänge",
+          "Titel",
+          "Inhalt",
+          "Corporate Design",
+          "Folienmaster",
+          "Farbschema"
+        ]
       }
     },
     {
@@ -920,7 +1076,19 @@
       ],
       "loesung": "Eingefügte Excel-Diagramme und SmartArt-Hierarchie",
       "content": {
-        "solution": "Eingefügte Excel-Diagramme und SmartArt-Hierarchie"
+        "solution": "Eingefügte Excel-Diagramme und SmartArt-Hierarchie",
+        "elements": [
+          "Diagrammtypen wählen",
+          "Daten verknüpfen",
+          "SmartArt einsetzen",
+          "Eingefügte Excel-Diagramme und SmartArt-Hierarchie",
+          "Diagramme und Grafiken integrieren",
+          "Titel",
+          "Inhalt",
+          "Corporate Design",
+          "Folienmaster",
+          "Farbschema"
+        ]
       }
     },
     {
@@ -938,7 +1106,19 @@
       ],
       "loesung": "Eingebettete Videos mit Klick-Steuerung und Hyperlinks",
       "content": {
-        "solution": "Eingebettete Videos mit Klick-Steuerung und Hyperlinks"
+        "solution": "Eingebettete Videos mit Klick-Steuerung und Hyperlinks",
+        "elements": [
+          "Medien einfügen",
+          "Hyperlinks erstellen",
+          "Autoplay einstellen",
+          "Eingebettete Videos mit Klick-Steuerung und Hyperlinks",
+          "Multimedia-Präsentation",
+          "Titel",
+          "Inhalt",
+          "Corporate Design",
+          "Folienmaster",
+          "Farbschema"
+        ]
       }
     },
     {
@@ -956,7 +1136,19 @@
       ],
       "loesung": "Notizen unter Folien und Referentenansicht mit Timer",
       "content": {
-        "solution": "Notizen unter Folien und Referentenansicht mit Timer"
+        "solution": "Notizen unter Folien und Referentenansicht mit Timer",
+        "elements": [
+          "Notizenbereich nutzen",
+          "Referentenansicht testen",
+          "Druckansicht prüfen",
+          "Notizen unter Folien und Referentenansicht mit Timer",
+          "Foliennotizen und Referentenansicht",
+          "Titel",
+          "Inhalt",
+          "Corporate Design",
+          "Folienmaster",
+          "Farbschema"
+        ]
       }
     },
     {
@@ -974,7 +1166,19 @@
       ],
       "loesung": "Designs speichern als .potx Vorlage",
       "content": {
-        "solution": "Designs speichern als .potx Vorlage"
+        "solution": "Designs speichern als .potx Vorlage",
+        "elements": [
+          "Designelemente festlegen",
+          "Farbschema erstellen",
+          "Vorlage speichern",
+          "Designs speichern als .potx Vorlage",
+          "Vorlage erstellen und wiederverwenden",
+          "Titel",
+          "Inhalt",
+          "Corporate Design",
+          "Folienmaster",
+          "Farbschema"
+        ]
       }
     },
     {
@@ -992,7 +1196,19 @@
       ],
       "loesung": "3D-Objekte mit Rotation und Schatteneffekten",
       "content": {
-        "solution": "3D-Objekte mit Rotation und Schatteneffekten"
+        "solution": "3D-Objekte mit Rotation und Schatteneffekten",
+        "elements": [
+          "3D-Modelle einfügen",
+          "Effekte anwenden",
+          "Beleuchtung anpassen",
+          "3D-Objekte mit Rotation und Schatteneffekten",
+          "3D-Objekte und Effekte",
+          "Titel",
+          "Inhalt",
+          "Corporate Design",
+          "Folienmaster",
+          "Farbschema"
+        ]
       }
     },
     {
@@ -1010,7 +1226,19 @@
       ],
       "loesung": "Menüfolie mit Hyperlinks zu allen Abschnitten",
       "content": {
-        "solution": "Menüfolie mit Hyperlinks zu allen Abschnitten"
+        "solution": "Menüfolie mit Hyperlinks zu allen Abschnitten",
+        "elements": [
+          "Hyperlinks auf Schaltflächen",
+          "Navigation planen",
+          "Zurück-Buttons",
+          "Menüfolie mit Hyperlinks zu allen Abschnitten",
+          "Interaktive Navigation",
+          "Titel",
+          "Inhalt",
+          "Corporate Design",
+          "Folienmaster",
+          "Farbschema"
+        ]
       }
     },
     {
@@ -1028,7 +1256,19 @@
       ],
       "loesung": "Aufzeichnungsfunktion mit Klick-Steuerung",
       "content": {
-        "solution": "Aufzeichnungsfunktion mit Klick-Steuerung"
+        "solution": "Aufzeichnungsfunktion mit Klick-Steuerung",
+        "elements": [
+          "Bildschirmaufzeichnung",
+          "Timing einstellen",
+          "Video exportieren",
+          "Aufzeichnungsfunktion mit Klick-Steuerung",
+          "Präsentation aufzeichnen",
+          "Titel",
+          "Inhalt",
+          "Corporate Design",
+          "Folienmaster",
+          "Farbschema"
+        ]
       }
     },
     {
@@ -1046,7 +1286,19 @@
       ],
       "loesung": "Verknüpfte Diagramme mit automatischer Aktualisierung",
       "content": {
-        "solution": "Verknüpfte Diagramme mit automatischer Aktualisierung"
+        "solution": "Verknüpfte Diagramme mit automatischer Aktualisierung",
+        "elements": [
+          "Daten verknüpfen",
+          "Aktualisierungsoptionen",
+          "Formate beibehalten",
+          "Verknüpfte Diagramme mit automatischer Aktualisierung",
+          "Datenverknüpfungen und Aktualisierung",
+          "Titel",
+          "Inhalt",
+          "Corporate Design",
+          "Folienmaster",
+          "Farbschema"
+        ]
       }
     },
     {
@@ -1064,7 +1316,19 @@
       ],
       "loesung": "Design/Seite einrichten mit verschiedenen Formaten",
       "content": {
-        "solution": "Design/Seite einrichten mit verschiedenen Formaten"
+        "solution": "Design/Seite einrichten mit verschiedenen Formaten",
+        "elements": [
+          "Seitenformat anpassen",
+          "Objekte skalieren",
+          "Druckansicht prüfen",
+          "Design/Seite einrichten mit verschiedenen Formaten",
+          "Präsentation für verschiedene Bildschirme",
+          "Titel",
+          "Inhalt",
+          "Corporate Design",
+          "Folienmaster",
+          "Farbschema"
+        ]
       }
     },
     {
@@ -1082,7 +1346,19 @@
       ],
       "loesung": "Überprüfen/Kommentare mit Review-Workflow",
       "content": {
-        "solution": "Überprüfen/Kommentare mit Review-Workflow"
+        "solution": "Überprüfen/Kommentare mit Review-Workflow",
+        "elements": [
+          "Kommentare hinzufügen",
+          "Review-Modus nutzen",
+          "Änderungen zusammenführen",
+          "Überprüfen/Kommentare mit Review-Workflow",
+          "Zusammenarbeit und Review",
+          "Titel",
+          "Inhalt",
+          "Corporate Design",
+          "Folienmaster",
+          "Farbschema"
+        ]
       }
     },
     {
@@ -1101,7 +1377,19 @@
       ],
       "loesung": "SmartArt-Hierarchie mit integrierten Fotos und Hyperlinks zu Detailfolien",
       "content": {
-        "solution": "SmartArt-Hierarchie mit integrierten Fotos und Hyperlinks zu Detailfolien"
+        "solution": "SmartArt-Hierarchie mit integrierten Fotos und Hyperlinks zu Detailfolien",
+        "elements": [
+          "SmartArt-Typ: Hierarchieliste",
+          "Fotos in Formen einfügen",
+          "Farbschema an Corporate Design anpassen",
+          "Hyperlinks auf einzelne Positionen",
+          "SmartArt-Hierarchie mit integrierten Fotos und Hyperlinks zu Detailfolien",
+          "Organigramm mit SmartArt erstellen",
+          "Titel",
+          "Inhalt",
+          "Corporate Design",
+          "Folienmaster"
+        ]
       }
     },
     {
@@ -1119,7 +1407,19 @@
       ],
       "loesung": "DIN 5008 Format mit Blocksatz und 10pt Times New Roman",
       "content": {
-        "solution": "DIN 5008 Format mit Blocksatz und 10pt Times New Roman"
+        "solution": "DIN 5008 Format mit Blocksatz und 10pt Times New Roman",
+        "elements": [
+          "Verwenden Sie korrekte Absatzformate",
+          "Platzierung von Datum und Empfänger",
+          "Professionelle Schriftart wählen",
+          "DIN 5008 Format mit Blocksatz und 10pt Times New Roman",
+          "Geschäftsbrief formatieren",
+          "Absender",
+          "Empfänger",
+          "Datum",
+          "Betreff",
+          "Anrede"
+        ]
       }
     },
     {
@@ -1137,7 +1437,19 @@
       ],
       "loesung": "Serienbrief mit <<Anrede>> <<Nachname>> und personalisiertem Inhalt",
       "content": {
-        "solution": "Serienbrief mit <<Anrede>> <<Nachname>> und personalisiertem Inhalt"
+        "solution": "Serienbrief mit <<Anrede>> <<Nachname>> und personalisiertem Inhalt",
+        "elements": [
+          "Excel-Datenquelle verbinden",
+          "Serienbrieffelder einfügen",
+          "Vorschau und Zusammenführung",
+          "Serienbrief mit <<Anrede>> <<Nachname>> und personalisiertem Inhalt",
+          "Serienbrief für Kundenmailing",
+          "Absender",
+          "Empfänger",
+          "Datum",
+          "Betreff",
+          "Anrede"
+        ]
       }
     },
     {
@@ -1155,7 +1467,19 @@
       ],
       "loesung": "Formatvorlagen: Überschrift 1-3, Normal, Zitat mit verschiedenen Formatierungen",
       "content": {
-        "solution": "Formatvorlagen: Überschrift 1-3, Normal, Zitat mit verschiedenen Formatierungen"
+        "solution": "Formatvorlagen: Überschrift 1-3, Normal, Zitat mit verschiedenen Formatierungen",
+        "elements": [
+          "Formatvorlagen erstellen",
+          "Überschriftenhierarchie",
+          "Konsistente Anwendung",
+          "Formatvorlagen: Überschrift 1-3",
+          "Normal",
+          "Zitat mit verschiedenen Formatierungen",
+          "Dokumentvorlage mit Formatvorlagen",
+          "Absender",
+          "Empfänger",
+          "Datum"
+        ]
       }
     },
     {
@@ -1173,7 +1497,19 @@
       ],
       "loesung": "Tabelle mit =FORMEL(LEFT*RIGHT) und =SUMME(ABOVE)",
       "content": {
-        "solution": "Tabelle mit =FORMEL(LEFT*RIGHT) und =SUMME(ABOVE)"
+        "solution": "Tabelle mit =FORMEL(LEFT*RIGHT) und =SUMME(ABOVE)",
+        "elements": [
+          "Tabelle einfügen und formatieren",
+          "Formeln in Word",
+          "Zellen verbinden für Gesamtsumme",
+          "Tabelle mit =FORMEL(LEFT*RIGHT) und =SUMME(ABOVE)",
+          "Tabelle mit Berechnungen erstellen",
+          "Absender",
+          "Empfänger",
+          "Datum",
+          "Betreff",
+          "Anrede"
+        ]
       }
     },
     {
@@ -1191,7 +1527,19 @@
       ],
       "loesung": "Referenzen/Inhaltsverzeichnis mit Überschriften 1-3",
       "content": {
-        "solution": "Referenzen/Inhaltsverzeichnis mit Überschriften 1-3"
+        "solution": "Referenzen/Inhaltsverzeichnis mit Überschriften 1-3",
+        "elements": [
+          "Überschriften formatieren",
+          "Inhaltsverzeichnis einfügen",
+          "Aktualisieren bei Änderungen",
+          "Referenzen/Inhaltsverzeichnis mit Überschriften 1-3",
+          "Inhaltsverzeichnis automatisch erstellen",
+          "Absender",
+          "Empfänger",
+          "Datum",
+          "Betreff",
+          "Anrede"
+        ]
       }
     },
     {
@@ -1209,7 +1557,19 @@
       ],
       "loesung": "Layout/Spalten mit manuellem Seitenumbruch",
       "content": {
-        "solution": "Layout/Spalten mit manuellem Seitenumbruch"
+        "solution": "Layout/Spalten mit manuellem Seitenumbruch",
+        "elements": [
+          "Textspalten einrichten",
+          "Seitenumbruch einfügen",
+          "Ausrichtung optimieren",
+          "Layout/Spalten mit manuellem Seitenumbruch",
+          "Textspalten und Seitenumbruch",
+          "Absender",
+          "Empfänger",
+          "Datum",
+          "Betreff",
+          "Anrede"
+        ]
       }
     },
     {
@@ -1227,7 +1587,19 @@
       ],
       "loesung": "Kopfzeile mit Logo und Titel, Fußzeile mit Seitenzahl und Datum",
       "content": {
-        "solution": "Kopfzeile mit Logo und Titel, Fußzeile mit Seitenzahl und Datum"
+        "solution": "Kopfzeile mit Logo und Titel, Fußzeile mit Seitenzahl und Datum",
+        "elements": [
+          "Kopf-/Fußzeile einfügen",
+          "Verschiedene für erste Seite",
+          "Seitenzahlen formatieren",
+          "Kopfzeile mit Logo und Titel",
+          "Fußzeile mit Seitenzahl und Datum",
+          "Kopf- und Fußzeilen gestalten",
+          "Absender",
+          "Empfänger",
+          "Datum",
+          "Betreff"
+        ]
       }
     },
     {
@@ -1245,7 +1617,19 @@
       ],
       "loesung": "Überprüfen/Änderungen nachverfolgen mit Schutz für Überarbeitung",
       "content": {
-        "solution": "Überprüfen/Änderungen nachverfolgen mit Schutz für Überarbeitung"
+        "solution": "Überprüfen/Änderungen nachverfolgen mit Schutz für Überarbeitung",
+        "elements": [
+          "Änderung nachverfolgen",
+          "Dokument schützen",
+          "Kommentare einfügen",
+          "Überprüfen/Änderungen nachverfolgen mit Schutz für Überarbeitung",
+          "Dokument schützen und Kommentare",
+          "Absender",
+          "Empfänger",
+          "Datum",
+          "Betreff",
+          "Anrede"
+        ]
       }
     },
     {
@@ -1263,7 +1647,19 @@
       ],
       "loesung": "Referenzen/Index markieren und Index einfügen",
       "content": {
-        "solution": "Referenzen/Index markieren und Index einfügen"
+        "solution": "Referenzen/Index markieren und Index einfügen",
+        "elements": [
+          "Stichwörter markieren",
+          "Index einfügen",
+          "Häufigkeit anzeigen",
+          "Referenzen/Index markieren und Index einfügen",
+          "Index und Stichwortverzeichnis",
+          "Absender",
+          "Empfänger",
+          "Datum",
+          "Betreff",
+          "Anrede"
+        ]
       }
     },
     {
@@ -1281,7 +1677,19 @@
       ],
       "loesung": "Funktionen {DATE}, {SEQ} und Tabellenformeln",
       "content": {
-        "solution": "Funktionen {DATE}, {SEQ} und Tabellenformeln"
+        "solution": "Funktionen {DATE}, {SEQ} und Tabellenformeln",
+        "elements": [
+          "Feldfunktionen verwenden",
+          "Formeln in Tabellen",
+          "Vorlage speichern",
+          "Funktionen {DATE}",
+          "{SEQ} und Tabellenformeln",
+          "Vorlagen mit Feldfunktionen",
+          "Absender",
+          "Empfänger",
+          "Datum",
+          "Betreff"
+        ]
       }
     },
     {
@@ -1299,7 +1707,19 @@
       ],
       "loesung": "Überprüfen/Vergleichen und Zusammenführen mit Überprüfungsfenster",
       "content": {
-        "solution": "Überprüfen/Vergleichen und Zusammenführen mit Überprüfungsfenster"
+        "solution": "Überprüfen/Vergleichen und Zusammenführen mit Überprüfungsfenster",
+        "elements": [
+          "Dokumente vergleichen",
+          "Änderungen akzeptieren/ablehnen",
+          "Zusammenführen durchführen",
+          "Überprüfen/Vergleichen und Zusammenführen mit Überprüfungsfenster",
+          "Dokument vergleichen zusammenführen",
+          "Absender",
+          "Empfänger",
+          "Datum",
+          "Betreff",
+          "Anrede"
+        ]
       }
     },
     {
@@ -1317,7 +1737,19 @@
       ],
       "loesung": "Datei/Export als PDF mit Druckeinstellungen",
       "content": {
-        "solution": "Datei/Export als PDF mit Druckeinstellungen"
+        "solution": "Datei/Export als PDF mit Druckeinstellungen",
+        "elements": [
+          "Druckansicht prüfen",
+          "Papierformat einstellen",
+          "PDF exportieren",
+          "Datei/Export als PDF mit Druckeinstellungen",
+          "Drucklayout und PDF-Export",
+          "Absender",
+          "Empfänger",
+          "Datum",
+          "Betreff",
+          "Anrede"
+        ]
       }
     },
     {
@@ -1336,7 +1768,19 @@
       ],
       "loesung": "DIN 5008 Vorlage mit Serienbrief-Feldern: <<Anrede>> <<Nachname>>, korrekte Absatzformate",
       "content": {
-        "solution": "DIN 5008 Vorlage mit Serienbrief-Feldern: <<Anrede>> <<Nachname>>, korrekte Absatzformate"
+        "solution": "DIN 5008 Vorlage mit Serienbrief-Feldern: <<Anrede>> <<Nachname>>, korrekte Absatzformate",
+        "elements": [
+          "DIN 5008: Absender linksbündig",
+          "1 Zeile Abstand",
+          "Datum rechtsbündig mit TT.MM.JJJJ",
+          "Betreffzeile mit 'Betreff:' oder ohne Präfix",
+          "Serienbrieffelder für persönliche Anrede",
+          "DIN 5008 Vorlage mit Serienbrief-Feldern: <<Anrede>> <<Nachname>>",
+          "korrekte Absatzformate",
+          "DIN 5008 Geschäftsbrief mit Serienbrieffunktion",
+          "Absender",
+          "Empfänger"
+        ]
       }
     }
   ]
