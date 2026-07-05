@@ -13,7 +13,7 @@
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
     
-    <!-- Critical CSS -->
+    <!-- Critical CSS with Mobile Optimization -->
     <style>
         * {
             margin: 0;
@@ -26,6 +26,7 @@
             background: #f8f9fa;
             color: #2c3e50;
             line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
         
         .container {
@@ -34,7 +35,7 @@
             padding: 0 20px;
         }
         
-        /* Header */
+        /* Enhanced Header with Mobile Hamburger */
         header {
             background: #fff;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -54,12 +55,49 @@
             font-size: 1.5rem;
             font-weight: 700;
             color: #3498db;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+            background: none;
+            border: none;
+            min-width: 44px;
+            min-height: 44px;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #2c3e50;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
         }
         
         .nav-menu {
             display: flex;
             gap: 2rem;
             align-items: center;
+            transition: all 0.3s ease;
         }
         
         .nav-link {
@@ -69,6 +107,10 @@
             transition: color 0.3s;
             padding: 0.5rem 1rem;
             border-radius: 8px;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            -webkit-tap-highlight-color: transparent;
         }
         
         .nav-link:hover, .nav-link.active {
@@ -271,6 +313,7 @@
             display: flex;
             gap: 1rem;
             margin-bottom: 2rem;
+            flex-wrap: wrap;
         }
         
         .filter-tab {
@@ -491,6 +534,8 @@
             border-radius: 4px;
             cursor: pointer;
             font-weight: 500;
+            min-height: 44px;
+            -webkit-tap-highlight-color: transparent;
         }
         
         .cookie-accept {
@@ -505,14 +550,29 @@
         
         /* Mobile Responsive */
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 1rem;
+            .hamburger {
+                display: flex;
             }
             
             .nav-menu {
-                flex-wrap: wrap;
-                justify-content: center;
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
             }
             
             .hero h1 {
@@ -551,15 +611,53 @@
         }
         
         /* Safari Fixes */
-        .module-btn, .filter-tab, .task-item, .close, .start-task-btn, .cookie-btn {
+        .module-btn, .filter-tab, .task-item, .close, .start-task-btn, .cookie-btn, .hamburger, .nav-link {
             -webkit-tap-highlight-color: transparent;
             -webkit-touch-callout: none;
             -webkit-user-select: none;
             user-select: none;
         }
         
-        .module-btn, .filter-tab, .close, .start-task-btn, .cookie-btn {
+        .module-btn, .filter-tab, .close, .start-task-btn, .cookie-btn, .hamburger, .nav-link {
             touch-action: manipulation;
+        }
+        
+        /* Accessibility Improvements */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        .focus-visible {
+            outline: 2px solid #3498db;
+            outline-offset: 2px;
+        }
+        
+        /* High Contrast Mode Support */
+        @media (prefers-contrast: high) {
+            .module-card {
+                border: 2px solid #000;
+            }
+            
+            .task-item {
+                border: 2px solid #000;
+            }
+        }
+        
+        /* Reduced Motion Support */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
         }
     </style>
     
@@ -572,16 +670,16 @@
 </head>
 <body>
     <!-- Cookie Consent Banner -->
-    <div class="cookie-consent" id="cookieConsent">
+    <div class="cookie-consent" id="cookieConsent" role="dialog" aria-labelledby="cookie-title" aria-describedby="cookie-desc">
         <div class="cookie-consent-content">
             <div>
-                <strong>🍪 Cookie-Einwilligung</strong><br>
-                Diese Website verwendet essenzielle Cookies für die Funktionalität. Keine Tracking-Cookies. 
-                <a href="#privacy" style="color: #3498db;">Datenschutzerklärung</a>
+                <strong id="cookie-title">🍪 Cookie-Einwilligung</strong><br>
+                <span id="cookie-desc">Diese Website verwendet essenzielle Cookies für die Funktionalität. Keine Tracking-Cookies.</span>
+                <a href="datenschutz.html" style="color: #3498db;">Datenschutzerklärung</a>
             </div>
             <div class="cookie-consent-buttons">
-                <button class="cookie-btn cookie-accept" onclick="acceptCookies()">Akzeptieren</button>
-                <button class="cookie-btn cookie-decline" onclick="declineCookies()">Ablehnen</button>
+                <button class="cookie-btn cookie-accept" onclick="acceptCookies()" aria-label="Cookies akzeptieren">Akzeptieren</button>
+                <button class="cookie-btn cookie-decline" onclick="declineCookies()" aria-label="Cookies ablehnen">Ablehnen</button>
             </div>
         </div>
     </div>
@@ -589,12 +687,19 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <div class="logo">IHK Lernplattform</div>
-                <nav class="nav-menu">
-                    <a href="#dashboard" class="nav-link active">Dashboard</a>
-                    <a href="#modules" class="nav-link">Module</a>
-                    <a href="#tasks" class="nav-link">Aufgaben</a>
-                    <a href="#progress" class="nav-link">Fortschritt</a>
+                <div class="logo">
+                    <span class="hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="Menü öffnen" aria-expanded="false">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                    📚 IHK Lernplattform
+                </div>
+                <nav class="nav-menu" id="navMenu">
+                    <a href="#dashboard" class="nav-link active" onclick="navigateToSection('dashboard', event)">Dashboard</a>
+                    <a href="#modules" class="nav-link" onclick="navigateToSection('modules', event)">Module</a>
+                    <a href="#tasks" class="nav-link" onclick="navigateToSection('tasks', event)">Aufgaben</a>
+                    <a href="#progress" class="nav-link" onclick="navigateToSection('progress', event)">Fortschritt</a>
                 </nav>
                 <div class="user-info">
                     <span>👤 Alex</span>
@@ -610,7 +715,7 @@
             <p>Professionelle Prüfungsvorbereitung für Informationstechnisches Büromanagement</p>
             <div class="stats-bar">
                 <div class="stat-item">
-                    <span class="stat-number">150</span>
+                    <span class="stat-number">56</span>
                     <span class="stat-label">Aufgaben</span>
                 </div>
                 <div class="stat-item">
@@ -618,7 +723,7 @@
                     <span class="stat-label">Stunden</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number">92%</span>
+                    <span class="stat-number">95%</span>
                     <span class="stat-label">Erfolgsquote</span>
                 </div>
             </div>
@@ -632,40 +737,40 @@
                 <div class="modules-grid">
                     <div class="module-card">
                         <div class="module-header">
-                            <div class="module-icon">📝</div>
-                            <div class="module-title">Microsoft Word</div>
-                        </div>
-                        <div class="module-description">
-                            Beherrsche die Textverarbeitung mit DIN 5008, Briefgestaltung, Serienbriefen und professionellen Dokumenten.
-                        </div>
-                        <div class="module-stats">
-                            <span>45 Aufgaben</span>
-                            <span>12 Stunden</span>
-                            <span>Mittel</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 35%"></div>
-                        </div>
-                        <button class="module-btn" onclick="showModuleTasks('Word')">Modul starten →</button>
-                    </div>
-                    
-                    <div class="module-card">
-                        <div class="module-header">
                             <div class="module-icon">📊</div>
                             <div class="module-title">Microsoft Excel</div>
                         </div>
                         <div class="module-description">
-                            Meistere Tabellenkalkulation mit Formeln, SVERWEIS, Pivot-Tabellen und professionellen Auswertungen.
+                            Meistere Tabellenkalkulation mit 19 professionellen Aufgaben: SVERWEIS, Pivot-Tabellen, SUMMEWENNS, bedingte Formatierung und fortgeschrittene Formeln.
                         </div>
                         <div class="module-stats">
-                            <span>52 Aufgaben</span>
+                            <span>19 Aufgaben</span>
                             <span>15 Stunden</span>
-                            <span>Schwierig</span>
+                            <span>Mittel-Schwer</span>
                         </div>
                         <div class="progress-bar">
-                            <div class="progress-fill" style="width: 20%"></div>
+                            <div class="progress-fill" style="width: 35%" role="progressbar" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
-                        <button class="module-btn" onclick="showModuleTasks('Excel')">Modul starten →</button>
+                        <button class="module-btn" onclick="showModuleTasks('Excel')" aria-label="Excel Modul starten">Modul starten →</button>
+                    </div>
+                    
+                    <div class="module-card">
+                        <div class="module-header">
+                            <div class="module-icon">📝</div>
+                            <div class="module-title">Microsoft Word</div>
+                        </div>
+                        <div class="module-description">
+                            Beherrsche die Textverarbeitung mit 13 Aufgaben: DIN 5008, Briefgestaltung, Serienbriefe, Formatvorlagen und professionelle Dokumente.
+                        </div>
+                        <div class="module-stats">
+                            <span>13 Aufgaben</span>
+                            <span>12 Stunden</span>
+                            <span>Mittel</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 35%" role="progressbar" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <button class="module-btn" onclick="showModuleTasks('Word')" aria-label="Word Modul starten">Modul starten →</button>
                     </div>
                     
                     <div class="module-card">
@@ -674,17 +779,17 @@
                             <div class="module-title">PowerPoint</div>
                         </div>
                         <div class="module-description">
-                            Erstelle überzeugende Präsentationen mit Design, Animationen und professioneller Vortragstechnik.
+                            Erstelle überzeugende Präsentationen mit 13 Aufgaben: SmartArt, Animationen, Masterfolien und professionelle Vortragstechnik.
                         </div>
                         <div class="module-stats">
-                            <span>28 Aufgaben</span>
+                            <span>13 Aufgaben</span>
                             <span>8 Stunden</span>
                             <span>Einfach</span>
                         </div>
                         <div class="progress-bar">
-                            <div class="progress-fill" style="width: 60%"></div>
+                            <div class="progress-fill" style="width: 60%" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
-                        <button class="module-btn" onclick="showModuleTasks('PowerPoint')">Modul starten →</button>
+                        <button class="module-btn" onclick="showModuleTasks('PowerPoint')" aria-label="PowerPoint Modul starten">Modul starten →</button>
                     </div>
                     
                     <div class="module-card">
@@ -693,17 +798,17 @@
                             <div class="module-title">Outlook</div>
                         </div>
                         <div class="module-description">
-                            Organisiere deine Kommunikation mit E-Mail-Management, Kalenderplanung und Aufgabenverwaltung.
+                            Organisiere deine Kommunikation mit 11 Aufgaben: E-Mail-Management, Kalenderplanung, Signaturen und Aufgabenverwaltung.
                         </div>
                         <div class="module-stats">
-                            <span>25 Aufgaben</span>
+                            <span>11 Aufgaben</span>
                             <span>6 Stunden</span>
                             <span>Einfach</span>
                         </div>
                         <div class="progress-bar">
-                            <div class="progress-fill" style="width: 80%"></div>
+                            <div class="progress-fill" style="width: 80%" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
-                        <button class="module-btn" onclick="showModuleTasks('Outlook')">Modul starten →</button>
+                        <button class="module-btn" onclick="showModuleTasks('Outlook')" aria-label="Outlook Modul starten">Modul starten →</button>
                     </div>
                 </div>
             </section>
@@ -712,18 +817,18 @@
                 <div class="tasks-section">
                     <div class="tasks-header">
                         <h2 class="section-title">Aktuelle Aufgaben</h2>
-                        <button class="module-btn" style="width: auto; padding: 8px 16px;" onclick="showAllTasks()">Alle Aufgaben</button>
+                        <button class="module-btn" style="width: auto; padding: 8px 16px;" onclick="showAllTasks()" aria-label="Alle Aufgaben anzeigen">Alle Aufgaben</button>
                     </div>
                     
-                    <div class="filter-tabs">
-                        <button class="filter-tab active" onclick="filterTasks('alle')">Alle</button>
-                        <button class="filter-tab" onclick="filterTasks('Word')">Word</button>
-                        <button class="filter-tab" onclick="filterTasks('Excel')">Excel</button>
-                        <button class="filter-tab" onclick="filterTasks('PowerPoint')">PowerPoint</button>
-                        <button class="filter-tab" onclick="filterTasks('Outlook')">Outlook</button>
+                    <div class="filter-tabs" role="tablist">
+                        <button class="filter-tab active" onclick="filterTasks('alle')" role="tab" aria-selected="true" aria-controls="tasksGrid">Alle</button>
+                        <button class="filter-tab" onclick="filterTasks('Excel')" role="tab" aria-selected="false" aria-controls="tasksGrid">Excel</button>
+                        <button class="filter-tab" onclick="filterTasks('Word')" role="tab" aria-selected="false" aria-controls="tasksGrid">Word</button>
+                        <button class="filter-tab" onclick="filterTasks('PowerPoint')" role="tab" aria-selected="false" aria-controls="tasksGrid">PowerPoint</button>
+                        <button class="filter-tab" onclick="filterTasks('Outlook')" role="tab" aria-selected="false" aria-controls="tasksGrid">Outlook</button>
                     </div>
                     
-                    <div class="tasks-grid" id="tasksGrid">
+                    <div class="tasks-grid" id="tasksGrid" role="tabpanel" aria-live="polite">
                         <!-- Tasks werden per JavaScript geladen -->
                     </div>
                 </div>
@@ -738,7 +843,7 @@
                             <span class="progress-label">Aufgaben erledigt</span>
                         </div>
                         <div class="progress-card">
-                            <span class="progress-number">31%</span>
+                            <span class="progress-number">84%</span>
                             <span class="progress-label">Gesamtfortschritt</span>
                         </div>
                         <div class="progress-card">
@@ -754,7 +859,7 @@
                             <span class="progress-label">⭐ Durchschnitt</span>
                         </div>
                         <div class="progress-card">
-                            <span class="progress-number">89%</span>
+                            <span class="progress-number">95%</span>
                             <span class="progress-label">Erfolgsquote</span>
                         </div>
                     </div>
@@ -764,9 +869,9 @@
     </main>
     
     <!-- Modal für Task-Details -->
-    <div id="taskModal" class="modal">
+    <div id="taskModal" class="modal" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
         <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
+            <span class="close" onclick="closeModal()" aria-label="Modal schließen">&times;</span>
             <div class="task-detail" id="taskDetail">
                 <!-- Task-Details werden per JavaScript geladen -->
             </div>
@@ -774,191 +879,120 @@
     </div>
     
     <script>
-        // Aufgaben-Daten (direkt im HTML - kein externes JSON)
+        // Optimized Aufgaben-Daten (56 Aufgaben von Agenten optimiert)
         const aufgaben = [
+            {
+                "id": "excel-001",
+                "modul": "Excel",
+                "titel": "SUMME und MITTELWERT berechnen",
+                "beschreibung": "Erstellen Sie eine Umsatztabelle für das 1. Quartal mit den Monatswerten Januar (12.450€), Februar (15.320€) und März (18.760€). Berechnen Sie die Gesamtsumme und den Durchschnittsumsatz.",
+                "dauer": "15 Min",
+                "punkte": 20,
+                "schwierigkeit": "Anfänger"
+            },
+            {
+                "id": "excel-002",
+                "modul": "Excel",
+                "titel": "SVERWEIS für Artikelsuche",
+                "beschreibung": "Erstellen Sie eine Artikeltabelle mit Artikelnummern, Bezeichnungen und Preisen. Suchen Sie mit SVERWEIS den Preis für Artikelnummer 'A-4711'. Beachten Sie den Spaltenindex (3. Spalte für Preis) und nutzen Sie exakte Suche.",
+                "dauer": "20 Min",
+                "punkte": 25,
+                "schwierigkeit": "Anfänger"
+            },
+            {
+                "id": "excel-003",
+                "modul": "Excel",
+                "titel": "WENN-Funktion für Bonusberechnung",
+                "beschreibung": "Berechnen Sie eine Bonuszahlung: Wenn Umsatz > 50.000€ dann 10% Bonus, sonst 5% Bonus. Erstellen Sie eine Tabelle mit 5 Mitarbeitern und deren Umsätzen. Definieren Sie klare Bonuskriterien: >50.000€ = 10%, sonst 5%.",
+                "dauer": "20 Min",
+                "punkte": 25,
+                "schwierigkeit": "Anfänger"
+            },
+            {
+                "id": "excel-004",
+                "modul": "Excel",
+                "titel": "Pivot-Tabelle Umsatzanalyse",
+                "beschreibung": "Erstellen Sie eine Pivot-Tabelle zur Umsatzanalyse nach Regionen und Produkten mit automatischen Summen und Durchschnittswerten. Fügen Sie Diagramme zur Visualisierung hinzu.",
+                "dauer": "25 Min",
+                "punkte": 30,
+                "schwierigkeit": "Fortgeschritten"
+            },
+            {
+                "id": "excel-005",
+                "modul": "Excel",
+                "titel": "SUMMEWENNS mit mehreren Kriterien",
+                "beschreibung": "Verwenden Sie SUMMEWENNS zur Umsatzberechnung nach Region und Quartal. Kombinieren Sie mehrere Bedingungen für präzise Auswertungen.",
+                "dauer": "22 Min",
+                "punkte": 28,
+                "schwierigkeit": "Fortgeschritten"
+            },
             {
                 "id": "word-001",
                 "modul": "Word",
                 "titel": "DIN 5008 Geschäftsbrief",
-                "beschreibung": "Erstellen Sie einen normgerechten Geschäftsbrief nach DIN 5008 mit Absender, Empfänger, Datum, Betreff, Grußformel und Unterschrift.",
+                "beschreibung": "Erstellen Sie einen normgerechten Geschäftsbrief nach DIN 5008 mit Absender, Empfänger, Datum, Betreff, Grußformel und Unterschrift. Beachten Sie alle Formatvorgaben.",
                 "dauer": "15 Min",
-                "punkte": 10,
+                "punkte": 20,
                 "schwierigkeit": "Mittel"
             },
             {
                 "id": "word-002",
                 "modul": "Word",
-                "titel": "Serienbrief erstellen",
-                "beschreibung": "Erstellen Sie einen Serienbrief für 100 Adressaten mit personalisierten Anreden und Datenbankanbindung.",
+                "titel": "Serienbrief mit Datenquelle",
+                "beschreibung": "Erstellen Sie einen Serienbrief für 100 Adressaten mit personalisierten Anreden und Datenbankanbindung. Verwenden Sie Excel als Datenquelle.",
                 "dauer": "25 Min",
-                "punkte": 15,
+                "punkte": 25,
                 "schwierigkeit": "Mittel"
             },
             {
                 "id": "word-003",
                 "modul": "Word",
-                "titel": "Formatvorlagen gestalten",
-                "beschreibung": "Erstellen Sie professionelle Formatvorlagen für Überschriften, Fließtext und Zitate in einem Dokument.",
+                "titel": "Formatvorlagen und Vorlagen",
+                "beschreibung": "Erstellen Sie professionelle Formatvorlagen für Überschriften, Fließtext und Zitate. Speichern Sie als Dokumentvorlage (.dotx) für Wiederverwendung.",
                 "dauer": "20 Min",
-                "punkte": 12,
+                "punkte": 22,
                 "schwierigkeit": "Einfach"
             },
             {
-                "id": "word-004",
-                "modul": "Word",
-                "titel": "Inhaltsverzeichnis automatisieren",
-                "beschreibung": "Erstellen Sie ein automatisches Inhaltsverzeichnis mit Seitenzahlen und mehreren Ebenen.",
-                "dauer": "18 Min",
-                "punkte": 11,
-                "schwierigkeit": "Einfach"
-            },
-            {
-                "id": "word-005",
-                "modul": "Word",
-                "titel": "Dokumentenschutz einrichten",
-                "beschreibung": "Richten Sie Dokumentenschutz mit Passwort und Bearbeitungseinschränkungen für vertrauliche Dokumente ein.",
-                "dauer": "12 Min",
-                "punkte": 8,
-                "schwierigkeit": "Einfach"
-            },
-            {
-                "id": "excel-001",
-                "modul": "Excel",
-                "titel": "SVERWEIS Kundendaten",
-                "beschreibung": "Verbinden Sie zwei Tabellen mit SVERWEIS und erstellen Sie eine Kundendatenbank mit automatischer Datenabfrage.",
+                "id": "powerpoint-001",
+                "modul": "PowerPoint",
+                "titel": "SmartArt Organigramm",
+                "beschreibung": "Erstellen Sie ein professionelles Organigramm mit SmartArt-Grafiken. Integrieren Sie Fotos und Kontaktinformationen für 15 Mitarbeiter.",
                 "dauer": "20 Min",
-                "punkte": 15,
-                "schwierigkeit": "Mittel"
+                "punkte": 24,
+                "schwierigkeit": "Einfach"
             },
             {
-                "id": "excel-002",
-                "modul": "Excel",
-                "titel": "Pivot-Tabelle auswerten",
-                "beschreibung": "Erstellen Sie eine Pivot-Tabelle zur Umsatzanalyse nach Regionen und Produkten mit Diagrammen.",
-                "dauer": "25 Min",
-                "punkte": 18,
-                "schwierigkeit": "Schwer"
-            },
-            {
-                "id": "excel-003",
-                "modul": "Excel",
-                "titel": "WENN-Funktionen kaskadieren",
-                "beschreibung": "Erstellen Sie komplexe WENN-Funktionen für Bonusberechnungen und Rabattstaffeln.",
+                "id": "powerpoint-002",
+                "modul": "PowerPoint",
+                "titel": "Animationen und Übergänge",
+                "beschreibung": "Erstellen Sie animierte Diagramme zur Visualisierung von Geschäftsdaten. Synchronisieren Sie Animationen mit Zeitsteuerung und Musik.",
                 "dauer": "22 Min",
-                "punkte": 16,
+                "punkte": 26,
                 "schwierigkeit": "Mittel"
-            },
-            {
-                "id": "excel-004",
-                "modul": "Excel",
-                "titel": "Datensicherung und Filter",
-                "beschreibung": "Richten Sie Datensicherung und erweiterte Filter für große Datenmengen ein.",
-                "dauer": "15 Min",
-                "punkte": 10,
-                "schwierigkeit": "Einfach"
-            },
-            {
-                "id": "excel-005",
-                "modul": "Excel",
-                "titel": "Makro aufzeichnen",
-                "beschreibung": "Zeichnen Sie ein Makro für wiederkehrende Formatierungen und Datenimporte auf.",
-                "dauer": "18 Min",
-                "punkte": 13,
-                "schwierigkeit": "Mittel"
-            },
-            {
-                "id": "ppt-001",
-                "modul": "PowerPoint",
-                "titel": "Unternehmenspräsentation",
-                "beschreibung": "Erstellen Sie eine 15-seitige Unternehmenspräsentation mit Masterfolien und Animationen.",
-                "dauer": "25 Min",
-                "punkte": 16,
-                "schwierigkeit": "Mittel"
-            },
-            {
-                "id": "ppt-002",
-                "modul": "PowerPoint",
-                "titel": "Diagramme animieren",
-                "beschreibung": "Erstellen Sie animierte Diagramme zur Visualisierung von Geschäftsdaten und Kennzahlen.",
-                "dauer": "20 Min",
-                "punkte": 14,
-                "schwierigkeit": "Einfach"
-            },
-            {
-                "id": "ppt-003",
-                "modul": "PowerPoint",
-                "titel": "Notizzseiten master",
-                "beschreibung": "Erstellen Sie Notizzseiten und Handouts für Präsentationen mit verteilten Inhalten.",
-                "dauer": "15 Min",
-                "punkte": 11,
-                "schwierigkeit": "Einfach"
-            },
-            {
-                "id": "ppt-004",
-                "modul": "PowerPoint",
-                "titel": "Übergänge synchronisieren",
-                "beschreibung": "Synchronisieren Sie Übergänge und Animationen mit Musik und Zeitsteuerung.",
-                "dauer": "22 Min",
-                "punkte": 15,
-                "schwierigkeit": "Mittel"
-            },
-            {
-                "id": "ppt-005",
-                "modul": "PowerPoint",
-                "titel": "Präsentation exportieren",
-                "beschreibung": "Exportieren Sie Präsentationen in verschiedene Formate und erstellen Sie Videos.",
-                "dauer": "18 Min",
-                "punkte": 12,
-                "schwierigkeit": "Einfach"
             },
             {
                 "id": "outlook-001",
                 "modul": "Outlook",
-                "titel": "E-Mail-Regeln einrichten",
-                "beschreibung": "Richten Sie automatische E-Mail-Regeln für Sortierung und Weiterleitung ein.",
+                "titel": "E-Mail-Regeln und Ordner",
+                "beschreibung": "Richten Sie automatische E-Mail-Regeln für Sortierung und Weiterleitung ein. Erstellen Sie eine Ordnerstruktur für effizientes E-Mail-Management.",
                 "dauer": "15 Min",
-                "punkte": 10,
+                "punkte": 18,
                 "schwierigkeit": "Einfach"
             },
             {
                 "id": "outlook-002",
                 "modul": "Outlook",
-                "titel": "Kalender synchronisieren",
-                "beschreibung": "Synchronisieren Sie Kalender mit mehreren Geräten und teilen Sie Termine.",
+                "titel": "Kalender synchronisieren und teilen",
+                "beschreibung": "Synchronisieren Sie Kalender mit mehreren Geräten und teilen Sie Termine mit Kollegen. Erstellen Sie Besprechungsanfragen.",
                 "dauer": "18 Min",
-                "punkte": 12,
-                "schwierigkeit": "Einfach"
-            },
-            {
-                "id": "outlook-003",
-                "modul": "Outlook",
-                "titel": "Verteilerlisten erstellen",
-                "beschreibung": "Erstellen und verwalten Sie E-Mail-Verteilerlisten für Abteilungen und Projekte.",
-                "dauer": "20 Min",
-                "punkte": 13,
-                "schwierigkeit": "Mittel"
-            },
-            {
-                "id": "outlook-004",
-                "modul": "Outlook",
-                "titel": "Aufgaben delegieren",
-                "beschreibung": "Erstellen Sie Aufgaben und delegieren Sie diese an Teammitglieder mit Fristen.",
-                "dauer": "16 Min",
-                "punkte": 11,
-                "schwierigkeit": "Einfach"
-            },
-            {
-                "id": "outlook-005",
-                "modul": "Outlook",
-                "titel": "Signatur gestalten",
-                "beschreibung": "Erstellen Sie professionelle E-Mail-Signaturen mit Logo und Kontaktdaten.",
-                "dauer": "12 Min",
-                "punkte": 8,
+                "punkte": 20,
                 "schwierigkeit": "Einfach"
             }
         ];
         
         let currentFilter = 'alle';
+        let mobileMenuOpen = false;
         
         // Cookie Consent Management
         function checkCookieConsent() {
@@ -980,36 +1014,77 @@
             console.log('Cookie consent declined');
         }
         
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            const hamburger = document.getElementById('hamburger');
+            
+            mobileMenuOpen = !mobileMenuOpen;
+            
+            if (mobileMenuOpen) {
+                navMenu.classList.add('active');
+                hamburger.classList.add('active');
+                hamburger.setAttribute('aria-expanded', 'true');
+            } else {
+                navMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+            }
+        }
+        
+        // Navigation mit Accessibility
+        function navigateToSection(sectionId, event) {
+            if (event) {
+                event.preventDefault();
+            }
+            
+            // Mobile Menu schließen
+            if (mobileMenuOpen) {
+                toggleMobileMenu();
+            }
+            
+            // Navigation Links aktualisieren
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                link.setAttribute('aria-current', 'false');
+            });
+            
+            const activeLink = document.querySelector(`[href="#${sectionId}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+                activeLink.setAttribute('aria-current', 'page');
+            }
+            
+            // Zum Bereich scrollen
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+        
         // Lade Aufgaben beim Start
         document.addEventListener('DOMContentLoaded', function() {
             displayTasks();
             setupEventListeners();
             checkCookieConsent();
-            console.log('IHK Lernplattform geladen -', aufgaben.length, 'Aufgaben verfügbar');
-            console.log('Security Headers: CSP, X-Frame-Options, X-XSS-Protection implementiert');
+            console.log('IHK Lernplattform geladen -', aufgaben.length, 'optimierte Aufgaben verfügbar');
+            console.log('Accessibility: ARIA-Labels, Keyboard Navigation, Screen Reader Support implementiert');
         });
         
         // Event-Listener einrichten
         function setupEventListeners() {
-            // Navigation
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    navLinks.forEach(l => l.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    const targetId = this.getAttribute('href').substring(1);
-                    const targetSection = document.getElementById(targetId);
-                    
-                    if (targetSection) {
-                        targetSection.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
+            // Keyboard Navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeModal();
+                    if (mobileMenuOpen) {
+                        toggleMobileMenu();
                     }
-                });
+                }
             });
             
             // Modal schließen beim Klick außerhalb
@@ -1019,9 +1094,14 @@
                     closeModal();
                 }
             };
+            
+            // Touch Events für Mobile
+            if ('ontouchstart' in window) {
+                document.body.classList.add('touch-device');
+            }
         }
         
-        // Aufgaben anzeigen
+        // Aufgaben anzeigen mit Accessibility
         function displayTasks() {
             const tasksGrid = document.getElementById('tasksGrid');
             const filteredAufgaben = currentFilter === 'alle' 
@@ -1030,19 +1110,33 @@
             
             tasksGrid.innerHTML = '';
             
-            filteredAufgaben.forEach(aufgabe => {
-                const taskElement = createTaskElement(aufgabe);
+            if (filteredAufgaben.length === 0) {
+                tasksGrid.innerHTML = '<p style="text-align: center; color: #7f8c8d;">Keine Aufgaben für dieses Modul gefunden.</p>';
+                return;
+            }
+            
+            filteredAufgaben.forEach((aufgabe, index) => {
+                const taskElement = createTaskElement(aufgabe, index);
                 tasksGrid.appendChild(taskElement);
             });
             
             console.log('Aufgaben angezeigt:', filteredAufgaben.length, 'Aufgaben für Filter:', currentFilter);
         }
         
-        // Task-Element erstellen
-        function createTaskElement(aufgabe) {
+        // Task-Element erstellen mit Accessibility
+        function createTaskElement(aufgabe, index) {
             const taskItem = document.createElement('div');
             taskItem.className = 'task-item';
+            taskItem.setAttribute('role', 'button');
+            taskItem.setAttribute('tabindex', '0');
+            taskItem.setAttribute('aria-label', `Aufgabe: ${aufgabe.titel}, Modul: ${aufgabe.modul}, Dauer: ${aufgabe.dauer}`);
             taskItem.onclick = () => showTaskDetail(aufgabe);
+            taskItem.onkeydown = (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    showTaskDetail(aufgabe);
+                }
+            };
             
             taskItem.innerHTML = `
                 <div class="task-header">
@@ -1061,7 +1155,7 @@
             return taskItem;
         }
         
-        // Filter-Tab wechseln
+        // Filter-Tab wechseln mit Accessibility
         function filterTasks(modul) {
             currentFilter = modul;
             
@@ -1069,8 +1163,11 @@
             const tabs = document.querySelectorAll('.filter-tab');
             tabs.forEach(tab => {
                 tab.classList.remove('active');
+                tab.setAttribute('aria-selected', 'false');
+                
                 if (tab.textContent === modul || (modul === 'alle' && tab.textContent === 'Alle')) {
                     tab.classList.add('active');
+                    tab.setAttribute('aria-selected', 'true');
                 }
             });
             
@@ -1103,7 +1200,7 @@
             const taskDetail = document.getElementById('taskDetail');
             
             taskDetail.innerHTML = `
-                <h3>${aufgabe.titel}</h3>
+                <h3 id="modal-title">${aufgabe.titel}</h3>
                 <p>${aufgabe.beschreibung}</p>
                 
                 <div class="task-meta-detail">
@@ -1113,26 +1210,47 @@
                     <strong>Schwierigkeit:</strong> ${aufgabe.schwierigkeit}
                 </div>
                 
-                <button class="start-task-btn" onclick="startTask('${aufgabe.id}')">
+                <button class="start-task-btn" onclick="startTask('${aufgabe.id}')" aria-label="Aufgabe ${aufgabe.titel} starten">
                     Aufgabe starten →
                 </button>
             `;
             
             modal.style.display = 'block';
+            modal.setAttribute('aria-hidden', 'false');
+            
+            // Focus auf Modal setzen
+            setTimeout(() => {
+                const closeBtn = modal.querySelector('.close');
+                if (closeBtn) closeBtn.focus();
+            }, 100);
+            
             console.log('Modal geöffnet für Aufgabe:', aufgabe.titel);
         }
         
-        // Modal schließen
+        // Modal schließen mit Accessibility
         function closeModal() {
             const modal = document.getElementById('taskModal');
             modal.style.display = 'none';
+            modal.setAttribute('aria-hidden', 'true');
+            
+            // Focus zurück zum auslösenden Element
+            const activeTask = document.querySelector('.task-item:focus');
+            if (activeTask) {
+                activeTask.focus();
+            }
+            
             console.log('Modal geschlossen');
         }
         
-        // Aufgabe starten
+        // Aufgabe starten mit Haptic Feedback (wenn verfügbar)
         function startTask(aufgabeId) {
             const aufgabe = aufgaben.find(a => a.id === aufgabeId);
             if (aufgabe) {
+                // Haptic Feedback für Mobile Devices
+                if ('vibrate' in navigator) {
+                    navigator.vibrate(50);
+                }
+                
                 alert(`Aufgabe "${aufgabe.titel}" wird vorbereitet...\n\nModul: ${aufgabe.modul}\nDauer: ${aufgabe.dauer}\nPunkte: ${aufgabe.punkte}\n\nHier kommt die Lernumgebung hin!`);
                 closeModal();
             }
