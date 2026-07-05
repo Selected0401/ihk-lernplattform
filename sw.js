@@ -9,33 +9,39 @@
  * - Safe asset caching with error handling
  */
 
-const CACHE_NAME = 'emilia-lernplattform-v2.0.1-safari';
-const STATIC_CACHE = 'emilia-static-v2.0.1-safari';
-const DYNAMIC_CACHE = 'emilia-dynamic-v2.0.1-safari';
-const API_CACHE = 'emilia-api-v2.0.1-safari';
+const CACHE_NAME = 'emilia-lernplattform-v2.0.2-safari';
+const STATIC_CACHE = 'emilia-static-v2.0.2-safari';
+const DYNAMIC_CACHE = 'emilia-dynamic-v2.0.2-safari';
+const API_CACHE = 'emilia-api-v2.0.2-safari';
 
 // Safari detection
 const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
 // Feature detection
-const supportsBackgroundSync = 'sync' in ServiceWorkerRegistration.prototype;
-const supportsPush = 'PushManager' in window;
+const supportsBackgroundSync = Boolean(self.registration && 'sync' in self.registration);
+const supportsPush = 'PushManager' in self;
 
 // Critical assets to cache immediately - ONLY EXISTING FILES
 const CRITICAL_ASSETS = [
-  '/',
-  '/index.html',
-  '/js/main.js',
-  '/js/fortschritt.js',
-  '/js/pruefung.js',
-  '/manifest.json'
+  './',
+  'index.html',
+  'index-optimized.html',
+  'style.css',
+  'learning-environment.js',
+  'data.js',
+  'app.js',
+  'safari-optimizer.js',
+  'manifest.json',
+  'icon-192.png',
+  'icon-512.png',
+  'data/aufgaben-optimiert.json'
 ];
 
 // Assets to cache on demand
 const ON_DEMAND_ASSETS = [
-  '/images/*.webp',
-  '/images/icons/*.webp',
-  '/fonts/*.woff2'
+  'images/*.webp',
+  'images/icons/*.webp',
+  'fonts/*.woff2'
 ];
 
 // Network strategies
@@ -173,8 +179,8 @@ function getStrategy(url) {
     return STRATEGIES.CACHE_FIRST;
   }
   
-  // Critical CSS/JS - Cache First
-  if (pathname.includes('/css/') || pathname.includes('/js/')) {
+  // Critical CSS/JS - Cache First (root files + subfolders)
+  if (pathname.match(/\.(css|js)$/) || pathname.includes('/css/') || pathname.includes('/js/')) {
     return STRATEGIES.CACHE_FIRST;
   }
   
@@ -217,21 +223,29 @@ function isCDN(origin) {
  */
 async function cacheFirst(request) {
   const cache = await caches.open(getCacheName(request.url));
-  const cached = await cache.match(request);
+  const cached = await cache.match(request, { ignoreSearch: true });
   
   if (cached) {
     console.log('📋 Cache hit:', request.url);
     return cached;
   }
-  
+
   console.log('🌐 Cache miss, fetching:', request.url);
-  const response = await fetch(request);
-  
-  if (response.ok) {
-    await safeCachePut(cache, request, response.clone());
+  try {
+    const response = await fetch(request);
+
+    if (response.ok) {
+      await safeCachePut(cache, request, response.clone());
+    }
+
+    return response;
+  } catch (error) {
+    const acceptHeader = request.headers.get('accept');
+    if (acceptHeader && acceptHeader.includes('text/html')) {
+      return getOfflinePage();
+    }
+    throw error;
   }
-  
-  return response;
 }
 
 /**
@@ -239,7 +253,7 @@ async function cacheFirst(request) {
  */
 async function networkFirst(request) {
   const cache = await caches.open(getCacheName(request.url));
-  const cached = await cache.match(request);
+  const cached = await cache.match(request, { ignoreSearch: true });
   
   try {
     console.log('🌐 Network first:', request.url);
@@ -257,7 +271,8 @@ async function networkFirst(request) {
     }
     
     // Return offline page for HTML requests
-    if (request.headers.get('accept').includes('text/html')) {
+    const acceptHeader = request.headers.get('accept');
+    if (acceptHeader && acceptHeader.includes('text/html')) {
       return getOfflinePage();
     }
     
@@ -270,7 +285,7 @@ async function networkFirst(request) {
  */
 async function staleWhileRevalidate(request) {
   const cache = await caches.open(getCacheName(request.url));
-  const cached = await cache.match(request);
+  const cached = await cache.match(request, { ignoreSearch: true });
   
   // Fetch in background
   const fetchPromise = fetch(request).then((response) => {
@@ -304,7 +319,7 @@ async function networkOnly(request) {
  */
 async function cacheOnly(request) {
   const cache = await caches.open(getCacheName(request.url));
-  const cached = await cache.match(request);
+  const cached = await cache.match(request, { ignoreSearch: true });
   
   if (cached) {
     console.log('📋 Cache only:', request.url);
@@ -512,8 +527,8 @@ if (supportsPush) {
     
     const options = {
       body: 'Neue Lernaufgabe verfügbar!',
-      icon: '/images/icon-192x192.png',
-      badge: '/images/badge-72x72.png',
+      icon: 'images/icon-192x192.png',
+      badge: 'images/badge-72x72.png',
       vibrate: [100, 50, 100],
       data: {
         dateOfArrival: Date.now(),
@@ -523,12 +538,12 @@ if (supportsPush) {
         {
           action: 'explore',
           title: 'Lernfeld ansehen',
-          icon: '/images/checkmark.png'
+          icon: 'images/checkmark.png'
         },
         {
           action: 'close',
           title: 'Schließen',
-          icon: '/images/xmark.png'
+          icon: 'images/xmark.png'
         }
       ]
     };
@@ -548,7 +563,7 @@ if (supportsPush) {
     
     if (event.action === 'explore') {
       event.waitUntil(
-        clients.openWindow('/aufgaben.html')
+        clients.openWindow('aufgaben.html')
       );
     }
   });
@@ -571,7 +586,7 @@ self.addEventListener('message', (event) => {
  */
 async function sendToAnalytics(metrics) {
   try {
-    await fetch('/api/analytics/performance', {
+    await fetch('api/analytics/performance', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

@@ -722,7 +722,7 @@
             <div>
                 <strong id="cookie-title">🍪 Cookie-Einwilligung</strong><br>
                 <span id="cookie-desc">Diese Website verwendet essenzielle Cookies für die Funktionalität. Keine Tracking-Cookies.</span>
-                <a href="datenschutz.html" style="color: #3498db;">Datenschutzerklärung</a>
+                <a href="datenschutz.html" style="color: #7dd3fc; text-decoration: underline;">Datenschutzerklärung</a>
             </div>
             <div class="cookie-consent-buttons">
                 <button class="cookie-btn cookie-accept" onclick="acceptCookies()" aria-label="Cookies akzeptieren">Akzeptieren</button>
@@ -735,11 +735,11 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <span class="hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="Menü öffnen" aria-expanded="false">
+                    <button type="button" class="hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="Menü öffnen" aria-expanded="false" aria-controls="navMenu">
                         <span></span>
                         <span></span>
                         <span></span>
-                    </span>
+                    </button>
                     📚 IHK Lernplattform
                 </div>
                 <nav class="nav-menu" id="navMenu">
@@ -930,9 +930,9 @@
     </main>
     
     <!-- Modal für Task-Details -->
-    <div id="taskModal" class="modal" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+    <div id="taskModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
         <div class="modal-content">
-            <span class="close" onclick="closeModal()" aria-label="Modal schließen">&times;</span>
+            <button type="button" class="close" onclick="closeModal()" aria-label="Modal schließen">&times;</button>
             <div class="task-detail" id="taskDetail">
                 <!-- Task-Details werden per JavaScript geladen -->
             </div>
@@ -1054,19 +1054,21 @@
         
         let currentFilter = 'alle';
         let mobileMenuOpen = false;
+        let lastModalTrigger = null;
         
         function hasAccess() {
             const params = new URLSearchParams(window.location.search);
-            return localStorage.getItem('ihk_access_granted') === 'true' || params.get('access') === 'granted' || params.get('preview') === 'true';
+            return localStorage.getItem('ihk_access_granted') === 'true' || params.get('preview') === 'true';
         }
 
         function previewAccess() {
-            localStorage.setItem('ihk_preview_mode', 'true');
-            document.getElementById('accessGate').style.display = 'none';
+            const params = new URLSearchParams(window.location.search);
+            params.set('preview', 'true');
+            window.location.search = params.toString();
         }
 
         function enforceAccessGate() {
-            if (!hasAccess() && localStorage.getItem('ihk_preview_mode') !== 'true') {
+            if (!hasAccess()) {
                 document.getElementById('accessGate').style.display = 'grid';
             }
         }
@@ -1318,6 +1320,7 @@
         async function showTaskDetail(aufgabe) {
             const modal = document.getElementById('taskModal');
             const taskDetail = document.getElementById('taskDetail');
+            lastModalTrigger = document.activeElement;
             
             // Try to get full task data from optimized JSON
             let fullTask = aufgabe;
@@ -1349,6 +1352,7 @@
             
             modal.style.display = 'block';
             modal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
             
             // Focus auf Modal setzen
             setTimeout(() => {
@@ -1364,11 +1368,11 @@
             const modal = document.getElementById('taskModal');
             modal.style.display = 'none';
             modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
             
             // Focus zurück zum auslösenden Element
-            const activeTask = document.querySelector('.task-item:focus');
-            if (activeTask) {
-                activeTask.focus();
+            if (lastModalTrigger && typeof lastModalTrigger.focus === 'function') {
+                lastModalTrigger.focus();
             }
             
             console.log('Modal geschlossen');
@@ -1389,33 +1393,39 @@
                     }
                     
                     // Wait for learningEnv to be ready
-                    if (window.learningEnv) {
+                    const openLearningEnvironment = () => {
+                        closeModal();
                         window.learningEnv.startTask(aufgabe);
+                    };
+
+                    if (window.learningEnv) {
+                        openLearningEnvironment();
                     } else {
                         // learning-environment.js might not be loaded yet, wait for it
                         const checkLearningEnv = setInterval(() => {
                             if (window.learningEnv) {
                                 clearInterval(checkLearningEnv);
-                                window.learningEnv.startTask(aufgabe);
+                                openLearningEnvironment();
                             }
                         }, 50);
                     }
-                    closeModal();
                 })
                 .catch(e => {
                     console.error('Could not load task data:', e);
                     // Fallback to basic array
                     const aufgabe = normalizeTask(aufgaben.find(a => a.id === aufgabeId));
                     if (aufgabe) {
-                        if (window.learningEnv) window.learningEnv.startTask(aufgabe);
-                        closeModal();
+                        if (window.learningEnv) {
+                            closeModal();
+                            window.learningEnv.startTask(aufgabe);
+                        }
                     }
                 });
         }
     </script>
 
     <!-- Learning Environment Module -->
-    <script src="learning-environment.js?v=build-20260705-premium-2"></script>
+    <script src="js/learning-environment.js?v=build-20260705-premium-2"></script>
     
     <script>
         // Initialize Learning Environment
@@ -1424,7 +1434,7 @@
             
             // Register Service Worker for PWA
             if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register('/sw.js')
+                navigator.serviceWorker.register('sw.js')
                     .then(reg => console.log('✅ Service Worker registered:', reg.scope))
                     .catch(err => console.warn('⚠️ Service Worker registration failed:', err));
             }

@@ -27,8 +27,12 @@ class LearningEnvironment {
             editor.initialize(task, this);
         }
         
+        document.body.style.overflow = 'hidden';
+
         // Add keyboard shortcuts
         this.addKeyboardShortcuts(modal);
+
+        setTimeout(() => modal.querySelector('.modal-close')?.focus(), 0);
         
         return modal;
     }
@@ -36,15 +40,15 @@ class LearningEnvironment {
     createLearningEnvironmentHTML(task) {
         const moduleIcon = this.getModuleIcon(task.modul);
         return `
-            <div class="modal learning-environment">
+            <div class="modal learning-environment" role="dialog" aria-modal="true" aria-labelledby="learning-env-title">
                 <div class="modal-header">
                     <div class="header-left">
                         <span class="module-badge">${moduleIcon} ${task.modul}</span>
-                        <h3>${task.titel}</h3>
+                        <h3 id="learning-env-title">${task.titel}</h3>
                     </div>
                     <div class="header-right">
                         <div class="timer" id="taskTimer">⏱️ ${task.dauer}</div>
-                        <button class="modal-close" onclick="window.learningEnv.closeEnvironment()" aria-label="Schließen">&times;</button>
+                        <button type="button" class="modal-close" onclick="window.learningEnv.closeEnvironment()" aria-label="Lernumgebung schließen">&times;</button>
                     </div>
                 </div>
                 <div class="modal-body learning-body">
@@ -128,6 +132,7 @@ class LearningEnvironment {
             }
             modal.remove();
         }
+        document.body.style.overflow = '';
         this.currentTask = null;
         this.userAnswers = {};
     }
@@ -174,9 +179,9 @@ class LearningEnvironment {
         const modal = document.createElement('div');
         modal.className = 'modal-overlay result-modal';
         modal.innerHTML = `
-            <div class="modal result">
+            <div class="modal result" role="dialog" aria-modal="true" aria-labelledby="result-modal-title">
                 <div class="modal-header">
-                    <h3>${result.correct ? '🎉 Richtig!' : '❌ Noch nicht ganz'}</h3>
+                    <h3 id="result-modal-title">${result.correct ? '🎉 Richtig!' : '❌ Noch nicht ganz'}</h3>
                 </div>
                 <div class="modal-body">
                     <p>${result.message}</p>

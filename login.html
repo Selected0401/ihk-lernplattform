@@ -23,12 +23,13 @@
     <input id="accessCode" class="code-input" placeholder="z.B. IHK-2027-PRO" autocomplete="one-time-code">
     <button class="module-btn" onclick="unlockAccess()">Lernplattform öffnen →</button>
     <p id="error" class="error">Der Code ist ungültig. Bitte prüfe die Schreibweise oder kontaktiere den Support.</p>
-    <p class="hint">MVP-Democodes für Tests: <strong>IHK-2027-PRO</strong> oder <strong>BUERO-99-START</strong>. Für echten Verkauf werden individuelle Codes per Digistore24/Webhook erzeugt.</p>
+    <p class="hint">Du findest deinen Zugangscode in der E-Mail nach dem Kauf. Falls du keine E-Mail findest, prüfe bitte Spam/Unbekannt oder kontaktiere den Support.</p>
   </main>
   <script>
     // Set this after deploying the Cloudflare Worker, e.g.
     // const ACCESS_API_URL = 'https://ihk-access-worker.YOUR_SUBDOMAIN.workers.dev/verify-code';
     const ACCESS_API_URL = '';
+    // Internal MVP fallback only. For production set ACCESS_API_URL and remove these local codes before launch.
     const VALID_CODES = ['IHK-2027-PRO', 'BUERO-99-START', 'BUERO-149-PLUS'];
 
     function grantAccess(code, plan = 'pro') {

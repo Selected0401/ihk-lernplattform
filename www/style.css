@@ -675,13 +675,16 @@ main {
 
 .btn,
 .btn-icon {
-    min-height: 42px;
+    min-height: 46px;
+    min-width: 46px;
     padding: .62rem .9rem;
     border: 1px solid var(--line) !important;
     border-radius: 14px !important;
     background: white !important;
     color: var(--ink) !important;
     cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .btn-primary,

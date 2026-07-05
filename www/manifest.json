@@ -2,12 +2,12 @@
     "name": "Emilia's IHK Lernplattform",
     "short_name": "IHK Lernen",
     "description": "Kostenlose Lernplattform für IHK Zwischenprüfung Büromanagement - Excel, Word, PowerPoint, Outlook",
-    "start_url": "/",
+    "start_url": "./",
     "display": "standalone",
     "background_color": "#667eea",
     "theme_color": "#667eea",
     "orientation": "portrait",
-    "scope": "/",
+    "scope": "./",
     "lang": "de",
     "categories": ["education", "productivity"],
     "icons": [
@@ -38,21 +38,21 @@
             "name": "📊 Excel",
             "short_name": "Excel",
             "description": "Excel Übungen starten",
-            "url": "/?module=excel",
+            "url": "?module=excel",
             "icons": [{"src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>", "sizes": "96x96"}]
         },
         {
             "name": "📝 Word",
             "short_name": "Word", 
             "description": "Word Übungen starten",
-            "url": "/?module=word",
+            "url": "?module=word",
             "icons": [{"src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📝</text></svg>", "sizes": "96x96"}]
         },
         {
             "name": "🎯 Simulation",
             "short_name": "Test",
             "description": "Prüfungssimulation starten",
-            "url": "/?module=simulation",
+            "url": "?module=simulation",
             "icons": [{"src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>", "sizes": "96x96"}]
         }
     ],
