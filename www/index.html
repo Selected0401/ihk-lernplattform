@@ -712,7 +712,6 @@
             <div style="display:flex;gap:.75rem;flex-wrap:wrap">
                 <a class="module-btn" style="width:auto;text-decoration:none" href="login.html">🔐 Code eingeben</a>
                 <a class="module-btn" style="width:auto;text-decoration:none;background:linear-gradient(135deg,#0f766e,#16a34a)!important" href="landing.html#preise">✅ Zugang kaufen</a>
-                <button class="module-btn" style="width:auto;background:#e5e7eb!important;color:#102033!important" onclick="previewAccess()">👀 Demo ansehen</button>
             </div>
         </div>
     </div>
@@ -1061,14 +1060,7 @@
         let lastModalTrigger = null;
         
         function hasAccess() {
-            const params = new URLSearchParams(window.location.search);
-            return localStorage.getItem('ihk_access_granted') === 'true' || params.get('preview') === 'true';
-        }
-
-        function previewAccess() {
-            const params = new URLSearchParams(window.location.search);
-            params.set('preview', 'true');
-            window.location.search = params.toString();
+            return localStorage.getItem('ihk_access_granted') === 'true';
         }
 
         function enforceAccessGate() {

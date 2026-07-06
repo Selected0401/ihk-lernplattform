@@ -25,19 +25,19 @@
     <h1>Gib deinen Zugangscode ein.</h1>
     <p>Nach dem Kauf über Digistore24 bekommst du deinen Zugangscode per E-Mail. PayPal läuft später als Zahlungsart im Digistore24-Checkout.</p>
     <label for="accessCode" style="font-weight:850;color:var(--ink)">Zugangscode</label>
-    <input id="accessCode" class="code-input" placeholder="z.B. IHK-2027-PRO" autocomplete="one-time-code" inputmode="text">
+    <input id="accessCode" class="code-input" placeholder="Zugangscode aus deiner E-Mail" autocomplete="one-time-code" inputmode="text">
     <div class="login-actions">
       <button class="module-btn" onclick="unlockAccess()">Lernplattform öffnen →</button>
       <a class="module-btn" style="background:linear-gradient(135deg,#0f766e,#16a34a)!important" href="landing.html#preise">Zugang kaufen</a>
     </div>
     <p id="error" class="error">Der Code ist ungültig. Bitte prüfe die Schreibweise oder kontaktiere den Support.</p>
-    <p class="hint">Du findest deinen Code in der E-Mail nach dem Kauf. Prüfe auch Spam/Unbekannt. Für echte Verkäufe sollte die Prüfung serverseitig über Digistore24-IPN/Webhook + Lizenzdatenbank laufen.</p>
-    <p class="test-mode"><strong>Interner Testmodus:</strong> Solange noch kein Lizenz-Backend aktiv ist, funktionieren die Testcodes <strong>IHK-2027-PRO</strong>, <strong>BUERO-99-START</strong> und <strong>BUERO-399-LAUNCH</strong>. Vor dem öffentlichen Verkauf ersetzen wir das durch individuelle Codes.</p>
+    <p class="hint">Du findest deinen Code in der E-Mail nach dem Kauf. Prüfe auch Spam/Unbekannt. Für echte Verkäufe muss die Prüfung serverseitig über Digistore24-IPN/Webhook + Lizenzdatenbank laufen.</p>
+    <p class="test-mode"><strong>Launch-Sicherheit:</strong> Öffentliche Testcodes sind deaktiviert. Trage vor dem Verkauf die Worker/API-URL ein, damit nur echte Käufercodes freigeschaltet werden.</p>
   </main>
   <script>
     // Production target: set ACCESS_API_URL to a Cloudflare Worker/Supabase endpoint that verifies unique codes server-side.
     const ACCESS_API_URL = '';
-    const VALID_CODES = ['IHK-2027-PRO', 'BUERO-99-START', 'BUERO-399-LAUNCH'];
+    const VALID_CODES = [];
 
     function grantAccess(code, plan = 'pro') {
       localStorage.setItem('ihk_access_granted', 'true');
@@ -74,10 +74,7 @@
           grantAccess(code, apiResult.plan || 'pro');
           return;
         }
-        if (!ACCESS_API_URL && VALID_CODES.includes(code)) {
-          grantAccess(code, code.includes('399') ? 'launch' : 'pro');
-          return;
-        }
+        if (!ACCESS_API_URL) throw new Error('ACCESS_API_URL fehlt');
       } catch (event) {
         console.warn('Code API nicht erreichbar:', event);
       } finally {
