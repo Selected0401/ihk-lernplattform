@@ -9,10 +9,10 @@
  * - Safe asset caching with error handling
  */
 
-const CACHE_NAME = 'emilia-lernplattform-v2.0.5-access-hardening';
-const STATIC_CACHE = 'emilia-static-v2.0.5-access-hardening';
-const DYNAMIC_CACHE = 'emilia-dynamic-v2.0.5-access-hardening';
-const API_CACHE = 'emilia-api-v2.0.5-access-hardening';
+const CACHE_NAME = 'emilia-lernplattform-v2.0.6-qa-polish';
+const STATIC_CACHE = 'emilia-static-v2.0.6-qa-polish';
+const DYNAMIC_CACHE = 'emilia-dynamic-v2.0.6-qa-polish';
+const API_CACHE = 'emilia-api-v2.0.6-qa-polish';
 
 // Safari detection
 const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);

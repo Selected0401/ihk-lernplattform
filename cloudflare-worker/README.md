@@ -47,7 +47,7 @@ Webhook-URL:
 https://DEIN-WORKER.workers.dev/digistore24-webhook?secret=DEIN_DIGISTORE_WEBHOOK_SECRET
 ```
 
-Für Produktion sollte die offizielle Digistore24-Signaturprüfung ergänzt werden. Der Secret-Parameter ist ein pragmatischer MVP-Schutz.
+Für Produktion sollte die offizielle Digistore24-Signaturprüfung bzw. der von Digistore24 dokumentierte verifizierte IPN/Webhook-Flow ergänzt werden. Der Secret-Parameter ist nur ein pragmatischer MVP-Schutz.
 
 ## Login-Anbindung
 
@@ -57,4 +57,4 @@ In `login.html` die Variable `ACCESS_API_URL` auf deine Worker-URL setzen:
 const ACCESS_API_URL = 'https://DEIN-WORKER.workers.dev/verify-code';
 ```
 
-Solange sie leer ist, nutzt `login.html` lokale Demo-Codes.
+Solange sie leer ist, lehnt `login.html` alle Codes ab. Öffentliche Frontend-Demo-Codes sind bewusst deaktiviert; für Tests zuerst den Worker deployen oder lokal eine API-URL setzen.

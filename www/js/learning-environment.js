@@ -648,7 +648,7 @@ class WordEditor {
         const toolbar = document.getElementById('editorToolbar');
         
         toolbar.innerHTML = `
-            <div class="word-toolbar" aria-label="Word Formatleiste">
+            <div class="word-toolbar" role="toolbar" aria-label="Word Formatleiste">
                 <select id="formatSelect" onchange="window.learningEnv.editors.word.applyFormat(this.value)">
                     <option value="">Absatzformat</option>
                     <option value="h1">Überschrift 1</option>
@@ -656,15 +656,15 @@ class WordEditor {
                     <option value="p">Normal</option>
                     <option value="blockquote">Zitat</option>
                 </select>
-                <button class="btn-icon" onclick="document.execCommand('bold')" title="Fett"><b>B</b></button>
-                <button class="btn-icon" onclick="document.execCommand('italic')" title="Kursiv"><i>I</i></button>
-                <button class="btn-icon" onclick="document.execCommand('underline')" title="Unterstrichen"><u>U</u></button>
-                <button class="btn-icon" onclick="document.execCommand('justifyLeft')" title="Linksbündig">⬅️</button>
-                <button class="btn-icon" onclick="document.execCommand('justifyCenter')" title="Zentriert">⬆️</button>
-                <button class="btn-icon" onclick="document.execCommand('justifyRight')" title="Rechtsbündig">➡️</button>
-                <button class="btn-icon" onclick="document.execCommand('insertUnorderedList')" title="Aufzählung">•</button>
-                <button class="btn-icon" onclick="document.execCommand('insertOrderedList')" title="Nummerierung">1.</button>
-                <button class="btn-icon word-template-btn" onclick="window.learningEnv.editors.word.insertExamTemplate()" title="80/20-Prüfungsvorlage einfügen">80/20 Vorlage</button>
+                <button class="btn-icon" onclick="document.execCommand('bold')" title="Fett" aria-label="Fett"><b>B</b></button>
+                <button class="btn-icon" onclick="document.execCommand('italic')" title="Kursiv" aria-label="Kursiv"><i>I</i></button>
+                <button class="btn-icon" onclick="document.execCommand('underline')" title="Unterstrichen" aria-label="Unterstrichen"><u>U</u></button>
+                <button class="btn-icon" onclick="document.execCommand('justifyLeft')" title="Linksbündig" aria-label="Linksbündig">⬅️</button>
+                <button class="btn-icon" onclick="document.execCommand('justifyCenter')" title="Zentriert" aria-label="Zentriert">⬆️</button>
+                <button class="btn-icon" onclick="document.execCommand('justifyRight')" title="Rechtsbündig" aria-label="Rechtsbündig">➡️</button>
+                <button class="btn-icon" onclick="document.execCommand('insertUnorderedList')" title="Aufzählung" aria-label="Aufzählung">•</button>
+                <button class="btn-icon" onclick="document.execCommand('insertOrderedList')" title="Nummerierung" aria-label="Nummerierung">1.</button>
+                <button class="btn-icon word-template-btn" onclick="window.learningEnv.editors.word.insertExamTemplate()" title="80/20-Struktur einfügen" aria-label="80/20-Struktur einfügen">80/20 Struktur</button>
             </div>
         `;
 
@@ -682,7 +682,7 @@ class WordEditor {
                 </div>
                 <div class="word-document-shell">
                     <div class="word-ruler-vertical" aria-hidden="true"><span>0</span><span>5</span><span>10</span><span>15</span><span>20</span><span>25</span></div>
-                    <div class="word-editor" contenteditable="true" id="wordDoc" spellcheck="true" lang="de-DE" aria-label="Word Dokument bearbeiten">
+                    <div class="word-editor" contenteditable="true" id="wordDoc" spellcheck="true" lang="de-DE" role="textbox" aria-multiline="true" aria-label="Word Dokument bearbeiten">
                         ${this.textToParagraphs(starterDocument)}
                     </div>
                 </div>
@@ -727,7 +727,7 @@ class WordEditor {
     insertExamTemplate() {
         const editor = document.getElementById('wordDoc');
         if (!editor || !this.task) return;
-        const template = this.task.content.examTemplate || this.task.content.solution || '';
+        const template = this.task.content.starterDocument || this.task.content.solution || '';
         editor.innerHTML = this.textToParagraphs(template);
         this.env.saveAnswer('word-content', editor.innerHTML);
         editor.focus();
