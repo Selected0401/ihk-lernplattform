@@ -21,14 +21,14 @@ Käufer zahlen einmalig 99€ als Launch-Angebot über Digistore24 und erhalten 
 
 1. Digistore24 Account erstellen.
 2. Produkt anlegen:
-   - Name: IHK 80/20 Prüfungstrainer Büromanagement
+   - Name: PrüfungsPilot Büro
    - Preis Launch: 99€ einmalig
    - Regulärer Wert/Ankerpreis nur verwenden, wenn rechtlich sauber belegbar: 399€ einmalig
    - Produkttyp: digitales Produkt / Online-Zugang
 3. Danke-/Return-URL setzen:
    - `https://selected0401.github.io/ihk-lernplattform/danke.html`
 4. Auslieferungs-E-Mail einrichten:
-   - Betreff: Dein Zugangscode zum IHK 80/20 Prüfungstrainer
+   - Betreff: Dein Zugangscode zum PrüfungsPilot 80/20
    - Login-Link: `https://selected0401.github.io/ihk-lernplattform/login.html`
    - Zugangscode aus Backend/Webhook einfügen
    - Supportkontakt und Widerrufs-/Refund-Hinweis ergänzen

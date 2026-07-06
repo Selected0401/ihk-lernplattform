@@ -17,12 +17,12 @@ Dieses Angebot steht in keiner Verbindung zur Industrie- und Handelskammer oder 
 ## Preisvarianten
 
 ### Launch-Angebot
-- Name: Prüfungstrainer Pro Launch
-- Preis: 99€ einmalig als Launch-Angebot statt 399€ regulärem Wert
+- Name: PrüfungsPilot Büro Launch
+- Preis: 99€ einmalig als zeitlich begrenztes Launch-Angebot. Ein späterer höherer Preis ist geplant, wird aber erst kommuniziert, wenn er tatsächlich gilt und rechtlich geprüft ist.
 - Enthält: Plattformzugang, 56 Aufgaben, interaktive Lernumgebung, Musterlösungen
 
 ### Regulär / Plus
-- Name: Prüfungstrainer Plus
+- Name: PrüfungsPilot Büro Plus
 - Preis: 149€ einmalig
 - Enthält: Plattformzugang plus Bonusmaterial, Lernplan, zusätzliche Simulationen oder Prüfungsangst-Checkliste
 
@@ -33,7 +33,7 @@ Dieses Angebot steht in keiner Verbindung zur Industrie- und Handelskammer oder 
 - Browser- und iPhone-taugliche Lernplattform
 - 56 eigene prüfungsnahe Aufgaben
 - Excel, Word, PowerPoint und Outlook trainieren
-- 80/20-System für maximalen Lernerfolg bei wenig Zeit
+- 80/20-System für fokussiertes Lernen bei wenig Zeit
 - Ideal bei Prüfungsangst und Lernchaos
 
 ## Auslieferungs-E-Mail
@@ -42,7 +42,7 @@ Betreff: Dein Zugangscode zum PrüfungsPilot 80/20
 
 Hallo,
 
-vielen Dank für deinen Kauf des PrüfungsPilot 80/20s.
+vielen Dank für deinen Kauf von PrüfungsPilot 80/20.
 
 Dein Zugangscode lautet:
 
