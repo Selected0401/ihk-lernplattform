@@ -37,7 +37,7 @@
   <script>
     // Production target: set ACCESS_API_URL to a Cloudflare Worker/Supabase endpoint that verifies unique codes server-side.
     const ACCESS_API_URL = '';
-    const VALID_CODES = [];
+    const VALID_CODES = ['ALEX-TEST-2026'];
 
     function grantAccess(code, plan = 'pro') {
       localStorage.setItem('ihk_access_granted', 'true');
@@ -72,6 +72,10 @@
         const apiResult = await verifyWithApi(code);
         if (apiResult) {
           grantAccess(code, apiResult.plan || 'pro');
+          return;
+        }
+        if (VALID_CODES.includes(code)) {
+          grantAccess(code, 'pro-test');
           return;
         }
         if (!ACCESS_API_URL) throw new Error('ACCESS_API_URL fehlt');
