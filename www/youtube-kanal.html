@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="YouTube-Launchplan für Prüfungskern: Kanalpositionierung, Content-Serien, Shorts-Hooks, Video-Skripte und Funnel zur Verkaufsseite.">
+  <title>Prüfungskern · YouTube-Launchplan</title>
+  <link rel="stylesheet" href="style.css?v=build-20260706-youtube-1">
+  <style>
+    .youtube-page { background: radial-gradient(circle at 12% 0%, rgba(37,99,235,.16), transparent 31rem), #f7fbff; }
+    .youtube-page .container { max-width: 1180px !important; }
+    .yt-hero { position:relative; overflow:hidden; padding:clamp(4.5rem,8vw,7.4rem) 0 clamp(3rem,6vw,5rem); color:white; background:linear-gradient(135deg,#111827,#dc2626 46%,#1d4ed8); }
+    .yt-hero::before { content:''; position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px); background-size:44px 44px; mask-image:linear-gradient(to bottom,black,transparent 86%); }
+    .yt-hero .container { position:relative; z-index:1; display:grid; grid-template-columns:minmax(0,1.06fr) minmax(300px,.94fr); gap:clamp(2rem,5vw,4rem); align-items:center; }
+    .badge { display:inline-flex; width:fit-content; margin-bottom:1rem; padding:.48rem .78rem; border:1px solid rgba(255,255,255,.24); border-radius:999px; background:rgba(255,255,255,.13); font-weight:850; }
+    .yt-hero h1 { font-size:clamp(2.55rem,7vw,5.7rem); line-height:.9; letter-spacing:-.075em; margin-bottom:1.2rem; }
+    .yt-hero p { color:rgba(255,255,255,.9); font-size:clamp(1.05rem,2vw,1.32rem); line-height:1.62; }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:.8rem; margin-top:1.5rem; }
+    .youtube-page .module-btn { color:#fff !important; text-decoration:none !important; }
+    .youtube-page .nav-link { text-decoration:none !important; }
+    .glass-card { border:1px solid rgba(255,255,255,.24); border-radius:32px; padding:clamp(1.25rem,3vw,1.8rem); background:rgba(255,255,255,.14); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); box-shadow:0 24px 70px rgba(0,0,0,.18); }
+    .glass-card ul { margin:1rem 0 0; padding-left:1.2rem; color:rgba(255,255,255,.92); line-height:1.75; }
+    .yt-section { padding:clamp(2.8rem,6vw,5.2rem) 0; }
+    .yt-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; }
+    .two-col { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:1rem; align-items:start; }
+    .yt-box { padding:clamp(1.2rem,3vw,2rem); border:1px solid var(--line); border-radius:28px; background:rgba(255,255,255,.9); box-shadow:var(--shadow-sm); }
+    .yt-box h2,.yt-box h3 { margin-bottom:.6rem; color:var(--ink); letter-spacing:-.035em; }
+    .yt-box p,.yt-box li { color:var(--muted); line-height:1.65; }
+    .kicker { color:var(--blue-dark); font-weight:950; text-transform:uppercase; letter-spacing:.08em; font-size:.78rem; }
+    .play { display:inline-grid; place-items:center; width:3rem; height:3rem; margin-bottom:.9rem; border-radius:18px; background:linear-gradient(135deg,#dc2626,#ef4444); color:white; font-weight:950; box-shadow:var(--shadow-sm); }
+    .script { font-size:1.05rem; color:var(--ink-soft) !important; }
+    .script strong { color:var(--ink); }
+    .content-table { overflow:auto; border:1px solid var(--line); border-radius:24px; background:white; box-shadow:var(--shadow-sm); }
+    table { width:100%; min-width:820px; border-collapse:collapse; }
+    th,td { padding:.9rem 1rem; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+    th { color:var(--ink); background:#f8fbff; font-size:.88rem; }
+    td { color:var(--muted); line-height:1.5; }
+    tr:last-child td { border-bottom:0; }
+    .cta-strip { border-radius:32px; padding:clamp(1.4rem,4vw,2.3rem); color:white; background:linear-gradient(135deg,#0f172a,#1d4ed8,#0f766e); box-shadow:var(--shadow-md); }
+    .legal { color:var(--muted); font-size:.94rem; line-height:1.7; }
+    .sales-footer { padding:2rem 0 calc(2rem + env(safe-area-inset-bottom)); border-top:1px solid var(--line); background:rgba(255,255,255,.78); }
+    .sales-footer nav { display:flex; flex-wrap:wrap; gap:.8rem 1rem; }
+    .sales-footer a { color:var(--blue-dark); font-weight:800; }
+    @media (max-width:900px){ .yt-hero .container,.yt-grid,.two-col{grid-template-columns:1fr;} .yt-hero{text-align:left;} }
+    @media (max-width:560px){ .hero-actions .module-btn{width:100%!important;} .glass-card{border-radius:24px;} }
+  </style>
+</head>
+<body class="youtube-page">
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <a class="logo" href="landing.html" style="text-decoration:none">Prüfungskern</a>
+        <nav class="nav-menu active" style="display:flex">
+          <a class="nav-link" href="#kanal">Kanal</a>
+          <a class="nav-link" href="#videos">Videos</a>
+          <a class="nav-link" href="#shorts">Shorts</a>
+          <a class="nav-link" href="markenstrategie.html">Strategie</a>
+          <a class="nav-link" href="landing.html">Verkauf</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <section class="yt-hero">
+    <div class="container">
+      <div>
+        <span class="badge">YouTube-Launch · Prüfungskern</span>
+        <h1>Der Kanal verkauft, bevor die Verkaufsseite verkauft.</h1>
+        <p>Prüfungskern wird kein trockener Lernkanal. Der Kanal zeigt Azubis und Umschülern in kurzen, klaren Videos: So erkennst du die Aufgabe, so vermeidest du typische Fehler, so kommst du wieder ins Lernen rein.</p>
+        <div class="hero-actions">
+          <a class="module-btn" style="width:auto" href="#videos">Erste Videos ansehen →</a>
+          <a class="module-btn" style="width:auto;background:rgba(255,255,255,.14)!important" href="#funnel">Funnel ansehen</a>
+        </div>
+      </div>
+      <aside class="glass-card">
+        <h2>Kanal-DNA</h2>
+        <ul>
+          <li><strong>Ton:</strong> direkt, ruhig, motivierend, ohne Lehrer-Gehabe.</li>
+          <li><strong>Versprechen:</strong> weniger Stoffchaos, mehr Aufgabenverständnis.</li>
+          <li><strong>Format:</strong> Shorts für Reichweite, Longform für Vertrauen.</li>
+          <li><strong>CTA:</strong> kostenlose Checkliste → Warteliste → Prüfungskern Büro Pro.</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <main>
+    <section class="yt-section" id="kanal">
+      <div class="container two-col">
+        <div class="yt-box">
+          <p class="kicker">Kanalname</p>
+          <h2>Prüfungskern</h2>
+          <p class="script"><strong>Handle-Idee:</strong> @pruefungskern</p>
+          <p><strong>Kanalbeschreibung:</strong> Prüfungsvorbereitung ohne Stoffchaos. Prüfungskern zeigt dir typische Aufgaben, Denkwege und Fehler aus Ausbildung, Umschulung und Abschlussprüfungen. Unabhängig erstellt, prüfungsnah und klar auf den Kern fokussiert.</p>
+        </div>
+        <div class="yt-box">
+          <p class="kicker">Banner-Text</p>
+          <h2>Lerne den Kern. Nicht den ganzen Papierstapel.</h2>
+          <p>Subline für Banner: Kurze Prüfungshilfe für Ausbildung und Umschulung. Neue Videos: Office, Lernplan, typische Aufgaben.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="yt-section">
+      <div class="container">
+        <h2 class="section-title">Content-Säulen</h2>
+        <div class="yt-grid">
+          <article class="yt-box"><span class="play">1</span><h3>Aufgabentyp erkannt</h3><p>Ein Video, ein typischer Prüfungsfall, ein klarer Denkweg. Perfekt für Shorts und Carousel-Posts.</p></article>
+          <article class="yt-box"><span class="play">2</span><h3>Fehler, die Punkte kosten</h3><p>Konkrete Fehler in Word, Excel, PowerPoint und Outlook. Keine Panikmache, sondern schnelle Korrektur.</p></article>
+          <article class="yt-box"><span class="play">3</span><h3>7-Tage-Lernplan</h3><p>Für Leute, die spät dran sind. Tagesplan, Mini-Aufgaben, Fokus auf Momentum.</p></article>
+          <article class="yt-box"><span class="play">4</span><h3>AHA-Musterlösung</h3><p>Aufgabe zeigen, Denkweg erklären, Lösung kurz vormachen. Das ist der Vertrauensaufbau.</p></article>
+          <article class="yt-box"><span class="play">5</span><h3>Prüfungsruhe</h3><p>Motivation ohne Therapie-Ton: Was tun, wenn du blockierst, prokrastinierst oder dich dumm fühlst?</p></article>
+          <article class="yt-box"><span class="play">6</span><h3>Berufsfeld-Ausbau</h3><p>Später dieselbe Struktur für Handel, Industrie, IT und Pflege. Der Kanal bleibt eine Dachmarke.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="yt-section" id="videos">
+      <div class="container">
+        <h2 class="section-title">Die ersten 10 Videos</h2>
+        <div class="content-table">
+          <table>
+            <thead><tr><th>#</th><th>Titel</th><th>Hook</th><th>CTA</th></tr></thead>
+            <tbody>
+              <tr><td>1</td><td>Wenn du nur 7 Tage bis zur Büromanagement-Prüfung hast</td><td>Fang nicht mit Zusammenfassungen an. Fang mit Aufgabentypen an.</td><td>Checkliste sichern</td></tr>
+              <tr><td>2</td><td>3 Word-Fehler, die sofort unprofessionell wirken</td><td>Viele verlieren Punkte, obwohl sie die Funktion eigentlich kennen.</td><td>Word-Beispielaufgaben</td></tr>
+              <tr><td>3</td><td>Excel: Diese Formeln solltest du zuerst verstehen</td><td>Wenn du Excel hasst, lern nicht alles. Lern diese Muster zuerst.</td><td>Excel-Übungen öffnen</td></tr>
+              <tr><td>4</td><td>DIN 5008 ohne Kopfschmerzen</td><td>Du musst nicht jede Norm auswendig können. Du brauchst ein sauberes Grundmuster.</td><td>PDF-Checkliste</td></tr>
+              <tr><td>5</td><td>PowerPoint in der Prüfung: weniger Deko, mehr Ordnung</td><td>Eine Folie muss nicht schön sein. Sie muss verständlich sein.</td><td>Beispiel ansehen</td></tr>
+              <tr><td>6</td><td>Outlook-Aufgaben: So denkst du richtig</td><td>E-Mail, Termin, Priorität: Das ist keine Magie, das ist Struktur.</td><td>Outlook-Aufgabe</td></tr>
+              <tr><td>7</td><td>Warum du fleißig lernst und trotzdem unsicher bleibst</td><td>Fleiß hilft wenig, wenn du nicht prüfungsnah übst.</td><td>80/20-Lernpfad</td></tr>
+              <tr><td>8</td><td>Die beste 20-Minuten-Lerneinheit vor der Prüfung</td><td>Wenn du müde bist, brauchst du keine Motivation. Du brauchst eine kleine Aufgabe.</td><td>KernCheck</td></tr>
+              <tr><td>9</td><td>So nutzt du Musterlösungen richtig</td><td>Nur Lösung anschauen bringt wenig. Du musst den Denkweg klauen.</td><td>AHA-Aufgaben</td></tr>
+              <tr><td>10</td><td>Prüfungskern Büro: So funktioniert die Plattform</td><td>Ein kurzer Rundgang durch Aufgaben, Lösungen und Lernpfad.</td><td>Launch-Zugang ansehen</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="yt-section" id="shorts">
+      <div class="container two-col">
+        <div class="yt-box">
+          <p class="kicker">Shorts-Skript 1</p>
+          <h2>7 Tage bis zur Prüfung</h2>
+          <p class="script"><strong>Hook:</strong> Wenn du nur noch 7 Tage hast, hör auf, alles lernen zu wollen.</p>
+          <p class="script"><strong>Body:</strong> Nimm dir jeden Tag einen Aufgabentyp: Excel, Word, PowerPoint, Outlook. Nicht lesen, machen. Eine Aufgabe, eine Lösung, ein AHA.</p>
+          <p class="script"><strong>CTA:</strong> Kommentiere "Kern", wenn du den 7-Tage-Plan willst.</p>
+        </div>
+        <div class="yt-box">
+          <p class="kicker">Shorts-Skript 2</p>
+          <h2>Word-Fehler</h2>
+          <p class="script"><strong>Hook:</strong> Dieser Word-Fehler lässt dein Dokument sofort chaotisch wirken.</p>
+          <p class="script"><strong>Body:</strong> Zu viele Schriftgrößen, wilde Abstände, kein klarer Betreff. Fang mit Struktur an, nicht mit Design.</p>
+          <p class="script"><strong>CTA:</strong> In Prüfungskern Büro übst du genau solche Aufgaben.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="yt-section">
+      <div class="container">
+        <h2 class="section-title">14-Tage-Postingplan</h2>
+        <div class="content-table">
+          <table>
+            <thead><tr><th>Tag</th><th>Format</th><th>Thema</th><th>Ziel</th></tr></thead>
+            <tbody>
+              <tr><td>1</td><td>Short</td><td>7 Tage bis zur Prüfung</td><td>Problem scharf machen</td></tr>
+              <tr><td>2</td><td>Short</td><td>Word-Fehler</td><td>schneller AHA-Moment</td></tr>
+              <tr><td>3</td><td>Longform</td><td>Was du wirklich üben solltest</td><td>Vertrauen aufbauen</td></tr>
+              <tr><td>4</td><td>Short</td><td>Excel-Muster</td><td>Speichern/Teilen</td></tr>
+              <tr><td>5</td><td>Community</td><td>Was stresst dich am meisten?</td><td>Einwände sammeln</td></tr>
+              <tr><td>6</td><td>Short</td><td>PowerPoint Ordnung</td><td>visueller Fehler</td></tr>
+              <tr><td>7</td><td>Short</td><td>Outlook-Aufgabe</td><td>neuer Aufgabenbereich</td></tr>
+              <tr><td>8</td><td>Longform</td><td>7-Tage-Lernplan</td><td>Lead-Magnet vorbereiten</td></tr>
+              <tr><td>9</td><td>Short</td><td>Musterlösung richtig nutzen</td><td>AHA-Mechanik erklären</td></tr>
+              <tr><td>10</td><td>Short</td><td>Prüfungsangst und Startblockade</td><td>Nähe schaffen</td></tr>
+              <tr><td>11</td><td>Short</td><td>Excel nicht auswendig lernen</td><td>80/20-Methode</td></tr>
+              <tr><td>12</td><td>Community</td><td>Welche Ausbildung machst du?</td><td>nächstes Berufsfeld validieren</td></tr>
+              <tr><td>13</td><td>Longform</td><td>Plattform-Rundgang</td><td>Produkt erklären</td></tr>
+              <tr><td>14</td><td>Short</td><td>Launch-Zugang kurz erklärt</td><td>Verkaufsseite verlinken</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="yt-section" id="funnel">
+      <div class="container">
+        <div class="cta-strip">
+          <h2>Der Funnel ist simpel.</h2>
+          <p>Shorts bringen Reichweite. Longform baut Vertrauen auf. Die kostenlose Checkliste sammelt E-Mail-Leads. Die Verkaufsseite verkauft Prüfungskern Büro Pro, sobald Checkout, Rechtstexte und Zugangscode-Backend final sind.</p>
+          <div class="hero-actions">
+            <a class="module-btn" style="width:auto" href="landing.html">Zur Verkaufsseite →</a>
+            <a class="module-btn" style="width:auto;background:rgba(255,255,255,.14)!important" href="markenstrategie.html">Zur Markenstrategie</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="yt-section">
+      <div class="container two-col">
+        <div class="yt-box">
+          <p class="kicker">Nicht sagen</p>
+          <h2>Rote Linien im Content</h2>
+          <ul class="legal">
+            <li>Keine Bestehensgarantie.</li>
+            <li>Keine offizielle IHK-/DIHK-Verbindung behaupten.</li>
+            <li>Keine offiziellen Prüfungsunterlagen versprechen.</li>
+            <li>Keine pauschale Abwertung von Lehrkräften oder Berufsschulen.</li>
+            <li>Keine künstlichen Rabattanker ohne echte Preisbasis.</li>
+          </ul>
+        </div>
+        <div class="yt-box">
+          <p class="kicker">Sagen</p>
+          <h2>Saubere Verkaufsformulierung</h2>
+          <p>Prüfungskern ist unabhängig erstellt und hilft dir, typische Aufgaben prüfungsnah zu üben. Du bekommst Struktur, Musterlösungen und klare Denkwege. Kein offizielles Prüfungsangebot, keine geschützten Unterlagen, keine Garantie. Aber ein klarer Weg raus aus dem Lernchaos.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="sales-footer">
+    <div class="container">
+      <nav aria-label="Rechtliche Links">
+        <a href="landing.html">Verkaufsseite</a>
+        <a href="markenstrategie.html">Markenstrategie</a>
+        <a href="MARKETING_STRATEGY_30_DAYS.md">30-Tage-Marketingplan</a>
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="agb.html">Nutzungsbedingungen</a>
+        <a href="widerruf.html">Widerruf</a>
+      </nav>
+      <p class="legal" style="margin-top:1rem">YouTube-Strategie für den Launch. Vor echtem Verkauf: Rechtstexte, FernUSG/ZFU, Digistore24 und Markenrechte final prüfen.</p>
+    </div>
+  </footer>
+</body>
+</html>
