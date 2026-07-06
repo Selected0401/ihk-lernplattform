@@ -2,7 +2,7 @@
 
 ## Produktname
 
-IHK 80/20 Prüfungstrainer Büromanagement
+PrüfungsPilot 80/20 Büromanagement
 
 ## Kurzbeschreibung
 
@@ -10,7 +10,7 @@ Eigene prüfungsnahe Übungsplattform für Kaufleute für Büromanagement: Train
 
 ## Rechtssichere Produktbeschreibung
 
-Der IHK 80/20 Prüfungstrainer hilft Auszubildenden und Umschülern im Ausbildungsberuf Kaufmann/Kauffrau für Büromanagement, typische Office-Aufgabentypen der Zwischenprüfung gezielt zu üben. Enthalten sind eigene, prüfungsnahe Übungsaufgaben zu Excel, Word, PowerPoint und Outlook, klare Musterlösungen und ein fokussierter Lernaufbau für wenig Lernzeit.
+Der PrüfungsPilot 80/20 hilft Auszubildenden und Umschülern im Ausbildungsberuf Kaufmann/Kauffrau für Büromanagement, typische Office-Aufgabentypen der Zwischenprüfung gezielt zu üben. Enthalten sind eigene, prüfungsnahe Übungsaufgaben zu Excel, Word, PowerPoint und Outlook, klare Musterlösungen und ein fokussierter Lernaufbau für wenig Lernzeit.
 
 Dieses Angebot steht in keiner Verbindung zur Industrie- und Handelskammer oder zu einer offiziellen Prüfungsstelle. Es werden keine originalen IHK-Prüfungen oder offiziellen Prüfungsunterlagen bereitgestellt. Alle Aufgaben, Texte und Lösungen wurden eigenständig erstellt und dienen der prüfungsnahen Vorbereitung.
 
@@ -38,11 +38,11 @@ Dieses Angebot steht in keiner Verbindung zur Industrie- und Handelskammer oder 
 
 ## Auslieferungs-E-Mail
 
-Betreff: Dein Zugangscode zum IHK 80/20 Prüfungstrainer
+Betreff: Dein Zugangscode zum PrüfungsPilot 80/20
 
 Hallo,
 
-vielen Dank für deinen Kauf des IHK 80/20 Prüfungstrainers.
+vielen Dank für deinen Kauf des PrüfungsPilot 80/20s.
 
 Dein Zugangscode lautet:
 
