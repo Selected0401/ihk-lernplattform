@@ -21,14 +21,14 @@ Käufer zahlen einmalig 99€ als Launch-Angebot über Digistore24 und erhalten 
 
 1. Digistore24 Account erstellen.
 2. Produkt anlegen:
-   - Name: PrüfungsPilot Büro
+   - Name: Prüfungskern Büro
    - Preis Launch: 99€ einmalig
    - Regulärer Wert/Ankerpreis nur verwenden, wenn rechtlich sauber belegbar: 399€ einmalig
    - Produkttyp: digitales Produkt / Online-Zugang
 3. Danke-/Return-URL setzen:
    - `https://selected0401.github.io/ihk-lernplattform/danke.html`
 4. Auslieferungs-E-Mail einrichten:
-   - Betreff: Dein Zugangscode zum PrüfungsPilot 80/20
+   - Betreff: Dein Zugangscode zum Prüfungskern
    - Login-Link: `https://selected0401.github.io/ihk-lernplattform/login.html`
    - Zugangscode aus Backend/Webhook einfügen
    - Supportkontakt und Widerrufs-/Refund-Hinweis ergänzen
@@ -75,7 +75,7 @@ Regeln:
 
 ## Rechtliche Hinweise
 
-- Nicht mit „originale IHK-Prüfungen“, „IHK-Prüfungsaufgaben“, „offizielle IHK-App“, „IHK-zertifiziert“ oder „echte Prüfungen“ werben, solange keine Lizenz vorliegt.
+- Nicht mit offiziellen Prüfungsunterlagen, amtlich klingenden App-/Zertifizierungsclaims oder prüfungsidentischen Inhalten werben, solange keine ausdrückliche Lizenz und Rechtsprüfung vorliegt.
 - Sicher formulieren: „eigene prüfungsnahe Übungsaufgaben im Stil typischer IHK-Anforderungen für Kaufleute für Büromanagement“.
 - Disclaimer nutzen: „Dieses Angebot steht in keiner Verbindung zur Industrie- und Handelskammer oder zu einer offiziellen Prüfungsstelle.“
 - Impressum, Datenschutz, AGB und Widerrufsbelehrung vor Verkauf finalisieren lassen.

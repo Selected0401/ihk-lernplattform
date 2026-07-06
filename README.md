@@ -1,8 +1,8 @@
-# PrüfungsPilot 80/20
+# Prüfungskern
 
 Digitale Lernplattform mit Zugangscode-Login für prüfungsnahe 80/20-Vorbereitung in Ausbildung, Umschulung und Quereinstieg.
 
-Aktueller Pilot: **PrüfungsPilot Büro** für Kaufleute für Büromanagement mit Fokus auf typische Office-Kompetenzen: Excel, Word, PowerPoint und Outlook.
+Aktueller Pilot: **Prüfungskern Büro** für Kaufleute für Büromanagement mit Fokus auf typische Office-Kompetenzen: Excel, Word, PowerPoint und Outlook.
 
 ## Live
 
@@ -21,7 +21,7 @@ Staging/Vorbereitung — noch kein öffentlicher Verkaufsstart.
 
 ## Positionierung
 
-PrüfungsPilot 80/20 ist unabhängig erstellt. Es besteht keine Verbindung zur Industrie- und Handelskammer, DIHK, einer IHK-Prüfungsstelle oder einer offiziellen Prüfungsinstitution. Es werden keine originalen IHK-Prüfungen, offiziellen Prüfungsaufgaben, Logos, Scans oder geschützten Unterlagen bereitgestellt.
+Prüfungskern ist unabhängig erstellt. Es besteht keine Verbindung zur Industrie- und Handelskammer, DIHK, einer IHK-Prüfungsstelle oder einer offiziellen Prüfungsinstitution. Es werden keine originalen IHK-Prüfungen, offiziellen Prüfungsaufgaben, Logos, Scans oder geschützten Unterlagen bereitgestellt.
 
 ## Features
 

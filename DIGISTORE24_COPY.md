@@ -2,7 +2,7 @@
 
 ## Produktname
 
-PrüfungsPilot 80/20 Büromanagement
+Prüfungskern Büro
 
 ## Kurzbeschreibung
 
@@ -10,19 +10,19 @@ Eigene prüfungsnahe Übungsplattform für Kaufleute für Büromanagement: Train
 
 ## Rechtssichere Produktbeschreibung
 
-Der PrüfungsPilot 80/20 hilft Auszubildenden und Umschülern im Ausbildungsberuf Kaufmann/Kauffrau für Büromanagement, typische Office-Aufgabentypen der Zwischenprüfung gezielt zu üben. Enthalten sind eigene, prüfungsnahe Übungsaufgaben zu Excel, Word, PowerPoint und Outlook, klare Musterlösungen und ein fokussierter Lernaufbau für wenig Lernzeit.
+Der Prüfungskern hilft Auszubildenden und Umschülern im Ausbildungsberuf Kaufmann/Kauffrau für Büromanagement, typische Office-Aufgabentypen der Zwischenprüfung gezielt zu üben. Enthalten sind eigene, prüfungsnahe Übungsaufgaben zu Excel, Word, PowerPoint und Outlook, klare Musterlösungen und ein fokussierter Lernaufbau für wenig Lernzeit.
 
 Dieses Angebot steht in keiner Verbindung zur Industrie- und Handelskammer oder zu einer offiziellen Prüfungsstelle. Es werden keine originalen IHK-Prüfungen oder offiziellen Prüfungsunterlagen bereitgestellt. Alle Aufgaben, Texte und Lösungen wurden eigenständig erstellt und dienen der prüfungsnahen Vorbereitung.
 
 ## Preisvarianten
 
 ### Launch-Angebot
-- Name: PrüfungsPilot Büro Launch
+- Name: Prüfungskern Büro Launch
 - Preis: 99€ einmalig als zeitlich begrenztes Launch-Angebot. Ein späterer höherer Preis ist geplant, wird aber erst kommuniziert, wenn er tatsächlich gilt und rechtlich geprüft ist.
 - Enthält: Plattformzugang, 56 Aufgaben, interaktive Lernumgebung, Musterlösungen
 
 ### Regulär / Plus
-- Name: PrüfungsPilot Büro Plus
+- Name: Prüfungskern Büro Plus
 - Preis: 149€ einmalig
 - Enthält: Plattformzugang plus Bonusmaterial, Lernplan, zusätzliche Simulationen oder Prüfungsangst-Checkliste
 
@@ -38,11 +38,11 @@ Dieses Angebot steht in keiner Verbindung zur Industrie- und Handelskammer oder 
 
 ## Auslieferungs-E-Mail
 
-Betreff: Dein Zugangscode zum PrüfungsPilot 80/20
+Betreff: Dein Zugangscode zum Prüfungskern
 
 Hallo,
 
-vielen Dank für deinen Kauf von PrüfungsPilot 80/20.
+vielen Dank für deinen Kauf von Prüfungskern.
 
 Dein Zugangscode lautet:
 

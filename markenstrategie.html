@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Marken- und Verkaufsstrategie für Prüfungskern: skalierbare Prüfungsvorbereitung für Ausbildung, Umschulung und Abschlussprüfungen.">
+  <title>Prüfungskern · Marken- und Verkaufsstrategie</title>
+  <link rel="stylesheet" href="style.css?v=build-20260706-brand-1">
+  <style>
+    .brand-page { background: radial-gradient(circle at 8% 0%, rgba(37,99,235,.16), transparent 32rem), #f7fbff; }
+    .brand-page .container { max-width: 1180px !important; }
+    .brand-hero { position:relative; overflow:hidden; padding:clamp(4.6rem,8vw,7.8rem) 0 clamp(3rem,6vw,5rem); color:white; background:linear-gradient(135deg,#0f172a,#1d4ed8 52%,#0f766e); }
+    .brand-hero::before { content:''; position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,.055) 1px, transparent 1px),linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px); background-size:44px 44px; mask-image:linear-gradient(to bottom,black,transparent 88%); }
+    .brand-hero .container { position:relative; z-index:1; display:grid; grid-template-columns:minmax(0,1.08fr) minmax(300px,.92fr); gap:clamp(2rem,5vw,4rem); align-items:center; }
+    .badge { display:inline-flex; width:fit-content; margin-bottom:1rem; padding:.48rem .78rem; border:1px solid rgba(255,255,255,.24); border-radius:999px; background:rgba(255,255,255,.13); font-weight:850; }
+    .brand-hero h1 { font-size:clamp(2.7rem,7vw,6rem); line-height:.9; letter-spacing:-.075em; margin-bottom:1.2rem; }
+    .brand-hero p { color:rgba(255,255,255,.88); font-size:clamp(1.05rem,2vw,1.32rem); line-height:1.62; }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:.8rem; margin-top:1.5rem; }
+    .glass-card { border:1px solid rgba(255,255,255,.24); border-radius:32px; padding:clamp(1.25rem,3vw,1.8rem); background:rgba(255,255,255,.14); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); box-shadow:0 24px 70px rgba(0,0,0,.18); }
+    .glass-card ul { margin:1rem 0 0; padding-left:1.2rem; color:rgba(255,255,255,.9); line-height:1.75; }
+    .strategy-section { padding:clamp(2.8rem,6vw,5.3rem) 0; }
+    .strategy-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; }
+    .two-col { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:1rem; align-items:start; }
+    .strategy-box { padding:clamp(1.2rem,3vw,2rem); border:1px solid var(--line); border-radius:28px; background:rgba(255,255,255,.9); box-shadow:var(--shadow-sm); }
+    .strategy-box h2,.strategy-box h3 { margin-bottom:.6rem; color:var(--ink); letter-spacing:-.035em; }
+    .strategy-box p,.strategy-box li { color:var(--muted); line-height:1.65; }
+    .kicker { color:var(--blue-dark); font-weight:950; text-transform:uppercase; letter-spacing:.08em; font-size:.78rem; }
+    .brand-name { font-size:clamp(3rem,9vw,6.6rem); font-weight:950; letter-spacing:-.08em; color:var(--ink); margin:.2rem 0 .35rem; }
+    .score { display:inline-grid; place-items:center; width:3rem; height:3rem; border-radius:18px; color:white; background:var(--gradient-primary); font-weight:950; box-shadow:var(--shadow-sm); }
+    .table-wrap { overflow:auto; border:1px solid var(--line); border-radius:24px; background:white; box-shadow:var(--shadow-sm); }
+    table { width:100%; border-collapse:collapse; min-width:760px; }
+    th,td { padding:.9rem 1rem; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+    th { color:var(--ink); background:#f8fbff; font-size:.88rem; }
+    td { color:var(--muted); line-height:1.5; }
+    tr:last-child td { border-bottom:0; }
+    .ok { color:#15803d; font-weight:950; }
+    .warn { color:#b45309; font-weight:950; }
+    .bad { color:#b91c1c; font-weight:950; }
+    .timeline { counter-reset:step; display:grid; gap:.85rem; }
+    .timeline .strategy-box::before { counter-increment:step; content:counter(step); display:inline-grid; place-items:center; width:2.1rem; height:2.1rem; margin-bottom:.75rem; border-radius:999px; background:var(--gradient-primary); color:white; font-weight:950; }
+    .legal { color:var(--muted); font-size:.94rem; line-height:1.7; }
+    .sales-footer { padding:2rem 0 calc(2rem + env(safe-area-inset-bottom)); border-top:1px solid var(--line); background:rgba(255,255,255,.78); }
+    .sales-footer nav { display:flex; flex-wrap:wrap; gap:.8rem 1rem; }
+    .sales-footer a { color:var(--blue-dark); font-weight:800; }
+    @media (max-width:900px){ .brand-hero .container,.strategy-grid,.two-col{grid-template-columns:1fr;} .brand-hero{text-align:left;} }
+    @media (max-width:560px){ .hero-actions .module-btn{width:100%!important;} .glass-card{border-radius:24px;} }
+  </style>
+</head>
+<body class="brand-page">
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <a class="logo" href="landing.html" style="text-decoration:none">Prüfungskern</a>
+        <nav class="nav-menu active" style="display:flex">
+          <a class="nav-link" href="#namencheck">Namencheck</a>
+          <a class="nav-link" href="#strategie">Strategie</a>
+          <a class="nav-link" href="#youtube">YouTube</a>
+          <a class="nav-link" href="landing.html">Verkaufsseite</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <section class="brand-hero">
+    <div class="container">
+      <div>
+        <span class="badge">Brand-Entscheidung · geprüft am 2026-07-06 09:29 UTC</span>
+        <h1>Der stärkste Name ist Prüfungskern.</h1>
+        <p>Prüfungskern ist kurz, deutsch, merkbar und passt perfekt zur Vision: Prüfungsvorbereitung für mehrere Ausbildungsberufe, fokussiert auf das, was wirklich geübt werden muss. Nicht alles lernen. Den Kern treffen.</p>
+        <div class="hero-actions">
+          <a class="module-btn" style="width:auto;text-decoration:none" href="#strategie">Strategie ansehen →</a>
+          <a class="module-btn" style="width:auto;text-decoration:none;background:rgba(255,255,255,.14)!important" href="#namencheck">Verfügbarkeit prüfen</a>
+        </div>
+      </div>
+      <aside class="glass-card">
+        <h2>Warum nicht PrüfungsPilot?</h2>
+        <ul>
+          <li><strong>pruefungspilot.de</strong> ist laut DENIC-Whois registriert.</li>
+          <li>Web-Signale zeigen bereits Lern-/Fahrprüfungsnutzung unter ähnlichem Namen.</li>
+          <li>Der Name ist gut, aber für eine neue Hauptmarke unnötig konfliktanfällig.</li>
+          <li>Prüfungskern ist freier, fokussierter und stärker differenzierbar.</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <main>
+    <section class="strategy-section" id="entscheidung">
+      <div class="container two-col">
+        <div class="strategy-box">
+          <p class="kicker">Finale Empfehlung</p>
+          <div class="brand-name">Prüfungskern</div>
+          <p><strong>Claim:</strong> Lerne den Kern. Geh strukturierter in die Prüfung.</p>
+          <p><strong>YouTube-Name:</strong> Prüfungskern</p>
+          <p><strong>Produktlinien:</strong> Prüfungskern Büro, Prüfungskern Handel, Prüfungskern Industrie, Prüfungskern IT, Prüfungskern Pflege.</p>
+        </div>
+        <div class="strategy-box">
+          <p class="kicker">Bewertung</p>
+          <h2>9/10 als Dachmarke</h2>
+          <ul>
+            <li>Sehr passend zur 80/20-Positionierung.</li>
+            <li>Skalierbar über viele Berufsfelder.</li>
+            <li>Keine direkte IHK-Abhängigkeit im Namen.</li>
+            <li>.de und .com im technischen Check frei.</li>
+            <li>Klingt seriöser als Hype-Namen wie PrüfungsMaster.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="strategy-section" id="namencheck">
+      <div class="container">
+        <h2 class="section-title">Domain- und Verfügbarkeitscheck</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Name</th><th>Domains</th><th>Web-/Marktrisiko</th><th>Entscheidung</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Prüfungskern</strong></td><td><span class="ok">pruefungskern.de frei</span><br><span class="ok">pruefungskern.com frei</span></td><td>Niedrig. Begriff existiert generisch, aber keine starke Prüfungsplattform-Besetzung gefunden.</td><td><span class="ok">Top-Empfehlung</span></td></tr>
+              <tr><td><strong>FokusPrüfung</strong></td><td><span class="ok">fokuspruefung.de frei</span><br><span class="ok">fokuspruefung.com frei</span></td><td>Mittel. Wird in Foto-/Optik-Kontexten benutzt. Als Lernmarke möglich, aber weniger klar.</td><td>Gute Alternative</td></tr>
+              <tr><td><strong>Prüfungssache</strong></td><td><span class="ok">pruefungssache.de frei</span><br><span class="ok">pruefungssache.com frei</span></td><td>Mittel. LinkedIn-Newsletter "Prüfungssache Deutsch" gefunden; außerdem juristischer Begriff.</td><td>Merkbar, aber weicher</td></tr>
+              <tr><td><strong>80/20 Prüfung</strong></td><td><span class="ok">8020pruefung.de frei</span><br><span class="ok">8020pruefung.com frei</span><br><span class="ok">80-20-pruefung.de frei</span></td><td>Niedrig bis mittel. Stark als Methode, aber als YouTube-Marke etwas technisch.</td><td>Sehr gut als Methode/Unterclaim</td></tr>
+              <tr><td><strong>PrüfungsCode</strong></td><td><span class="ok">pruefungscode.de frei</span><br><span class="ok">pruefungscode.com frei</span></td><td>Mittel. "Prüfungscode" wird generisch für Zugangscodes/Exam-Codes genutzt.</td><td>Modern, aber erklärungsbedürftig</td></tr>
+              <tr><td><strong>Klartext Prüfung</strong></td><td><span class="ok">klartextpruefung.de frei</span><br><span class="ok">klartextpruefung.com frei</span></td><td>Mittel. Begriff kommt auch in OCR/Industrieprüfung vor.</td><td>Gut für Content-Serie, nicht Dachmarke</td></tr>
+              <tr><td><strong>PrüfungsPilot</strong></td><td><span class="bad">pruefungspilot.de registriert</span><br><span class="ok">pruefungspilot.com frei</span><br><span class="ok">pruefungspilot.net frei</span></td><td>Erhöht. Web-Treffer zu Lernapp/Fahrprüfung und ähnlicher Nutzung.</td><td>Nicht als neue Hauptmarke</td></tr>
+              <tr><td><strong>KernStoff</strong></td><td><span class="warn">kernstoff.de registriert/DNS aktiv</span><br><span class="bad">kernstoff.com registriert</span><br><span class="ok">kernstoff.net frei</span></td><td>Mittel. Guter Begriff, aber Domains nicht sauber.</td><td>Nicht nehmen</td></tr>
+              <tr><td><strong>PrüfungsKompass</strong></td><td><span class="bad">pruefungskompass.de registriert</span><br><span class="ok">pruefungskompass.com frei</span></td><td>Hoch. App-Store-/Google-Play-Treffer zu Prüfungskompass Büromanagement/Industrie.</td><td>Meiden</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="legal" style="margin-top:1rem">Hinweis: Der technische Check nutzt DENIC-Whois für .de, Verisign-Whois für .com/.net und Web-Suchsignale. Finale Verfügbarkeit muss unmittelbar beim Registrar und markenrechtlich vor Kauf/Launch geprüft werden.</p>
+      </div>
+    </section>
+
+    <section class="strategy-section" id="strategie">
+      <div class="container">
+        <h2 class="section-title">Starke Verkaufsstrategie</h2>
+        <div class="strategy-grid">
+          <article class="strategy-box"><span class="score">1</span><h3>Positionierung</h3><p>Prüfungskern ist kein Nachhilfe-Kanal und keine Stoffbibliothek. Es ist die Marke für fokussierte Prüfungsvorbereitung: typische Aufgaben erkennen, direkt üben, schneller Klarheit bekommen.</p></article>
+          <article class="strategy-box"><span class="score">2</span><h3>Versprechen</h3><p>Du lernst nicht alles. Du lernst den Kern: die Aufgabentypen, Denkwege und Fehler, die in der Vorbereitung wirklich zählen. Ohne Erfolgsgarantie, aber mit klarem System.</p></article>
+          <article class="strategy-box"><span class="score">3</span><h3>Offer-Ladder</h3><p>Kostenloser YouTube-Content → PDF/Checkliste → Mini-Kurs → Prüfungskern Büro Pro → weitere Berufsfelder → Betriebslizenzen für Ausbildungsbetriebe.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="strategy-section" id="youtube">
+      <div class="container two-col">
+        <div class="strategy-box">
+          <p class="kicker">YouTube-Kanal</p>
+          <h2>Prüfungskern</h2>
+          <p><strong>Kanalbeschreibung:</strong> Prüfungsvorbereitung ohne Stoffchaos. Wir zeigen dir typische Aufgaben, Denkwege und Fehler aus Ausbildung, Umschulung und Abschlussprüfungen. Unabhängig erstellt, prüfungsnah und klar auf den Kern fokussiert.</p>
+          <p><strong>Content-Serien:</strong></p>
+          <ul>
+            <li>Der Prüfungskern in 10 Minuten</li>
+            <li>3 Fehler, die dich unnötig Punkte kosten</li>
+            <li>Aufgabentyp erkannt</li>
+            <li>Excel/Word/PowerPoint einfach erklärt</li>
+            <li>7-Tage-Plan vor der Prüfung</li>
+          </ul>
+        </div>
+        <div class="strategy-box">
+          <p class="kicker">Brand-System</p>
+          <h2>So skalierst du später</h2>
+          <ul>
+            <li><strong>Dachmarke:</strong> Prüfungskern</li>
+            <li><strong>Methode:</strong> 80/20-Prinzip</li>
+            <li><strong>Erstes Produkt:</strong> Prüfungskern Büro</li>
+            <li><strong>Nächste Produkte:</strong> Handel, Industrie, IT, Pflege</li>
+            <li><strong>Community:</strong> KernClub oder Prüfungskern Community</li>
+            <li><strong>Freebie:</strong> KernCheck</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="strategy-section">
+      <div class="container">
+        <h2 class="section-title">90-Tage-Ausführung</h2>
+        <div class="timeline">
+          <div class="strategy-box"><h3>Woche 1: Name sichern</h3><p>Domains <strong>pruefungskern.de</strong> und <strong>pruefungskern.com</strong> sofort beim Registrar prüfen und kaufen. Danach YouTube-, TikTok-, Instagram- und Gmail/Workspace-Handles sichern.</p></div>
+          <div class="strategy-box"><h3>Woche 2: Kanal startklar machen</h3><p>Banner, Profilbild, Kanalbeschreibung, 5 Short-Skripte und 2 längere YouTube-Videos vorbereiten. Kein Perfektionismus: erst beweisen, welche Hooks ziehen.</p></div>
+          <div class="strategy-box"><h3>Woche 3–4: Nachfrage testen</h3><p>Täglich Shorts/Reels posten. CTA: kostenlose Checkliste oder Beispielaufgaben. Ziel: echte Kommentare, DMs und E-Mail-Leads sammeln.</p></div>
+          <div class="strategy-box"><h3>Monat 2: Produkt verkaufen</h3><p>Prüfungskern Büro Pro über Digistore24 vorbereiten, Rechtstexte prüfen, Testkauf durchführen, Zugangscode-Flow stabil machen.</p></div>
+          <div class="strategy-box"><h3>Monat 3: Skalieren</h3><p>Die besten Videos in Ads testen, Retargeting auf Besucher starten und das zweite Berufsfeld auswählen, sobald das erste Angebot echte Käufe oder starke Leads erzeugt.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="strategy-section">
+      <div class="container two-col">
+        <div class="strategy-box">
+          <p class="kicker">Copy-Baukasten</p>
+          <h2>Starke Sätze für Seite und Videos</h2>
+          <ul>
+            <li>Wenn du wenig Zeit hast, darfst du nicht alles lernen.</li>
+            <li>Lerne den Kern. Nicht den ganzen Papierstapel.</li>
+            <li>Erkenne den Aufgabentyp, bevor du dich in Details verlierst.</li>
+            <li>Prüfungsvorbereitung für Menschen, die endlich Struktur brauchen.</li>
+            <li>Typische Aufgaben. Klare Denkwege. Weniger Lernchaos.</li>
+          </ul>
+        </div>
+        <div class="strategy-box">
+          <p class="kicker">Rote Linien</p>
+          <h2>Was wir nicht behaupten</h2>
+          <ul class="legal">
+            <li>Keine Bestehensgarantie.</li>
+            <li>Keine offizielle IHK-/DIHK-Verbindung.</li>
+            <li>Keine offiziellen Prüfungsunterlagen.</li>
+            <li>Keine pauschale Abwertung von Lehrkräften oder Berufsschulen.</li>
+            <li>Keine künstlichen Rabattanker ohne echte Preisbasis.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="sales-footer">
+    <div class="container">
+      <nav aria-label="Rechtliche Links">
+        <a href="landing.html">Verkaufsseite</a>
+        <a href="MARKETING_STRATEGY_30_DAYS.md">30-Tage-Marketingplan</a>
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="agb.html">Nutzungsbedingungen</a>
+        <a href="widerruf.html">Widerruf</a>
+      </nav>
+      <p class="legal" style="margin-top:1rem">Diese Seite ist eine strategische Entscheidungsgrundlage. Domains und Markenrechte vor öffentlichem Launch final beim Registrar und rechtlich prüfen.</p>
+    </div>
+  </footer>
+</body>
+</html>

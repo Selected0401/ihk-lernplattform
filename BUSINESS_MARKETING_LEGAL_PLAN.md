@@ -33,10 +33,10 @@ Sicherer Kernclaim:
 
 ### Beste Kandidaten
 
-1. **PrüfungsPilot 80/20**
+1. **Prüfungskern**
    - Stark für mehrere Berufsfelder.
    - Bild: führt dich durch die Prüfungsvorbereitung.
-   - Erweiterbar: PrüfungsPilot Büro, PrüfungsPilot Handel, PrüfungsPilot Pflege etc.
+   - Erweiterbar: Prüfungskern Büro, Prüfungskern Handel, Prüfungskern Pflege etc.
    - Vor Markenanmeldung DPMA/EUIPO prüfen.
 
 2. **BestehensPlan 80/20**
@@ -56,17 +56,17 @@ Sicherer Kernclaim:
 
 ### Meine klare Empfehlung
 
-Dachmarke: **PrüfungsPilot 80/20**
+Dachmarke: **Prüfungskern**
 
 Subline:
 > Prüfungsnahe Vorbereitung für Ausbildung, Umschulung und Quereinstieg.
 
 Produktlinie:
-- PrüfungsPilot Büro
-- PrüfungsPilot Handel
-- PrüfungsPilot Lager & Logistik
-- PrüfungsPilot Industrie
-- PrüfungsPilot Medizin/Pflege, nur wenn fachlich/rechtlich sauber
+- Prüfungskern Büro
+- Prüfungskern Handel
+- Prüfungskern Lager & Logistik
+- Prüfungskern Industrie
+- Prüfungskern Medizin/Pflege, nur wenn fachlich/rechtlich sauber
 
 Sichere IHK-Beschreibung:
 > Für die Vorbereitung auf IHK-Ausbildungsprüfungen — unabhängig erstellt, nicht offiziell von IHK/DIHK.
@@ -77,7 +77,7 @@ Sichere IHK-Beschreibung:
 Viele Lernende haben wenig Zeit, unklare Materialien und wissen nicht, was wirklich prüfungsrelevant ist.
 
 ### Lösung
-PrüfungsPilot 80/20 reduziert Lernchaos auf prüfungsnahe Kernkompetenzen: Aufgaben, Musterlösungen, AHA-Erklärungen und schnelle Übungsroutinen.
+Prüfungskern reduziert Lernchaos auf prüfungsnahe Kernkompetenzen: Aufgaben, Musterlösungen, AHA-Erklärungen und schnelle Übungsroutinen.
 
 ### USP
 - 80/20-Fokus statt Stoffchaos
@@ -96,10 +96,9 @@ Gut:
 - „fokussiert auf häufig relevante Kompetenzen“
 
 Vermeiden:
-- „bestehe garantiert“
-- „originale IHK-Prüfungen“
-- „offizielle IHK-App“
-- „IHK-zertifiziert“
+- garantierende Bestehensversprechen
+- Claims zu offiziellen oder prüfungsidentischen Unterlagen
+- amtlich klingende App- oder Zertifizierungsclaims
 - „beste Prüfungsvorbereitung Deutschlands“ ohne Beleg
 - „Lehrer unterrichten falsch/schlecht“
 
@@ -252,11 +251,11 @@ Variante B:
 > Weniger planlos lernen. Mehr prüfungsnah trainieren.
 
 Subheadline:
-> PrüfungsPilot 80/20 zeigt dir die Aufgaben und Denkweisen, die in der Vorbereitung wirklich zählen — kompakt, mobil und verständlich.
+> Prüfungskern zeigt dir die Aufgaben und Denkweisen, die in der Vorbereitung wirklich zählen — kompakt, mobil und verständlich.
 
 ## 10. Nächste technische Schritte
 
-1. Dachmarke im Frontend vorbereiten: PrüfungsPilot 80/20.
+1. Dachmarke im Frontend vorbereiten: Prüfungskern.
 2. IHK nur als beschreibenden Prüfungsbezug nutzen.
 3. Erfolgs-/Garantieclaims entfernen.
 4. Rechtstexte auf Platzhalterstatus lassen, bis echte Daten kommen.

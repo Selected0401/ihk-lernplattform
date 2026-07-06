@@ -1,12 +1,12 @@
-# PrüfungsPilot 80/20 — 30-Tage-Marketingplan
+# Prüfungskern — 30-Tage-Marketingplan
 
 Stand: 2026-07-06
 
-Ziel: Die erste Version von PrüfungsPilot Büro sauber positionieren, Nachfrage testen und den späteren Verkauf über Digistore24 vorbereiten, ohne riskante IHK-, Erfolgs- oder Fernunterrichtsclaims.
+Ziel: Die erste Version von Prüfungskern Büro sauber positionieren, Nachfrage testen und den späteren Verkauf über Digistore24 vorbereiten, ohne riskante IHK-, Erfolgs- oder Fernunterrichtsclaims.
 
 ## Kernpositionierung
 
-PrüfungsPilot 80/20 ist die digitale Übungsplattform für Menschen, die wenig Zeit haben und prüfungsnah trainieren wollen.
+Prüfungskern ist die digitale Übungsplattform für Menschen, die wenig Zeit haben und prüfungsnah trainieren wollen.
 
 Kurzsatz:
 > Wenn du wenig Zeit hast, darfst du nicht alles lernen.
@@ -46,7 +46,7 @@ Botschaft: Ergänzende digitale Vorbereitung für Azubis, ohne dass Ausbilder se
 - 3 Beispielaufgaben mit Musterlösung
 
 ### Launch
-- PrüfungsPilot Büro Pro
+- Prüfungskern Büro Pro
 - 99€ einmalig
 - 24 Monate Zugang
 - 56 Aufgaben
@@ -96,7 +96,7 @@ Beispiele:
 - 10 kostenlose Beispielaufgaben auswählen.
 - Lead-Magnet PDF skizzieren.
 - 20 TikTok/Reels-Hooks sammeln.
-- Social-Profile mit PrüfungsPilot Branding anlegen.
+- Social-Profile mit Prüfungskern Branding anlegen.
 
 Messziel:
 - 1 funktionierende Landingpage
@@ -182,7 +182,7 @@ Betreff: Was du diese Woche üben solltest
 Inhalt: 3-Tage- oder 7-Tage-Miniplan.
 
 ### Mail 5: Angebot
-Betreff: PrüfungsPilot Büro ist offen
+Betreff: Prüfungskern Büro ist offen
 Inhalt: Angebot, Preis, Zugang, klare rechtliche Hinweise.
 
 ## Ads-Tests später
