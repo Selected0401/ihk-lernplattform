@@ -18,7 +18,7 @@ Dieses Angebot steht in keiner Verbindung zur Industrie- und Handelskammer oder 
 
 ### Launch-Angebot
 - Name: Prüfungstrainer Pro Launch
-- Preis: 99€ einmalig
+- Preis: 99€ einmalig als Launch-Angebot statt 399€ regulärem Wert
 - Enthält: Plattformzugang, 56 Aufgaben, interaktive Lernumgebung, Musterlösungen
 
 ### Regulär / Plus

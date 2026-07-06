@@ -3,49 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="Einmalzahlung für die IHK-nahe 80/20-Lernplattform für Kaufleute für Büromanagement. Zugangscode per E-Mail nach Kauf.">
-  <title>IHK 80/20 Prüfungstrainer kaufen</title>
-  <link rel="stylesheet" href="style.css?v=build-20260705-premium-2">
+  <meta name="description" content="Launch-Angebot für den IHK 80/20 Prüfungstrainer für Kaufleute für Büromanagement: eigener digitaler Prüfungstrainer mit Zugangscode per E-Mail über Digistore24.">
+  <title>IHK 80/20 Prüfungstrainer kaufen · Launch 99€</title>
+  <link rel="stylesheet" href="style.css?v=build-20260705-commerce-1">
   <style>
     .sales-page { background: radial-gradient(circle at 10% 0%, rgba(37,99,235,.16), transparent 30rem), #f7fbff; }
-    .sales-hero { padding: clamp(4rem, 8vw, 7rem) 0; color: white; background: linear-gradient(135deg, #0f172a, #1d4ed8 54%, #0f766e); overflow: hidden; position: relative; }
+    .sales-page .container { max-width: 1180px !important; }
+    .sales-hero { padding: clamp(4.5rem, 8vw, 7.5rem) 0 clamp(3rem, 6vw, 5rem); color: white; background: linear-gradient(135deg, #0f172a, #1d4ed8 54%, #0f766e); overflow: hidden; position: relative; }
+    .sales-hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.055) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.055) 1px, transparent 1px); background-size: 44px 44px; mask-image: linear-gradient(to bottom, black, transparent 86%); }
     .sales-hero::after { content: ''; position: absolute; width: 38rem; height: 38rem; right: -12rem; top: -16rem; border-radius: 999px; background: radial-gradient(circle, rgba(255,255,255,.32), transparent 65%); }
-    .sales-hero .container { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr); gap: clamp(2rem, 5vw, 4rem); align-items: center; }
-    .badge { display: inline-flex; width: fit-content; margin-bottom: 1rem; padding: .45rem .75rem; border: 1px solid rgba(255,255,255,.22); border-radius: 999px; background: rgba(255,255,255,.13); font-weight: 850; }
-    .sales-hero h1 { font-size: clamp(2.6rem, 7vw, 5.6rem); line-height: .92; letter-spacing: -.07em; margin-bottom: 1.2rem; }
-    .sales-hero p { font-size: clamp(1.08rem, 2vw, 1.35rem); line-height: 1.6; color: rgba(255,255,255,.86); }
+    .sales-hero .container { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(300px, .95fr); gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+    .badge { display: inline-flex; width: fit-content; margin-bottom: 1rem; padding: .48rem .78rem; border: 1px solid rgba(255,255,255,.24); border-radius: 999px; background: rgba(255,255,255,.13); font-weight: 850; }
+    .sales-hero h1 { font-size: clamp(2.55rem, 7vw, 5.55rem); line-height: .92; letter-spacing: -.07em; margin-bottom: 1.2rem; }
+    .sales-hero p { font-size: clamp(1.05rem, 2vw, 1.32rem); line-height: 1.62; color: rgba(255,255,255,.88); }
     .hero-actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.5rem; }
-    .sales-card { border: 1px solid rgba(255,255,255,.24); border-radius: 32px; padding: 1.5rem; background: rgba(255,255,255,.14); backdrop-filter: blur(18px); box-shadow: 0 24px 70px rgba(0,0,0,.18); }
-    .sales-card ul { margin: 1rem 0 0; padding-left: 1.2rem; color: rgba(255,255,255,.88); }
-    .sales-section { padding: clamp(2.5rem, 6vw, 5rem) 0; }
+    .sales-card { border: 1px solid rgba(255,255,255,.24); border-radius: 32px; padding: clamp(1.25rem, 3vw, 1.7rem); background: rgba(255,255,255,.14); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); box-shadow: 0 24px 70px rgba(0,0,0,.18); }
+    .sales-card ul { margin: 1rem 0 0; padding-left: 1.2rem; color: rgba(255,255,255,.9); line-height: 1.75; }
+    .sales-section { padding: clamp(2.7rem, 6vw, 5.2rem) 0; }
     .sales-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
-    .sales-box { padding: clamp(1.25rem, 3vw, 2rem); border: 1px solid var(--line); border-radius: 28px; background: rgba(255,255,255,.82); box-shadow: var(--shadow-sm); }
-    .sales-box h3 { margin-bottom: .6rem; color: var(--ink); letter-spacing: -.035em; font-size: 1.35rem; }
+    .sales-box { padding: clamp(1.2rem, 3vw, 2rem); border: 1px solid var(--line); border-radius: 28px; background: rgba(255,255,255,.86); box-shadow: var(--shadow-sm); }
+    .sales-box h3 { margin-bottom: .6rem; color: var(--ink); letter-spacing: -.035em; font-size: 1.28rem; }
     .sales-box p, .sales-box li { color: var(--muted); line-height: 1.65; }
-    .pricing { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; align-items: stretch; }
-    .price-card { position: relative; padding: 1.5rem; border-radius: 30px; background: white; border: 1px solid var(--line); box-shadow: var(--shadow-sm); }
+    .mini-icon { display: inline-grid; place-items: center; width: 2.6rem; height: 2.6rem; margin-bottom: .85rem; border-radius: 16px; background: var(--gradient-primary); color: white; font-weight: 950; letter-spacing: -.04em; box-shadow: var(--shadow-sm); }
+    .pricing { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(280px, .9fr); gap: 1rem; align-items: stretch; }
+    .price-card { position: relative; padding: clamp(1.4rem, 3vw, 2rem); border-radius: 30px; background: white; border: 1px solid var(--line); box-shadow: var(--shadow-sm); }
     .price-card.featured { border-color: rgba(37,99,235,.35); box-shadow: var(--shadow-md); transform: translateY(-6px); }
     .ribbon { display:inline-flex; margin-bottom:.65rem; padding:.35rem .65rem; border-radius:999px; background:rgba(22,163,74,.1); color:#15803d; font-weight:900; font-size:.8rem; }
-    .price { font-size: 3rem; font-weight: 950; letter-spacing: -.06em; color: var(--ink); margin: .5rem 0; }
-    .price small { font-size: .9rem; color: var(--muted); font-weight: 700; }
-    .buy-actions { display:grid; gap:.6rem; margin-top:1rem; }
-    .checkout-note { color: var(--muted); font-size:.9rem; line-height:1.55; }
+    .old-price { color: var(--muted); text-decoration: line-through; font-weight: 900; font-size: 1.15rem; }
+    .price { font-size: clamp(3rem, 8vw, 4.6rem); font-weight: 950; letter-spacing: -.07em; color: var(--ink); margin: .25rem 0 .5rem; }
+    .price small { font-size: .95rem; color: var(--muted); font-weight: 750; letter-spacing: 0; }
+    .buy-actions { display:grid; gap:.65rem; margin-top:1rem; }
+    .checkout-note { color: var(--muted); font-size:.92rem; line-height:1.55; }
+    .checkout-warning { display:none; margin-top:.75rem; padding:.8rem .9rem; border-radius:18px; background:#fff7ed; color:#9a3412; font-weight:750; line-height:1.5; }
     .access-flow { counter-reset: step; display:grid; gap: .85rem; }
     .access-flow .sales-box::before { counter-increment: step; content: counter(step); display:inline-grid; place-items:center; width:2.1rem; height:2.1rem; margin-bottom:.75rem; border-radius:999px; background:var(--gradient-primary); color:white; font-weight:950; }
-    .faq { display: grid; gap: .8rem; }
-    .faq details { padding: 1rem 1.15rem; border: 1px solid var(--line); border-radius: 20px; background: white; }
-    .faq summary { cursor: pointer; font-weight: 850; color: var(--ink); }
-    .legal { color: var(--muted); font-size: .92rem; line-height: 1.65; }
-    @media (max-width: 900px) { .sales-hero .container, .sales-grid, .pricing { grid-template-columns: 1fr; } .price-card.featured { transform: none; } }
+    .legal { color: var(--muted); font-size: .94rem; line-height: 1.7; }
+    .legal-list { margin: .7rem 0 0; padding-left: 1.15rem; }
+    .sales-footer { padding: 2rem 0 calc(2rem + env(safe-area-inset-bottom)); border-top: 1px solid var(--line); background: rgba(255,255,255,.78); }
+    .sales-footer nav { display:flex; flex-wrap:wrap; gap:.8rem 1rem; }
+    .sales-footer a { color: var(--blue-dark); font-weight: 800; }
+    @media (max-width: 900px) { .sales-hero .container, .sales-grid, .pricing { grid-template-columns: 1fr; } .price-card.featured { transform: none; } .sales-hero { text-align:left; } }
+    @media (max-width: 560px) { .hero-actions .module-btn, .buy-actions .module-btn { width: 100% !important; } .sales-card { border-radius: 24px; } }
   </style>
 </head>
 <body class="sales-page">
   <header>
     <div class="container">
       <div class="header-content">
-        <a class="logo" href="landing.html" style="text-decoration:none">📚 IHK 80/20 Trainer</a>
+        <a class="logo" href="landing.html" style="text-decoration:none">IHK 80/20 Trainer</a>
         <nav class="nav-menu active" style="display:flex">
-          <a class="nav-link" href="#preise">Preise</a>
+          <a class="nav-link" href="#preise">Preis</a>
           <a class="nav-link" href="#zugang">Zugang</a>
           <a class="nav-link" href="login.html">Login</a>
         </nav>
@@ -56,107 +63,132 @@
   <section class="sales-hero">
     <div class="container">
       <div>
-        <span class="badge">Einmalzahlung · Zugangscode per E-Mail · Kein Abo</span>
-        <h1>Bestehe die IHK-Zwischenprüfung mit dem 80/20-System.</h1>
-        <p>Trainiere Excel, Word, PowerPoint und Outlook mit eigenen prüfungsnahen Übungsaufgaben im Stil typischer IHK-Anforderungen, klaren Musterlösungen und kleinen Schritten gegen Prüfungsangst — optimiert für wenig Zeit und maximalen Lernerfolg.</p>
+        <span class="badge">Launch · 99€ einmalig · Zahlung über Digistore24</span>
+        <h1>Der 80/20 Prüfungstrainer für Kaufleute für Büromanagement.</h1>
+        <p>Trainiere Excel, Word, PowerPoint und Outlook mit eigenen prüfungsnahen Übungsaufgaben im Stil typischer IHK-Anforderungen — klar, mobil und ohne Abo. PayPal läuft später sauber über das Digistore24-Bestellformular.</p>
         <div class="hero-actions">
-          <a class="module-btn" style="width:auto;text-decoration:none" href="#preise">Jetzt Zugang kaufen →</a>
+          <a class="module-btn" style="width:auto;text-decoration:none" href="#preise">Launch-Zugang ansehen →</a>
           <a class="module-btn" style="width:auto;text-decoration:none;background:rgba(255,255,255,.14)!important" href="login.html">Ich habe einen Code</a>
         </div>
       </div>
-      <div class="sales-card">
-        <h2>Was Käufer bekommen</h2>
+      <aside class="sales-card" aria-label="Produktumfang">
+        <h2>Im Zugang enthalten</h2>
         <ul>
-          <li>56 eigene prüfungsnahe Übungsaufgaben</li>
-          <li>Interaktive Excel-, Word-, PowerPoint- und Outlook-Umgebung</li>
-          <li>80/20-Lernpfad statt planloser Theorie</li>
-          <li>Mobile Nutzung im Browser und als PWA/App</li>
-          <li>Prüfungsangst-freundlicher Aufbau mit schnellen Erfolgserlebnissen</li>
-          <li>Zugangscode nach Zahlung per E-Mail</li>
+          <li>56 eigene Übungsaufgaben für die Zwischenprüfung Teil 1</li>
+          <li>Interaktive Arbeitsumgebung für Excel, Word, PowerPoint und Outlook</li>
+          <li>Musterlösungen, Hinweise und strukturierter 80/20-Lernpfad</li>
+          <li>Nutzung im Desktop-Browser, Smartphone-Browser und als PWA</li>
+          <li>Zugangscode per E-Mail nach Kauf über Digistore24</li>
+          <li>24 Monate Plattformzugang inklusive Updates in diesem Zeitraum</li>
         </ul>
-      </div>
+      </aside>
     </div>
   </section>
 
   <main>
     <section class="sales-section">
       <div class="container sales-grid">
-        <div class="sales-box"><h3>Für wenig Zeit</h3><p>Fokus auf die Office-Aufgaben, die typischerweise schnell Punkte bringen: Formeln, Dokumentstruktur, Präsentation und Organisation.</p></div>
-        <div class="sales-box"><h3>Für Prüfungsangst</h3><p>Kurze Aufgaben, klare Schritte und Musterlösungen helfen, Sicherheit aufzubauen statt im Lernstoff zu ersticken.</p></div>
-        <div class="sales-box"><h3>Für Handy & App</h3><p>Die Plattform läuft öffentlich im Browser und kann später als PWA/App installiert oder hinter einen Login gelegt werden.</p></div>
+        <article class="sales-box"><span class="mini-icon">80</span><h3>Fokus statt Stoffchaos</h3><p>Konzentriert auf Office-Kompetenzen, die in der Prüfung praktisch Punkte bringen: Tabellen, Dokumente, Präsentationen und Organisation.</p></article>
+        <article class="sales-box"><span class="mini-icon">✓</span><h3>Prüfungsnah, aber eigenständig</h3><p>Alle Aufgaben sind eigene Übungsaufgaben. Keine offiziellen Prüfungen, keine kopierten IHK-Unterlagen, keine irreführende Zertifizierung.</p></article>
+        <article class="sales-box"><span class="mini-icon">App</span><h3>Desktop & Smartphone</h3><p>Läuft im Browser auf Laptop, Tablet und Smartphone. Für iPhone kann die PWA zum Home-Bildschirm hinzugefügt werden.</p></article>
       </div>
     </section>
 
     <section class="sales-section" id="preise">
       <div class="container">
-        <h2 class="section-title">Einmalzahlung statt Monatsabo</h2>
+        <h2 class="section-title">Launch-Angebot</h2>
         <div class="pricing">
           <article class="price-card featured">
-            <span class="ribbon">Launch-Angebot</span>
+            <span class="ribbon">Launch-Preis reduziert</span>
             <h3>Prüfungstrainer Pro</h3>
+            <div class="old-price">später geplanter regulärer Preis: 399€</div>
             <div class="price">99€ <small>einmalig</small></div>
-            <p>Perfekt für den Start: vollständiger Zugang zur aktuellen Lernplattform, alle Aufgaben, Musterlösungen und 80/20-System.</p>
+            <p>Einmaliger Launch-Zugang zur aktuellen Lernplattform. Kein Abo. Der Kauf, die Rechnung und die Zahlungsarten wie PayPal werden über Digistore24 abgewickelt.</p>
             <div class="buy-actions">
-              <a class="module-btn" href="https://www.digistore24.com/" target="_blank" rel="noopener">Über Digistore24 kaufen</a>
-              <a class="module-btn" style="background:var(--gradient-success)!important" href="https://www.paypal.com/" target="_blank" rel="noopener">Über PayPal kaufen</a>
+              <a id="digistoreCheckout" class="module-btn" href="#digistore-setup" rel="noopener">Über Digistore24 kaufen →</a>
             </div>
-            <p class="checkout-note">Platzhalter-Links: Sobald dein Digistore24-/PayPal-Produkt angelegt ist, werden diese URLs ersetzt.</p>
+            <p class="checkout-note">Wichtig: Der echte Digistore24-Bestellformular-Link wird hier eingesetzt, sobald dein Produkt in Digistore24 angelegt und genehmigt ist. Direkte PayPal-Links setzen wir bewusst nicht ein, damit Affiliate- und Digistore24-Regeln sauber bleiben.</p>
+            <div id="checkoutWarning" class="checkout-warning">Checkout ist noch im Testmodus. Lege zuerst das Digistore24-Produkt an und ersetze in <strong>sales-config.js</strong> den Platzhalter durch den echten Bestellformular-Link.</div>
           </article>
-          <article class="price-card">
-            <span class="ribbon">Empfohlen später</span>
-            <h3>Prüfungstrainer Plus</h3>
-            <div class="price">149€ <small>einmalig</small></div>
-            <p>Für später: Plattformzugang plus Bonus-Paket mit 7-Tage-Lernplan, Prüfungsangst-Checkliste und zusätzlichen Simulationen.</p>
-            <div class="buy-actions">
-              <a class="module-btn" href="https://www.digistore24.com/" target="_blank" rel="noopener">Plus über Digistore24</a>
-              <a class="module-btn" style="background:var(--gradient-success)!important" href="https://www.paypal.com/" target="_blank" rel="noopener">Plus über PayPal</a>
-            </div>
-            <p class="checkout-note">Meine Empfehlung: Mit 99€ validieren, danach 149€ als regulären Preis testen.</p>
-          </article>
+          <aside class="price-card">
+            <span class="ribbon">Was der Käufer erhält</span>
+            <h3>Digitale Lieferung</h3>
+            <ul class="legal-list legal">
+              <li>Zugangscode per E-Mail nach erfolgreicher Zahlung.</li>
+              <li>Login über <strong>login.html</strong>, danach Weiterleitung zur Lernplattform.</li>
+              <li>Rückgabe-/Widerrufsfrist muss exakt zu den Digistore24-Produkteinstellungen passen.</li>
+              <li>Für den echten Launch: individuelle Codes per Webhook/API statt Frontend-Testcodes.</li>
+            </ul>
+          </aside>
         </div>
       </div>
     </section>
 
     <section class="sales-section" id="zugang">
       <div class="container">
-        <h2 class="section-title">So funktioniert der Zugangscode</h2>
+        <h2 class="section-title">Zugangs- und E-Mail-Flow</h2>
         <div class="sales-grid access-flow">
-          <div class="sales-box"><h3>Kunde kauft</h3><p>Über Digistore24 oder PayPal. Digistore24 ist für Deutschland stark, weil Rechnung, Affiliate und E-Mail-Auslieferung einfacher sind.</p></div>
-          <div class="sales-box"><h3>E-Mail kommt</h3><p>Nach Zahlung erhält der Käufer automatisch einen Zugangscode. Im MVP kann das Digistore24 per Auslieferungs-E-Mail senden.</p></div>
-          <div class="sales-box"><h3>Login freischalten</h3><p>Käufer öffnet <strong>login.html</strong>, gibt Code ein und wird zur Lernplattform weitergeleitet.</p></div>
+          <div class="sales-box"><h3>Kauf über Digistore24</h3><p>Der Button führt zum Digistore24-Bestellformular. PayPal wird dort als Zahlungsart aktiviert, nicht als separater externer PayPal-Link.</p></div>
+          <div class="sales-box"><h3>Code per E-Mail</h3><p>Im MVP kann Digistore24 einen vorbereiteten Code in der Auslieferungs-E-Mail senden. Für echte Skalierung erzeugt ein Webhook individuelle Codes.</p></div>
+          <div class="sales-box"><h3>Login zur Lernplattform</h3><p>Käufer gibt den Code ein. Die PWA speichert den Zugang lokal und öffnet den Trainingsbereich.</p></div>
         </div>
       </div>
     </section>
 
-    <section class="sales-section">
-      <div class="container">
-        <h2 class="section-title">Empfohlene technische Umsetzung</h2>
-        <div class="sales-grid">
-          <div class="sales-box"><h3>MVP sofort</h3><p>Statische GitHub-Pages-Seite, einfacher Code-Login, Digistore24/PayPal-Link. Schnell testbar, aber Codes sind nicht maximal sicher.</p></div>
-          <div class="sales-box"><h3>Empfohlener Verkaufsstack</h3><p>WordPress + Bricks Builder + Digistore24 + FluentCRM. Die PWA bleibt separat und wird per Zugangscode freigegeben.</p></div>
-          <div class="sales-box"><h3>Skalierbare Version</h3><p>Digistore24 Webhook → Cloudflare Worker/Supabase → individueller Lizenzcode → Login prüft Code serverseitig.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="sales-section">
+    <section class="sales-section" id="recht">
       <div class="container">
         <div class="sales-box">
-          <h2>Rechtlicher Hinweis zur Positionierung</h2>
-          <p class="legal">Dieses Angebot steht in keiner Verbindung zur Industrie- und Handelskammer oder zu einer offiziellen Prüfungsstelle. Alle Aufgaben, Texte und Lösungen wurden eigenständig erstellt und dienen der prüfungsnahen Vorbereitung. Es werden keine originalen IHK-Prüfungen oder offiziellen Prüfungsunterlagen bereitgestellt. Die Inhalte orientieren sich an typischen Anforderungen der Zwischenprüfung im Ausbildungsberuf Kaufmann/Kauffrau für Büromanagement.</p>
+          <h2>Rechtlich saubere Positionierung</h2>
+          <p class="legal">Dieses Angebot steht in keiner Verbindung zur Industrie- und Handelskammer, einer IHK-Prüfungsstelle oder einer offiziellen Prüfungsinstitution. Es werden keine originalen IHK-Prüfungen, offiziellen Prüfungsaufgaben, Logos, Scans oder geschützten Unterlagen bereitgestellt. Die Inhalte sind eigenständig erstellte Übungsaufgaben zur prüfungsnahen Vorbereitung auf typische Anforderungen im Ausbildungsberuf Kaufmann/Kauffrau für Büromanagement.</p>
+          <ul class="legal-list legal">
+            <li>Preis, Lieferform und Rückgabefrist müssen auf dieser Seite und in Digistore24 identisch sein.</li>
+            <li>Digistore24 verlangt funktionierende Links und einen Buy-Button direkt zum Digistore24-Bestellformular.</li>
+            <li>Bei Mitglieder-/Zugangsbereichen nicht mit „Lifetime“, „lebenslang“, „unbegrenzt“ oder „für immer“ werben.</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <section class="sales-section">
-      <div class="container faq">
-        <h2 class="section-title">FAQ</h2>
-        <details open><summary>Sind das originale IHK-Prüfungen?</summary><p class="legal">Nein. Die Aufgaben sind eigene, prüfungsnahe Übungsaufgaben im Stil typischer Anforderungen. Offizielle IHK-Prüfungen, Scans, Logos oder geschützte Unterlagen werden nicht bereitgestellt und sollten nur mit ausdrücklicher Lizenz verwendet werden.</p></details>
-        <details><summary>Warum keine Monatszahlung?</summary><p class="legal">Für Azubis ist eine faire Einmalzahlung oft attraktiver. 99€ als Launch-Angebot und 149€ als späterer Standardpreis sind realistisch testbar.</p></details>
-        <details><summary>Wie kommt der Zugangscode per E-Mail?</summary><p class="legal">Bei Digistore24 über die Auslieferungs-/Kaufbestätigungs-E-Mail. Für echte Skalierung besser per Webhook + Lizenzdatenbank.</p></details>
-        <details><summary>Ist der MVP-Code-Login sicher?</summary><p class="legal">Für einen ersten Verkaufstest reicht er als Prototyp. Für echten Umsatz sollte der Code serverseitig geprüft werden, sonst können Codes geteilt oder im Frontend gefunden werden.</p></details>
+    <section class="sales-section" id="digistore-setup">
+      <div class="container sales-grid">
+        <article class="sales-box"><h3>1. Produkt anlegen</h3><p>Digistore24 Vendor → Produktliste → digitales Produkt/Mitgliederbereich. Preis: 99€ Launch, später 399€ nur dann, wenn du den Preis wirklich umstellst.</p></article>
+        <article class="sales-box"><h3>2. Danke-Seite setzen</h3><p>Thank-you-URL: <strong>danke.html</strong>. Dort erklärst du dem Käufer, dass der Code per E-Mail kommt und er danach den Login öffnet.</p></article>
+        <article class="sales-box"><h3>3. Link ersetzen</h3><p>Den echten Digistore24-Bestellformular-Link in <strong>sales-config.js</strong> eintragen. Danach kann die Seite zur Genehmigung eingereicht werden.</p></article>
       </div>
     </section>
   </main>
+
+  <footer class="sales-footer">
+    <div class="container">
+      <nav aria-label="Rechtliche Links">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="agb.html">Nutzungsbedingungen</a>
+        <a href="widerruf.html">Widerruf</a>
+        <a href="danke.html">Danke-Seite</a>
+      </nav>
+      <p class="legal" style="margin-top:1rem">Noch nicht als offizieller Verkaufsstart gemeint: Der Checkout bleibt im Testmodus, bis der echte Digistore24-Bestellformular-Link eingetragen ist.</p>
+    </div>
+  </footer>
+  <script src="sales-config.js?v=build-20260705-commerce-1"></script>
+  <script>
+    (function () {
+      const config = window.IHK_SALES_CONFIG || {};
+      const checkout = document.getElementById('digistoreCheckout');
+      const warning = document.getElementById('checkoutWarning');
+      const validCheckout = config.checkoutActive && /^https:\/\/(www\.)?digistore24\.(com|app)\//.test(config.checkoutUrl || '');
+      if (validCheckout) {
+        checkout.href = config.checkoutUrl;
+        checkout.target = '_blank';
+        checkout.textContent = 'Jetzt sicher über Digistore24 kaufen →';
+      } else {
+        checkout.addEventListener('click', function (event) {
+          event.preventDefault();
+          warning.style.display = 'block';
+          warning.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+      }
+    })();
+  </script>
 </body>
 </html>

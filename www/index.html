@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="description" content="IHK Lernplattform - Professionelle Prüfungsvorbereitung für Informationstechnisches Büromanagement">
     <title>IHK Lernplattform</title>
     
@@ -696,8 +696,9 @@
     </style>
     
     <!-- PWA -->
-    <link rel="stylesheet" href="style.css?v=build-20260705-premium-1">
+    <link rel="stylesheet" href="style.css?v=build-20260705-word8020-1">
     <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <meta name="theme-color" content="#3498db">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -709,9 +710,9 @@
             <h2 id="accessGateTitle">Zugangscode erforderlich</h2>
             <p>Die Lernplattform ist öffentlich erreichbar, der volle Trainingsbereich ist aber für Käufer freigeschaltet. Nach dem Kauf erhältst du deinen Zugangscode per E-Mail.</p>
             <div style="display:flex;gap:.75rem;flex-wrap:wrap">
-                <a class="module-btn" style="width:auto;text-decoration:none" href="login.html">Code eingeben</a>
-                <a class="module-btn" style="width:auto;text-decoration:none;background:linear-gradient(135deg,#0f766e,#16a34a)!important" href="landing.html#preise">Zugang kaufen</a>
-                <button class="module-btn" style="width:auto;background:#e5e7eb!important;color:#102033!important" onclick="previewAccess()">Demo ansehen</button>
+                <a class="module-btn" style="width:auto;text-decoration:none" href="login.html">🔐 Code eingeben</a>
+                <a class="module-btn" style="width:auto;text-decoration:none;background:linear-gradient(135deg,#0f766e,#16a34a)!important" href="landing.html#preise">✅ Zugang kaufen</a>
+                <button class="module-btn" style="width:auto;background:#e5e7eb!important;color:#102033!important" onclick="previewAccess()">👀 Demo ansehen</button>
             </div>
         </div>
     </div>
@@ -735,6 +736,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
+                    <a class="skip-link" href="#modules">Direkt zum Inhalt</a>
                     <button type="button" class="hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="Menü öffnen" aria-expanded="false" aria-controls="navMenu">
                         <span></span>
                         <span></span>
@@ -742,11 +744,13 @@
                     </button>
                     📚 IHK Lernplattform
                 </div>
-                <nav class="nav-menu" id="navMenu">
-                    <a href="#dashboard" class="nav-link active" onclick="navigateToSection('dashboard', event)">Dashboard</a>
+                <nav class="nav-menu" id="navMenu" aria-label="Hauptnavigation">
+                    <a href="#dashboard" class="nav-link active" onclick="navigateToSection('dashboard', event)">Start</a>
                     <a href="#modules" class="nav-link" onclick="navigateToSection('modules', event)">Module</a>
                     <a href="#tasks" class="nav-link" onclick="navigateToSection('tasks', event)">Aufgaben</a>
                     <a href="#progress" class="nav-link" onclick="navigateToSection('progress', event)">Fortschritt</a>
+                    <a href="landing.html#preise" class="nav-link nav-link-cta">✅ Zugang kaufen</a>
+                    <a href="login.html" class="nav-link nav-link-login">Login</a>
                 </nav>
                 <div class="user-info">
                     <span>👤 Alex</span>
@@ -756,7 +760,7 @@
         </div>
     </header>
     
-    <section class="hero">
+    <section class="hero" id="dashboard">
         <div class="container">
             <h1>IHK Lernplattform</h1>
             <p>Professionelle Prüfungsvorbereitung für Informationstechnisches Büromanagement</p>
@@ -789,7 +793,7 @@
                 <div class="modules-grid">
                     <div class="module-card">
                         <div class="module-header">
-                            <div class="module-icon">📊</div>
+                            <div class="module-icon module-icon-excel" aria-hidden="true"><span>XL</span></div>
                             <div class="module-title">Microsoft Excel</div>
                         </div>
                         <div class="module-description">
@@ -803,12 +807,12 @@
                         <div class="progress-bar">
                             <div class="progress-fill" style="width: 35%" role="progressbar" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
-                        <button class="module-btn" onclick="showModuleTasks('Excel')" aria-label="Excel Modul starten">Modul starten →</button>
+                        <button class="module-btn" onclick="showModuleTasks('Excel')" aria-label="Excel Modul starten">Modul starten</button>
                     </div>
                     
                     <div class="module-card">
                         <div class="module-header">
-                            <div class="module-icon">📝</div>
+                            <div class="module-icon module-icon-word" aria-hidden="true"><span>WD</span></div>
                             <div class="module-title">Microsoft Word</div>
                         </div>
                         <div class="module-description">
@@ -822,12 +826,12 @@
                         <div class="progress-bar">
                             <div class="progress-fill" style="width: 35%" role="progressbar" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
-                        <button class="module-btn" onclick="showModuleTasks('Word')" aria-label="Word Modul starten">Modul starten →</button>
+                        <button class="module-btn" onclick="showModuleTasks('Word')" aria-label="Word Modul starten">Modul starten</button>
                     </div>
                     
                     <div class="module-card">
                         <div class="module-header">
-                            <div class="module-icon">🎯</div>
+                            <div class="module-icon module-icon-powerpoint" aria-hidden="true"><span>PP</span></div>
                             <div class="module-title">PowerPoint</div>
                         </div>
                         <div class="module-description">
@@ -841,12 +845,12 @@
                         <div class="progress-bar">
                             <div class="progress-fill" style="width: 60%" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
-                        <button class="module-btn" onclick="showModuleTasks('PowerPoint')" aria-label="PowerPoint Modul starten">Modul starten →</button>
+                        <button class="module-btn" onclick="showModuleTasks('PowerPoint')" aria-label="PowerPoint Modul starten">Modul starten</button>
                     </div>
                     
                     <div class="module-card">
                         <div class="module-header">
-                            <div class="module-icon">📧</div>
+                            <div class="module-icon module-icon-outlook" aria-hidden="true"><span>OL</span></div>
                             <div class="module-title">Outlook</div>
                         </div>
                         <div class="module-description">
@@ -860,7 +864,7 @@
                         <div class="progress-bar">
                             <div class="progress-fill" style="width: 80%" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
-                        <button class="module-btn" onclick="showModuleTasks('Outlook')" aria-label="Outlook Modul starten">Modul starten →</button>
+                        <button class="module-btn" onclick="showModuleTasks('Outlook')" aria-label="Outlook Modul starten">Modul starten</button>
                     </div>
                 </div>
             </section>
@@ -1425,7 +1429,7 @@
     </script>
 
     <!-- Learning Environment Module -->
-    <script src="js/learning-environment.js?v=build-20260705-modal-guard"></script>
+    <script src="js/learning-environment.js?v=build-20260705-word8020-1"></script>
     
     <script>
         // Initialize Learning Environment

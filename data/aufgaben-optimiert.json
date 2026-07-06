@@ -1524,30 +1524,61 @@
       "id": "word-001",
       "kategorie": "word",
       "titel": "Geschäftsbrief formatieren",
-      "beschreibung": "Erstellen Sie ein professionelles Geschäftsbriefvorlage mit Briefkopf, Datum, Empfänger, Betreffzeile, Grußformel und Unterschrift.",
+      "beschreibung": "Erstellen Sie eine professionelle Geschäftsbriefvorlage nach DIN 5008. Trainieren Sie dabei die 80/20-Struktur, die in der Zwischenprüfung am schnellsten Punkte bringt: vollständige Adresse, Datum, Betreff, Anrede, sachlicher Dreisatz, Grußformel, Unterschrift und Anlagenvermerk.",
       "schwierigkeit": "anfaenger",
       "punkte": 25,
       "zeit": 20,
       "hinweise": [
-        "Verwenden Sie korrekte Absatzformate",
-        "Platzierung von Datum und Empfänger",
-        "Professionelle Schriftart wählen"
+        "Prüfungs-80/20: Erst die feste Briefstruktur korrekt setzen, dann den Text formulieren.",
+        "Betreff kurz, konkret und ohne Punkt am Ende schreiben.",
+        "Text in drei Absätze gliedern: Anlass, Kerninformation, nächster Schritt."
       ],
-      "loesung": "DIN 5008 Format mit Blocksatz und 10pt Times New Roman",
+      "loesung": "DIN-5008-Geschäftsbrief mit vollständiger Empfängeradresse, Datum, präzisem Betreff, sachlichem 3-Absatz-Text, Grußformel, Name/Funktion und Anlagenvermerk.",
       "content": {
-        "solution": "DIN 5008 Format mit Blocksatz und 10pt Times New Roman",
+        "solution": "DIN-5008-Geschäftsbrief mit vollständiger Empfängeradresse, Datum, präzisem Betreff, sachlichem 3-Absatz-Text, Grußformel, Name/Funktion und Anlagenvermerk.",
         "elements": [
-          "Verwenden Sie korrekte Absatzformate",
-          "Platzierung von Datum und Empfänger",
-          "Professionelle Schriftart wählen",
-          "DIN 5008 Format mit Blocksatz und 10pt Times New Roman",
-          "Geschäftsbrief formatieren",
           "Absender",
           "Empfänger",
           "Datum",
           "Betreff",
-          "Anrede"
-        ]
+          "Anrede",
+          "Absatz 1: Anlass",
+          "Absatz 2: wichtigste Information",
+          "Absatz 3: nächster Schritt",
+          "Grußformel",
+          "Name/Funktion",
+          "Anlage"
+        ],
+        "starterDocument": "Absender/Briefkopf\n\nEmpfänger\n\nDatum\n\nBetreff\n\nAnrede\n\nAbsatz 1: Anlass\n\nAbsatz 2: wichtigste Information\n\nAbsatz 3: nächster Schritt\n\nGrußformel\n\nName/Funktion\n\nAnlage",
+        "examTemplate": "Müller GmbH · Hauptstraße 15 · 10115 Berlin\n\nMeier AG\nFrau Dr. Anna Schmidt\nBahnhofstraße 42\n80331 München\n\nBerlin, 05.07.2026\n\nBetreff: Angebot für ergonomische Büromöbel – Ihre Anfrage vom 15.01.2025\n\nSehr geehrte Frau Dr. Schmidt,\n\nvielen Dank für Ihre Anfrage. Gern übersenden wir Ihnen unser Angebot für die Ausstattung Ihrer Büroräume mit ergonomischen Schreibtischen und Bürostühlen.\n\nUnser Vorschlag umfasst zehn höhenverstellbare Schreibtische, zehn ergonomische Bürostühle sowie die Lieferung und Montage vor Ort. Das Angebot ist bis zum 31.07.2026 gültig.\n\nBei Rückfragen stehe ich Ihnen gern zur Verfügung. Ich freue mich auf Ihre Rückmeldung.\n\nMit freundlichen Grüßen\n\nMüller GmbH\n\ni. A. Alex Mustermann\nAuszubildender Kaufmann für Büromanagement\n\nAnlage: Angebot Büromöbel",
+        "hintDetailed": "AHA-Tipp: Denk an eine Brief-Treppe. Jede Stufe hat ihren festen Platz: Wer schreibt? An wen? Wann? Worum geht es? Was ist die Botschaft? Was soll als Nächstes passieren? Wenn diese Treppe steht, hast du schon den größten Teil der Punkte sicher.",
+        "solutionDetailed": {
+          "aha": "Wenn du in der Prüfung bei einem Geschäftsbrief nur eine Sache automatisierst, dann diese Reihenfolge: Empfänger → Datum → Betreff → Anrede → kurzer Sachtext → Gruß → Name. Diese Struktur bringt schnell Punkte, auch wenn der Text noch nicht perfekt ist.",
+          "document": "Müller GmbH · Hauptstraße 15 · 10115 Berlin\n\nMeier AG\nFrau Dr. Anna Schmidt\nBahnhofstraße 42\n80331 München\n\nBerlin, 05.07.2026\n\nBetreff: Angebot für ergonomische Büromöbel – Ihre Anfrage vom 15.01.2025\n\nSehr geehrte Frau Dr. Schmidt,\n\nvielen Dank für Ihre Anfrage. Gern übersenden wir Ihnen unser Angebot für die Ausstattung Ihrer Büroräume mit ergonomischen Schreibtischen und Bürostühlen.\n\nUnser Vorschlag umfasst zehn höhenverstellbare Schreibtische, zehn ergonomische Bürostühle sowie die Lieferung und Montage vor Ort. Das Angebot ist bis zum 31.07.2026 gültig.\n\nBei Rückfragen stehe ich Ihnen gern zur Verfügung. Ich freue mich auf Ihre Rückmeldung.\n\nMit freundlichen Grüßen\n\nMüller GmbH\n\ni. A. Alex Mustermann\nAuszubildender Kaufmann für Büromanagement\n\nAnlage: Angebot Büromöbel",
+          "principles": [
+            "80 % der Punkte entstehen durch saubere Struktur, vollständige Pflichtbestandteile und sachlichen Ton — nicht durch schöne Formulierungen.",
+            "Der Betreff sagt sofort, worum es geht. Er ist kein ganzer Satz und bekommt keinen Punkt am Ende.",
+            "Der Text folgt dem 3-Absatz-Muster: Anlass, konkrete Information/Angebot, nächster Schritt.",
+            "DIN 5008 bedeutet in der Prüfung vor allem: übersichtlich, einheitlich, linksbündig, klare Abstände. Nicht in Details verlieren."
+          ],
+          "checklist": [
+            "Absenderzeile/Briefkopf vorhanden",
+            "Empfänger vollständig mit Firma, Person, Straße, PLZ und Ort",
+            "Datum im deutschen Format rechts bzw. klar erkennbar",
+            "Betreff konkret, hervorgehoben und ohne Schlusszeichen",
+            "Anrede passend zur genannten Person",
+            "Drei kurze Absätze: Dank/Anlass, Angebot/Fakten, Rückfrage/Abschluss",
+            "Grußformel, Firmenname, Name/Funktion und Anlage vorhanden"
+          ],
+          "explanation": [
+            "Der Einstieg nennt direkt den Anlass. Prüfer sehen sofort: Die Aufgabe wurde verstanden.",
+            "Die Angebotsdaten stehen gebündelt in einem Absatz. Dadurch wirkt der Brief geschäftlich und nicht wie ein Chattext.",
+            "Die Frist macht das Angebot verbindlich und prüfungsnah. Solche konkreten Angaben zeigen kaufmännisches Denken.",
+            "Der Schluss fordert keine aggressive Handlung, sondern bietet Rückfragen an. Das ist professioneller Büromanagement-Stil.",
+            "Die Anlage wird separat genannt, weil Anlagenvermerke in Geschäftsbrief-Aufgaben gern Punkte bringen."
+          ],
+          "memory": "Erst Form, dann Inhalt, dann Feinschliff. In der Zwischenprüfung rettet eine stabile DIN-5008-Schablone Zeit und Punkte."
+        }
       }
     },
     {

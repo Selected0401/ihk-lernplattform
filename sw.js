@@ -9,10 +9,10 @@
  * - Safe asset caching with error handling
  */
 
-const CACHE_NAME = 'emilia-lernplattform-v2.0.2-safari';
-const STATIC_CACHE = 'emilia-static-v2.0.2-safari';
-const DYNAMIC_CACHE = 'emilia-dynamic-v2.0.2-safari';
-const API_CACHE = 'emilia-api-v2.0.2-safari';
+const CACHE_NAME = 'emilia-lernplattform-v2.0.4-word8020';
+const STATIC_CACHE = 'emilia-static-v2.0.4-word8020';
+const DYNAMIC_CACHE = 'emilia-dynamic-v2.0.4-word8020';
+const API_CACHE = 'emilia-api-v2.0.4-word8020';
 
 // Safari detection
 const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
@@ -34,6 +34,7 @@ const CRITICAL_ASSETS = [
   'manifest.json',
   'icon-192.png',
   'icon-512.png',
+  'apple-touch-icon.png',
   'data/aufgaben-optimiert.json'
 ];
 

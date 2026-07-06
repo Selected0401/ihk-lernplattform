@@ -2,7 +2,7 @@
 
 ## Ziel
 
-Käufer zahlen einmalig 99€ oder 149€ über Digistore24 oder PayPal und erhalten danach automatisch einen Zugangscode per E-Mail. Mit diesem Code öffnen sie `login.html` und werden zur Lernplattform freigeschaltet.
+- Käufer zahlen einmalig 99€ als Launch-Angebot statt 399€ regulärem Wert über Digistore24 und erhalten danach automatisch einen Zugangscode per E-Mail. Zahlungsarten wie PayPal werden im Digistore24-Checkout aktiviert. Mit diesem Code öffnen sie `login.html` und werden zur Lernplattform freigeschaltet.
 
 ## Wichtig: MVP vs. echte Verkaufsversion
 
@@ -17,7 +17,7 @@ Der aktuelle Code-Login in `login.html` ist ein MVP-Prototyp. Die Codes stehen i
   - `IHK-2027-PRO`
   - `BUERO-99-START`
   - `BUERO-149-PLUS`
-- Checkout-Links aktuell Platzhalter zu Digistore24/PayPal.
+- Checkout-Link aktuell Platzhalter zu Digistore24: `https://www.digistore24.com/product/DEIN-PRODUKT-ID`.
 
 Gut für:
 - Layout testen
@@ -34,7 +34,7 @@ Nicht gut für:
 2. Produkt anlegen:
    - Name: IHK 80/20 Prüfungstrainer Büromanagement
    - Preis Launch: 99€ einmalig
-   - Späterer Preis: 149€ einmalig
+   - Regulärer Wert/Ankerpreis: 399€ einmalig
    - Produkttyp: digitales Produkt / Online-Zugang
 3. Auslieferungs-E-Mail einrichten:
    - Betreff: Dein Zugangscode zum IHK 80/20 Prüfungstrainer
@@ -43,17 +43,11 @@ Nicht gut für:
      - Login-Link: `https://selected0401.github.io/ihk-lernplattform/login.html`
      - Zugangscode: zunächst manuell/fester Code oder später individueller Code
 4. Checkout-URL aus Digistore24 kopieren
-5. In `landing.html` die Platzhalter-Links `https://www.digistore24.com/` ersetzen.
+5. In `landing.html` die Konstante `DIGISTORE24_CHECKOUT_URL` ersetzen.
 
 ## PayPal Setup
 
-Einfacher Start:
-1. PayPal Business Konto
-2. PayPal Button oder Zahlungslink für 99€ erstellen
-3. Käufer landet nach Zahlung auf einer Danke-Seite oder erhält manuell eine E-Mail
-
-Nachteil:
-- Zugangscode-Automation ist ohne Zusatztool schwächer als bei Digistore24.
+PayPal sollte für den öffentlichen Funnel nicht als separater Button gepflegt werden, sondern als Zahlungsart im Digistore24-Produkt aktiv sein. Dadurch bleiben Checkout, Rechnung, Auslieferungs-E-Mail und Zugangscode-Prozess an einer Stelle.
 
 ## Solide Automation
 

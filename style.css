@@ -126,6 +126,28 @@ header {
     border-color: rgba(37,99,235,.12);
 }
 
+.module-icon {
+    width: 64px !important;
+    height: 64px !important;
+    border-radius: 20px !important;
+    color: white !important;
+    font-size: 1.05rem !important;
+    font-weight: 950 !important;
+    letter-spacing: -0.045em;
+    box-shadow: 0 14px 32px rgba(15, 23, 42, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.42);
+}
+
+.module-icon span {
+    display: inline-block;
+    transform: translateY(1px);
+}
+
+.module-icon-excel { background: linear-gradient(135deg, #0f766e, #16a34a) !important; }
+.module-icon-word { background: linear-gradient(135deg, #1d4ed8, #60a5fa) !important; }
+.module-icon-powerpoint { background: linear-gradient(135deg, #c2410c, #f97316) !important; }
+.module-icon-outlook { background: linear-gradient(135deg, #0369a1, #22d3ee) !important; }
+
 .hero {
     position: relative;
     overflow: hidden;
@@ -796,4 +818,225 @@ main {
         scroll-behavior: auto !important;
         transition-duration: .01ms !important;
     }
+}
+
+/* Small UX hardening: clearer sales/login navigation, accessible focus, and mobile touch targets */
+.skip-link {
+    position: absolute;
+    left: -999px;
+    top: 0;
+    z-index: 999;
+    padding: .75rem 1rem;
+    border-radius: 999px;
+    background: var(--blue-dark);
+    color: #fff;
+    text-decoration: none;
+}
+.skip-link:focus { left: max(1rem, env(safe-area-inset-left)); top: max(.75rem, env(safe-area-inset-top)); }
+.nav-link-cta {
+    color: #fff !important;
+    background: var(--gradient-success) !important;
+    border-color: rgba(22, 163, 74, .28) !important;
+    box-shadow: 0 10px 24px rgba(15, 118, 110, .18);
+}
+.nav-link-login {
+    color: var(--blue-dark) !important;
+    border-color: rgba(37,99,235,.18) !important;
+    background: rgba(37,99,235,.07) !important;
+}
+.nav-link,
+.module-btn,
+.start-task-btn,
+.filter-tab,
+.cookie-btn,
+.hamburger,
+.task-item {
+    min-width: 44px;
+    -webkit-user-select: none;
+    user-select: none;
+}
+.module-icon {
+    line-height: 1;
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+}
+.nav-link:focus-visible,
+.module-btn:focus-visible,
+.start-task-btn:focus-visible,
+.filter-tab:focus-visible,
+.cookie-btn:focus-visible,
+.hamburger:focus-visible,
+.task-item:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, .45);
+    outline-offset: 3px;
+}
+@supports (padding: max(0px)) {
+    body { padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right); }
+}
+@media (max-width: 840px) {
+    .nav-menu.active { gap: .5rem !important; }
+    .nav-link { justify-content: center; width: 100%; }
+}
+
+
+/* Word workspace upgrade: more like Microsoft Word, clearer 80/20 learning feedback */
+.word-toolbar {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    flex-wrap: wrap;
+}
+.word-toolbar select,
+.word-template-btn {
+    min-height: 44px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: #fff;
+    color: var(--ink);
+    font-weight: 700;
+}
+.word-template-btn {
+    color: #fff !important;
+    background: linear-gradient(135deg, #1d4ed8, #0f766e) !important;
+    white-space: nowrap;
+}
+.word-workspace {
+    border: 1px solid rgba(16, 32, 51, .10);
+    border-radius: 22px;
+    background: linear-gradient(180deg, #eef2f7, #e5eaf1);
+    padding: 1rem;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.85);
+}
+.word-page-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: .75rem;
+    margin-bottom: .6rem;
+    color: var(--muted);
+    font-size: .78rem;
+    font-weight: 800;
+}
+.word-ruler-horizontal {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    height: 28px;
+    margin-left: 34px;
+    border: 1px solid #cbd5e1;
+    border-bottom: 0;
+    border-radius: 10px 10px 0 0;
+    background: repeating-linear-gradient(90deg, #fff 0 20px, #f8fafc 20px 40px);
+    color: #64748b;
+    font-size: .7rem;
+    align-items: end;
+    padding: 0 .45rem .25rem;
+}
+.word-document-shell {
+    display: grid;
+    grid-template-columns: 34px minmax(480px, 794px);
+    justify-content: center;
+    align-items: start;
+    overflow-x: auto;
+}
+.word-ruler-vertical {
+    min-height: 720px;
+    border: 1px solid #cbd5e1;
+    border-right: 0;
+    border-radius: 10px 0 0 10px;
+    background: repeating-linear-gradient(180deg, #fff 0 20px, #f8fafc 20px 40px);
+    color: #64748b;
+    font-size: .68rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.word-editor {
+    width: min(100%, 794px);
+    min-height: 720px;
+    margin: 0 auto;
+    padding: 74px 82px 90px;
+    border: 1px solid #d9dee8;
+    border-radius: 0 10px 10px 0;
+    background: #fff;
+    box-shadow: 0 18px 45px rgba(15, 23, 42, .16);
+    font-family: "Times New Roman", Times, serif;
+    font-size: 10.5pt;
+    line-height: 1.45;
+    color: #111827;
+}
+.word-editor p,
+.solution-word-page p {
+    min-height: 1.15em;
+    margin: 0 0 .48rem;
+}
+.word-subject-line,
+.word-editor p:has(+ p) .word-subject-line {
+    font-weight: 700;
+}
+.solution-panel {
+    max-height: 44dvh;
+    overflow: auto;
+}
+.word-solution-view {
+    display: grid;
+    gap: 1rem;
+}
+.solution-aha,
+.solution-memory-box {
+    border: 1px solid rgba(37, 99, 235, .18);
+    border-radius: 18px;
+    background: #eff6ff;
+    padding: .9rem 1rem;
+    color: var(--ink);
+}
+.solution-aha span {
+    display: block;
+    margin-top: .35rem;
+}
+.solution-word-page {
+    max-width: 760px;
+    padding: 2rem 2.4rem;
+    border: 1px solid #dbe2ec;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 12px 34px rgba(15, 23, 42, .10);
+    font-family: "Times New Roman", Times, serif;
+    font-size: .92rem;
+    line-height: 1.45;
+}
+.solution-grid-80-20 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .9rem;
+}
+.solution-grid-80-20 section,
+.solution-explanation-list {
+    border: 1px solid rgba(16, 32, 51, .10);
+    border-radius: 16px;
+    background: rgba(255,255,255,.82);
+    padding: .9rem 1rem;
+}
+.solution-grid-80-20 ul,
+.solution-explanation-list {
+    margin: .35rem 0 0;
+    padding-left: 1.25rem;
+}
+.solution-grid-80-20 li,
+.solution-explanation-list li {
+    margin-bottom: .45rem;
+}
+@media (max-width: 840px) {
+    .word-page-meta,
+    .word-ruler-horizontal,
+    .word-ruler-vertical { display: none; }
+    .word-workspace { padding: .6rem; }
+    .word-document-shell { display: block; }
+    .word-editor {
+        width: 100%;
+        min-height: 58dvh;
+        padding: 1.4rem;
+        border-radius: 16px;
+        font-size: 1rem;
+    }
+    .solution-grid-80-20 { grid-template-columns: 1fr; }
+    .solution-panel { max-height: none; }
 }
