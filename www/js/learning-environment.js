@@ -301,6 +301,7 @@ class LearningEnvironment {
 class ExcelSimulator {
     constructor() {
         this.formulaEngine = new FormulaEngine();
+        this.activeCell = null;
     }
 
     initialize(task, env) {
@@ -318,14 +319,14 @@ class ExcelSimulator {
             <div class="formula-bar">
                 <span class="cell-address" id="cellAddress">A1</span>
                 <input type="text" class="formula-input" id="formulaInput" placeholder="=SUMME(A2:A4)" aria-label="Formel eingeben">
-                <button class="btn btn-sm" onclick="window.learningEnv.editors.excel.applyFormula()">✓</button>
+                <button class="btn btn-sm" onmousedown="event.preventDefault()" onclick="window.learningEnv.editors.excel.applyFormula()">✓</button>
             </div>
             <div class="toolbar-buttons">
-                <button class="btn-icon" onclick="window.learningEnv.editors.excel.insertFunction('SUMME')" title="SUMME">Σ</button>
-                <button class="btn-icon" onclick="window.learningEnv.editors.excel.insertFunction('MITTELWERT')" title="MITTELWERT">⌀</button>
-                <button class="btn-icon" onclick="window.learningEnv.editors.excel.insertFunction('SVERWEIS')" title="SVERWEIS">🔍</button>
-                <button class="btn-icon" onclick="window.learningEnv.editors.excel.insertFunction('WENN')" title="WENN">❓</button>
-                <button class="btn-icon" onclick="window.learningEnv.editors.excel.insertFunction('SUMMEWENNS')" title="SUMMEWENNS">Σ≷</button>
+                <button class="btn-icon" onmousedown="event.preventDefault()" onclick="window.learningEnv.editors.excel.insertFunction('SUMME')" title="SUMME">Σ</button>
+                <button class="btn-icon" onmousedown="event.preventDefault()" onclick="window.learningEnv.editors.excel.insertFunction('MITTELWERT')" title="MITTELWERT">⌀</button>
+                <button class="btn-icon" onmousedown="event.preventDefault()" onclick="window.learningEnv.editors.excel.insertFunction('SVERWEIS')" title="SVERWEIS">🔍</button>
+                <button class="btn-icon" onmousedown="event.preventDefault()" onclick="window.learningEnv.editors.excel.insertFunction('WENN')" title="WENN">❓</button>
+                <button class="btn-icon" onmousedown="event.preventDefault()" onclick="window.learningEnv.editors.excel.insertFunction('SUMMEWENNS')" title="SUMMEWENNS">Σ≷</button>
             </div>
         `;
 
@@ -390,6 +391,7 @@ class ExcelSimulator {
     attachCellEvents() {
         document.querySelectorAll('.excel-cell.editable').forEach(cell => {
             cell.addEventListener('focus', (e) => {
+                this.activeCell = e.target;
                 const address = e.target.dataset.address;
                 document.getElementById('cellAddress').textContent = address;
                 const formula = e.target.dataset.formula || e.target.textContent;
@@ -397,10 +399,16 @@ class ExcelSimulator {
             });
             
             cell.addEventListener('blur', (e) => {
+                const nextTarget = e.relatedTarget;
+                if (nextTarget && (nextTarget.closest?.('.formula-bar') || nextTarget.closest?.('.toolbar-buttons'))) {
+                    return;
+                }
+
                 const cellId = e.target.id;
                 const value = e.target.textContent.trim();
-                this.env.saveAnswer(cellId, value);
-                e.target.dataset.formula = value;
+                const savedValue = value.startsWith('=') ? value : (e.target.dataset.formula?.startsWith('=') ? e.target.dataset.formula : value);
+                this.env.saveAnswer(cellId, savedValue);
+                e.target.dataset.formula = savedValue;
             });
             
             cell.addEventListener('keydown', (e) => {
@@ -443,15 +451,19 @@ class ExcelSimulator {
     applyFormula() {
         const formulaInput = document.getElementById('formulaInput');
         const formula = formulaInput.value.trim();
-        const activeCell = document.querySelector('.excel-cell.editable:focus');
+        const activeCell = this.activeCell || document.querySelector('.excel-cell.editable:focus');
         
-        if (!activeCell || !formula) return;
+        if (!activeCell || !formula) {
+            console.warn('Keine aktive Excel-Zelle oder Formel ausgewählt.');
+            return;
+        }
         
         const result = this.formulaEngine.evaluate(formula, this.getGridData());
         activeCell.textContent = result;
         activeCell.dataset.formula = formula;
-        this.env.saveAnswer(activeCell.id, result);
+        this.env.saveAnswer(activeCell.id, formula);
         formulaInput.value = '';
+        activeCell.focus();
     }
 
     insertFunction(name) {
@@ -481,13 +493,23 @@ class ExcelSimulator {
         const expected = task.content.solution;
         if (!expected) return { correct: true, message: 'Aufgabe abgeschlossen!' };
         
-        // Simple check - compare user entries with expected solution
-        const userValues = Object.values(userAnswers).filter(v => v && v.trim()).join(' ');
+        const savedAnswerText = Object.values(userAnswers)
+            .map(value => {
+                if (!value) return '';
+                if (typeof value === 'string') return value;
+                if (typeof value === 'object') return [value.formula, value.result, value.value].filter(Boolean).join(' ');
+                return String(value);
+            })
+            .join(' ');
+        const visibleFormulaText = Array.from(document.querySelectorAll('.excel-cell.editable'))
+            .map(cell => `${cell.dataset.formula || ''} ${cell.textContent || ''}`)
+            .join(' ');
+        const userValues = `${savedAnswerText} ${visibleFormulaText}`.trim();
         const expectedClean = expected.toLowerCase().replace(/[^a-z0-9äöüß]/g, '');
         const userClean = userValues.toLowerCase().replace(/[^a-z0-9äöüß]/g, '');
         
-        // Check for key formula components
-        const keyTerms = ['summe', 'mittelwert', 'sverweis', 'wenn', 'summewenns', 'pivot'];
+        // Check for key formula components, including formulas saved from the formula bar.
+        const keyTerms = ['summe', 'mittelwert', 'sverweis', 'wenn', 'wennfehler', 'summewenns', 'pivot'];
         const hasKeyTerm = keyTerms.some(term => userClean.includes(term) && expectedClean.includes(term));
         
         const correct = hasKeyTerm || userClean.includes(expectedClean.substring(0, 20));
@@ -805,6 +827,7 @@ class PowerPointEditor {
         this.env = env;
         this.slides = [];
         this.currentSlide = 0;
+        this.userTouched = false;
         this.renderEditor();
     }
 
@@ -843,6 +866,32 @@ class PowerPointEditor {
         `;
 
         this.updateThumbnails();
+        this.bindSlideInputTracking();
+    }
+
+    bindSlideInputTracking() {
+        const canvas = document.getElementById('slideCanvas');
+        if (!canvas) return;
+        canvas.addEventListener('input', () => this.markChanged());
+    }
+
+    markChanged() {
+        this.userTouched = true;
+        this.env?.saveAnswer('powerpoint-state', this.captureSlideState());
+    }
+
+    captureSlideState() {
+        const elements = Array.from(document.querySelectorAll('.slide .placeholder')).map(el => ({
+            type: el.dataset.type || (el.classList.contains('title') ? 'title' : el.classList.contains('content') ? 'content' : 'text'),
+            text: (el.textContent || '').trim()
+        }));
+        return {
+            touched: this.userTouched,
+            slideCount: Math.max(1, document.querySelectorAll('.slide').length, this.slides.length || 0),
+            elements,
+            text: elements.map(el => el.text).join(' '),
+            types: elements.map(el => el.type)
+        };
     }
 
     addSlide() {
@@ -855,6 +904,7 @@ class PowerPointEditor {
         this.currentSlide = this.slides.length - 1;
         this.renderSlide();
         this.updateThumbnails();
+        this.markChanged();
     }
 
     prevSlide() {
@@ -906,7 +956,9 @@ class PowerPointEditor {
         }
         
         slide.appendChild(element);
+        element.addEventListener('input', () => this.markChanged());
         this.makeDraggable(element);
+        this.markChanged();
     }
 
     makeDraggable(el) {
@@ -959,15 +1011,29 @@ class PowerPointEditor {
     }
 
     checkSolution(task, userAnswers) {
-        const elements = task.content.elements || [];
-        const hasTitle = elements.some(e => e.toLowerCase().includes('master'));
-        const correct = hasTitle; // Simplified
+        const requiredElements = task.content.elements || [];
+        const state = userAnswers['powerpoint-state'] || this.captureSlideState();
+        const userText = String(state.text || '').toLowerCase();
+        const userTypes = new Set(state.types || []);
+        const createdElements = state.elements || [];
+        const insertedTypeCount = createdElements.filter(el => el.type && !['title', 'content'].includes(el.type)).length;
+        const touched = Boolean(state.touched || this.userTouched);
+        const nonDefaultText = createdElements.some(el => {
+            const text = String(el.text || '').trim();
+            return text && !['Präsentationstitel', '• Punkt 1\n• Punkt 2\n• Punkt 3', 'Neue Folie', '• Inhalt'].includes(text);
+        });
+        const keywords = requiredElements
+            .flatMap(el => String(el).toLowerCase().split(/[^a-zäöüß0-9]+/))
+            .filter(word => word.length >= 5 && !['erstellen', 'nutzen', 'einfügen', 'formatieren'].includes(word));
+        const matchedKeywords = new Set(keywords.filter(word => userText.includes(word))).size;
+        const hasRelevantObject = ['image', 'chart', 'smartart'].some(type => userTypes.has(type));
+        const correct = touched && (nonDefaultText || insertedTypeCount > 0 || hasRelevantObject) && (matchedKeywords >= Math.min(2, keywords.length) || createdElements.length >= 3);
         
         return {
             correct,
-            message: correct ? 'Folienmaster-Elemente erkannt!' : 'Erstelle die erforderlichen Master-Folien.',
-            solution: task.content.solution || 'Haupttitel-Master, Titel und Inhalt-Master, Farbschema, Schriftartenschema, Hintergrundgestaltung',
-            details: `${elements.length} erforderliche Elemente`
+            message: correct ? 'Gut: Deine Folie enthält eigene bearbeitete Inhalte.' : 'Bearbeite die Folie oder füge passende Elemente hinzu, bevor du prüfst.',
+            solution: task.content.solution || 'Erstelle passende Folien mit Titel, Inhalt und den geforderten Gestaltungselementen.',
+            details: `${createdElements.length} bearbeitbare Elemente, ${matchedKeywords} passende Stichwörter erkannt`
         };
     }
 

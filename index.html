@@ -1397,11 +1397,24 @@
                     if (window.learningEnv) {
                         openLearningEnvironment();
                     } else {
-                        // learning-environment.js might not be loaded yet, wait for it
+                        // learning-environment.js might not be loaded yet, wait briefly and fail visibly.
+                        let attempts = 0;
                         const checkLearningEnv = setInterval(() => {
+                            attempts += 1;
                             if (window.learningEnv) {
                                 clearInterval(checkLearningEnv);
                                 openLearningEnvironment();
+                                return;
+                            }
+
+                            if (attempts >= 100) {
+                                clearInterval(checkLearningEnv);
+                                console.error('Lernumgebung konnte nicht geladen werden: window.learningEnv fehlt. Prüfe learning-environment.js.');
+                                taskDetail.innerHTML += `
+                                    <div class="task-error" role="alert">
+                                        Lernumgebung konnte nicht geladen werden. Bitte Seite neu laden oder Cache löschen.
+                                    </div>
+                                `;
                             }
                         }, 50);
                     }

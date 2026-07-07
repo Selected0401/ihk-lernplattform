@@ -1,182 +1,578 @@
-[
+{
+  "meta": {
+    "deprecated": true,
+    "note": "Legacy preview tasks normalized and namespaced; production uses data/aufgaben-optimiert.json."
+  },
+  "aufgaben": [
     {
-        "id": "word-001",
-        "modul": "Word",
-        "titel": "DIN 5008 Geschäftsbrief",
-        "beschreibung": "Erstellen Sie einen normgerechten Geschäftsbrief nach DIN 5008 mit Absender, Empfänger, Datum, Betreff, Grußformel und Unterschrift.",
-        "dauer": "15 Min",
-        "punkte": 10,
-        "schwierigkeit": "Mittel"
+      "id": "legacy-word-001",
+      "kategorie": "word",
+      "titel": "DIN 5008 Geschäftsbrief",
+      "beschreibung": "Erstellen Sie einen normgerechten Geschäftsbrief nach DIN 5008 mit Absender, Empfänger, Datum, Betreff, Grußformel und Unterschrift.",
+      "schwierigkeit": "mittel",
+      "punkte": 10,
+      "zeit": 15,
+      "hinweise": [
+        "Bearbeiten Sie die Aufgabe im Modul Word.",
+        "Nutzen Sie die passende Musterlösung als Kontrollmaßstab."
+      ],
+      "loesung": "Musterlösung zur Aufgabe: DIN 5008 Geschäftsbrief",
+      "content": {
+        "solution": "Musterlösung zur Aufgabe: DIN 5008 Geschäftsbrief",
+        "elements": [
+          "Bearbeiten Sie die Aufgabe im Modul Word.",
+          "Nutzen Sie die passende Musterlösung als Kontrollmaßstab.",
+          "Musterlösung zur Aufgabe: DIN 5008 Geschäftsbrief",
+          "DIN 5008 Geschäftsbrief"
+        ]
+      },
+      "legacySourceId": "word-001"
     },
     {
-        "id": "word-002",
-        "modul": "Word",
-        "titel": "Serienbrief erstellen",
-        "beschreibung": "Erstellen Sie einen Serienbrief für 100 Adressaten mit personalisierten Anreden und Datenbankanbindung.",
-        "dauer": "25 Min",
-        "punkte": 15,
-        "schwierigkeit": "Mittel"
+      "id": "legacy-word-002",
+      "kategorie": "word",
+      "titel": "Serienbrief erstellen",
+      "beschreibung": "Erstellen Sie einen Serienbrief für 100 Adressaten mit personalisierten Anreden und Datenbankanbindung.",
+      "schwierigkeit": "mittel",
+      "punkte": 15,
+      "zeit": 25,
+      "hinweise": [
+        "Bearbeiten Sie die Aufgabe im Modul Word.",
+        "Nutzen Sie die passende Musterlösung als Kontrollmaßstab."
+      ],
+      "loesung": "Musterlösung zur Aufgabe: Serienbrief erstellen",
+      "content": {
+        "solution": "Musterlösung zur Aufgabe: Serienbrief erstellen",
+        "elements": [
+          "Bearbeiten Sie die Aufgabe im Modul Word.",
+          "Nutzen Sie die passende Musterlösung als Kontrollmaßstab.",
+          "Musterlösung zur Aufgabe: Serienbrief erstellen",
+          "Serienbrief erstellen"
+        ]
+      },
+      "legacySourceId": "word-002"
     },
     {
-        "id": "word-003",
-        "modul": "Word",
-        "titel": "Formatvorlagen gestalten",
-        "beschreibung": "Erstellen Sie professionelle Formatvorlagen für Überschriften, Fließtext und Zitate in einem Dokument.",
-        "dauer": "20 Min",
-        "punkte": 12,
-        "schwierigkeit": "Einfach"
+      "id": "legacy-word-003",
+      "kategorie": "word",
+      "titel": "Formatvorlagen gestalten",
+      "beschreibung": "Erstellen Sie professionelle Formatvorlagen für Überschriften, Fließtext und Zitate in einem Dokument.",
+      "schwierigkeit": "anfaenger",
+      "punkte": 12,
+      "zeit": 20,
+      "hinweise": [
+        "Bearbeiten Sie die Aufgabe im Modul Word.",
+        "Nutzen Sie die passende Musterlösung als Kontrollmaßstab."
+      ],
+      "loesung": "Musterlösung zur Aufgabe: Formatvorlagen gestalten",
+      "content": {
+        "solution": "Musterlösung zur Aufgabe: Formatvorlagen gestalten",
+        "elements": [
+          "Bearbeiten Sie die Aufgabe im Modul Word.",
+          "Nutzen Sie die passende Musterlösung als Kontrollmaßstab.",
+          "Musterlösung zur Aufgabe: Formatvorlagen gestalten",
+          "Formatvorlagen gestalten"
+        ]
+      },
+      "legacySourceId": "word-003"
     },
     {
-        "id": "word-004",
-        "modul": "Word",
-        "titel": "Inhaltsverzeichnis automatisieren",
-        "beschreibung": "Erstellen Sie ein automatisches Inhaltsverzeichnis mit Seitenzahlen und mehreren Ebenen.",
-        "dauer": "18 Min",
-        "punkte": 11,
-        "schwierigkeit": "Einfach"
+      "id": "legacy-word-004",
+      "kategorie": "word",
+      "titel": "Inhaltsverzeichnis automatisieren",
+      "beschreibung": "Erstellen Sie ein automatisches Inhaltsverzeichnis mit Seitenzahlen und mehreren Ebenen.",
+      "schwierigkeit": "anfaenger",
+      "punkte": 11,
+      "zeit": 18,
+      "hinweise": [
+        "Bearbeiten Sie die Aufgabe im Modul Word.",
+        "Nutzen Sie die passende Musterlösung als Kontrollmaßstab."
+      ],
+      "loesung": "Musterlösung zur Aufgabe: Inhaltsverzeichnis automatisieren",
+      "content": {
+        "solution": "Musterlösung zur Aufgabe: Inhaltsverzeichnis automatisieren",
+        "elements": [
+          "Bearbeiten Sie die Aufgabe im Modul Word.",
+          "Nutzen Sie die passende Musterlösung als Kontrollmaßstab.",
+          "Musterlösung zur Aufgabe: Inhaltsverzeichnis automatisieren",
+          "Inhaltsverzeichnis automatisieren"
+        ]
+      },
+      "legacySourceId": "word-004"
     },
     {
-        "id": "word-005",
-        "modul": "Word",
-        "titel": "Dokumentenschutz einrichten",
-        "beschreibung": "Richten Sie Dokumentenschutz mit Passwort und Bearbeitungseinschränkungen für vertrauliche Dokumente ein.",
-        "dauer": "12 Min",
-        "punkte": 8,
-        "schwierigkeit": "Einfach"
+      "id": "legacy-word-005",
+      "kategorie": "word",
+      "titel": "Dokumentenschutz einrichten",
+      "beschreibung": "Richten Sie Dokumentenschutz mit Passwort und Bearbeitungseinschränkungen für vertrauliche Dokumente ein.",
+      "schwierigkeit": "anfaenger",
+      "punkte": 10,
+      "zeit": 12,
+      "hinweise": [
+        "Bearbeiten Sie die Aufgabe im Modul Word.",
+        "Nutzen Sie die passende Musterlösung als Kontrollmaßstab."
+      ],
+      "loesung": "Musterlösung zur Aufgabe: Dokumentenschutz einrichten",
+      "content": {
+        "solution": "Musterlösung zur Aufgabe: Dokumentenschutz einrichten",
+        "elements": [
+          "Bearbeiten Sie die Aufgabe im Modul Word.",
+          "Nutzen Sie die passende Musterlösung als Kontrollmaßstab.",
+          "Musterlösung zur Aufgabe: Dokumentenschutz einrichten",
+          "Dokumentenschutz einrichten"
+        ]
+      },
+      "legacySourceId": "word-005"
     },
     {
-        "id": "excel-001",
-        "modul": "Excel",
-        "titel": "SVERWEIS Kundendaten",
-        "beschreibung": "Verbinden Sie zwei Tabellen mit SVERWEIS und erstellen Sie eine Kundendatenbank mit automatischer Datenabfrage.",
-        "dauer": "20 Min",
-        "punkte": 15,
-        "schwierigkeit": "Mittel"
+      "id": "legacy-excel-001",
+      "kategorie": "excel",
+      "titel": "SVERWEIS Kundendaten",
+      "beschreibung": "Verbinden Sie zwei Tabellen mit SVERWEIS und erstellen Sie eine Kundendatenbank mit automatischer Datenabfrage.",
+      "schwierigkeit": "mittel",
+      "punkte": 15,
+      "zeit": 20,
+      "hinweise": [
+        "Bearbeiten Sie die Aufgabe im Modul Excel.",
+        "Nutzen Sie die passende Musterlösung als Kontrollmaßstab."
+      ],
+      "loesung": "Musterlösung zur Aufgabe: SVERWEIS Kundendaten",
+      "content": {
+        "solution": "Musterlösung zur Aufgabe: SVERWEIS Kundendaten",
+        "data": [
+          [
+            "Artikel-Nr",
+            "Bezeichnung",
+            "Preis"
+          ],
+          [
+            "A-4711",
+            "Toner schwarz",
+            12.9
+          ],
+          [
+            "A-4712",
+            "Ordner A4",
+            2.4
+          ],
+          [
+            "A-4713",
+            "Papier",
+            4.8
+          ]
+        ]
+      },
+      "legacySourceId": "excel-001"
     },
     {
-        "id": "excel-002",
-        "modul": "Excel",
-        "titel": "Pivot-Tabelle auswerten",
-        "beschreibung": "Erstellen Sie eine Pivot-Tabelle zur Umsatzanalyse nach Regionen und Produkten mit Diagrammen.",
-        "dauer": "25 Min",
-        "punkte": 18,
-        "schwierigkeit": "Schwer"
+      "id": "legacy-excel-002",
+      "kategorie": "excel",
+      "titel": "Pivot-Tabelle auswerten",
+      "beschreibung": "Erstellen Sie eine Pivot-Tabelle zur Umsatzanalyse nach Regionen und Produkten mit Diagrammen.",
+      "schwierigkeit": "fortgeschritten",
+      "punkte": 18,
+      "zeit": 25,
+      "hinweise": [
+        "Bearbeiten Sie die Aufgabe im Modul Excel.",
+        "Nutzen Sie die passende Musterlösung als Kontrollmaßstab."
+      ],
+      "loesung": "Musterlösung zur Aufgabe: Pivot-Tabelle auswerten",
+      "content": {
+        "solution": "Musterlösung zur Aufgabe: Pivot-Tabelle auswerten",
+        "data": [
+          [
+            "Position",
+            "Wert",
+            "Ergebnis"
+          ],
+          [
+            "Beispiel 1",
+            100,
+            ""
+          ],
+          [
+            "Beispiel 2",
+            200,
+            ""
+          ],
+          [
+            "Beispiel 3",
+            300,
+            ""
+          ]
+        ]
+      },
+      "legacySourceId": "excel-002"
     },
     {
-        "id": "excel-003",
-        "modul": "Excel",
-        "titel": "WENN-Funktionen kaskadieren",
-        "beschreibung": "Erstellen Sie komplexe WENN-Funktionen für Bonusberechnungen und Rabattstaffeln.",
-        "dauer": "22 Min",
-        "punkte": 16,
-        "schwierigkeit": "Mittel"
+      "id": "legacy-excel-003",
+      "kategorie": "excel",
+      "titel": "WENN-Funktionen kaskadieren",
+      "beschreibung": "Erstellen Sie komplexe WENN-Funktionen für Bonusberechnungen und Rabattstaffeln.",
+      "schwierigkeit": "mittel",
+      "punkte": 16,
+      "zeit": 22,
+      "hinweise": [
+        "Bearbeiten Sie die Aufgabe im Modul Excel.",
+        "Nutzen Sie die passende Musterlösung als Kontrollmaßstab."
+      ],
+      "loesung": "Musterlösung zur Aufgabe: WENN-Funktionen kaskadieren",
+      "content": {
+        "solution": "Musterlösung zur Aufgabe: WENN-Funktionen kaskadieren",
+        "data": [
+          [
+            "Mitarbeiter",
+            "Umsatz",
+            "Ergebnis"
+          ],
+          [
+            "Müller",
+            65000,
+            ""
+          ],
+          [
+            "Schmidt",
+            42000,
+            ""
+          ],
+          [
+            "Meier",
+            78000,
+            ""
+          ]
+        ]
+      },
+      "legacySourceId": "excel-003"
     },
     {
-        "id": "excel-004",
-        "modul": "Excel",
-        "titel": "Datensicherung und Filter",
-        "beschreibung": "Richten Sie Datensicherung und erweiterte Filter für große Datenmengen ein.",
-        "dauer": "15 Min",
-        "punkte": 10,
-        "schwierigkeit": "Einfach"
+      "id": "legacy-excel-004",
+      "kategorie": "excel",
+      "titel": "Datensicherung und Filter",
+      "beschreibung": "Richten Sie Datensicherung und erweiterte Filter für große Datenmengen ein.",
+      "schwierigkeit": "anfaenger",
+      "punkte": 10,
+      "zeit": 15,
+      "hinweise": [
+        "Bearbeiten Sie die Aufgabe im Modul Excel.",
+        "Nutzen Sie die passende Musterlösung als Kontrollmaßstab."
+      ],
+      "loesung": "Musterlösung zur Aufgabe: Datensicherung und Filter",
+      "content": {
+        "solution": "Musterlösung zur Aufgabe: Datensicherung und Filter",
+        "data": [
+          [
+            "Position",
+            "Wert",
+            "Ergebnis"
+          ],
+          [
+            "Beispiel 1",
+            100,
+            ""
+          ],
+          [
+            "Beispiel 2",
+            200,
+            ""
+          ],
+          [
+            "Beispiel 3",
+            300,
+            ""
+          ]
+        ]
+      },
+      "legacySourceId": "excel-004"
     },
     {
-        "id": "excel-005",
-        "modul": "Excel",
-        "titel": "Makro aufzeichnen",
-        "beschreibung": "Zeichnen Sie ein Makro für wiederkehrende Formatierungen und Datenimporte auf.",
-        "dauer": "18 Min",
-        "punkte": 13,
-        "schwierigkeit": "Mittel"
+      "id": "legacy-excel-005",
+      "kategorie": "excel",
+      "titel": "Makro aufzeichnen",
+      "beschreibung": "Zeichnen Sie ein Makro für wiederkehrende Formatierungen und Datenimporte auf.",
+      "schwierigkeit": "mittel",
+      "punkte": 13,
+      "zeit": 18,
+      "hinweise": [
+        "Bearbeiten Sie die Aufgabe im Modul Excel.",
+        "Nutzen Sie die passende Musterlösung als Kontrollmaßstab."
+      ],
+      "loesung": "Musterlösung zur Aufgabe: Makro aufzeichnen",
+      "content": {
+        "solution": "Musterlösung zur Aufgabe: Makro aufzeichnen",
+        "data": [
+          [
+            "Position",
+            "Wert",
+            "Ergebnis"
+          ],
+          [
+            "Beispiel 1",
+            100,
+            ""
+          ],
+          [
+            "Beispiel 2",
+            200,
+            ""
+          ],
+          [
+            "Beispiel 3",
+            300,
+            ""
+          ]
+        ]
+      },
+      "legacySourceId": "excel-005"
     },
     {
-        "id": "ppt-001",
-        "modul": "PowerPoint",
-        "titel": "Unternehmenspräsentation",
-        "beschreibung": "Erstellen Sie eine 15-seitige Unternehmenspräsentation mit Masterfolien und Animationen.",
-        "dauer": "25 Min",
-        "punkte": 16,
-        "schwierigkeit": "Mittel"
+      "id": "legacy-powerpoint-001",
+      "kategorie": "powerpoint",
+      "titel": "Unternehmenspräsentation",
+      "beschreibung": "Erstellen Sie eine 15-seitige Unternehmenspräsentation mit Masterfolien und Animationen.",
+      "schwierigkeit": "mittel",
+      "punkte": 16,
+      "zeit": 25,
+      "hinweise": [
+        "Bearbeiten Sie die Aufgabe im Modul Powerpoint.",
+        "Nutzen Sie die passende Musterlösung als Kontrollmaßstab."
+      ],
+      "loesung": "Musterlösung zur Aufgabe: Unternehmenspräsentation",
+      "content": {
+        "solution": "Musterlösung zur Aufgabe: Unternehmenspräsentation",
+        "examTrack": "Office-Grundlagen/Zusatztraining – nicht AP1-Kern",
+        "elements": [
+          "Bearbeiten Sie die Aufgabe im Modul Powerpoint.",
+          "Nutzen Sie die passende Musterlösung als Kontrollmaßstab.",
+          "Musterlösung zur Aufgabe: Unternehmenspräsentation",
+          "Unternehmenspräsentation"
+        ]
+      },
+      "legacySourceId": "ppt-001"
     },
     {
-        "id": "ppt-002",
-        "modul": "PowerPoint",
-        "titel": "Diagramme animieren",
-        "beschreibung": "Erstellen Sie animierte Diagramme zur Visualisierung von Geschäftsdaten und Kennzahlen.",
-        "dauer": "20 Min",
-        "punkte": 14,
-        "schwierigkeit": "Einfach"
+      "id": "legacy-powerpoint-002",
+      "kategorie": "powerpoint",
+      "titel": "Diagramme animieren",
+      "beschreibung": "Erstellen Sie animierte Diagramme zur Visualisierung von Geschäftsdaten und Kennzahlen.",
+      "schwierigkeit": "anfaenger",
+      "punkte": 14,
+      "zeit": 20,
+      "hinweise": [
+        "Bearbeiten Sie die Aufgabe im Modul Powerpoint.",
+        "Nutzen Sie die passende Musterlösung als Kontrollmaßstab."
+      ],
+      "loesung": "Musterlösung zur Aufgabe: Diagramme animieren",
+      "content": {
+        "solution": "Musterlösung zur Aufgabe: Diagramme animieren",
+        "examTrack": "Office-Grundlagen/Zusatztraining – nicht AP1-Kern",
+        "elements": [
+          "Bearbeiten Sie die Aufgabe im Modul Powerpoint.",
+          "Nutzen Sie die passende Musterlösung als Kontrollmaßstab.",
+          "Musterlösung zur Aufgabe: Diagramme animieren",
+          "Diagramme animieren"
+        ]
+      },
+      "legacySourceId": "ppt-002"
     },
     {
-        "id": "ppt-003",
-        "modul": "PowerPoint",
-        "titel": "Notizzseiten master",
-        "beschreibung": "Erstellen Sie Notizzseiten und Handouts für Präsentationen mit verteilten Inhalten.",
-        "dauer": "15 Min",
-        "punkte": 11,
-        "schwierigkeit": "Einfach"
+      "id": "legacy-powerpoint-003",
+      "kategorie": "powerpoint",
+      "titel": "Notizzseiten master",
+      "beschreibung": "Erstellen Sie Notizzseiten und Handouts für Präsentationen mit verteilten Inhalten.",
+      "schwierigkeit": "anfaenger",
+      "punkte": 11,
+      "zeit": 15,
+      "hinweise": [
+        "Bearbeiten Sie die Aufgabe im Modul Powerpoint.",
+        "Nutzen Sie die passende Musterlösung als Kontrollmaßstab."
+      ],
+      "loesung": "Musterlösung zur Aufgabe: Notizzseiten master",
+      "content": {
+        "solution": "Musterlösung zur Aufgabe: Notizzseiten master",
+        "examTrack": "Office-Grundlagen/Zusatztraining – nicht AP1-Kern",
+        "elements": [
+          "Bearbeiten Sie die Aufgabe im Modul Powerpoint.",
+          "Nutzen Sie die passende Musterlösung als Kontrollmaßstab.",
+          "Musterlösung zur Aufgabe: Notizzseiten master",
+          "Notizzseiten master"
+        ]
+      },
+      "legacySourceId": "ppt-003"
     },
     {
-        "id": "ppt-004",
-        "modul": "PowerPoint",
-        "titel": "Übergänge synchronisieren",
-        "beschreibung": "Synchronisieren Sie Übergänge und Animationen mit Musik und Zeitsteuerung.",
-        "dauer": "22 Min",
-        "punkte": 15,
-        "schwierigkeit": "Mittel"
+      "id": "legacy-powerpoint-004",
+      "kategorie": "powerpoint",
+      "titel": "Übergänge synchronisieren",
+      "beschreibung": "Synchronisieren Sie Übergänge und Animationen mit Musik und Zeitsteuerung.",
+      "schwierigkeit": "mittel",
+      "punkte": 15,
+      "zeit": 22,
+      "hinweise": [
+        "Bearbeiten Sie die Aufgabe im Modul Powerpoint.",
+        "Nutzen Sie die passende Musterlösung als Kontrollmaßstab."
+      ],
+      "loesung": "Musterlösung zur Aufgabe: Übergänge synchronisieren",
+      "content": {
+        "solution": "Musterlösung zur Aufgabe: Übergänge synchronisieren",
+        "examTrack": "Office-Grundlagen/Zusatztraining – nicht AP1-Kern",
+        "elements": [
+          "Bearbeiten Sie die Aufgabe im Modul Powerpoint.",
+          "Nutzen Sie die passende Musterlösung als Kontrollmaßstab.",
+          "Musterlösung zur Aufgabe: Übergänge synchronisieren",
+          "Übergänge synchronisieren"
+        ]
+      },
+      "legacySourceId": "ppt-004"
     },
     {
-        "id": "ppt-005",
-        "modul": "PowerPoint",
-        "titel": "Präsentation exportieren",
-        "beschreibung": "Exportieren Sie Präsentationen in verschiedene Formate und erstellen Sie Videos.",
-        "dauer": "18 Min",
-        "punkte": 12,
-        "schwierigkeit": "Einfach"
+      "id": "legacy-powerpoint-005",
+      "kategorie": "powerpoint",
+      "titel": "Präsentation exportieren",
+      "beschreibung": "Exportieren Sie Präsentationen in verschiedene Formate und erstellen Sie Videos.",
+      "schwierigkeit": "anfaenger",
+      "punkte": 12,
+      "zeit": 18,
+      "hinweise": [
+        "Bearbeiten Sie die Aufgabe im Modul Powerpoint.",
+        "Nutzen Sie die passende Musterlösung als Kontrollmaßstab."
+      ],
+      "loesung": "Musterlösung zur Aufgabe: Präsentation exportieren",
+      "content": {
+        "solution": "Musterlösung zur Aufgabe: Präsentation exportieren",
+        "examTrack": "Office-Grundlagen/Zusatztraining – nicht AP1-Kern",
+        "elements": [
+          "Bearbeiten Sie die Aufgabe im Modul Powerpoint.",
+          "Nutzen Sie die passende Musterlösung als Kontrollmaßstab.",
+          "Musterlösung zur Aufgabe: Präsentation exportieren",
+          "Präsentation exportieren"
+        ]
+      },
+      "legacySourceId": "ppt-005"
     },
     {
-        "id": "outlook-001",
-        "modul": "Outlook",
-        "titel": "E-Mail-Regeln einrichten",
-        "beschreibung": "Richten Sie automatische E-Mail-Regeln für Sortierung und Weiterleitung ein.",
-        "dauer": "15 Min",
-        "punkte": 10,
-        "schwierigkeit": "Einfach"
+      "id": "legacy-outlook-001",
+      "kategorie": "outlook",
+      "titel": "E-Mail-Regeln einrichten",
+      "beschreibung": "Richten Sie automatische E-Mail-Regeln für Sortierung und Weiterleitung ein.",
+      "schwierigkeit": "anfaenger",
+      "punkte": 10,
+      "zeit": 15,
+      "hinweise": [
+        "Bearbeiten Sie die Aufgabe im Modul Outlook.",
+        "Nutzen Sie die passende Musterlösung als Kontrollmaßstab."
+      ],
+      "loesung": "Musterlösung zur Aufgabe: E-Mail-Regeln einrichten",
+      "content": {
+        "solution": "Musterlösung zur Aufgabe: E-Mail-Regeln einrichten",
+        "examTrack": "Office-Grundlagen/Zusatztraining – nicht AP1-Kern",
+        "elements": [
+          "Bearbeiten Sie die Aufgabe im Modul Outlook.",
+          "Nutzen Sie die passende Musterlösung als Kontrollmaßstab.",
+          "Musterlösung zur Aufgabe: E-Mail-Regeln einrichten",
+          "E-Mail-Regeln einrichten"
+        ]
+      },
+      "legacySourceId": "outlook-001"
     },
     {
-        "id": "outlook-002",
-        "modul": "Outlook",
-        "titel": "Kalender synchronisieren",
-        "beschreibung": "Synchronisieren Sie Kalender mit mehreren Geräten und teilen Sie Termine.",
-        "dauer": "18 Min",
-        "punkte": 12,
-        "schwierigkeit": "Einfach"
+      "id": "legacy-outlook-002",
+      "kategorie": "outlook",
+      "titel": "Kalender synchronisieren",
+      "beschreibung": "Synchronisieren Sie Kalender mit mehreren Geräten und teilen Sie Termine.",
+      "schwierigkeit": "anfaenger",
+      "punkte": 12,
+      "zeit": 18,
+      "hinweise": [
+        "Bearbeiten Sie die Aufgabe im Modul Outlook.",
+        "Nutzen Sie die passende Musterlösung als Kontrollmaßstab."
+      ],
+      "loesung": "Musterlösung zur Aufgabe: Kalender synchronisieren",
+      "content": {
+        "solution": "Musterlösung zur Aufgabe: Kalender synchronisieren",
+        "examTrack": "Office-Grundlagen/Zusatztraining – nicht AP1-Kern",
+        "elements": [
+          "Bearbeiten Sie die Aufgabe im Modul Outlook.",
+          "Nutzen Sie die passende Musterlösung als Kontrollmaßstab.",
+          "Musterlösung zur Aufgabe: Kalender synchronisieren",
+          "Kalender synchronisieren"
+        ]
+      },
+      "legacySourceId": "outlook-002"
     },
     {
-        "id": "outlook-003",
-        "modul": "Outlook",
-        "titel": "Verteilerlisten erstellen",
-        "beschreibung": "Erstellen und verwalten Sie E-Mail-Verteilerlisten für Abteilungen und Projekte.",
-        "dauer": "20 Min",
-        "punkte": 13,
-        "schwierigkeit": "Mittel"
+      "id": "legacy-outlook-003",
+      "kategorie": "outlook",
+      "titel": "Verteilerlisten erstellen",
+      "beschreibung": "Erstellen und verwalten Sie E-Mail-Verteilerlisten für Abteilungen und Projekte.",
+      "schwierigkeit": "mittel",
+      "punkte": 13,
+      "zeit": 20,
+      "hinweise": [
+        "Bearbeiten Sie die Aufgabe im Modul Outlook.",
+        "Nutzen Sie die passende Musterlösung als Kontrollmaßstab."
+      ],
+      "loesung": "Musterlösung zur Aufgabe: Verteilerlisten erstellen",
+      "content": {
+        "solution": "Musterlösung zur Aufgabe: Verteilerlisten erstellen",
+        "examTrack": "Office-Grundlagen/Zusatztraining – nicht AP1-Kern",
+        "elements": [
+          "Bearbeiten Sie die Aufgabe im Modul Outlook.",
+          "Nutzen Sie die passende Musterlösung als Kontrollmaßstab.",
+          "Musterlösung zur Aufgabe: Verteilerlisten erstellen",
+          "Verteilerlisten erstellen"
+        ]
+      },
+      "legacySourceId": "outlook-003"
     },
     {
-        "id": "outlook-004",
-        "modul": "Outlook",
-        "titel": "Aufgaben delegieren",
-        "beschreibung": "Erstellen Sie Aufgaben und delegieren Sie diese an Teammitglieder mit Fristen.",
-        "dauer": "16 Min",
-        "punkte": 11,
-        "schwierigkeit": "Einfach"
+      "id": "legacy-outlook-004",
+      "kategorie": "outlook",
+      "titel": "Aufgaben delegieren",
+      "beschreibung": "Erstellen Sie Aufgaben und delegieren Sie diese an Teammitglieder mit Fristen.",
+      "schwierigkeit": "anfaenger",
+      "punkte": 11,
+      "zeit": 16,
+      "hinweise": [
+        "Bearbeiten Sie die Aufgabe im Modul Outlook.",
+        "Nutzen Sie die passende Musterlösung als Kontrollmaßstab."
+      ],
+      "loesung": "Musterlösung zur Aufgabe: Aufgaben delegieren",
+      "content": {
+        "solution": "Musterlösung zur Aufgabe: Aufgaben delegieren",
+        "examTrack": "Office-Grundlagen/Zusatztraining – nicht AP1-Kern",
+        "elements": [
+          "Bearbeiten Sie die Aufgabe im Modul Outlook.",
+          "Nutzen Sie die passende Musterlösung als Kontrollmaßstab.",
+          "Musterlösung zur Aufgabe: Aufgaben delegieren",
+          "Aufgaben delegieren"
+        ]
+      },
+      "legacySourceId": "outlook-004"
     },
     {
-        "id": "outlook-005",
-        "modul": "Outlook",
-        "titel": "Signatur gestalten",
-        "beschreibung": "Erstellen Sie professionelle E-Mail-Signaturen mit Logo und Kontaktdaten.",
-        "dauer": "12 Min",
-        "punkte": 8,
-        "schwierigkeit": "Einfach"
+      "id": "legacy-outlook-005",
+      "kategorie": "outlook",
+      "titel": "Signatur gestalten",
+      "beschreibung": "Erstellen Sie professionelle E-Mail-Signaturen mit Logo und Kontaktdaten.",
+      "schwierigkeit": "anfaenger",
+      "punkte": 10,
+      "zeit": 12,
+      "hinweise": [
+        "Bearbeiten Sie die Aufgabe im Modul Outlook.",
+        "Nutzen Sie die passende Musterlösung als Kontrollmaßstab."
+      ],
+      "loesung": "Musterlösung zur Aufgabe: Signatur gestalten",
+      "content": {
+        "solution": "Musterlösung zur Aufgabe: Signatur gestalten",
+        "examTrack": "Office-Grundlagen/Zusatztraining – nicht AP1-Kern",
+        "elements": [
+          "Bearbeiten Sie die Aufgabe im Modul Outlook.",
+          "Nutzen Sie die passende Musterlösung als Kontrollmaßstab.",
+          "Musterlösung zur Aufgabe: Signatur gestalten",
+          "Signatur gestalten"
+        ]
+      },
+      "legacySourceId": "outlook-005"
     }
-]
+  ]
+}

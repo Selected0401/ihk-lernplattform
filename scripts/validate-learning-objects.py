@@ -19,6 +19,12 @@ TASK_FILES = [
     ROOT / "data" / "aufgaben-optimiert.json",
     ROOT / "www" / "data" / "aufgaben-optimiert.json",
     ROOT / "ios" / "App" / "App" / "public" / "data" / "aufgaben-optimiert.json",
+    ROOT / "data" / "aufgaben.json",
+    ROOT / "www" / "data" / "aufgaben.json",
+    ROOT / "data" / "lernfeld-1-3.json",
+    ROOT / "www" / "data" / "lernfeld-1-3.json",
+    ROOT / "data" / "lernfeld-4-6.json",
+    ROOT / "www" / "data" / "lernfeld-4-6.json",
 ]
 SYNC_GROUPS = [
     [
@@ -32,6 +38,9 @@ SYNC_GROUPS = [
         ROOT / "js" / "learning-environment.js",
         ROOT / "ios" / "App" / "App" / "public" / "js" / "learning-environment.js",
     ],
+    [ROOT / "data" / "aufgaben.json", ROOT / "www" / "data" / "aufgaben.json"],
+    [ROOT / "data" / "lernfeld-1-3.json", ROOT / "www" / "data" / "lernfeld-1-3.json"],
+    [ROOT / "data" / "lernfeld-4-6.json", ROOT / "www" / "data" / "lernfeld-4-6.json"],
 ]
 RUNTIME_BASES = [ROOT, ROOT / "www", ROOT / "ios" / "App" / "App" / "public"]
 ALLOWED_CATEGORIES = {"excel", "word", "powerpoint", "outlook"}
@@ -62,6 +71,50 @@ def load_tasks(path: Path) -> list[dict]:
 
 def issue(issues: list[tuple[str, str, str]], path: Path, task_id: str, message: str) -> None:
     issues.append((str(path.relative_to(ROOT)), task_id, message))
+
+
+def task_text(task: dict) -> str:
+    return " ".join(
+        str(part)
+        for part in [
+            task.get("titel", ""),
+            task.get("beschreibung", ""),
+            task.get("loesung", ""),
+            " ".join(task.get("hinweise", [])) if isinstance(task.get("hinweise"), list) else "",
+        ]
+    ).lower()
+
+
+def validate_elements_quality(path: Path, task: dict, issues: list[tuple[str, str, str]]) -> None:
+    task_id = str(task.get("id", "#unknown"))
+    category = task.get("kategorie")
+    content = task.get("content") if isinstance(task.get("content"), dict) else {}
+    elements = content.get("elements") if isinstance(content, dict) else None
+    if not isinstance(elements, list):
+        return
+
+    lower_text = task_text(task)
+    lower_elements = [str(element).lower() for element in elements]
+
+    if re.search(r"[\u4e00-\u9fff]", " ".join([str(task.get("titel", "")), str(task.get("beschreibung", "")), str(task.get("loesung", ""))])):
+        issue(issues, path, task_id, "contains non-German/CJK stray characters")
+
+    if category == "word" and not any(term in lower_text for term in ["geschäftsbrief", "din 5008", "serienbrief", "brief", "mailing"]):
+        forbidden = {"absender", "empfänger", "betreff", "anrede", "grußformel"}
+        if any(element in forbidden for element in lower_elements):
+            issue(issues, path, task_id, "word content.elements contains copied business-letter boilerplate")
+
+    if category == "powerpoint":
+        generic_master_terms = {"folienmaster", "corporate design", "farbschema"}
+        task_mentions_master = any(term in lower_text for term in ["master", "vorlage", "corporate", "farbschema", "design"])
+        if not task_mentions_master and any(element in generic_master_terms for element in lower_elements):
+            issue(issues, path, task_id, "powerpoint content.elements contains unrelated master/design boilerplate")
+
+    if category == "outlook":
+        generic_rule_terms = {"regel", "bedingung", "aktion", "ordner"}
+        task_mentions_rules = any(term in lower_text for term in ["regel", "bedingung", "aktion", "ordner", "filter"])
+        if not task_mentions_rules and any(element in generic_rule_terms for element in lower_elements):
+            issue(issues, path, task_id, "outlook content.elements contains unrelated rule boilerplate")
 
 
 def validate_task_file(path: Path) -> list[tuple[str, str, str]]:
@@ -126,6 +179,8 @@ def validate_task_file(path: Path) -> list[tuple[str, str, str]]:
             elements = content.get("elements")
             if not isinstance(elements, list) or not elements:
                 issue(issues, path, task_id, f"{category} content.elements missing/empty")
+            else:
+                validate_elements_quality(path, task, issues)
 
     return issues
 
@@ -187,15 +242,33 @@ def validate_runtime_assets() -> list[tuple[str, str, str]]:
     return issues
 
 
+def validate_runtime_code_patterns() -> list[tuple[str, str, str]]:
+    issues: list[tuple[str, str, str]] = []
+    learning_env = (ROOT / "learning-environment.js").read_text(encoding="utf-8")
+    if "this.activeCell" not in learning_env or "saveAnswer(activeCell.id, formula)" not in learning_env:
+        issues.append(("learning-environment.js", "ExcelSimulator", "formula bar must persist selected cell and save formula text for grading"))
+    if "const correct = hasTitle" in learning_env:
+        issues.append(("learning-environment.js", "PowerPointEditor", "powerpoint grading must not pass from task requirements alone"))
+    if "powerpoint-state" not in learning_env:
+        issues.append(("learning-environment.js", "PowerPointEditor", "powerpoint grading must track user-created slide state"))
+
+    for index_path in [ROOT / "index.html", ROOT / "www" / "index.html"]:
+        html = index_path.read_text(encoding="utf-8")
+        if "attempts >= 100" not in html or "Lernumgebung konnte nicht geladen werden" not in html:
+            issues.append((str(index_path.relative_to(ROOT)), "startTask", "missing visible timeout when learningEnv fails to load"))
+    return issues
+
+
 def main() -> int:
     issues: list[tuple[str, str, str]] = []
     for path in TASK_FILES:
         issues.extend(validate_task_file(path))
     issues.extend(validate_sync_groups())
     issues.extend(validate_runtime_assets())
+    issues.extend(validate_runtime_code_patterns())
 
     print("IHK learning-object validation")
-    print(f"Files checked: {len(TASK_FILES)} task files + {len(SYNC_GROUPS)} sync groups + runtime assets")
+    print(f"Files checked: {len(TASK_FILES)} task files + {len(SYNC_GROUPS)} sync groups + runtime assets/code")
     if not issues:
         print("OK: 0 issues")
         return 0
