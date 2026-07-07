@@ -13,6 +13,7 @@ class LearningEnvironment {
 
     // Start a task with full learning environment
     startTask(task) {
+        this.closeEnvironment();
         this.currentTask = task;
         this.userAnswers = {};
         
@@ -27,8 +28,12 @@ class LearningEnvironment {
             editor.initialize(task, this);
         }
         
+        document.body.style.overflow = 'hidden';
+
         // Add keyboard shortcuts
         this.addKeyboardShortcuts(modal);
+
+        setTimeout(() => modal.querySelector('.modal-close')?.focus(), 0);
         
         return modal;
     }
@@ -36,15 +41,15 @@ class LearningEnvironment {
     createLearningEnvironmentHTML(task) {
         const moduleIcon = this.getModuleIcon(task.modul);
         return `
-            <div class="modal learning-environment">
+            <div class="modal learning-environment" role="dialog" aria-modal="true" aria-labelledby="learning-env-title">
                 <div class="modal-header">
                     <div class="header-left">
                         <span class="module-badge">${moduleIcon} ${task.modul}</span>
-                        <h3>${task.titel}</h3>
+                        <h3 id="learning-env-title">${task.titel}</h3>
                     </div>
                     <div class="header-right">
                         <div class="timer" id="taskTimer">⏱️ ${task.dauer}</div>
-                        <button class="modal-close" aria-label="Schließen">&times;</button>
+                        <button type="button" class="modal-close" onclick="window.learningEnv.closeEnvironment()" aria-label="Lernumgebung schließen">&times;</button>
                     </div>
                 </div>
                 <div class="modal-body learning-body">
@@ -121,13 +126,14 @@ class LearningEnvironment {
     }
 
     closeEnvironment() {
-        const modal = document.querySelector('.learning-env-modal');
-        if (modal) {
+        const modals = document.querySelectorAll('.learning-env-modal, .result-modal');
+        modals.forEach((modal) => {
             if (modal._keydownHandler) {
                 modal.removeEventListener('keydown', modal._keydownHandler);
             }
             modal.remove();
-        }
+        });
+        document.body.style.overflow = '';
         this.currentTask = null;
         this.userAnswers = {};
     }
@@ -174,9 +180,9 @@ class LearningEnvironment {
         const modal = document.createElement('div');
         modal.className = 'modal-overlay result-modal';
         modal.innerHTML = `
-            <div class="modal result">
+            <div class="modal result" role="dialog" aria-modal="true" aria-labelledby="result-modal-title">
                 <div class="modal-header">
-                    <h3>${result.correct ? '🎉 Richtig!' : '❌ Noch nicht ganz'}</h3>
+                    <h3 id="result-modal-title">${result.correct ? '🎉 Richtig!' : '❌ Noch nicht ganz'}</h3>
                 </div>
                 <div class="modal-body">
                     <p>${result.message}</p>
@@ -642,7 +648,7 @@ class WordEditor {
         const toolbar = document.getElementById('editorToolbar');
         
         toolbar.innerHTML = `
-            <div class="word-toolbar">
+            <div class="word-toolbar" role="toolbar" aria-label="Word Formatleiste">
                 <select id="formatSelect" onchange="window.learningEnv.editors.word.applyFormat(this.value)">
                     <option value="">Absatzformat</option>
                     <option value="h1">Überschrift 1</option>
@@ -650,24 +656,36 @@ class WordEditor {
                     <option value="p">Normal</option>
                     <option value="blockquote">Zitat</option>
                 </select>
-                <button class="btn-icon" onclick="document.execCommand('bold')" title="Fett"><b>B</b></button>
-                <button class="btn-icon" onclick="document.execCommand('italic')" title="Kursiv"><i>I</i></button>
-                <button class="btn-icon" onclick="document.execCommand('underline')" title="Unterstrichen"><u>U</u></button>
-                <button class="btn-icon" onclick="document.execCommand('justifyLeft')" title="Linksbündig">⬅️</button>
-                <button class="btn-icon" onclick="document.execCommand('justifyCenter')" title="Zentriert">⬆️</button>
-                <button class="btn-icon" onclick="document.execCommand('justifyRight')" title="Rechtsbündig">➡️</button>
-                <button class="btn-icon" onclick="document.execCommand('insertUnorderedList')" title="Aufzählung">•</button>
-                <button class="btn-icon" onclick="document.execCommand('insertOrderedList')" title="Nummerierung">1.</button>
+                <button class="btn-icon" onclick="document.execCommand('bold')" title="Fett" aria-label="Fett"><b>B</b></button>
+                <button class="btn-icon" onclick="document.execCommand('italic')" title="Kursiv" aria-label="Kursiv"><i>I</i></button>
+                <button class="btn-icon" onclick="document.execCommand('underline')" title="Unterstrichen" aria-label="Unterstrichen"><u>U</u></button>
+                <button class="btn-icon" onclick="document.execCommand('justifyLeft')" title="Linksbündig" aria-label="Linksbündig">⬅️</button>
+                <button class="btn-icon" onclick="document.execCommand('justifyCenter')" title="Zentriert" aria-label="Zentriert">⬆️</button>
+                <button class="btn-icon" onclick="document.execCommand('justifyRight')" title="Rechtsbündig" aria-label="Rechtsbündig">➡️</button>
+                <button class="btn-icon" onclick="document.execCommand('insertUnorderedList')" title="Aufzählung" aria-label="Aufzählung">•</button>
+                <button class="btn-icon" onclick="document.execCommand('insertOrderedList')" title="Nummerierung" aria-label="Nummerierung">1.</button>
+                <button class="btn-icon word-template-btn" onclick="window.learningEnv.editors.word.insertExamTemplate()" title="80/20-Struktur einfügen" aria-label="80/20-Struktur einfügen">80/20 Struktur</button>
             </div>
         `;
 
         const elements = this.task.content.elements || [];
+        const starterDocument = this.task.content.starterDocument || elements.join('\n');
         container.innerHTML = `
-            <div class="word-editor" contenteditable="true" id="wordDoc" spellcheck="true" lang="de-DE">
-                ${elements.map((el, i) => `<p data-element="${i}" placeholder="${el}">${el}</p>`).join('')}
-            </div>
-            <div class="word-ruler">
-                <div class="ruler-marks">${Array(10).fill('<span></span>').join('')}</div>
+            <div class="word-workspace">
+                <div class="word-page-meta" aria-hidden="true">
+                    <span>A4 · DIN 5008</span>
+                    <span>2,5 cm Rand · 10–11 pt</span>
+                    <span>80/20 Prüfungsmodus</span>
+                </div>
+                <div class="word-ruler word-ruler-horizontal" aria-hidden="true">
+                    <span>0</span><span>2</span><span>4</span><span>6</span><span>8</span><span>10</span><span>12</span><span>14</span><span>16</span>
+                </div>
+                <div class="word-document-shell">
+                    <div class="word-ruler-vertical" aria-hidden="true"><span>0</span><span>5</span><span>10</span><span>15</span><span>20</span><span>25</span></div>
+                    <div class="word-editor" contenteditable="true" id="wordDoc" spellcheck="true" lang="de-DE" role="textbox" aria-multiline="true" aria-label="Word Dokument bearbeiten">
+                        ${this.textToParagraphs(starterDocument)}
+                    </div>
+                </div>
             </div>
         `;
 
@@ -694,6 +712,27 @@ class WordEditor {
         document.execCommand('formatBlock', false, format);
     }
 
+    textToParagraphs(text) {
+        return String(text || '')
+            .split('\n')
+            .map((line, i) => {
+                const trimmed = line.trim();
+                const safeLine = trimmed || '&nbsp;';
+                const cls = trimmed.startsWith('Betreff') ? ' class="word-subject-line"' : '';
+                return `<p data-line="${i}"${cls}>${safeLine}</p>`;
+            })
+            .join('');
+    }
+
+    insertExamTemplate() {
+        const editor = document.getElementById('wordDoc');
+        if (!editor || !this.task) return;
+        const template = this.task.content.starterDocument || this.task.content.solution || '';
+        editor.innerHTML = this.textToParagraphs(template);
+        this.env.saveAnswer('word-content', editor.innerHTML);
+        editor.focus();
+    }
+
     checkSolution(task, userAnswers) {
         const content = userAnswers['word-content'] || '';
         const required = task.content.elements || [];
@@ -702,23 +741,53 @@ class WordEditor {
         
         return {
             correct,
-            message: correct ? 'Geschäftsbrief structure ist korrekt!' : `Nur ${found}/${required.length} Pflichtelemente gefunden.`,
-            solution: 'Struktur nach DIN 5008: Absender, Datum, Empfänger, Betreff, Anrede, Text (3 Abs.), Grußformel, Unterschrift, Anlagenvermerk',
+            message: correct ? 'Sehr gut: Die 80/20-Struktur des Dokuments sitzt.' : `Nur ${found}/${required.length} Pflichtelemente gefunden. Nutze erst die feste DIN-5008-Reihenfolge, dann feilst du am Text.`,
+            solution: task.content.solution || 'Struktur nach DIN 5008: Absender, Datum, Empfänger, Betreff, Anrede, Text (3 Abs.), Grußformel, Unterschrift, Anlagenvermerk',
             details: `Gefunden: ${found}/${required.length} Elemente`
         };
     }
 
     getHint(task) {
-        return 'Achte auf die DIN 5008 Struktur: Absender (links), Datum (rechts), Empfänger, Betreff (fett, zentriert), Anrede, 3 Absätze Text, Grußformel, Unterschrift, Anlagenvermerk.';
+        return task.content.hintDetailed || '80/20-Merksatz: In der Zwischenprüfung zählen zuerst Struktur, klare Betreffzeile und ein sachlicher Kerntext. Baue deinen Brief immer gleich auf: Absender → Empfänger → Datum → Betreff → Anrede → 3 kurze Absätze → Gruß → Name → Anlagen.';
     }
 
     getSolutionView(task) {
+        if (task.content.solutionDetailed) {
+            return this.renderDetailedSolution(task.content.solutionDetailed);
+        }
+
         return `
             <div class="solution-view">
                 <h5>📝 Musterlösung (DIN 5008):</h5>
                 <pre>${task.content.solution}</pre>
                 <h5>Erforderliche Elemente:</h5>
                 <ul>${(task.content.elements || []).map(el => `<li>${el}</li>`).join('')}</ul>
+            </div>
+        `;
+    }
+
+    renderDetailedSolution(solution) {
+        return `
+            <div class="solution-view word-solution-view">
+                <div class="solution-aha">
+                    <strong>💡 AHA in 20 Sekunden:</strong>
+                    <span>${solution.aha}</span>
+                </div>
+                <h5>📝 Musterlösung im Word-Stil</h5>
+                <div class="solution-word-page">${this.textToParagraphs(solution.document)}</div>
+                <div class="solution-grid-80-20">
+                    <section>
+                        <h5>🎯 80/20-Prüfungslogik</h5>
+                        <ul>${(solution.principles || []).map(item => `<li>${item}</li>`).join('')}</ul>
+                    </section>
+                    <section>
+                        <h5>✅ Punkte-Checkliste</h5>
+                        <ul>${(solution.checklist || []).map(item => `<li>${item}</li>`).join('')}</ul>
+                    </section>
+                </div>
+                <h5>🧠 Warum diese Lösung funktioniert</h5>
+                <ol class="solution-explanation-list">${(solution.explanation || []).map(item => `<li>${item}</li>`).join('')}</ol>
+                <div class="solution-memory-box"><strong>Merksatz:</strong> ${solution.memory}</div>
             </div>
         `;
     }

@@ -13,7 +13,7 @@
     "cap:copy": "npx cap copy",
     "cap:update": "npx cap update ios",
     "ios:build": "npm run cap:sync && npm run cap:open:ios",
-    "test": "echo 'Tests run in browser' && exit 0"
+    "test": "python3 scripts/validate-learning-objects.py"
   },
   "keywords": [
     "ihk",
