@@ -1,6 +1,6 @@
 # Phase 1 — Public Shell + Protected Content Backend
 
-> Stand: 2026-07-08. Ziel: GitHub Pages liefert nur öffentliche Shell. Bezahl-/Lerncontent wird nur nach serverseitiger Lizenzprüfung über Cloudflare Worker ausgeliefert. Keine Rechtsberatung, kein Launch-Go.
+> Stand: 2026-07-09. Ziel: GitHub Pages liefert nur öffentliche Shell. Bezahl-/Lerncontent wird nur nach serverseitiger Lizenzprüfung über Cloudflare Worker ausgeliefert. Keine Rechtsberatung, kein Launch-Go.
 
 ## Entscheidung
 
@@ -17,7 +17,7 @@
 - `index.html`, `www/index.html` und iOS-Public-Index laden keine `data/aufgaben-optimiert.json` mehr.
 - App zeigt ohne Backend nur öffentliche Vorschau und deaktiviert den Start vollständiger Aufgaben.
 - Login akzeptiert nur serverseitige API-Ergebnisse mit `accessToken`; lokale `VALID_CODES` bleiben leer.
-- Cloudflare Worker gibt nach Codeprüfung ein kurzlebiges HS256-JWT aus, limitiert Codeprüfungen grob per KV-Bucket und schützt `/content/tasks` sowie `/content/tasks/:id` per Bearer Token.
+- Cloudflare Worker gibt nach Codeprüfung ein kurzlebiges HS256-JWT aus, limitiert Codeprüfungen grob per KV-Bucket und schützt `/content/tasks` sowie `/content/tasks/:id` per Bearer Token plus aktuellem serverseitigem Code-/Revocation-Status.
 - Service Worker cached `/content/`, `/api/` und `/data/` nicht.
 
 ## Cloudflare Worker Routen
@@ -29,7 +29,7 @@
 | `/content/tasks` | GET | `Authorization: Bearer <JWT>` | liefert Aufgaben-Metadaten ohne Full Content |
 | `/content/tasks/:id` | GET | `Authorization: Bearer <JWT>` | liefert vollständige Aufgabe für berechtigte Nutzer |
 | `/admin/create-code` | POST | `ADMIN_SECRET` | manueller Staging-/Support-Code |
-| `/digistore24-webhook` | POST | `DIGISTORE_WEBHOOK_SECRET` Staging-Guard | erzeugt Codes idempotent nach Payment-Event und widerruft bei Refund/Chargeback/Cancel; finale Digistore24-Signaturprüfung bleibt Launch-Blocker |
+| `/digistore24-webhook` | POST | `DIGISTORE_WEBHOOK_SECRET` Staging-Guard | erzeugt Codes idempotent nur für erlaubte Payment-Events und widerruft bei Refund/Chargeback/Cancel; finale Digistore24-Signaturprüfung bleibt Launch-Blocker |
 
 ## KV Seeding Entwurf
 

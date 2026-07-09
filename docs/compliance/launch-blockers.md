@@ -6,7 +6,7 @@
 1. FernUSG/ZFU nicht extern geklärt; bei bezahltem asynchronem Lernangebot ist das der dominierende Rechtsblocker.
 2. Live GitHub Pages kann noch alten Stand mit öffentlichem Content liefern, bis Phase 1 committed, deployed und live mit Cachebuster verifiziert ist. Lokal sind `data/`, `www/data` und iOS-Public-Content entfernt.
 3. Kein produktionsreifes serverseitiges Lizenz-/Content-Backend live aktiv (`ACCESS_API_URL`/`CONTENT_API_URL` leer, lokale Codes deaktiviert). Der Worker-MVP ist lokal/mock-getestet, aber nicht Staging-live verifiziert.
-4. Digistore24 Checkout/IPN/Widerruf nicht produktionsreif: lokale Worker-Idempotenz/Refund/Revocation existiert als MVP, aber offizielle IPN-Signatur und echte Testkauf-/Refund-Smokes fehlen; Checkout bleibt fail-closed.
+4. Digistore24 Checkout/IPN/Widerruf nicht produktionsreif: lokale Worker-Idempotenz, Event-Allowlist und Refund/Revocation inkl. alter JWTs sind mock-getestet, aber offizielle IPN-Signatur und echte Testkauf-/Refund-Smokes fehlen; Checkout bleibt fail-closed.
 5. Rechtstexte sind Entwürfe/Platzhalter und brauchen echte Alex-Daten + Anwaltprüfung.
 6. Datenschutz/AVV/Subprocessor/Support-Gmail/KI-Datenflüsse nicht final geklärt.
 7. BFSG/Accessibility nicht final geprüft.

@@ -6,7 +6,7 @@
 |---|---|---|---|---|---|
 | SEC-001 | Public Content Leak | Lokal Phase 1: `data/`, `www/data/`, iOS public data entfernt; Live GitHub Pages noch alt bis Deploy | kritisch | Deploy + Live-Content-Leak-Test; Content nur Worker/KV/R2 | lokal mitigiert, live rot |
 | SEC-002 | Frontend Auth | `VALID_CODES=[]`, `ACCESS_API_URL` leer; Login verlangt API-Ergebnis mit `accessToken`; Logout entfernt Tokens/Flags/API- und Dynamic-Caches | hoch | Worker/KV Lizenzprüfung + Staging-URL setzen | lokal gehärtet, rot für Launch |
-| SEC-003 | Weak IPN Auth | Query-Secret entfernt, Bearer zeitkonstant verglichen; Idempotenz + Refund/Revocation-MVP ergänzt; offizielle Digistore24-Signatur fehlt | kritisch | Digistore24 IPN password/SHA/HMAC + echte Testkäufe/Refunds | rot |
+| SEC-003 | Weak IPN Auth | Query-Secret entfernt, Bearer zeitkonstant verglichen; Idempotenz, Event-Allowlist und Refund/Revocation inkl. alter JWTs lokal/mock abgesichert; offizielle Digistore24-Signatur fehlt | kritisch | Digistore24 IPN password/SHA/HMAC + echte Testkäufe/Refunds | rot für Launch |
 | SEC-004 | Brute Force Login | Worker limitiert `/verify-code` grob nach IP und Code per KV-Bucket; WAF/Turnstile/Monitoring nicht final | hoch | Cloudflare Rate Limits/WAF, Lockout/Backoff im Staging prüfen | teilweise mitigiert |
 | SEC-005 | CORS | lokal enger, live noch alt möglich | hoch | allowlist Origin, Live-Deploy prüfen | offen |
 | SEC-006 | Service Worker Cache Leak | lokal data-precache entfernt/network-only; Logout löscht API-/Dynamic-Caches; live alt möglich | hoch | deploy + cachebuster + SW unregister/update | lokal mitigiert, live offen |

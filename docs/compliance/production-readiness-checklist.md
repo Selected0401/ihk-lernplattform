@@ -13,7 +13,7 @@
 - [ ] Worker Secrets: IPN Secret/Passphrase, JWT Secret, Admin Secret.
 - [ ] Content Storage privat: R2/KV/D1 oder Alternative.
 - [x] Lokal: Worker-MVP mit serverseitiger Lizenzprüfung, kurzen JWTs, Codeformat-Fail-Closed und KV-Rate-Limits.
-- [x] Lokal/Mock: Refund/Chargeback/Cancel-Revocation getestet.
+- [x] Lokal/Mock: Refund/Chargeback/Cancel-Revocation getestet; alte JWTs verlieren danach Zugriff über serverseitige Code-Statusprüfung.
 - [x] Lokal/Mock: Webhook-Idempotenz und Codeformat-Fail-Closed getestet.
 - [x] Lokal: Logout löscht Access-Tokens/Flags und API-/Dynamic-Caches.
 - [ ] Worker-Staging mit echten Cloudflare-Bindings getestet.
@@ -23,7 +23,7 @@
 - [ ] Test-Checkout eingerichtet und extern verifiziert.
 - [ ] IPN-Signatur/IPN password/SHA_PASSPHRASE validiert.
 - [ ] Idempotenz für order/transaction/event IDs.
-- [ ] Refund/Chargeback-Events entziehen Zugriff.
+- [x] Lokal/Mock: Refund/Chargeback/Cancel-Events entziehen Codezugriff und bereits ausgestellte JWTs.
 - [ ] Widerrufs-/Digital-Content-Flow extern geprüft.
 
 ## Legal/Compliance

@@ -47,6 +47,8 @@ def fetch_text(url: str) -> tuple[int, str]:
     except urllib.error.HTTPError as error:
         body = error.read().decode("utf-8", "replace") if error.fp else ""
         return error.code, body
+    except urllib.error.URLError as error:
+        return 0, f"network_error: {error.reason}"
 
 
 def main() -> int:

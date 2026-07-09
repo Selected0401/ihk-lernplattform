@@ -111,6 +111,16 @@ async function verifyAccessToken(token, env) {
   return payload;
 }
 
+async function rememberCodeHashIndex(env, code, metadata = {}) {
+  const codeHash = await sha256Hex(code);
+  await env.ACCESS_CODES.put(`code-hash:${codeHash}`, JSON.stringify({
+    code,
+    indexedAt: new Date().toISOString(),
+    ...metadata,
+  }));
+  return codeHash;
+}
+
 async function verifyDigistoreRequest(request, env, rawBody) {
   // MVP guard only. Replace with official Digistore signature verification before production.
   const provided = request.headers.get('Authorization')?.replace(/^Bearer\s+/i, '');
@@ -149,6 +159,10 @@ async function handleVerify(request, env) {
   stored.lastUsedAt = now;
   stored.uses = (stored.uses || 0) + 1;
   await env.ACCESS_CODES.put(code, JSON.stringify(stored));
+  await rememberCodeHashIndex(env, code, {
+    plan: stored.plan || 'pro',
+    orderIdHash: stored.orderIdHash || null,
+  });
   const issuedAt = Math.floor(Date.now() / 1000);
   const expiresAt = issuedAt + 60 * 60;
   const accessToken = await signAccessToken({
@@ -198,6 +212,18 @@ async function requireAccess(request, env) {
   const token = request.headers.get('Authorization')?.replace(/^Bearer\s+/i, '');
   const payload = await verifyAccessToken(token, env);
   if (!payload) return { response: json({ ok: false, error: 'unauthorized' }, 401) };
+  if (!payload.codeHash) return { response: json({ ok: false, error: 'unauthorized' }, 401) };
+
+  const index = await env.ACCESS_CODES.get(`code-hash:${payload.codeHash}`, 'json').catch(() => null);
+  if (!index || !index.code) return { response: json({ ok: false, error: 'access_revoked' }, 403) };
+
+  const stored = await env.ACCESS_CODES.get(index.code, 'json').catch(() => null);
+  if (!stored || stored.revoked) return { response: json({ ok: false, error: 'access_revoked' }, 403) };
+  if (stored.expiresAt && Date.now() > new Date(stored.expiresAt).getTime()) {
+    return { response: json({ ok: false, error: 'access_expired' }, 403) };
+  }
+
+  payload.plan = stored.plan || payload.plan || 'pro';
   return { payload };
 }
 
@@ -247,6 +273,7 @@ async function handleCreateCode(request, env) {
     expiresAt: body.expiresAt || null,
   };
   await env.ACCESS_CODES.put(code, JSON.stringify(payload));
+  await rememberCodeHashIndex(env, code, { plan: payload.plan, orderIdHash });
   if (orderIdHash) {
     await env.ACCESS_CODES.put(`order:${orderIdHash}`, JSON.stringify({ code, plan: payload.plan, createdAt: payload.createdAt }));
   }
@@ -269,8 +296,28 @@ function digistoreEventType(payload) {
     payload.status ||
     payload.transaction_type ||
     payload.payment_status ||
-    'purchase'
+    'unknown'
   ).toLowerCase();
+}
+
+function isPurchaseEvent(eventType) {
+  return new Set([
+    'purchase',
+    'sale',
+    'paid',
+    'payment',
+    'payment_completed',
+    'payment_received',
+    'transaction_success',
+    'order_paid',
+    'order_approved',
+    'initial_sale',
+    'new_sale',
+    'sale_created',
+    'on_payment',
+    'rebill',
+    'rebill_success',
+  ]).has(eventType);
 }
 
 function isRevocationEvent(eventType) {
@@ -323,13 +370,30 @@ async function handleDigistoreWebhook(request, env) {
   }
 
   const email = String(payload.email || payload.buyer_email || payload.customer_email || '').trim().toLowerCase();
-  const orderId = extractOrderId(payload) || crypto.randomUUID();
-  const orderIdHash = await sha256Hex(orderId);
+  const orderId = extractOrderId(payload);
+  const orderIdHash = orderId ? await sha256Hex(orderId) : null;
 
   if (isRevocationEvent(eventType)) {
+    if (!orderId) {
+      const result = { action: 'ignored_event', eventType, error: 'missing_order_id' };
+      await rememberWebhookEvent(env, eventKey, result);
+      return json({ ok: true, ...result }, 202);
+    }
     const result = await revokeOrderAccess(env, orderId, eventType);
     await rememberWebhookEvent(env, eventKey, { action: 'revocation', eventType, orderIdHash, ...result });
     return json({ ok: true, eventType, ...result }, result.revoked ? 200 : 202);
+  }
+
+  if (!isPurchaseEvent(eventType)) {
+    const result = { action: 'ignored_event', eventType, orderIdHash };
+    await rememberWebhookEvent(env, eventKey, result);
+    return json({ ok: true, ...result }, 202);
+  }
+
+  if (!orderId) {
+    const result = { action: 'ignored_event', eventType, error: 'missing_order_id' };
+    await rememberWebhookEvent(env, eventKey, result);
+    return json({ ok: true, ...result }, 202);
   }
 
   const plan = String(payload.product_name || payload.product_id || '').toLowerCase().includes('plus') ? 'plus' : 'pro';
@@ -352,6 +416,7 @@ async function handleDigistoreWebhook(request, env) {
     revoked: false,
     uses: 0,
   }));
+  await rememberCodeHashIndex(env, code, { plan, orderIdHash });
   await env.ACCESS_CODES.put(`order:${orderIdHash}`, JSON.stringify({ code, plan, createdAt: new Date().toISOString() }));
 
   // Digistore24 should still send the buyer email. This endpoint returns the generated code for automation tools.
@@ -376,7 +441,8 @@ export default {
       }
       return json({ ok: false, error: 'not_found' }, 404);
     } catch (error) {
-      return json({ ok: false, error: 'server_error', message: error.message }, 500);
+      console.error('Worker request failed:', error);
+      return json({ ok: false, error: 'server_error' }, 500);
     }
   },
 };
