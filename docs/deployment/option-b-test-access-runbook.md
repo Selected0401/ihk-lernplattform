@@ -121,6 +121,19 @@ Das Script:
 - erzeugt einen serverseitigen Testcode,
 - prüft `/verify-code` und `/content/tasks`.
 
+Danach muss die Clean Shell einmalig auf den Staging Worker zeigen:
+
+```bash
+cd /opt/data/pruefungskern-public-shell
+python3 scripts/configure-staging-api.py "https://DEIN-WORKER.workers.dev"
+npm test
+git add -A
+git commit -m "chore: connect staging access worker"
+bash scripts/push-clean-public-shell-after-auth.sh
+```
+
+Dabei bleibt `VALID_CODES = []`; der Zugang läuft nur serverseitig über den Worker.
+
 ## Manueller Schritt 5: Gmail Send OAuth
 
 Es reicht nicht, nur Gmail read-only zu haben. Für Versand braucht Hermes explizit `gmail.send`.
