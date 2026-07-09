@@ -944,115 +944,44 @@
     </div>
     
     <script>
-        // Optimized Aufgaben-Daten (56 Aufgaben von Agenten optimiert)
+        // PUBLIC_PREVIEW_PLACEHOLDERS_ONLY: GitHub Pages zeigt nur gesperrte Modulvorschauen.
+        // Vollständige Aufgaben, Musterlösungen und Lernumgebungsdaten kommen ausschließlich aus dem geschützten Backend.
         const aufgaben = [
             {
-                "id": "excel-001",
+                "id": "preview-excel",
                 "modul": "Excel",
-                "titel": "SUMME und MITTELWERT berechnen",
-                "beschreibung": "Erstellen Sie eine Umsatztabelle für das 1. Quartal mit den Monatswerten Januar (12.450€), Februar (15.320€) und März (18.760€). Berechnen Sie die Gesamtsumme und den Durchschnittsumsatz.",
-                "dauer": "15 Min",
-                "punkte": 20,
-                "schwierigkeit": "Anfänger"
+                "titel": "Excel-Modul Vorschau",
+                "beschreibung": "Öffentliche Vorschau ohne Aufgabenstellung. Vollständige Excel-Übungen werden erst nach serverseitiger Zugangsprüfung geladen.",
+                "dauer": "Vorschau",
+                "punkte": 0,
+                "schwierigkeit": "Geschützt"
             },
             {
-                "id": "excel-002",
-                "modul": "Excel",
-                "titel": "SVERWEIS für Artikelsuche",
-                "beschreibung": "Erstellen Sie eine Artikeltabelle mit Artikelnummern, Bezeichnungen und Preisen. Suchen Sie mit SVERWEIS den Preis für Artikelnummer 'A-4711'. Beachten Sie den Spaltenindex (3. Spalte für Preis) und nutzen Sie exakte Suche.",
-                "dauer": "20 Min",
-                "punkte": 25,
-                "schwierigkeit": "Anfänger"
-            },
-            {
-                "id": "excel-003",
-                "modul": "Excel",
-                "titel": "WENN-Funktion für Bonusberechnung",
-                "beschreibung": "Berechnen Sie eine Bonuszahlung: Wenn Umsatz > 50.000€ dann 10% Bonus, sonst 5% Bonus. Erstellen Sie eine Tabelle mit 5 Mitarbeitern und deren Umsätzen. Definieren Sie klare Bonuskriterien: >50.000€ = 10%, sonst 5%.",
-                "dauer": "20 Min",
-                "punkte": 25,
-                "schwierigkeit": "Anfänger"
-            },
-            {
-                "id": "excel-004",
-                "modul": "Excel",
-                "titel": "Pivot-Tabelle Umsatzanalyse",
-                "beschreibung": "Erstellen Sie eine Pivot-Tabelle zur Umsatzanalyse nach Regionen und Produkten mit automatischen Summen und Durchschnittswerten. Fügen Sie Diagramme zur Visualisierung hinzu.",
-                "dauer": "25 Min",
-                "punkte": 30,
-                "schwierigkeit": "Fortgeschritten"
-            },
-            {
-                "id": "excel-005",
-                "modul": "Excel",
-                "titel": "SUMMEWENNS mit mehreren Kriterien",
-                "beschreibung": "Verwenden Sie SUMMEWENNS zur Umsatzberechnung nach Region und Quartal. Kombinieren Sie mehrere Bedingungen für präzise Auswertungen.",
-                "dauer": "22 Min",
-                "punkte": 28,
-                "schwierigkeit": "Fortgeschritten"
-            },
-            {
-                "id": "word-001",
+                "id": "preview-word",
                 "modul": "Word",
-                "titel": "DIN 5008 Geschäftsbrief",
-                "beschreibung": "Erstellen Sie einen normgerechten Geschäftsbrief nach DIN 5008 mit Absender, Empfänger, Datum, Betreff, Grußformel und Unterschrift. Beachten Sie alle Formatvorgaben.",
-                "dauer": "15 Min",
-                "punkte": 20,
-                "schwierigkeit": "Mittel"
+                "titel": "Word-Modul Vorschau",
+                "beschreibung": "Öffentliche Vorschau ohne Aufgabenstellung. Vollständige Word-Übungen werden erst nach serverseitiger Zugangsprüfung geladen.",
+                "dauer": "Vorschau",
+                "punkte": 0,
+                "schwierigkeit": "Geschützt"
             },
             {
-                "id": "word-002",
-                "modul": "Word",
-                "titel": "Serienbrief mit Datenquelle",
-                "beschreibung": "Erstellen Sie einen Serienbrief für 100 Adressaten mit personalisierten Anreden und Datenbankanbindung. Verwenden Sie Excel als Datenquelle.",
-                "dauer": "25 Min",
-                "punkte": 25,
-                "schwierigkeit": "Mittel"
-            },
-            {
-                "id": "word-003",
-                "modul": "Word",
-                "titel": "Formatvorlagen und Vorlagen",
-                "beschreibung": "Erstellen Sie professionelle Formatvorlagen für Überschriften, Fließtext und Zitate. Speichern Sie als Dokumentvorlage (.dotx) für Wiederverwendung.",
-                "dauer": "20 Min",
-                "punkte": 22,
-                "schwierigkeit": "Einfach"
-            },
-            {
-                "id": "powerpoint-001",
+                "id": "preview-powerpoint",
                 "modul": "PowerPoint",
-                "titel": "SmartArt Organigramm",
-                "beschreibung": "Erstellen Sie ein professionelles Organigramm mit SmartArt-Grafiken. Integrieren Sie Fotos und Kontaktinformationen für 15 Mitarbeiter.",
-                "dauer": "20 Min",
-                "punkte": 24,
-                "schwierigkeit": "Einfach"
+                "titel": "PowerPoint-Modul Vorschau",
+                "beschreibung": "Öffentliche Vorschau ohne Aufgabenstellung. Vollständige Präsentationsübungen werden erst nach serverseitiger Zugangsprüfung geladen.",
+                "dauer": "Vorschau",
+                "punkte": 0,
+                "schwierigkeit": "Geschützt"
             },
             {
-                "id": "powerpoint-002",
-                "modul": "PowerPoint",
-                "titel": "Animationen und Übergänge",
-                "beschreibung": "Erstellen Sie animierte Diagramme zur Visualisierung von Geschäftsdaten. Synchronisieren Sie Animationen mit Zeitsteuerung und Musik.",
-                "dauer": "22 Min",
-                "punkte": 26,
-                "schwierigkeit": "Mittel"
-            },
-            {
-                "id": "outlook-001",
+                "id": "preview-outlook",
                 "modul": "Outlook",
-                "titel": "E-Mail-Regeln und Ordner",
-                "beschreibung": "Richten Sie automatische E-Mail-Regeln für Sortierung und Weiterleitung ein. Erstellen Sie eine Ordnerstruktur für effizientes E-Mail-Management.",
-                "dauer": "15 Min",
-                "punkte": 18,
-                "schwierigkeit": "Einfach"
-            },
-            {
-                "id": "outlook-002",
-                "modul": "Outlook",
-                "titel": "Kalender synchronisieren und teilen",
-                "beschreibung": "Synchronisieren Sie Kalender mit mehreren Geräten und teilen Sie Termine mit Kollegen. Erstellen Sie Besprechungsanfragen.",
-                "dauer": "18 Min",
-                "punkte": 20,
-                "schwierigkeit": "Einfach"
+                "titel": "Outlook-Modul Vorschau",
+                "beschreibung": "Öffentliche Vorschau ohne Aufgabenstellung. Vollständige Outlook-Übungen werden erst nach serverseitiger Zugangsprüfung geladen.",
+                "dauer": "Vorschau",
+                "punkte": 0,
+                "schwierigkeit": "Geschützt"
             }
         ];
         

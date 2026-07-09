@@ -288,6 +288,10 @@ def validate_runtime_code_patterns() -> list[tuple[str, str, str]]:
             issues.append((str(index_path.relative_to(ROOT)), "startTask", "missing visible timeout when learningEnv fails to load"))
         if "data/aufgaben-optimiert.json" in html:
             issues.append((str(index_path.relative_to(ROOT)), "PUBLIC_CONTENT", "runtime must not fetch public data/aufgaben-optimiert.json"))
+        if '"id": "excel-001"' in html or '"id": "word-001"' in html or 'SUMME und MITTELWERT berechnen' in html:
+            issues.append((str(index_path.relative_to(ROOT)), "PUBLIC_CONTENT", "public shell must not embed real task fixtures; use locked preview placeholders only"))
+        if "PUBLIC_PREVIEW_PLACEHOLDERS_ONLY" not in html:
+            issues.append((str(index_path.relative_to(ROOT)), "PUBLIC_CONTENT", "public shell task list must be explicitly marked as preview placeholders"))
         if "taskItem.innerHTML" in html or "taskDetail.innerHTML" in html:
             issues.append((str(index_path.relative_to(ROOT)), "XSS", "task data from protected backend must render via DOM APIs/textContent, not innerHTML templates"))
         if "onclick=\"startTask('${fullTask.id}')\"" in html:

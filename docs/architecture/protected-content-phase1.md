@@ -15,7 +15,7 @@
 - Ignorierter iOS-Public-Content unter `ios/App/App/public/data/` wurde lokal entfernt.
 - Vor Entfernung wurde ein lokaler Export nach `.protected-content/source/` erzeugt, inklusive `.protected-content/manifest.json` mit SHA-256-Hashes.
 - `index.html`, `www/index.html` und iOS-Public-Index laden keine `data/aufgaben-optimiert.json` mehr.
-- App zeigt ohne Backend nur öffentliche Vorschau und deaktiviert den Start vollständiger Aufgaben.
+- App zeigt ohne Backend nur gesperrte Modul-Platzhalter ohne konkrete Aufgabenstellungen und deaktiviert den Start vollständiger Aufgaben.
 - Login akzeptiert nur serverseitige API-Ergebnisse mit `accessToken`; lokale `VALID_CODES` bleiben leer.
 - Cloudflare Worker gibt nach Codeprüfung ein kurzlebiges HS256-JWT aus, limitiert Codeprüfungen grob per KV-Bucket und schützt `/content/tasks` sowie `/content/tasks/:id` per Bearer Token plus aktuellem serverseitigem Code-/Revocation-Status.
 - Service Worker cached `/content/`, `/api/` und `/data/` nicht.

@@ -4,6 +4,7 @@
 
 ## Hosting/Domains/TLS
 - [x] Lokal/Repo: GitHub Pages nur Public Shell vorbereitet (`data/`, `www/data/` leer/entfernt).
+- [x] Lokal/Repo: Eingebettete echte Aufgaben-Vorschauen aus `index.html`/`www/index.html` durch gesperrte Modul-Platzhalter ersetzt.
 - [ ] Öffentliches Git-History-Leak entschieden/bereinigt: History rewrite, neues Public-Shell-Repo oder Repo privat.
 - [ ] Custom Domain/TLS/HSTS geprüft.
 - [ ] Live vs. local deploy status dokumentiert.
