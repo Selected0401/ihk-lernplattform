@@ -288,6 +288,12 @@ def validate_runtime_code_patterns() -> list[tuple[str, str, str]]:
             issues.append((str(index_path.relative_to(ROOT)), "startTask", "missing visible timeout when learningEnv fails to load"))
         if "data/aufgaben-optimiert.json" in html:
             issues.append((str(index_path.relative_to(ROOT)), "PUBLIC_CONTENT", "runtime must not fetch public data/aufgaben-optimiert.json"))
+        if "taskItem.innerHTML" in html or "taskDetail.innerHTML" in html:
+            issues.append((str(index_path.relative_to(ROOT)), "XSS", "task data from protected backend must render via DOM APIs/textContent, not innerHTML templates"))
+        if "onclick=\"startTask('${fullTask.id}')\"" in html:
+            issues.append((str(index_path.relative_to(ROOT)), "XSS", "task detail start button must use addEventListener, not inline onclick from task data"))
+        if "Date.parse(localStorage.getItem('ihk_access_expires_at') || '')" not in html or "clearAccessStorage" not in html:
+            issues.append((str(index_path.relative_to(ROOT)), "ACCESS", "frontend access gate must clear expired or malformed token sessions"))
     return issues
 
 

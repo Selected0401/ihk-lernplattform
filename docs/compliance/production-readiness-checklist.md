@@ -15,6 +15,7 @@
 - [x] Lokal: Worker-MVP mit serverseitiger Lizenzprüfung, kurzen JWTs, Codeformat-Fail-Closed und KV-Rate-Limits.
 - [x] Lokal/Mock: Refund/Chargeback/Cancel-Revocation getestet; alte JWTs verlieren danach Zugriff über serverseitige Code-Statusprüfung.
 - [x] Lokal/Mock: Webhook-Idempotenz und Codeformat-Fail-Closed getestet.
+- [x] Lokal: Frontend verwirft abgelaufene/malformed Access-Sessions und rendert Task-Daten ohne `innerHTML`-Templates.
 - [x] Lokal: Logout löscht Access-Tokens/Flags und API-/Dynamic-Caches.
 - [ ] Worker-Staging mit echten Cloudflare-Bindings getestet.
 

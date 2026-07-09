@@ -1061,15 +1061,7 @@
         let lastModalTrigger = null;
         const CONTENT_API_URL = ''; // Beispiel: 'https://DEIN-WORKER.workers.dev/content'
         
-        function hasAccess() {
-            return localStorage.getItem('ihk_access_granted') === 'true';
-        }
-
-        function hasProtectedContentApi() {
-            return Boolean(CONTENT_API_URL && localStorage.getItem('ihk_access_token'));
-        }
-
-        function clearAccessSession() {
+        function clearAccessStorage() {
             localStorage.removeItem('ihk_access_granted');
             localStorage.removeItem('ihk_access_token');
             localStorage.removeItem('ihk_access_expires_at');
@@ -1077,6 +1069,25 @@
             localStorage.removeItem('ihk_access_plan');
             localStorage.removeItem('ihk_access_since');
             localStorage.removeItem('ihk_preview_mode');
+        }
+
+        function hasAccess() {
+            if (localStorage.getItem('ihk_access_granted') !== 'true') return false;
+            const token = localStorage.getItem('ihk_access_token');
+            const expiresAt = Date.parse(localStorage.getItem('ihk_access_expires_at') || '');
+            if (!token || Number.isNaN(expiresAt) || Date.now() >= expiresAt) {
+                clearAccessStorage();
+                return false;
+            }
+            return true;
+        }
+
+        function hasProtectedContentApi() {
+            return Boolean(CONTENT_API_URL && hasAccess() && localStorage.getItem('ihk_access_token'));
+        }
+
+        function clearAccessSession() {
+            clearAccessStorage();
             updateAccessNavigation();
             clearProtectedSessionCaches().catch(event => console.warn('Access cache cleanup failed:', event));
         }
@@ -1297,19 +1308,31 @@
                 }
             };
             
-            taskItem.innerHTML = `
-                <div class="task-header">
-                    <div class="task-title">${aufgabe.titel}</div>
-                    <div class="task-meta">
-                        <span>${aufgabe.modul}</span>
-                        <span>⏱️ ${aufgabe.dauer}</span>
-                        <span>🎯 ${aufgabe.punkte} Pkt</span>
-                    </div>
-                </div>
-                <div class="task-description">
-                    ${aufgabe.beschreibung}
-                </div>
-            `;
+            const taskHeader = document.createElement('div');
+            taskHeader.className = 'task-header';
+
+            const taskTitle = document.createElement('div');
+            taskTitle.className = 'task-title';
+            taskTitle.textContent = aufgabe.titel || 'Aufgabe';
+
+            const taskMeta = document.createElement('div');
+            taskMeta.className = 'task-meta';
+            [
+                aufgabe.modul || aufgabe.kategorie || 'Modul',
+                `⏱️ ${aufgabe.dauer || aufgabe.zeit || '—'}`,
+                `🎯 ${aufgabe.punkte || 0} Pkt`
+            ].forEach((value) => {
+                const span = document.createElement('span');
+                span.textContent = value;
+                taskMeta.appendChild(span);
+            });
+
+            const taskDescription = document.createElement('div');
+            taskDescription.className = 'task-description';
+            taskDescription.textContent = aufgabe.beschreibung || '';
+
+            taskHeader.append(taskTitle, taskMeta);
+            taskItem.append(taskHeader, taskDescription);
             
             return taskItem;
         }
@@ -1402,30 +1425,50 @@
                 }
             }
             fullTask = normalizeTask(fullTask);
-            const protectedNotice = protectedTaskReady
-                ? ''
-                : '<p class="task-error" role="status">Die vollständige Aufgabe wird erst über das geschützte Backend geladen. GitHub Pages zeigt nur die öffentliche Vorschau.</p>';
-            const startAction = protectedTaskReady
-                ? `onclick="startTask('${fullTask.id}')"`
-                : 'disabled aria-disabled="true"';
-            const startLabel = protectedTaskReady ? 'Aufgabe starten →' : 'Geschützter Inhalt noch nicht verbunden';
-            
-            taskDetail.innerHTML = `
-                <h3 id="modal-title">${fullTask.titel}</h3>
-                <p>${fullTask.beschreibung}</p>
-                ${protectedNotice}
-                
-                <div class="task-meta-detail">
-                    <strong>Modul:</strong> ${fullTask.modul || fullTask.kategorie}<br>
-                    <strong>Dauer:</strong> ${fullTask.dauer || fullTask.zeit}<br>
-                    <strong>Punkte:</strong> ${fullTask.punkte}<br>
-                    <strong>Schwierigkeit:</strong> ${fullTask.schwierigkeit}
-                </div>
-                
-                <button class="start-task-btn" ${startAction} aria-label="Aufgabe ${fullTask.titel} starten">
-                    ${startLabel}
-                </button>
-            `;
+            taskDetail.textContent = '';
+
+            const title = document.createElement('h3');
+            title.id = 'modal-title';
+            title.textContent = fullTask.titel || 'Aufgabe';
+
+            const description = document.createElement('p');
+            description.textContent = fullTask.beschreibung || '';
+
+            const elements = [title, description];
+            if (!protectedTaskReady) {
+                const notice = document.createElement('p');
+                notice.className = 'task-error';
+                notice.setAttribute('role', 'status');
+                notice.textContent = 'Die vollständige Aufgabe wird erst über das geschützte Backend geladen. GitHub Pages zeigt nur die öffentliche Vorschau.';
+                elements.push(notice);
+            }
+
+            const metaDetail = document.createElement('div');
+            metaDetail.className = 'task-meta-detail';
+            const appendMeta = (label, value) => {
+                const strong = document.createElement('strong');
+                strong.textContent = `${label}:`;
+                metaDetail.append(strong, document.createTextNode(` ${value || '—'}`), document.createElement('br'));
+            };
+            appendMeta('Modul', fullTask.modul || fullTask.kategorie);
+            appendMeta('Dauer', fullTask.dauer || fullTask.zeit);
+            appendMeta('Punkte', fullTask.punkte);
+            appendMeta('Schwierigkeit', fullTask.schwierigkeit);
+            elements.push(metaDetail);
+
+            const startButton = document.createElement('button');
+            startButton.className = 'start-task-btn';
+            startButton.textContent = protectedTaskReady ? 'Aufgabe starten →' : 'Geschützter Inhalt noch nicht verbunden';
+            startButton.setAttribute('aria-label', `Aufgabe ${fullTask.titel || 'Aufgabe'} starten`);
+            if (protectedTaskReady) {
+                startButton.addEventListener('click', () => startTask(fullTask.id));
+            } else {
+                startButton.disabled = true;
+                startButton.setAttribute('aria-disabled', 'true');
+            }
+            elements.push(startButton);
+
+            taskDetail.append(...elements);
             
             modal.style.display = 'block';
             modal.setAttribute('aria-hidden', 'false');
@@ -1458,6 +1501,13 @@
         // Aufgabe starten mit Haptic Feedback (wenn verfügbar)
         async function startTask(aufgabeId) {
             const taskDetail = document.getElementById('taskDetail');
+            const appendTaskError = (message) => {
+                const error = document.createElement('div');
+                error.className = 'task-error';
+                error.setAttribute('role', 'alert');
+                error.textContent = message;
+                taskDetail.appendChild(error);
+            };
             try {
                 const data = await fetchProtectedContent(`tasks/${encodeURIComponent(aufgabeId)}`);
                 const aufgabe = normalizeTask(data.aufgabe);
@@ -1487,21 +1537,13 @@
                         if (attempts >= 100) {
                             clearInterval(checkLearningEnv);
                             console.error('Lernumgebung konnte nicht geladen werden: window.learningEnv fehlt. Prüfe learning-environment.js.');
-                            taskDetail.innerHTML += `
-                                <div class="task-error" role="alert">
-                                    Lernumgebung konnte nicht geladen werden. Bitte Seite neu laden oder Cache löschen.
-                                </div>
-                            `;
+                            appendTaskError('Lernumgebung konnte nicht geladen werden. Bitte Seite neu laden oder Cache löschen.');
                         }
                     }, 50);
                 }
             } catch (e) {
                 console.error('Protected task could not be loaded:', e);
-                taskDetail.innerHTML += `
-                    <div class="task-error" role="alert">
-                        Geschützter Inhalt ist noch nicht verfügbar. Bitte Backend-Verbindung prüfen.
-                    </div>
-                `;
+                appendTaskError('Geschützter Inhalt ist noch nicht verfügbar. Bitte Backend-Verbindung prüfen.');
             }
         }
     </script>
