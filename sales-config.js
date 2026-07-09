@@ -6,6 +6,5 @@ window.IHK_SALES_CONFIG = {
   checkoutUrl: '',
   productName: 'Prüfungskern Büro Pro',
   launchPrice: '99€',
-  regularTargetPrice: '399€',
   accessDuration: '24 Monate'
 };

@@ -220,17 +220,17 @@ struct ContentView: View {
                     .font(.largeTitle)
                     .fontWeight(.bold)
                 
-                Text("Professionelle Prüfungsvorbereitung")
+                Text("Unabhängiges Übungsmaterial")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
             }
             
             // Features
             VStack(spacing: 20) {
-                FeatureRow(icon: "doc.text.fill", title: "150+ Aufgaben", description: "Echte IHK-Prüfungsaufgaben")
-                FeatureRow(icon: "chart.bar.fill", title: "Fortschritt tracking", description: "Dein persönlicher Lernfortschritt")
+                FeatureRow(icon: "doc.text.fill", title: "Eigene Übungsaufgaben", description: "Keine offiziellen IHK-Prüfungsaufgaben")
+                FeatureRow(icon: "chart.bar.fill", title: "Lokale Selbstkontrolle", description: "Fortschritt bleibt auf deinem Gerät")
                 FeatureRow(icon: "iphone.fill", title: "iOS Native", description: "Optimiert für iPhone & iPad")
-                FeatureRow(icon: "star.fill", title: "92% Erfolgsquote", description: "Beste Vorbereitung garantiert")
+                FeatureRow(icon: "star.fill", title: "Keine Garantie", description: "Keine Bestehensgarantie und keine offizielle IHK-Verbindung")
             }
             .padding()
             

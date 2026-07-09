@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://*.workers.dev; base-uri 'self'; frame-ancestors 'none'; form-action 'none';">
+  <meta http-equiv="X-Frame-Options" content="DENY">
   <title>Zugangscode eingeben · Prüfungskern</title>
   <link rel="stylesheet" href="style.css?v=build-20260705-commerce-1">
   <style>
@@ -25,25 +27,27 @@
     <h1>Gib deinen Zugangscode ein.</h1>
     <p>Nach dem Kauf über Digistore24 bekommst du deinen Zugangscode per E-Mail. PayPal läuft später als Zahlungsart im Digistore24-Checkout.</p>
     <label for="accessCode" style="font-weight:850;color:var(--ink)">Zugangscode</label>
-    <input id="accessCode" class="code-input" placeholder="Zugangscode aus deiner E-Mail" autocomplete="one-time-code" inputmode="text">
+    <input id="accessCode" class="code-input" placeholder="Zugangscode aus deiner E-Mail" autocomplete="one-time-code" inputmode="text" aria-describedby="error">
     <div class="login-actions">
       <button class="module-btn" onclick="unlockAccess()">Lernplattform öffnen →</button>
       <a class="module-btn" style="background:linear-gradient(135deg,#0f766e,#16a34a)!important" href="landing.html#preise">Zugang kaufen</a>
     </div>
-    <p id="error" class="error">Der Code ist ungültig. Bitte prüfe die Schreibweise oder kontaktiere den Support.</p>
+    <p id="error" class="error" role="alert" aria-live="polite">Der Code ist ungültig. Bitte prüfe die Schreibweise oder kontaktiere den Support.</p>
     <p class="hint">Du findest deinen Code in der E-Mail nach dem Kauf. Prüfe auch Spam/Unbekannt. Für echte Verkäufe muss die Prüfung serverseitig über Digistore24-IPN/Webhook + Lizenzdatenbank laufen.</p>
     <p class="test-mode"><strong>Launch-Sicherheit:</strong> Öffentliche Testcodes sind deaktiviert. Trage vor dem Verkauf die Worker/API-URL ein, damit nur echte Käufercodes freigeschaltet werden.</p>
   </main>
   <script>
-    // Production target: set ACCESS_API_URL to a Cloudflare Worker/Supabase endpoint that verifies unique codes server-side.
+    // Production target: set ACCESS_API_URL to a Cloudflare Worker endpoint that verifies unique codes server-side.
     const ACCESS_API_URL = '';
-    const VALID_CODES = ['ALEX-TEST-2026'];
+    const VALID_CODES = [];
 
-    function grantAccess(code, plan = 'pro') {
+    function grantAccess(code, plan = 'pro', accessToken = '', expiresAt = '') {
       localStorage.setItem('ihk_access_granted', 'true');
       localStorage.setItem('ihk_access_code', code);
       localStorage.setItem('ihk_access_plan', plan);
       localStorage.setItem('ihk_access_since', new Date().toISOString());
+      localStorage.setItem('ihk_access_token', accessToken);
+      localStorage.setItem('ihk_access_expires_at', expiresAt);
       window.location.href = 'index.html';
     }
 
@@ -56,7 +60,7 @@
       });
       if (!response.ok) return false;
       const data = await response.json();
-      return data && data.valid ? data : false;
+      return data && data.valid && data.accessToken ? data : false;
     }
 
     async function unlockAccess() {
@@ -71,7 +75,7 @@
       try {
         const apiResult = await verifyWithApi(code);
         if (apiResult) {
-          grantAccess(code, apiResult.plan || 'pro');
+          grantAccess(code, apiResult.plan || 'pro', apiResult.accessToken, apiResult.expiresAt || '');
           return;
         }
         if (VALID_CODES.includes(code)) {

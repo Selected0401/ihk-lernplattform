@@ -1,5 +1,5 @@
 /**
- * Lernfortschritt-System für IHK Lernplattform
+ * Lernfortschritt-System für Prüfungskern Büro
  * Mit localStorage-Speicherung, Statistiken und Chart.js-Visualisierungen
  */
 

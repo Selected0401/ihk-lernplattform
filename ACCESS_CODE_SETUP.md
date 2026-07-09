@@ -23,7 +23,7 @@ Käufer zahlen einmalig 99€ als Launch-Angebot über Digistore24 und erhalten 
 2. Produkt anlegen:
    - Name: Prüfungskern Büro
    - Preis Launch: 99€ einmalig
-   - Regulärer Wert/Ankerpreis nur verwenden, wenn rechtlich sauber belegbar: 399€ einmalig
+   - Kein künstlicher Ankerpreis. Einen späteren Preis erst nennen, wenn er tatsächlich gilt und rechtlich geprüft ist.
    - Produkttyp: digitales Produkt / Online-Zugang
 3. Danke-/Return-URL setzen:
    - `https://selected0401.github.io/ihk-lernplattform/danke.html`

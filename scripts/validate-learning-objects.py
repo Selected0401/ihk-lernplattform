@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Validate IHK Lernplattform learning-object/task contracts.
+"""Validate learning-object/task contracts and public-shell safety.
 
-Checks the canonical JSON and deployed copies used by GitHub Pages/Capacitor so
-broken or stale learning objects are caught before users hit them.
+Phase 1 keeps paid/protected content out of GitHub Pages. When a local
+`.protected-content/source/` export exists, validate it. Always fail if
+protected JSON reappears in public deploy folders such as `data/` or `www/data/`.
 """
 
 from __future__ import annotations
@@ -15,34 +16,53 @@ from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+PROTECTED_SOURCE_ROOT = ROOT / ".protected-content" / "source"
 TASK_FILES = [
-    ROOT / "data" / "aufgaben-optimiert.json",
-    ROOT / "www" / "data" / "aufgaben-optimiert.json",
-    ROOT / "ios" / "App" / "App" / "public" / "data" / "aufgaben-optimiert.json",
-    ROOT / "data" / "aufgaben.json",
-    ROOT / "www" / "data" / "aufgaben.json",
-    ROOT / "data" / "lernfeld-1-3.json",
-    ROOT / "www" / "data" / "lernfeld-1-3.json",
-    ROOT / "data" / "lernfeld-4-6.json",
-    ROOT / "www" / "data" / "lernfeld-4-6.json",
+    PROTECTED_SOURCE_ROOT / "data" / "aufgaben-optimiert.json",
+    PROTECTED_SOURCE_ROOT / "data" / "aufgaben.json",
+    PROTECTED_SOURCE_ROOT / "data" / "lernfeld-1-3.json",
+    PROTECTED_SOURCE_ROOT / "data" / "lernfeld-4-6.json",
+]
+PUBLIC_CONTENT_DIRS = [
+    ROOT / "data",
+    ROOT / "www" / "data",
+    ROOT / "ios" / "App" / "App" / "public" / "data",
 ]
 SYNC_GROUPS = [
-    [
-        ROOT / "data" / "aufgaben-optimiert.json",
-        ROOT / "www" / "data" / "aufgaben-optimiert.json",
-        ROOT / "ios" / "App" / "App" / "public" / "data" / "aufgaben-optimiert.json",
-    ],
     [
         ROOT / "learning-environment.js",
         ROOT / "www" / "js" / "learning-environment.js",
         ROOT / "js" / "learning-environment.js",
         ROOT / "ios" / "App" / "App" / "public" / "js" / "learning-environment.js",
     ],
-    [ROOT / "data" / "aufgaben.json", ROOT / "www" / "data" / "aufgaben.json"],
-    [ROOT / "data" / "lernfeld-1-3.json", ROOT / "www" / "data" / "lernfeld-1-3.json"],
-    [ROOT / "data" / "lernfeld-4-6.json", ROOT / "www" / "data" / "lernfeld-4-6.json"],
+    [ROOT / "landing.html", ROOT / "www" / "landing.html"],
+    [ROOT / "login.html", ROOT / "www" / "login.html"],
+    [ROOT / "sales-config.js", ROOT / "www" / "sales-config.js"],
 ]
 RUNTIME_BASES = [ROOT, ROOT / "www", ROOT / "ios" / "App" / "App" / "public"]
+PUBLIC_RUNTIME_FILES = [
+    ROOT / "index.html",
+    ROOT / "www" / "index.html",
+    ROOT / "landing.html",
+    ROOT / "www" / "landing.html",
+    ROOT / "login.html",
+    ROOT / "www" / "login.html",
+    ROOT / "sales-config.js",
+    ROOT / "www" / "sales-config.js",
+]
+RISKY_CLAIM_PATTERNS = [
+    re.compile(pattern, re.I)
+    for pattern in [
+        r"bestehe\s+garantiert",
+        r"offizielle\s+IHK-App",
+        r"IHK-zertifiziert",
+        r"originale\s+IHK-Prüfungen",
+        r"100%\s+kostenlos",
+        r"95%\s+Erfolgsquote",
+        r"statt\s+399",
+        r"Jetzt\s+sicher\s+über\s+Digistore24",
+    ]
+]
 ALLOWED_CATEGORIES = {"excel", "word", "powerpoint", "outlook"}
 ALLOWED_DIFFICULTIES = {"anfaenger", "mittel", "fortgeschritten"}
 REQUIRED_FIELDS = [
@@ -201,6 +221,16 @@ def validate_sync_groups() -> list[tuple[str, str, str]]:
     return issues
 
 
+def validate_no_public_content() -> list[tuple[str, str, str]]:
+    issues: list[tuple[str, str, str]] = []
+    for directory in PUBLIC_CONTENT_DIRS:
+        if not directory.exists():
+            continue
+        for path in sorted(directory.glob("*.json")):
+            issues.append((str(path.relative_to(ROOT)), "PUBLIC_CONTENT", "protected learning JSON must not be in public deploy shell"))
+    return issues
+
+
 def normalize_runtime_ref(ref: str) -> str | None:
     ref = ref.split("?", 1)[0].strip()
     if not ref or ref.startswith(("http:", "https:", "data:", "#")):
@@ -256,19 +286,69 @@ def validate_runtime_code_patterns() -> list[tuple[str, str, str]]:
         html = index_path.read_text(encoding="utf-8")
         if "attempts >= 100" not in html or "Lernumgebung konnte nicht geladen werden" not in html:
             issues.append((str(index_path.relative_to(ROOT)), "startTask", "missing visible timeout when learningEnv fails to load"))
+        if "data/aufgaben-optimiert.json" in html:
+            issues.append((str(index_path.relative_to(ROOT)), "PUBLIC_CONTENT", "runtime must not fetch public data/aufgaben-optimiert.json"))
+    return issues
+
+
+def validate_commerce_safety() -> list[tuple[str, str, str]]:
+    issues: list[tuple[str, str, str]] = []
+    for path in PUBLIC_RUNTIME_FILES:
+        if not path.exists():
+            continue
+        text = path.read_text(encoding="utf-8")
+        rel = str(path.relative_to(ROOT))
+
+        for pattern in RISKY_CLAIM_PATTERNS:
+            if pattern.search(text):
+                issues.append((rel, "CLAIM", f"risky public claim pattern found: {pattern.pattern}"))
+
+        if "regularTargetPrice" in text:
+            issues.append((rel, "CLAIM", "unsupported anchor price config must not ship in public shell"))
+
+        if path.name == "sales-config.js":
+            checkout_active = re.search(r"checkoutActive\s*:\s*true", text)
+            checkout_url_match = re.search(r"checkoutUrl\s*:\s*['\"]([^'\"]*)['\"]", text)
+            checkout_url = checkout_url_match.group(1) if checkout_url_match else ""
+            if checkout_active and not re.match(r"https://(www\.)?digistore24\.(com|app)/", checkout_url):
+                issues.append((rel, "CHECKOUT", "active checkout must use a real Digistore24 order-form URL"))
+
+        if path.name == "login.html" and "const VALID_CODES = []" not in text:
+            issues.append((rel, "ACCESS", "public frontend VALID_CODES must stay empty"))
+
+        if path.name in {"index.html", "login.html"} and "https://*.workers.dev" not in text:
+            issues.append((rel, "CSP", "CSP must allow configured Cloudflare Worker staging origin"))
+
+        if path.name == "index.html":
+            if "logoutAccessSession" not in text or "nav-link-logout" not in text:
+                issues.append((rel, "ACCESS", "authenticated shell must expose logout"))
+            if "ihk_access_since" not in text or "ihk_preview_mode" not in text:
+                issues.append((rel, "ACCESS", "logout/session cleanup must remove all legacy access flags"))
+            if "clearProtectedSessionCaches" not in text or "pruefungskern-(api|dynamic)" not in text:
+                issues.append((rel, "ACCESS", "logout must clear protected API/dynamic caches without deleting static PWA cache"))
+
+        if any(marker in text for marker in ["ihk_preview_mode", "access=granted", "preview=true"]):
+            if "localStorage.removeItem('ihk_preview_mode')" not in text:
+                issues.append((rel, "ACCESS", "preview/access bypass marker must not ship in public shell"))
+    return issues
     return issues
 
 
 def main() -> int:
     issues: list[tuple[str, str, str]] = []
-    for path in TASK_FILES:
+    protected_files = [path for path in TASK_FILES if path.exists()]
+    for path in protected_files:
         issues.extend(validate_task_file(path))
+    issues.extend(validate_no_public_content())
     issues.extend(validate_sync_groups())
     issues.extend(validate_runtime_assets())
     issues.extend(validate_runtime_code_patterns())
+    issues.extend(validate_commerce_safety())
 
     print("IHK learning-object validation")
-    print(f"Files checked: {len(TASK_FILES)} task files + {len(SYNC_GROUPS)} sync groups + runtime assets/code")
+    print(f"Files checked: {len(protected_files)} protected task files + {len(SYNC_GROUPS)} sync groups + public-shell/runtime assets/code")
+    if not protected_files:
+        print("WARN: local .protected-content export missing; skipped private task quality validation")
     if not issues:
         print("OK: 0 issues")
         return 0

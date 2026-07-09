@@ -1,7 +1,7 @@
 {
-    "name": "Emilia's IHK Lernplattform",
-    "short_name": "IHK Lernen",
-    "description": "Kostenlose Lernplattform für IHK Zwischenprüfung Büromanagement - Excel, Word, PowerPoint, Outlook",
+    "name": "Prüfungskern Büro",
+    "short_name": "Prüfungskern",
+    "description": "Unabhängiges digitales Übungsmaterial für typische Office-Aufgabentypen in Excel, Word, PowerPoint und Outlook.",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#667eea",
@@ -26,32 +26,32 @@
     ],
     "screenshots": [
         {
-            "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 600'><rect width='300' height='600' fill='%23667eea'/><text x='150' y='300' font-size='40' text-anchor='middle' fill='white'>🐰 IHK Lernen</text></svg>",
+            "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 600'><rect width='300' height='600' fill='%23667eea'/><text x='150' y='300' font-size='34' text-anchor='middle' fill='white'>Prüfungskern</text></svg>",
             "sizes": "300x600",
             "type": "image/svg+xml",
             "form_factor": "narrow",
-            "label": "Emilia's IHK Lernplattform - Startseite"
+            "label": "Prüfungskern Büro - Startseite"
         }
     ],
     "shortcuts": [
         {
             "name": "📊 Excel",
             "short_name": "Excel",
-            "description": "Excel Übungen starten",
+            "description": "Excel-Aufgaben eigenständig üben",
             "url": "/?module=excel",
             "icons": [{"src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>", "sizes": "96x96"}]
         },
         {
             "name": "📝 Word",
             "short_name": "Word", 
-            "description": "Word Übungen starten",
+            "description": "Word-Aufgaben eigenständig üben",
             "url": "/?module=word",
             "icons": [{"src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📝</text></svg>", "sizes": "96x96"}]
         },
         {
             "name": "🎯 Simulation",
             "short_name": "Test",
-            "description": "Prüfungssimulation starten",
+            "description": "Aufgabenmix eigenständig üben",
             "url": "/?module=simulation",
             "icons": [{"src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>", "sizes": "96x96"}]
         }

@@ -1,4 +1,4 @@
-/* Emilia's IHK Lernplattform - Data & Exercises */
+/* Prüfungskern Büro - Data & Exercises */
 
 // ============================================
 // PRÜFUNGS-DATEN & ÜBUNGEN

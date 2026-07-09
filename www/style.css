@@ -844,6 +844,13 @@ main {
     border-color: rgba(37,99,235,.18) !important;
     background: rgba(37,99,235,.07) !important;
 }
+.nav-link-logout {
+    color: var(--ink-soft) !important;
+    border: 1px solid rgba(100, 116, 139, .24) !important;
+    background: rgba(100, 116, 139, .08) !important;
+    font: inherit;
+    cursor: pointer;
+}
 .nav-link,
 .module-btn,
 .start-task-btn,

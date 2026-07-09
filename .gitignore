@@ -1,0 +1,15 @@
+# Local-only protected content export for Cloudflare KV/R2 seeding.
+# Paid/protected learning content must not be committed or deployed via GitHub Pages.
+.protected-content/
+
+# Local environment/secrets
+.env
+.env.*
+!.env.example
+
+# Dependencies / generated caches
+node_modules/
+.cache/
+__pycache__/
+*.pyc
+.DS_Store

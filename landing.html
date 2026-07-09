@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="Prüfungskern Büro: prüfungsnahe digitale Vorbereitung für Kaufleute für Büromanagement mit eigenen Aufgaben, AHA-Musterlösungen und Zugangscode über Digistore24.">
-  <title>Prüfungskern Büro · Launch-Zugang</title>
+  <meta name="description" content="Prüfungskern Büro: prüfungsnahe digitale Vorbereitung für Kaufleute für Büromanagement mit eigenen Aufgaben, AHA-Musterlösungen und geplantem Zugangscode-Login.">
+  <title>Prüfungskern Büro · Launch-Vorbereitung</title>
   <link rel="stylesheet" href="style.css?v=build-20260706-sales-2">
   <style>
     .sales-page { background: radial-gradient(circle at 10% 0%, rgba(37,99,235,.16), transparent 30rem), #f7fbff; }
@@ -77,7 +77,7 @@
   <section class="sales-hero">
     <div class="container">
       <div>
-        <span class="badge">Launch · Prüfungskern Büro · 99€ einmalig</span>
+        <span class="badge">Launch-Vorbereitung · Prüfungskern Büro · 99€ geplant</span>
         <h1>Wenn du wenig Zeit hast, darfst du nicht alles lernen.</h1>
         <p>Prüfungskern hilft dir, die wichtigsten Office-Aufgabentypen gezielt zu trainieren: Excel, Word, PowerPoint und Outlook. Mit eigenen prüfungsnahen Aufgaben, klaren Musterlösungen und AHA-Erklärungen, die du sofort verstehst.</p>
         <div class="hero-actions">
@@ -149,7 +149,7 @@
             <h3>Prüfungskern Büro Pro</h3>
             <div class="old-price">Aktueller Launch-Zugang</div>
             <div class="price">99€ <small>einmalig</small></div>
-            <p>Einmaliger Zugang zur aktuellen Lernplattform. Kein Abo. Kauf, Rechnung und Zahlungsarten wie PayPal laufen über Digistore24.</p>
+            <p>Geplanter einmaliger Zugang zur aktuellen Lernplattform. Kein Abo. Kauf, Rechnung und Zahlungsarten wie PayPal sollen später über Digistore24 laufen.</p>
             <ul class="legal-list legal">
               <li>56 eigene prüfungsnahe Übungsaufgaben</li>
               <li>Excel, Word, PowerPoint und Outlook</li>
@@ -157,10 +157,10 @@
               <li>24 Monate Zugang inklusive Updates in diesem Zeitraum</li>
             </ul>
             <div class="buy-actions">
-              <a id="digistoreCheckout" class="module-btn" href="#digistore-setup" rel="noopener">Über Digistore24 kaufen →</a>
+              <a id="digistoreCheckout" class="module-btn" href="#digistore-setup" rel="noopener">Checkout noch nicht aktiv →</a>
             </div>
             <p class="checkout-note">Der echte Digistore24-Bestellformular-Link wird eingesetzt, sobald Produkt, Rechtstexte und Zugangscode-Backend final sind.</p>
-            <div id="checkoutWarning" class="checkout-warning">Checkout ist noch im Testmodus. Lege zuerst das Digistore24-Produkt an und ersetze in <strong>sales-config.js</strong> den Platzhalter durch den echten Bestellformular-Link.</div>
+            <div id="checkoutWarning" class="checkout-warning" role="status" aria-live="polite">Checkout ist noch bewusst deaktiviert. Lege zuerst das Digistore24-Produkt an, kläre Recht/ZFU/Backend und ersetze erst danach in <strong>sales-config.js</strong> den Platzhalter durch den echten Bestellformular-Link.</div>
           </article>
           <aside class="price-card">
             <span class="ribbon">Nach dem Kauf</span>
@@ -233,7 +233,7 @@
       if (validCheckout) {
         checkout.href = config.checkoutUrl;
         checkout.target = '_blank';
-        checkout.textContent = 'Jetzt sicher über Digistore24 kaufen →';
+        checkout.textContent = 'Jetzt über Digistore24 kaufen →';
       } else {
         checkout.addEventListener('click', function (event) {
           event.preventDefault();

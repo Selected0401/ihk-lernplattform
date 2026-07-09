@@ -123,21 +123,21 @@ struct ContentView: View {
 struct HeroSection: View {
     var body: some View {
         VStack(spacing: 15) {
-            Text("IHK Lernplattform")
+            Text("Prüfungskern Büro")
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .foregroundColor(.primary)
             
-            Text("Professionelle Prüfungsvorbereitung für Informationstechnisches Büromanagement")
+            Text("Unabhängiges Übungsmaterial für Informationstechnisches Büromanagement")
                 .font(.subheadline)
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
             
             HStack(spacing: 30) {
-                StatItem(number: "150", label: "Aufgaben")
-                StatItem(number: "38", label: "Stunden")
-                StatItem(number: "92%", label: "Erfolgsquote")
+                StatItem(number: "56", label: "Übungen")
+                StatItem(number: "4", label: "Module")
+                StatItem(number: "0", label: "Garantien")
             }
         }
         .padding()
@@ -360,7 +360,7 @@ struct ProgressSection: View {
                 ProgressCard(number: "12", label: "Lern-Streak (Tage)")
                 ProgressCard(number: "245", label: "Punkte gesamt")
                 ProgressCard(number: "4.8", label: "⭐ Durchschnitt")
-                ProgressCard(number: "89%", label: "Erfolgsquote")
+                ProgressCard(number: "0", label: "Garantien")
             }
         }
     }

@@ -1,4 +1,4 @@
-// Emilia's IHK Lernplattform - Modern JavaScript mit Performance-Optimierung
+// Prüfungskern Büro - Modern JavaScript mit Performance-Optimierung
 
 // Globale Konstanten und Variablen
 const APP_CONFIG = {

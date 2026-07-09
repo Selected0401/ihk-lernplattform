@@ -1,4 +1,4 @@
-// Emilia's IHK Lernplattform - JavaScript App mit echten Aufgaben
+// Prüfungskern Büro - JavaScript App mit eigenen Übungsaufgaben
 class LernApp {
     constructor() {
         this.modules = {
@@ -630,18 +630,18 @@ class LernApp {
         modal.innerHTML = `
             <div class="modal coach-modal">
                 <div class="modal-header">
-                    <h3>🐰 Emilia Coach</h3>
+                    <h3>🐰 Emilia Support</h3>
                     <button class="modal-close">&times;</button>
                 </div>
                 <div class="modal-body">
                     <div class="coach-welcome">
                         <p>Hallo mein зайчик! 👋</p>
-                        <p>Ich bin deine persönliche Lern-Coachin:</p>
+                        <p>Ich helfe dir hier nur technisch beim eigenständigen Üben:</p>
                         <ul>
-                            <li>💪 Täglich motivieren</li>
-                            <li>📅 Lernpläne erstellen</li>
-                            <li>🎯 Schwachstellen finden</li>
-                            <li>📈 Fortschritt tracken</li>
+                            <li>🔐 Zugang und Login erklären</li>
+                            <li>🧭 Navigation in der App erklären</li>
+                            <li>📈 Lokale Fortschrittsanzeige erläutern</li>
+                            <li>🚫 Keine fachliche Korrektur oder Betreuung</li>
                         </ul>
                     </div>
                     <div class="coach-stats">
@@ -653,7 +653,7 @@ class LernApp {
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-primary" onclick="window.app.createLearningPlan()">
-                        Lernplan erstellen
+                        Support-Hinweise anzeigen
                     </button>
                     <button class="btn btn-secondary" onclick="window.app.closeModal()">
                         Schließen
@@ -667,14 +667,14 @@ class LernApp {
     
     createLearningPlan() {
         this.closeModal();
-        alert('📅 Dein persönlicher Lernplan wird erstellt...\n\n💪 Täglich 30 Minuten Training\n🎯 Fokus auf deine Schwachstellen\n📈 Wöchentlicher Fortschritt\n\nIch bin stolz auf dich, mein Süßer! ❤️');
+        alert('Technischer Hinweis:\n\nDieses Tool ist für eigenständiges Üben gedacht. Fortschritt bleibt lokal auf deinem Gerät. Es gibt keine individuelle fachliche Korrektur, keine Betreuung und keine Bestehensgarantie.');
     }
     
     shareApp() {
         if (navigator.share) {
             navigator.share({
-                title: 'Emilia\'s IHK Lernplattform',
-                text: 'Kostenlose Lernplattform für IHK Zwischenprüfung Büromanagement - 40+ Übungen, 3 Simulationen, 100% kostenlos!',
+                title: 'Prüfungskern Büro',
+                text: 'Unabhängiges digitales Übungsmaterial mit eigenen Aufgaben zur Vorbereitung und Wiederholung.',
                 url: window.location.href
             }).then(() => {
                 console.log('App shared successfully');
@@ -710,7 +710,7 @@ class LernApp {
     
     startLearning() {
         console.log('Starting learning journey');
-        alert(`🚀 Willkommen bei Emilia's IHK Lernplattform!\n\nDeine Reise zur bestandenen Prüfung beginnt jetzt:\n\n📊 40+ interaktive Übungen\n📝 4 Office-Anwendungen\n🎯 3 Prüfungssimulationen\n🐰 Persönliche Coach-Unterstützung\n\n💪 Du schaffst das!`);
+        alert(`Willkommen bei Prüfungskern Büro.\n\nDu kannst hier eigenständig typische Office-Aufgabentypen üben und Musterlösungen vergleichen. Es gibt keine individuelle Betreuung, kein Zertifikat und keine Bestehensgarantie.`);
         
         this.progress.lastVisit = new Date().toISOString();
         this.saveProgress();
@@ -718,7 +718,7 @@ class LernApp {
     
     showInfo() {
         console.log('Showing app info');
-        alert(`ℹ️ Über Emilia's IHK Lernplattform\n\n🎯️ Ziel: Bestehung der IHK Zwischenprüfung\n📚 Inhalt: Büromanagement - Informationstechnische Systeme\n💰 Kosten: 100% kostenlos und werbefrei\n👥 Zielgruppe: Auszubildende Kaufleute für Büromanagement\n\n📈 Erfolgsquote: 95% mit regelmäßigem Training\n\n🐰 Mit ❤️ von Emilia gebaut`);
+        alert(`Über Prüfungskern Büro\n\nUnabhängig erstelltes digitales Selbstlern- und Übungsmaterial für typische Office-Aufgabentypen. Keine Verbindung zur IHK, keine offiziellen Prüfungsaufgaben, keine Betreuung, keine individuelle Korrektur und keine Bestehensgarantie.`);
     }
 }
 

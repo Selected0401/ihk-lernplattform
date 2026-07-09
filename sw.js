@@ -9,10 +9,10 @@
  * - Safe asset caching with error handling
  */
 
-const CACHE_NAME = 'emilia-lernplattform-v2.0.6-qa-polish';
-const STATIC_CACHE = 'emilia-static-v2.0.6-qa-polish';
-const DYNAMIC_CACHE = 'emilia-dynamic-v2.0.6-qa-polish';
-const API_CACHE = 'emilia-api-v2.0.6-qa-polish';
+const CACHE_NAME = 'pruefungskern-v2.1.0-protected-content-phase1';
+const STATIC_CACHE = 'pruefungskern-static-v2.1.0-protected-content-phase1';
+const DYNAMIC_CACHE = 'pruefungskern-dynamic-v2.1.0-protected-content-phase1';
+const API_CACHE = 'pruefungskern-api-v2.1.0-protected-content-phase1';
 
 // Safari detection
 const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
@@ -34,8 +34,7 @@ const CRITICAL_ASSETS = [
   'manifest.json',
   'icon-192.png',
   'icon-512.png',
-  'apple-touch-icon.png',
-  'data/aufgaben-optimiert.json'
+  'apple-touch-icon.png'
 ];
 
 // Assets to cache on demand
@@ -190,9 +189,9 @@ function getStrategy(url) {
     return STRATEGIES.CACHE_FIRST;
   }
   
-  // API calls - Network First with fallback
-  if (pathname.startsWith('/api/') || pathname.includes('/data/')) {
-    return STRATEGIES.NETWORK_FIRST;
+  // API/content calls - never cache potentially protected learning content.
+  if (pathname.startsWith('/api/') || pathname.startsWith('/content/') || pathname.includes('/data/')) {
+    return STRATEGIES.NETWORK_ONLY;
   }
   
   // External CDNs - Stale While Revalidate

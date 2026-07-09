@@ -1,7 +1,7 @@
 {
   "name": "ihk-lernplattform",
   "version": "2.0.0",
-  "description": "IHK Lernplattform für Büromanagement - iOS App & Web",
+  "description": "Unabhängiges digitales Übungsmaterial für typische Office-Aufgabentypen - iOS App & Web",
   "main": "index.html",
   "scripts": {
     "dev": "npx serve . -p 3000",
@@ -27,7 +27,7 @@
     "capacitor",
     "ios"
   ],
-  "author": "Emilia's IHK Lernplattform",
+  "author": "Prüfungskern Büro",
   "license": "MIT",
   "dependencies": {
     "@capacitor/core": "^6.1.0",
@@ -44,12 +44,12 @@
     "serve": "^14.2.0"
   },
   "capacitor": {
-    "appId": "de.ihk.lernplattform",
-    "appName": "IHK Lernplattform",
+    "appId": "de.pruefungskern.buero",
+    "appName": "Prüfungskern Büro",
     "webDir": ".",
     "bundledWebRuntime": false,
     "ios": {
-      "scheme": "IHKLernplattform"
+      "scheme": "PruefungskernBuero"
     }
   },
   "overrides": {

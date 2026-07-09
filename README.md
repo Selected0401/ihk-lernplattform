@@ -25,8 +25,9 @@ Prüfungskern ist unabhängig erstellt. Es besteht keine Verbindung zur Industri
 
 ## Features
 
-- 56 eigene prüfungsnahe Übungsaufgaben
-- interaktive Lernumgebungen für Excel, Word, PowerPoint und Outlook
+- öffentliche App-Shell mit Vorschau-Metadaten
+- geschützte Übungsaufgaben über Cloudflare Worker/KV/R2 nach Lizenzprüfung
+- interaktive Lernumgebungen für Excel, Word, PowerPoint und Outlook nach Backend-Freischaltung
 - Word-Arbeitsbereich mit A4-Seite, Lineal und 80/20-Strukturhilfe
 - Musterlösungen mit AHA-Erklärung für schnelles Verständnis
 - PWA-fähig für Desktop- und Smartphone-Browser
@@ -38,6 +39,7 @@ Prüfungskern ist unabhängig erstellt. Es besteht keine Verbindung zur Industri
 - `ACCESS_CODE_SETUP.md`
 - `DIGISTORE24_COPY.md`
 - `cloudflare-worker/README.md`
+- `docs/architecture/protected-content-phase1.md`
 
 ## Technische Prüfung
 
@@ -46,10 +48,11 @@ node --check learning-environment.js
 node --check www/js/learning-environment.js
 node --check sw.js
 node --check www/sw.js
-python3 -m json.tool data/aufgaben-optimiert.json >/tmp/aufgaben-root.json
-python3 -m json.tool www/data/aufgaben-optimiert.json >/tmp/aufgaben-www.json
+node --check cloudflare-worker/src/worker.js
 npm run build
 npm test
 npm audit --audit-level=high
 git diff --check
 ```
+
+Geschützte Lerninhalte liegen nicht mehr in `data/`/`www/data/`. Lokale Exporte für Cloudflare-Seeding sind gitignoriert unter `.protected-content/` und dürfen nicht committed werden.
