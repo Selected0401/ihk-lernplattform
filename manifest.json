@@ -1,6 +1,6 @@
 {
-  "name": "Prüfungskern Büro",
-  "short_name": "Prüfungskern",
+  "name": "PrüfBlick Büromanagement",
+  "short_name": "PrüfBlick",
   "id": "./",
   "description": "Unabhängiges digitales Übungsmaterial für typische Office-Aufgabentypen in Excel, Word, PowerPoint und Outlook.",
   "start_url": "./",
@@ -34,14 +34,14 @@
       "sizes": "750x1334",
       "type": "image/png",
       "form_factor": "narrow",
-      "label": "Prüfungskern Büro - Startseite"
+      "label": "PrüfBlick Büromanagement - Startseite"
     },
     {
       "src": "screenshot-wide.png",
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",
-      "label": "Prüfungskern Büro - Lernfortschritt"
+      "label": "PrüfBlick Büromanagement - Lernfortschritt"
     }
   ],
   "shortcuts": [

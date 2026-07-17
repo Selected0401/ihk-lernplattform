@@ -10,6 +10,7 @@
 # Dependencies / generated caches
 node_modules/
 .cache/
+/dist-public/
 __pycache__/
 *.pyc
 .DS_Store

@@ -39,6 +39,9 @@ SYNC_GROUPS = [
     [ROOT / "login.html", ROOT / "www" / "login.html"],
     [ROOT / "sales-config.js", ROOT / "www" / "sales-config.js"],
 ]
+GENERATED_SYNC_TARGETS = {
+    ROOT / "ios" / "App" / "App" / "public" / "js" / "learning-environment.js",
+}
 RUNTIME_BASES = [ROOT, ROOT / "www", ROOT / "ios" / "App" / "App" / "public"]
 PUBLIC_RUNTIME_FILES = [
     ROOT / "index.html",
@@ -208,9 +211,14 @@ def validate_task_file(path: Path) -> list[tuple[str, str, str]]:
 def validate_sync_groups() -> list[tuple[str, str, str]]:
     issues: list[tuple[str, str, str]] = []
     for group in SYNC_GROUPS:
-        existing = [path for path in group if path.exists()]
-        if len(existing) != len(group):
-            for path in group:
+        expected = [
+            path
+            for path in group
+            if path.exists() or path not in GENERATED_SYNC_TARGETS
+        ]
+        existing = [path for path in expected if path.exists()]
+        if len(existing) != len(expected):
+            for path in expected:
                 if not path.exists():
                     issues.append((str(path.relative_to(ROOT)), "FILE", "expected synchronized copy missing"))
             continue

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="Prüfungskern Büro - unabhängiges digitales Übungsmaterial für typische Office-Aufgabentypen.">
-    <title>Prüfungskern Büro</title>
+    <meta name="description" content="PrüfBlick Büromanagement – Prüfungen klar im Blick.">
+    <title>PrüfBlick Büromanagement</title>
     
     <!-- Security Headers - Critical Fixes -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://*.workers.dev; base-uri 'self'; frame-ancestors 'none';">
@@ -697,21 +697,22 @@
     
     <!-- PWA -->
     <link rel="stylesheet" href="style.css?v=build-20260705-word8020-1">
-    <link rel="manifest" href="manifest.json?v=20260717-pwa-install-1">
+    <link rel="manifest" href="manifest.json?v=20260717-brand-a-1">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <meta name="theme-color" content="#3498db">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="Prüfungskern Büro">
+    <meta name="apple-mobile-web-app-title" content="PrüfBlick" data-brand-content="shortName">
+    <script src="brand-config.js?v=20260717-brand-a-1"></script>
 </head>
 <body>
     <div class="access-gate" id="accessGate" role="dialog" aria-labelledby="accessGateTitle" aria-modal="true">
         <div class="access-gate-card">
             <h2 id="accessGateTitle">Zugangscode erforderlich</h2>
-            <p>Die Lernplattform ist öffentlich erreichbar, der volle Trainingsbereich ist aber für Käufer freigeschaltet. Nach dem Kauf erhältst du deinen Zugangscode per E-Mail.</p>
+            <p>Der öffentliche Trainingsbereich ist ein technischer Releasekandidat. Neue Käufe sind noch nicht freigegeben.</p>
             <div style="display:flex;gap:.75rem;flex-wrap:wrap">
                 <a class="module-btn" style="width:auto;text-decoration:none" href="login.html">🔐 Code eingeben</a>
-                <a class="module-btn" style="width:auto;text-decoration:none;background:linear-gradient(135deg,#0f766e,#16a34a)!important" href="landing.html#preise">✅ Zugang kaufen</a>
+
             </div>
         </div>
     </div>
@@ -722,7 +723,7 @@
             <div>
                 <strong id="cookie-title">🍪 Cookie-Einwilligung</strong><br>
                 <span id="cookie-desc">Diese Website verwendet essenzielle Cookies für die Funktionalität. Keine Tracking-Cookies.</span>
-                <a href="datenschutz.html" style="color: #7dd3fc; text-decoration: underline;">Datenschutzerklärung</a>
+
             </div>
             <div class="cookie-consent-buttons">
                 <button class="cookie-btn cookie-accept" onclick="acceptCookies()" aria-label="Cookies akzeptieren">Akzeptieren</button>
@@ -741,14 +742,14 @@
                         <span></span>
                         <span></span>
                     </button>
-                    📚 Prüfungskern Büro
+                    📚 <span data-brand-text="productName">PrüfBlick Büromanagement</span>
                 </div>
                 <nav class="nav-menu" id="navMenu" aria-label="Hauptnavigation">
                     <a href="#dashboard" class="nav-link active" onclick="navigateToSection('dashboard', event)">Start</a>
                     <a href="#modules" class="nav-link" onclick="navigateToSection('modules', event)">Module</a>
                     <a href="#tasks" class="nav-link" onclick="navigateToSection('tasks', event)">Aufgaben</a>
                     <a href="#progress" class="nav-link" onclick="navigateToSection('progress', event)">Fortschritt</a>
-                    <a href="landing.html#preise" class="nav-link nav-link-cta">✅ Zugang kaufen</a>
+
                     <a href="login.html" class="nav-link nav-link-login">Login</a>
                     <button type="button" class="nav-link nav-link-logout" onclick="logoutAccessSession()" hidden>Abmelden</button>
                 </nav>
@@ -762,8 +763,8 @@
     
     <section class="hero" id="dashboard">
         <div class="container">
-            <h1>Prüfungskern Büro</h1>
-            <p>Unabhängiges digitales Übungsmaterial für typische Office-Aufgabentypen</p>
+            <h1 data-brand-text="productName">PrüfBlick Büromanagement</h1>
+            <p data-brand-text="tagline">Prüfungen klar im Blick.</p>
             <div class="stats-bar">
                 <div class="stat-item">
                     <span class="stat-number">56</span>
@@ -924,11 +925,11 @@
 
             <section id="legal-positioning" class="product-note" aria-label="Rechtlicher Hinweis und Produktpositionierung">
                 <div>
-                    <span class="eyebrow">Für spätere Vermarktung vorbereitet</span>
+                    <span class="eyebrow">Marken- und PWA-Releasekandidat</span>
                     <h2>Eigene IHK-nahe Übungsplattform — keine offiziellen Prüfungsunterlagen</h2>
                     <p>Diese Lernplattform nutzt selbst erstellte Aufgaben, die sich an typischen Anforderungen der Zwischenprüfung für Kaufleute für Büromanagement orientieren. Offizielle IHK-Prüfungen, Logos und geschützte Materialien sollten nur mit ausdrücklicher Lizenz verwendet werden.</p>
                 </div>
-                <a class="module-btn product-cta" href="landing.html">Verkaufsseite ansehen</a>
+
             </section>
         </div>
     </main>
@@ -1154,7 +1155,7 @@
             setupEventListeners();
             checkCookieConsent();
             enforceAccessGate();
-            console.log('Prüfungskern Büro geladen -', aufgaben.length, 'optimierte Aufgaben verfügbar');
+            console.log('PrüfBlick Büromanagement geladen -', aufgaben.length, 'optimierte Aufgaben verfügbar');
             console.log('Accessibility: ARIA-Labels, Keyboard Navigation, Screen Reader Support implementiert');
         });
 

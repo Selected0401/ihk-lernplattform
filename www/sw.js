@@ -9,10 +9,10 @@
  * - Safe asset caching with error handling
  */
 
-const CACHE_NAME = 'pruefungskern-v2.1.1-pwa-install';
-const STATIC_CACHE = 'pruefungskern-static-v2.1.1-pwa-install';
-const DYNAMIC_CACHE = 'pruefungskern-dynamic-v2.1.1-pwa-install';
-const API_CACHE = 'pruefungskern-api-v2.1.1-pwa-install';
+const CACHE_NAME = 'pruefungskern-v2.1.2-brand-a';
+const STATIC_CACHE = 'pruefungskern-static-v2.1.2-brand-a';
+const DYNAMIC_CACHE = 'pruefungskern-dynamic-v2.1.2-brand-a';
+const API_CACHE = 'pruefungskern-api-v2.1.2-brand-a';
 
 // Safari detection
 const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
@@ -25,23 +25,16 @@ const supportsPush = 'PushManager' in self;
 const CRITICAL_ASSETS = [
   './',
   'index.html',
+  'login.html',
   'style.css',
+  'brand-config.js',
   'js/learning-environment.js',
-  'app.js',
-  'js/safari-optimizer.js',
   'manifest.json',
   'icon-192.png',
   'icon-512.png',
   'apple-touch-icon.png',
   'screenshot-narrow.png',
   'screenshot-wide.png'
-];
-
-// Assets to cache on demand
-const ON_DEMAND_ASSETS = [
-  'images/*.webp',
-  'images/icons/*.webp',
-  'fonts/*.woff2'
 ];
 
 // Network strategies
@@ -404,7 +397,7 @@ async function getOfflinePage() {
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Offline - Emilia's Lernplattform</title>
+      <title>Offline - PrüfBlick</title>
       <style>
         body {
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -527,8 +520,8 @@ if (supportsPush) {
     
     const options = {
       body: 'Neue Lernaufgabe verfügbar!',
-      icon: 'images/icon-192x192.png',
-      badge: 'images/badge-72x72.png',
+      icon: 'icon-192.png',
+      badge: 'icon-192.png',
       vibrate: [100, 50, 100],
       data: {
         dateOfArrival: Date.now(),
@@ -537,19 +530,17 @@ if (supportsPush) {
       actions: [
         {
           action: 'explore',
-          title: 'Lernfeld ansehen',
-          icon: 'images/checkmark.png'
+          title: 'Lernfeld ansehen'
         },
         {
           action: 'close',
-          title: 'Schließen',
-          icon: 'images/xmark.png'
+          title: 'Schließen'
         }
       ]
     };
     
     event.waitUntil(
-      self.registration.showNotification('Emilia Lernplattform', options)
+      self.registration.showNotification('PrüfBlick', options)
     );
   });
   
@@ -563,7 +554,7 @@ if (supportsPush) {
     
     if (event.action === 'explore') {
       event.waitUntil(
-        clients.openWindow('aufgaben.html')
+        clients.openWindow('index.html#tasks')
       );
     }
   });

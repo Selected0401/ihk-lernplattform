@@ -1,10 +1,8 @@
-# GitHub Pages deployment workflow for IHK Lernplattform
+# GitHub Pages deployment workflow for PrüfBlick
 name: GitHub Pages
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
     branches: [ main ]
   workflow_dispatch:  # Allow manual triggering
 
@@ -19,13 +17,22 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
+      - name: Verify PrüfBlick Release A contract
+        run: python3 scripts/test-brand-release-a.py
+
       - name: Verify PWA installability
         run: python3 scripts/test-pwa-installability.py
+
+      - name: Verify curated public artifact
+        run: python3 scripts/test-public-release-artifact.py
+
+      - name: Build curated public artifact
+        run: python3 scripts/build-public-site.py --output dist-public
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
+          path: dist-public
 
   deploy:
     needs: build
