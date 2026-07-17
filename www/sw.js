@@ -9,10 +9,10 @@
  * - Safe asset caching with error handling
  */
 
-const CACHE_NAME = 'pruefungskern-v2.1.0-protected-content-phase1';
-const STATIC_CACHE = 'pruefungskern-static-v2.1.0-protected-content-phase1';
-const DYNAMIC_CACHE = 'pruefungskern-dynamic-v2.1.0-protected-content-phase1';
-const API_CACHE = 'pruefungskern-api-v2.1.0-protected-content-phase1';
+const CACHE_NAME = 'pruefungskern-v2.1.1-pwa-install';
+const STATIC_CACHE = 'pruefungskern-static-v2.1.1-pwa-install';
+const DYNAMIC_CACHE = 'pruefungskern-dynamic-v2.1.1-pwa-install';
+const API_CACHE = 'pruefungskern-api-v2.1.1-pwa-install';
 
 // Safari detection
 const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
@@ -29,7 +29,12 @@ const CRITICAL_ASSETS = [
   'js/learning-environment.js',
   'app.js',
   'js/safari-optimizer.js',
-  'manifest.json'
+  'manifest.json',
+  'icon-192.png',
+  'icon-512.png',
+  'apple-touch-icon.png',
+  'screenshot-narrow.png',
+  'screenshot-wide.png'
 ];
 
 // Assets to cache on demand

@@ -1,6 +1,7 @@
 {
   "name": "Prüfungskern Büro",
   "short_name": "Prüfungskern",
+  "id": "./",
   "description": "Unabhängiges digitales Übungsmaterial für typische Office-Aufgabentypen in Excel, Word, PowerPoint und Outlook.",
   "start_url": "./",
   "display": "standalone",
@@ -29,11 +30,18 @@
   ],
   "screenshots": [
     {
-      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 600'><rect width='300' height='600' fill='%23667eea'/><text x='150' y='300' font-size='34' text-anchor='middle' fill='white'>Prüfungskern</text></svg>",
-      "sizes": "300x600",
-      "type": "image/svg+xml",
+      "src": "screenshot-narrow.png",
+      "sizes": "750x1334",
+      "type": "image/png",
       "form_factor": "narrow",
       "label": "Prüfungskern Büro - Startseite"
+    },
+    {
+      "src": "screenshot-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Prüfungskern Büro - Lernfortschritt"
     }
   ],
   "shortcuts": [

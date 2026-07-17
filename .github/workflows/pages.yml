@@ -18,6 +18,9 @@ jobs:
         
       - name: Setup Pages
         uses: actions/configure-pages@v4
+
+      - name: Verify PWA installability
+        run: python3 scripts/test-pwa-installability.py
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
