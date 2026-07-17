@@ -112,7 +112,8 @@ class PublicArtifactTests(unittest.TestCase):
             self.assertIn("clients.openWindow('index.html#tasks')", service_worker)
 
     def test_pages_workflow_publishes_only_the_curated_artifact(self) -> None:
-        workflow = (ROOT / ".github" / "workflows" / "pages.yml").read_text(encoding="utf-8")
+        workflow_path = ROOT / ".github" / "workflows" / "pages.yml"
+        workflow = workflow_path.read_text(encoding="utf-8")
 
         self.assertNotIn("pull_request:", workflow)
         self.assertIn("python3 scripts/test-brand-release-a.py", workflow)
@@ -121,6 +122,15 @@ class PublicArtifactTests(unittest.TestCase):
         self.assertIn("python3 scripts/build-public-site.py --output dist-public", workflow)
         self.assertIn("path: dist-public", workflow)
         self.assertNotIn("path: .\n", workflow)
+
+        workflow_dir = workflow_path.parent
+        workflow_files = sorted((*workflow_dir.glob("*.yml"), *workflow_dir.glob("*.yaml")))
+        for other_path in workflow_files:
+            if other_path == workflow_path:
+                continue
+            other_workflow = other_path.read_text(encoding="utf-8")
+            self.assertNotIn("actions/upload-pages-artifact@", other_workflow)
+            self.assertNotIn("actions/deploy-pages@", other_workflow)
 
 
 if __name__ == "__main__":
