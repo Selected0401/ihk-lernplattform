@@ -29,7 +29,7 @@
 | `/content/tasks` | GET | `Authorization: Bearer <JWT>` | liefert Aufgaben-Metadaten ohne Full Content |
 | `/content/tasks/:id` | GET | `Authorization: Bearer <JWT>` | liefert vollständige Aufgabe für berechtigte Nutzer |
 | `/admin/create-code` | POST | `ADMIN_SECRET` | manueller Staging-/Support-Code |
-| `/digistore24-webhook` | POST | `DIGISTORE_WEBHOOK_SECRET` Staging-Guard | erzeugt Codes idempotent nur für erlaubte Payment-Events und widerruft bei Refund/Chargeback/Cancel; finale Digistore24-Signaturprüfung bleibt Launch-Blocker |
+| `/digistore/ipn` | POST | Generic-IPN SHA-512 + `DIGISTORE_IPN_PASSPHRASE_TEST` | übernimmt den Digistore24-`license_key` hash-only, bindet den Plan ausschließlich über `product_id` und widerruft bei Refund/Chargeback; Live-IPN bleibt hart gesperrt |
 
 ## KV Seeding Entwurf
 
@@ -40,7 +40,7 @@ cd /opt/data/ihk-lernplattform/cloudflare-worker
 wrangler kv namespace create ACCESS_CODES
 wrangler kv namespace create PROTECTED_CONTENT
 wrangler secret put ADMIN_SECRET
-wrangler secret put DIGISTORE_WEBHOOK_SECRET
+wrangler secret put DIGISTORE_IPN_PASSPHRASE_TEST
 wrangler secret put JWT_SECRET
 wrangler kv key put --binding=PROTECTED_CONTENT \
   tasks/aufgaben-optimiert.json \

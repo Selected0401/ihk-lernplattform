@@ -1,0 +1,41 @@
+version: 2
+scope: digistore24-staging-release-candidate
+note: "Alle technischen und operativen Gates bleiben false."
+gates:
+  isolated_commit_verified: false
+  staging_deployment_authorized: false
+  production_deployment_authorized: false
+  checkout_active: false
+  paid_launch_authorized: false
+  live_ipn_enabled: false
+  live_api_mode_allowed: false
+  production_product_ids_configured: false
+  production_product_plans_configured: false
+  production_passphrase_configured: false
+  digistore_product_approved: false
+  digistore_generated_license_verified: false
+  generic_ipn_connection_created: false
+  staging_postback_configured: false
+  connection_test_verified: false
+  testpay_purchase_verified: false
+  confirmation_page_license_verified: false
+  email_license_verified: false
+  staging_login_verified: false
+  staging_refund_verified: false
+  staging_chargeback_verified: false
+  staging_payment_missed_verified: false
+  staging_reactivation_verified: false
+  staging_replay_verified: false
+  staging_conflict_verified: false
+  staging_log_redaction_verified: false
+  provider_log_retention_verified: false
+  kv_retention_defined: false
+  durable_object_retention_defined: false
+  production_domain_approved: false
+  production_checkout_url_approved: false
+  production_monitoring_ready: false
+  incident_runbook_ready: false
+  support_revocation_process_ready: false
+  buyer_data_process_approved: false
+  launch_owner_approval: false
+  alex_live_release_phrase_received: false

@@ -14,8 +14,21 @@ id = "REPLACE_WITH_KV_NAMESPACE_ID"
 binding = "PROTECTED_CONTENT"
 id = "REPLACE_WITH_PROTECTED_CONTENT_KV_NAMESPACE_ID"
 
+[[durable_objects.bindings]]
+name = "COMMERCE_COORDINATOR"
+class_name = "CommerceCoordinator"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["CommerceCoordinator"]
+
 [vars]
-# Set real secrets with:
+# Inject real product IDs externally in staging. Format: comma-separated IDs.
+DIGISTORE_PRODUCT_IDS = ""
+# Format: product_id=pro|plus. product_name is never authorizing.
+DIGISTORE_PRODUCT_PLANS = ""
+
+# Set real secrets outside Git with:
 # wrangler secret put ADMIN_SECRET
-# wrangler secret put DIGISTORE_WEBHOOK_SECRET
+# wrangler secret put DIGISTORE_IPN_PASSPHRASE_TEST
 # wrangler secret put JWT_SECRET

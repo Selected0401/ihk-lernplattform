@@ -1,0 +1,37 @@
+name = "ihk-access-worker-staging"
+main = "src/worker.js"
+compatibility_date = "2025-01-01"
+workers_dev = true
+
+[[kv_namespaces]]
+binding = "ACCESS_CODES"
+id = "REPLACE_WITH_STAGING_ACCESS_CODES_KV_NAMESPACE_ID"
+
+[[kv_namespaces]]
+binding = "PROTECTED_CONTENT"
+id = "REPLACE_WITH_STAGING_PROTECTED_CONTENT_KV_NAMESPACE_ID"
+
+[[durable_objects.bindings]]
+name = "COMMERCE_COORDINATOR"
+class_name = "CommerceCoordinator"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["CommerceCoordinator"]
+
+[vars]
+ENVIRONMENT = "staging"
+DIGISTORE_PRODUCT_IDS = ""
+DIGISTORE_PRODUCT_PLANS = ""
+
+# Extern setzen, niemals committen:
+# wrangler secret put JWT_SECRET --config wrangler.staging.toml
+# wrangler secret put ADMIN_SECRET --config wrangler.staging.toml
+# wrangler secret put DIGISTORE_IPN_PASSPHRASE_TEST --config wrangler.staging.toml
+#
+# DIGISTORE_PRODUCT_IDS und DIGISTORE_PRODUCT_PLANS werden ebenfalls erst
+# im autorisierten Staging-Store gesetzt. Format des Mappings:
+# product_id=pro|plus
+#
+# DIGISTORE_API_MODE ist nicht erforderlich. Der Worker akzeptiert nur
+# signierte api_mode=test-Payloads; api_mode=live bleibt hart gesperrt.

@@ -13,7 +13,7 @@
     "cap:copy": "npx cap copy",
     "cap:update": "npx cap update ios",
     "ios:build": "npm run cap:sync && npm run cap:open:ios",
-    "test": "python3 scripts/test-pwa-installability.py && python3 scripts/validate-learning-objects.py && node scripts/smoke-worker-security.mjs"
+    "test": "python3 scripts/test-pwa-installability.py && python3 scripts/validate-learning-objects.py && node scripts/smoke-worker-security.mjs && node scripts/smoke-digistore-ipn.mjs"
   },
   "keywords": [
     "ihk",

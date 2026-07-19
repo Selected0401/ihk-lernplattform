@@ -23,6 +23,7 @@ class KVNamespace {
 
 function loadWorker() {
   const source = fs.readFileSync('cloudflare-worker/src/worker.js', 'utf8')
+    .replace('export class CommerceCoordinator', 'class CommerceCoordinator')
     .replace('export default', 'globalThis.worker =');
   const context = {
     console,
@@ -65,8 +66,7 @@ const env = {
     }),
   }),
   JWT_SECRET: 'test-jwt-secret-at-least-32-chars',
-  ADMIN_SECRET: 'admin-secret',
-  DIGISTORE_WEBHOOK_SECRET: 'webhook-secret',
+  ADMIN_SECRET: 'test-admin-secret-at-least-32-chars',
 };
 
 let response = await request(worker, env, '/verify-code', {
@@ -78,7 +78,7 @@ assert(response.status === 400, 'invalid code format must be rejected');
 
 response = await request(worker, env, '/admin/create-code', {
   method: 'POST',
-  headers: { Authorization: 'Bearer admin-secret', 'Content-Type': 'application/json' },
+  headers: { Authorization: 'Bearer test-admin-secret-at-least-32-chars', 'Content-Type': 'application/json' },
   body: JSON.stringify({ code: 'IHK-ABCD-2345', email: 'alex@example.test', orderId: 'order-1' }),
 });
 assert(response.status === 200, 'admin create-code must work');
@@ -96,41 +96,5 @@ response = await request(worker, env, '/content/tasks', {
   headers: { Authorization: `Bearer ${verified.accessToken}` },
 });
 assert(response.status === 200, 'fresh token must access protected task list');
-
-response = await request(worker, env, '/digistore24-webhook', {
-  method: 'POST',
-  headers: { Authorization: 'Bearer webhook-secret', 'Content-Type': 'application/json' },
-  body: JSON.stringify({ event: 'refund', order_id: 'order-1' }),
-});
-assert([200, 202].includes(response.status), 'refund webhook must process or acknowledge revocation');
-
-response = await request(worker, env, '/verify-code', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json', 'CF-Connecting-IP': '203.0.113.11' },
-  body: JSON.stringify({ code: 'IHK-ABCD-2345' }),
-});
-assert(response.status === 403, 'revoked code must not verify again');
-
-response = await request(worker, env, '/content/tasks', {
-  method: 'GET',
-  headers: { Authorization: `Bearer ${verified.accessToken}` },
-});
-assert(response.status === 401 || response.status === 403, 'old token must stop working after revocation');
-
-response = await request(worker, env, '/digistore24-webhook', {
-  method: 'POST',
-  headers: { Authorization: 'Bearer webhook-secret', 'Content-Type': 'application/json' },
-  body: JSON.stringify({ event: 'payment_completed', order_id: 'order-2', email: 'buyer@example.test' }),
-});
-const purchase = await jsonResponse(response);
-assert(response.status === 200 && purchase.action === 'purchase_code_created' && /^IHK-[A-Z2-9]{4}-[A-Z2-9]{4}$/.test(purchase.code), 'allowed purchase webhook must create one access code');
-
-response = await request(worker, env, '/digistore24-webhook', {
-  method: 'POST',
-  headers: { Authorization: 'Bearer webhook-secret', 'Content-Type': 'application/json' },
-  body: JSON.stringify({ event: 'unknown_non_purchase', order_id: 'order-unknown', email: 'buyer@example.test' }),
-});
-const ignored = await jsonResponse(response);
-assert(response.status === 202 && ignored.action === 'ignored_event', 'unknown webhook event must not create access code');
 
 console.log('worker-security-smoke=PASS');

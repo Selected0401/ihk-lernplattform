@@ -1,6 +1,6 @@
 # IHK Access Worker
 
-Cloudflare Worker für Zugangscode-Prüfung, kurzlebige Zugriffstokens, geschützte Contentauslieferung und Digistore24-Webhook.
+Cloudflare Worker für Zugangscode-Prüfung, kurzlebige Zugriffstokens, geschützte Contentauslieferung und Digistore24 Generic IPN.
 
 ## Endpoints
 
@@ -9,7 +9,9 @@ Cloudflare Worker für Zugangscode-Prüfung, kurzlebige Zugriffstokens, geschüt
 - `GET /content/tasks` — geschützte Aufgaben-Metadaten, Bearer Token erforderlich
 - `GET /content/tasks/:id` — geschützte vollständige Aufgabe, Bearer Token erforderlich
 - `POST /admin/create-code` — manuellen Code erstellen, geschützt mit `ADMIN_SECRET`
-- `POST /digistore24-webhook` — Kauf-/Refund-Events empfangen, idempotent verarbeiten und Codes erzeugen oder widerrufen, geschützt mit `DIGISTORE_WEBHOOK_SECRET`
+- `POST /digistore/ipn` — signierte Test-IPNs verarbeiten; `license_key` nur als SHA-256 speichern
+
+Der alte Alias `/digistore24-webhook` bleibt absichtlich geschlossen (`404`).
 
 ## Setup
 
@@ -21,9 +23,9 @@ wrangler kv namespace create ACCESS_CODES
 wrangler kv namespace create PROTECTED_CONTENT
 # KV-IDs in wrangler.toml eintragen
 wrangler secret put ADMIN_SECRET
-wrangler secret put DIGISTORE_WEBHOOK_SECRET
+wrangler secret put DIGISTORE_IPN_PASSPHRASE_TEST
 wrangler secret put JWT_SECRET
-wrangler deploy
+# Kein Deployment ohne separate Staging-Freigabe.
 ```
 
 Zugangscodes folgen dem Format `IHK-ABCD-2345` oder `PLUS-ABCD-2345`. Andere Formate werden serverseitig abgelehnt, damit interne KV-Schlüssel nicht versehentlich als Codes funktionieren.
@@ -72,13 +74,17 @@ Alle Content-Antworten werden mit `Cache-Control: no-store` ausgeliefert. Der Se
 
 ## Digistore24
 
-Webhook-URL:
+Staging-Postback-URL:
 
 ```text
-https://DEIN-WORKER.workers.dev/digistore24-webhook
+https://DEIN-STAGING-WORKER.workers.dev/digistore/ipn
 ```
 
-Für Staging muss der Aufruf mindestens einen `Authorization: Bearer ***`-Header mit dem Worker-Secret senden. Der Worker verarbeitet wiederholte Events idempotent über Event-/Order-Hashes und markiert Codes bei Refund-/Chargeback-/Cancel-Events als `revoked`. Für Produktion muss zusätzlich die offizielle Digistore24-Signaturprüfung bzw. der von Digistore24 dokumentierte verifizierte IPN/Webhook-Flow ergänzt und mit echten Testkäufen verifiziert werden. Query-String-Secrets sind nicht zulässig.
+Der Endpoint akzeptiert ausschließlich `application/x-www-form-urlencoded` mit der offiziellen SHA-512-Signatur. Staging-Werte werden extern gesetzt: `DIGISTORE_PRODUCT_IDS`, `DIGISTORE_PRODUCT_PLANS` (`product_id=pro|plus`) und das Secret `DIGISTORE_IPN_PASSPHRASE_TEST`. Fehlendes Mapping ergibt fail-closed `503 product_plan_not_configured`; `product_name` autorisiert niemals. `api_mode=live` bleibt mit `403 live_ipn_disabled` gesperrt.
+
+`on_payment` aktiviert den von Digistore24 gelieferten, case-sensitiven Lizenzschlüssel hash-only. Replay ist idempotent. Refund und Chargeback widerrufen den Zugang und erhöhen `sessionVersion`, wodurch bestehende Zugriffstokens ungültig werden. Erfolgreiche IPNs antworten exakt mit `Content-Type: text/plain` und Body `OK`. Klartextschlüssel, Käufer-E-Mail und rohe Order-ID werden weder persistiert noch geloggt.
+
+Die beispielhafte Binding-Konfiguration steht in `wrangler.staging.example.toml`. Sie enthält keine echten Namespace-IDs, Produkt-IDs oder Secrets und ist keine Deployment-Freigabe.
 
 ## Login-Anbindung
 
